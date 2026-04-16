@@ -1,0 +1,546 @@
+<!doctype html>
+<html lang="sr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Usluge — Studio One</title>
+  <meta name="description" content="Web dizajn, vođenje društvenih mreža i digitalne kampanje. Studio One — premium digitalni studio iz Novog Sada." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,300;9..144,0,400;9..144,1,300;9..144,1,400&family=Inter+Tight:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="stylesheet" href="../css/nav.css">
+  <link rel="stylesheet" href="../css/misc.css">
+  <link rel="stylesheet" href="../css/usluge.css">
+</head>
+<body>
+
+  <!-- ── CURSOR ─────────────────────────────── -->
+  <div class="c-ring" id="cRing"></div>
+  <div class="c-dot"  id="cDot"></div>
+
+  <!-- ── NAVIGATION ────────────────────────── -->
+  <nav class="nav" id="nav">
+    <a href="../index.html" class="nav__logo">
+      <span class="nav__logo-dot"></span>Studio One
+    </a>
+    <div class="nav__links">
+      <a href="usluge.html" class="nav__link--active">Usluge</a>
+      <a href="../index.html#paketi">Kako radimo</a>
+      <a href="../index.html#proces">Proces</a>
+      <a href="radovi.html">Radovi</a>
+    </div>
+    <a href="../index.html#kontakt" class="nav__cta" data-cursor="expand">Zakaži poziv</a>
+    <button class="nav__burger" id="navBurger" aria-label="Meni">
+      <span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="nav__mobile" id="navMobile">
+    <a href="usluge.html">Usluge</a>
+    <a href="../index.html#paketi">Kako radimo</a>
+    <a href="../index.html#proces">Proces</a>
+    <a href="radovi.html">Radovi</a>
+    <a href="../index.html#kontakt" class="nav__mobile-cta">Zakaži poziv →</a>
+  </div>
+
+  <!-- ── PAGE HERO ─────────────────────────── -->
+  <div class="usluge-hero">
+    <p class="usluge-hero__label reveal">— Šta nudimo</p>
+    <h1 class="usluge-hero__title reveal reveal-d1">Tri usluge.<br><em>Jedan sistem.</em></h1>
+    <p class="usluge-hero__sub reveal reveal-d2">Sajt koji se pamti. Mreže koje grade publiku. Kampanje koje troše budžet pametno. Sve tri usluge su dizajnirane da rade zajedno — kao jedan usklađen nastup.</p>
+  </div>
+
+  <!-- ── STICKY SERVICE NAV ─────────────────── -->
+  <div class="svc-nav" id="svcNav">
+    <div class="svc-nav__inner">
+      <a href="#web" class="svc-nav__item is-active" data-target="web">
+        <span>01</span> Web dizajn
+      </a>
+      <a href="#social" class="svc-nav__item" data-target="social">
+        <span>02</span> Social media
+      </a>
+      <a href="#ads" class="svc-nav__item" data-target="ads">
+        <span>03</span> Kampanje i oglasi
+      </a>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       SERVICE 01 — WEB DIZAJN
+  ══════════════════════════════════════════════ -->
+  <section class="svc-section svc-section--light" id="web">
+    <span class="svc-section__bg-n" aria-hidden="true">01</span>
+    <div class="svc-section__inner">
+
+      <!-- Text -->
+      <div class="svc-text">
+        <div class="svc-text__tag reveal">
+          <span class="svc-text__tag-line"></span>
+          <span>01 / Web</span>
+        </div>
+        <h2 class="svc-text__title reveal reveal-d1">
+          Sajtovi koji<br><em>prodaju sami.</em>
+        </h2>
+        <p class="svc-text__body reveal reveal-d2">
+          Nije dovoljno imati sajt — mora da deluje kao da te firma vredi. Gradimo sajtove koji u prvih 5 sekundi komuniciraju ko si, zašto si bolji i šta treba da uradi posetilac. Dizajn, tekst, struktura — sve je podređeno jednom cilju: konverziji.
+        </p>
+        <ul class="svc-includes reveal reveal-d3">
+          <li class="svc-includes__item">Dizajn sistema i prototip</li>
+          <li class="svc-includes__item">HTML / CSS / JS razvoj</li>
+          <li class="svc-includes__item">CMS integracija (po potrebi)</li>
+          <li class="svc-includes__item">Mobile first responsive</li>
+          <li class="svc-includes__item">Osnovna SEO optimizacija</li>
+          <li class="svc-includes__item">Google Analytics setup</li>
+          <li class="svc-includes__item">Kontakt forma i CTA sekcije</li>
+          <li class="svc-includes__item">Brzina i Core Web Vitals</li>
+        </ul>
+        <a href="../index.html#paketi" class="svc-text__cta reveal reveal-d4">
+          Pogledaj pakete <span>→</span>
+        </a>
+      </div>
+
+      <!-- Visual -->
+      <div class="svc-visual reveal reveal-d2">
+        <div class="sv-web">
+          <div class="sv-web__bar">
+            <div class="sv-web__dots">
+              <div class="sv-web__dot"></div>
+              <div class="sv-web__dot"></div>
+              <div class="sv-web__dot"></div>
+            </div>
+            <div class="sv-web__url">studioone.rs</div>
+          </div>
+          <div class="sv-web__body">
+            <div class="sv-web__nav">
+              <span>Studio One</span>
+              <div class="sv-web__nav-links">
+                <span>Usluge</span>
+                <span>Radovi</span>
+                <span>Kontakt</span>
+              </div>
+            </div>
+            <div class="sv-web__hero">
+              Gradimo<br>digitalni<br><em>nastup.</em>
+            </div>
+            <p class="sv-web__sub">Premium sajtovi, mreže i kampanje za biznise koji žele bolji prvi utisak.</p>
+            <div class="sv-web__btn">Zakaži poziv →</div>
+            <div class="sv-web__blocks">
+              <div class="sv-web__block"></div>
+              <div class="sv-web__block"></div>
+              <div class="sv-web__block"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       SERVICE 02 — SOCIAL MEDIA
+  ══════════════════════════════════════════════ -->
+  <section class="svc-section svc-section--mid svc-section--rev" id="social">
+    <span class="svc-section__bg-n" aria-hidden="true">02</span>
+    <div class="svc-section__inner">
+
+      <!-- Text -->
+      <div class="svc-text">
+        <div class="svc-text__tag reveal">
+          <span class="svc-text__tag-line"></span>
+          <span>02 / Social</span>
+        </div>
+        <h2 class="svc-text__title reveal reveal-d1">
+          Mreže koje<br><em>grade poverenje.</em>
+        </h2>
+        <p class="svc-text__body reveal reveal-d2">
+          Loš Instagram ne smeta samo estetski — aktivno odbija klijente. Preuzimamo vođenje profila od ideje do objave: strategija, vizuali, copy, analitika. Cilj nije lajkovi — cilj je da svaki profil deluje kao kompetentna firma kojoj vredi verovati.
+        </p>
+        <ul class="svc-includes reveal reveal-d3">
+          <li class="svc-includes__item">Strategija sadržaja</li>
+          <li class="svc-includes__item">Kreiranje vizuala</li>
+          <li class="svc-includes__item">Copywriting i captions</li>
+          <li class="svc-includes__item">2–3 objave nedeljno</li>
+          <li class="svc-includes__item">Story sadržaj</li>
+          <li class="svc-includes__item">Hashtag istraživanje</li>
+          <li class="svc-includes__item">Komunikacija sa pratioicima</li>
+          <li class="svc-includes__item">Mesečni izveštaj</li>
+        </ul>
+        <a href="../index.html#paketi" class="svc-text__cta reveal reveal-d4">
+          Pogledaj pakete <span>→</span>
+        </a>
+      </div>
+
+      <!-- Visual -->
+      <div class="svc-visual reveal reveal-d2">
+        <div class="sv-social">
+          <div class="sv-social__status">
+            <span>9:41</span>
+            <span>●●●</span>
+          </div>
+          <div class="sv-social__topbar">
+            <span class="sv-social__brand">Instagram</span>
+            <div class="sv-social__icons">♡ ✈</div>
+          </div>
+          <div class="sv-social__profile">
+            <div class="sv-social__avatar-row">
+              <div class="sv-social__avatar"></div>
+              <div class="sv-social__stats">
+                <div class="sv-social__stat">
+                  <strong>48</strong>
+                  <span>objava</span>
+                </div>
+                <div class="sv-social__stat">
+                  <strong>2.4k</strong>
+                  <span>pratilaca</span>
+                </div>
+                <div class="sv-social__stat">
+                  <strong>187</strong>
+                  <span>prati</span>
+                </div>
+              </div>
+            </div>
+            <p class="sv-social__bio">Premium studio · Novi Sad<br>Web · Social · Ads 🖤</p>
+            <div class="sv-social__follow">Prati</div>
+          </div>
+          <div class="sv-social__grid">
+            <div class="sv-social__post"></div>
+            <div class="sv-social__post"></div>
+            <div class="sv-social__post"></div>
+            <div class="sv-social__post"></div>
+            <div class="sv-social__post"></div>
+            <div class="sv-social__post"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       SERVICE 03 — KAMPANJE I OGLASI
+  ══════════════════════════════════════════════ -->
+  <section class="svc-section svc-section--dark" id="ads">
+    <span class="svc-section__bg-n" aria-hidden="true">03</span>
+    <div class="svc-section__inner">
+
+      <!-- Text -->
+      <div class="svc-text">
+        <div class="svc-text__tag reveal">
+          <span class="svc-text__tag-line"></span>
+          <span>03 / Ads</span>
+        </div>
+        <h2 class="svc-text__title reveal reveal-d1">
+          Budžet koji<br><em>radi za tebe.</em>
+        </h2>
+        <p class="svc-text__body reveal reveal-d2">
+          Meta, TikTok, Google — svaka platforma funkcioniše po drugačijoj logici. Mi postavljamo sistem koji testira, optimizuje i skalira uspešne kampanje. Budžet uvek definišeš ti, mi vodimo sistem koji ga troši pametno i beleži svaki rezultat.
+        </p>
+        <ul class="svc-includes reveal reveal-d3">
+          <li class="svc-includes__item">Setup kampanje (Meta/Google)</li>
+          <li class="svc-includes__item">Kreativni materijal</li>
+          <li class="svc-includes__item">A/B testiranje kreativa</li>
+          <li class="svc-includes__item">Targeting i segmentacija</li>
+          <li class="svc-includes__item">Budžet optimizacija</li>
+          <li class="svc-includes__item">Retargeting sekvenca</li>
+          <li class="svc-includes__item">Nedeljni izveštaj</li>
+          <li class="svc-includes__item">Skaliranje uspešnih kampanja</li>
+        </ul>
+        <a href="../index.html#paketi" class="svc-text__cta reveal reveal-d4">
+          Pogledaj pakete <span>→</span>
+        </a>
+      </div>
+
+      <!-- Visual -->
+      <div class="svc-visual reveal reveal-d2">
+        <div class="sv-ads">
+          <div class="sv-ads__topbar">
+            <span>Ads Manager</span>
+            <div class="sv-ads__status">
+              <div class="sv-ads__status-dot"></div>
+              <span>Aktivno</span>
+            </div>
+          </div>
+          <div class="sv-ads__metrics">
+            <div class="sv-ads__metric">
+              <div class="sv-ads__metric-label">ROAS</div>
+              <div class="sv-ads__metric-val">4.2×</div>
+              <div class="sv-ads__metric-delta">↑ +18%</div>
+            </div>
+            <div class="sv-ads__metric">
+              <div class="sv-ads__metric-label">CTR</div>
+              <div class="sv-ads__metric-val">3.8%</div>
+              <div class="sv-ads__metric-delta">↑ +0.6%</div>
+            </div>
+            <div class="sv-ads__metric">
+              <div class="sv-ads__metric-label">CPA</div>
+              <div class="sv-ads__metric-val">€4.20</div>
+              <div class="sv-ads__metric-delta">↓ -€1.20</div>
+            </div>
+          </div>
+          <div class="sv-ads__chart">
+            <div class="sv-ads__chart-title">Konverzije — poslednjih 30 dana</div>
+            <div class="sv-ads__bars">
+              <div class="sv-ads__bar" style="height:28%"></div>
+              <div class="sv-ads__bar" style="height:33%"></div>
+              <div class="sv-ads__bar" style="height:25%"></div>
+              <div class="sv-ads__bar" style="height:35%"></div>
+              <div class="sv-ads__bar" style="height:55%"></div>
+              <div class="sv-ads__bar" style="height:42%"></div>
+              <div class="sv-ads__bar" style="height:68%"></div>
+              <div class="sv-ads__bar" style="height:72%"></div>
+              <div class="sv-ads__bar is-hi" style="height:88%"></div>
+              <div class="sv-ads__bar is-hi" style="height:95%"></div>
+              <div class="sv-ads__bar is-hi" style="height:100%"></div>
+              <div class="sv-ads__bar is-hi" style="height:92%"></div>
+            </div>
+          </div>
+          <div class="sv-ads__campaigns">
+            <div class="sv-ads__camp-row">
+              <span class="sv-ads__camp-name">Brand awareness</span>
+              <span class="sv-ads__camp-roas">3.1×</span>
+            </div>
+            <div class="sv-ads__camp-row">
+              <span class="sv-ads__camp-name">Retargeting</span>
+              <span class="sv-ads__camp-roas">6.8×</span>
+            </div>
+            <div class="sv-ads__camp-row">
+              <span class="sv-ads__camp-name">Lead gen</span>
+              <span class="sv-ads__camp-roas">2.9×</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       DODATNE USLUGE
+  ══════════════════════════════════════════════ -->
+  <section class="addl-svc">
+    <div class="addl-svc__head">
+      <div>
+        <p class="addl-svc__label reveal">— Dodatno</p>
+        <h2 class="addl-svc__title reveal reveal-d1">Šta još<br><em>nudimo.</em></h2>
+      </div>
+      <p class="addl-svc__sub reveal reveal-d2">Specijalizovane usluge koje dopunjuju osnovna tri stuba. Dostupne kao add-on ili kao samostalan projekat.</p>
+    </div>
+    <div class="addl-svc__grid">
+      <div class="addl-svc__card reveal">
+        <div class="addl-svc__card-n">01 / Visibility</div>
+        <h3 class="addl-svc__card-name">SEO</h3>
+        <p class="addl-svc__card-body">Keyword istraživanje, on-page optimizacija i mesečno unapređenje SEO osnove. Vidljivost koja traje.</p>
+      </div>
+      <div class="addl-svc__card reveal reveal-d1">
+        <div class="addl-svc__card-n">02 / Identity</div>
+        <h3 class="addl-svc__card-name">Brendiranje</h3>
+        <p class="addl-svc__card-body">Logo, osnovni vizuelni pravac i dosledan identitet kroz sajt, mreže i printovani materijal.</p>
+      </div>
+      <div class="addl-svc__card reveal reveal-d2">
+        <div class="addl-svc__card-n">03 / Production</div>
+        <h3 class="addl-svc__card-name">Content produkcija</h3>
+        <p class="addl-svc__card-body">Fotografije, video materijal, short-form edit, hookovi, titlovi i finalna obrada za mreže.</p>
+      </div>
+      <div class="addl-svc__card reveal reveal-d3">
+        <div class="addl-svc__card-n">04 / Reach</div>
+        <h3 class="addl-svc__card-name">Influencer outreach</h3>
+        <p class="addl-svc__card-body">Pronalaženje profila, kontakt i pregovori, kontrola kvaliteta sadržaja i merenje rezultata.</p>
+      </div>
+      <div class="addl-svc__card reveal reveal-d4">
+        <div class="addl-svc__card-n">05 / Channels</div>
+        <h3 class="addl-svc__card-name">Marketplace</h3>
+        <p class="addl-svc__card-body">Postavljanje i optimizacija na KupujemProdajem, Lalafo i Facebook Marketplace.</p>
+      </div>
+      <div class="addl-svc__card reveal reveal-d5">
+        <div class="addl-svc__card-n">06 / Retention</div>
+        <h3 class="addl-svc__card-name">Email marketing</h3>
+        <p class="addl-svc__card-body">Sekvence, automatizacije i kampanje za ponovni kontakt sa postojećom publikom.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       PAKETI — TEASER
+  ══════════════════════════════════════════════ -->
+  <section class="pkg-teaser">
+    <div class="pkg-teaser__inner">
+      <p class="pkg-teaser__label reveal">— Cene i paketi</p>
+      <h2 class="pkg-teaser__title reveal reveal-d1">
+        Tri paketa.<br><em>Svaki za drugu fazu</em><br>rasta.
+      </h2>
+      <div class="pkg-teaser__grid">
+        <div class="pkg-teaser__item reveal">
+          <div class="pkg-teaser__item-n">01</div>
+          <div class="pkg-teaser__item-name">Starter</div>
+          <p class="pkg-teaser__item-desc">Za biznise koji tek grade online prisustvo. Osnova koja funkcioniše i može da raste.</p>
+          <div class="pkg-teaser__item-price">Od €490 / mesečno</div>
+        </div>
+        <div class="pkg-teaser__item reveal reveal-d1">
+          <div class="pkg-teaser__item-n">02</div>
+          <div class="pkg-teaser__item-name">Growth</div>
+          <p class="pkg-teaser__item-desc">Za firme koje žele ozbiljan online nastup sa svim tri usluge pod jednim krovom.</p>
+          <div class="pkg-teaser__item-price">Od €890 / mesečno</div>
+        </div>
+        <div class="pkg-teaser__item reveal reveal-d2">
+          <div class="pkg-teaser__item-n">03</div>
+          <div class="pkg-teaser__item-name">Premium</div>
+          <p class="pkg-teaser__item-desc">Kompletna saradnja bez ograničenja. Za brendove koji žele da dominiraju u svom prostoru.</p>
+          <div class="pkg-teaser__item-price">Od €1.490 / mesečno</div>
+        </div>
+      </div>
+      <a href="../index.html#paketi" class="pkg-teaser__cta reveal">
+        Detaljni pregled paketa <span>→</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       PROCES SARADNJE
+  ══════════════════════════════════════════════ -->
+  <section class="usluge-process">
+    <div class="usluge-process__head">
+      <p class="usluge-process__label reveal">— Kako to izgleda</p>
+      <h2 class="usluge-process__title reveal reveal-d1">
+        Proces koji<br><em>nema iznenađenja.</em>
+      </h2>
+    </div>
+    <div class="usluge-process__grid">
+      <div class="usluge-process__step reveal">
+        <div class="usluge-process__n">01</div>
+        <h3 class="usluge-process__step-title">Uvodni razgovor i procena pravca</h3>
+        <p class="usluge-process__step-body">Kratki razgovor u kom procenjujemo gde se tvoj biznis nalazi, šta hoćeš da podigneš i da li Studio One može da donese stvarnu vrednost.</p>
+      </div>
+      <div class="usluge-process__step reveal reveal-d1">
+        <div class="usluge-process__n">02</div>
+        <h3 class="usluge-process__step-title">Analiza, ponuda i definisanje prioriteta</h3>
+        <p class="usluge-process__step-body">Analiziramo kontekst i konkurenciju, definišemo prioritete, šaljemo jasnu ponudu sa obimom, rokom i modelom saradnje.</p>
+      </div>
+      <div class="usluge-process__step reveal reveal-d2">
+        <div class="usluge-process__n">03</div>
+        <h3 class="usluge-process__step-title">Realizacija, feedback i optimizacija</h3>
+        <p class="usluge-process__step-body">Radimo u jasnim fazama sa redovnim feedback tačkama. Bez iznenađenja — strukturiran proces od prve do poslednje verzije.</p>
+      </div>
+      <div class="usluge-process__step reveal reveal-d3">
+        <div class="usluge-process__n">04</div>
+        <h3 class="usluge-process__step-title">Lansiranje i dalji razvoj po potrebi</h3>
+        <p class="usluge-process__step-body">Lansiramo, pratimo rezultate i po potrebi nastavljamo saradnju kroz održavanje, unapređenja i nove kampanje.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA BAND ──────────────────────────── -->
+  <section class="section cta-band">
+    <div class="cta-band__inner">
+      <p class="cta-band__label">— Sledeći korak</p>
+      <h2 class="cta-band__title">Razgovarajmo<br><em>o tvom projektu.</em></h2>
+      <div class="cta-band__actions">
+        <a href="../index.html#kontakt" class="btn-primary-light" data-cursor="expand">Zakaži razgovor <span class="btn-arrow">→</span></a>
+        <a href="mailto:hello@studioone.rs" class="btn-outline-light" data-cursor="expand">Pošalji upit</a>
+      </div>
+      <div class="cta-band__meta">
+        <span>Novi Sad, Serbia</span><span>·</span>
+        <span>Worldwide</span><span>·</span>
+        <span>Web · Social · Ads</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ────────────────────────────── -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <div class="footer__brand-name"><span class="footer__brand-dot"></span>Studio One</div>
+          <p class="footer__brand-desc">Premium digitalni studio koji gradi ozbiljan online nastup — sajtovi, mreže, kampanje.</p>
+          <div class="footer__brand-loc">Novi Sad · Serbia · Worldwide<br>studioone.rs</div>
+        </div>
+        <div>
+          <div class="footer__col-title">Usluge</div>
+          <ul class="footer__links">
+            <li><a href="usluge.html#web">Izrada sajtova</a></li>
+            <li><a href="usluge.html#social">Društvene mreže</a></li>
+            <li><a href="usluge.html#ads">Kampanje i Ads</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Studio</div>
+          <ul class="footer__links">
+            <li><a href="../index.html#proces">Proces saradnje</a></li>
+            <li><a href="../index.html#paketi">Paketi i cene</a></li>
+            <li><a href="radovi.html">Radovi</a></li>
+            <li><a href="../index.html#kontakt">Kontakt</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Kontakt</div>
+          <ul class="footer__links">
+            <li><a href="mailto:hello@studioone.rs">hello@studioone.rs</a></li>
+            <li>Novi Sad, Serbia</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© Studio One 2026</span>
+        <span>Novi Sad · Serbia</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ── SCRIPTS ───────────────────────────── -->
+  <script src="../js/cursor.js"></script>
+  <script src="../js/nav.js"></script>
+  <script src="../js/reveal.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      if (typeof initCursor === 'function') initCursor();
+      if (typeof initNav   === 'function') initNav();
+      if (typeof initReveal === 'function') initReveal();
+
+      /* ── Sticky service nav — highlight active section ── */
+      var navItems = Array.from(document.querySelectorAll('.svc-nav__item'));
+      var sections = ['web','social','ads'].map(function(id) {
+        return document.getElementById(id);
+      });
+      var svcNav = document.getElementById('svcNav');
+
+      function onScroll() {
+        var mid = window.scrollY + window.innerHeight * 0.4;
+        var active = sections[0];
+        sections.forEach(function(s) {
+          if (s && s.getBoundingClientRect().top + window.scrollY <= mid) active = s;
+        });
+        navItems.forEach(function(item) {
+          item.classList.toggle('is-active', item.dataset.target === active.id);
+        });
+        /* Dark nav when inside #ads section */
+        if (svcNav) {
+          var adsEl = document.getElementById('ads');
+          var adsTop = adsEl ? adsEl.getBoundingClientRect().top : 999;
+          var adsBot = adsEl ? adsEl.getBoundingClientRect().bottom : 999;
+          svcNav.classList.toggle('is-dark', adsTop <= 52 && adsBot > 52);
+        }
+      }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+
+      /* ── Smooth anchor scroll ── */
+      navItems.forEach(function(item) {
+        item.addEventListener('click', function(e) {
+          e.preventDefault();
+          var target = document.getElementById(item.dataset.target);
+          if (target) {
+            window.scrollTo({ top: target.offsetTop - 52, behavior: 'smooth' });
+          }
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
