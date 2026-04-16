@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="sr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Radovi — Studio One</title>
+  <meta name="description" content="Sajtovi, fotografije i Instagram profili koje je izgradio Studio One — premium digitalni studio iz Novog Sada." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,300;9..144,0,400;9..144,1,300;9..144,1,400&family=Inter+Tight:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="stylesheet" href="../css/nav.css">
+  <link rel="stylesheet" href="../css/misc.css">
+  <link rel="stylesheet" href="../css/radovi.css">
+</head>
+<body>
+
+  <!-- ── CURSOR ─────────────────────────────── -->
+  <div class="c-ring" id="cRing"></div>
+  <div class="c-dot"  id="cDot"></div>
+
+  <!-- ── NAVIGATION ────────────────────────── -->
+  <nav class="nav" id="nav">
+    <a href="../index.html" class="nav__logo">
+      <span class="nav__logo-dot"></span>Studio One
+    </a>
+    <div class="nav__links">
+      <a href="../index.html#usluge">Usluge</a>
+      <a href="../index.html#paketi">Kako radimo</a>
+      <a href="../index.html#proces">Proces</a>
+      <a href="radovi.html" class="nav__link--active">Radovi</a>
+    </div>
+    <a href="../index.html#kontakt" class="nav__cta" data-cursor="expand">Zakaži poziv</a>
+    <button class="nav__burger" id="navBurger" aria-label="Meni">
+      <span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="nav__mobile" id="navMobile">
+    <a href="../index.html#usluge">Usluge</a>
+    <a href="../index.html#paketi">Kako radimo</a>
+    <a href="../index.html#proces">Proces</a>
+    <a href="radovi.html">Radovi</a>
+    <a href="../index.html#kontakt" class="nav__mobile-cta">Zakaži poziv →</a>
+  </div>
+
+  <!-- ── PAGE HERO ─────────────────────────── -->
+  <div class="radovi-hero reveal">
+    <p class="radovi-hero__label">— Naši radovi</p>
+    <h1 class="radovi-hero__title">Šta smo<br><em>gradili.</em></h1>
+  </div>
+
+  <!-- ── FILTER BAR ────────────────────────── -->
+  <div class="radovi-filter" id="radoviFilter">
+    <button class="filter__tab is-active" data-cat="web">Web sajtovi</button>
+    <button class="filter__tab" data-cat="foto">Fotografije</button>
+    <button class="filter__tab" data-cat="ig">Instagram profili</button>
+    <span class="filter__indicator" id="filterIndicator"></span>
+  </div>
+
+  <!-- ── PROJECT GRID ──────────────────────── -->
+  <div class="radovi-grid-wrap">
+    <div class="radovi-grid" id="radoviGrid">
+      <!-- populated by radovi.js -->
+    </div>
+  </div>
+
+  <!-- ── CTA BAND ──────────────────────────── -->
+  <section class="section cta-band">
+    <div class="cta-band__inner">
+      <p class="cta-band__label">— Sledeći korak</p>
+      <h2 class="cta-band__title">Hajde da<br><em>uradimo nešto</em><br>zajedno.</h2>
+      <div class="cta-band__actions">
+        <a href="../index.html#kontakt" class="btn-primary-light" data-cursor="expand">Zakaži razgovor <span class="btn-arrow">→</span></a>
+        <a href="mailto:hello@studioone.rs" class="btn-outline-light" data-cursor="expand">Pošalji upit</a>
+      </div>
+      <div class="cta-band__meta">
+        <span>Novi Sad, Serbia</span><span>·</span>
+        <span>Worldwide</span><span>·</span>
+        <span>Web · Social · Ads</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ────────────────────────────── -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <div class="footer__brand-name"><span class="footer__brand-dot"></span>Studio One</div>
+          <p class="footer__brand-desc">Premium digitalni studio koji gradi ozbiljan online nastup — sajtovi, mreže, kampanje.</p>
+          <div class="footer__brand-loc">Novi Sad · Serbia · Worldwide<br>studioone.rs</div>
+        </div>
+        <div>
+          <div class="footer__col-title">Usluge</div>
+          <ul class="footer__links">
+            <li><a href="../index.html#usluge">Izrada sajtova</a></li>
+            <li><a href="../index.html#usluge">Društvene mreže</a></li>
+            <li><a href="../index.html#usluge">Kampanje i Ads</a></li>
+            <li><a href="../index.html#usluge">Redizajn sajta</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Studio</div>
+          <ul class="footer__links">
+            <li><a href="../index.html#proces">Proces saradnje</a></li>
+            <li><a href="../index.html#paketi">Kako radimo</a></li>
+            <li><a href="radovi.html">Radovi</a></li>
+            <li><a href="../index.html#kontakt">Kontakt</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Kontakt</div>
+          <ul class="footer__links">
+            <li><a href="mailto:hello@studioone.rs">hello@studioone.rs</a></li>
+            <li><a href="tel:+381600000000">+381 60 000 0000</a></li>
+            <li>Novi Sad, Serbia</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© Studio One 2026</span>
+        <span>Novi Sad · Serbia</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ── PREVIEW OVERLAY (iframe modal) ────── -->
+  <div class="preview-overlay" id="previewOverlay">
+    <div class="preview__bar">
+      <div class="preview__dots">
+        <span></span><span></span><span></span>
+      </div>
+      <span class="preview__site-name" id="previewSiteName"></span>
+      <a href="#" class="preview__ext" id="previewExtLink" target="_blank" rel="noopener">
+        Poseti sajt ↗
+      </a>
+      <button class="preview__close" id="previewClose" aria-label="Zatvori">✕</button>
+    </div>
+    <div class="preview__frame-wrap">
+      <iframe id="previewIframe" src="" title="Pregled sajta" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
+      <div class="preview__blocked" id="previewBlocked">
+        <span>Ovaj sajt ne dozvoljava prikaz u okviru</span>
+        <a href="#" id="previewBlockedLink" target="_blank" rel="noopener">Otvori sajt direktno ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── SCRIPTS ───────────────────────────── -->
+  <script src="../js/cursor.js"></script>
+  <script src="../js/nav.js"></script>
+  <script src="../js/reveal.js"></script>
+  <script src="../js/radovi.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      if (typeof initCursor  === 'function') initCursor();
+      if (typeof initNav     === 'function') initNav();
+      if (typeof initReveal  === 'function') initReveal();
+      if (typeof initRadovi  === 'function') initRadovi();
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+/* ============================================================
+   TOKENS — Studio One Design System
+   ============================================================ */
+:root {
+  /* Colors */
+  --ink:       #0A0A0A;
+  --bone:      #F6F3EE;
+  --fog:       #E7E3DB;
+  --fog2:      #D9D4C9;
+  --graphite:  #3A3A3A;
+  --haze:      #9A968E;
+  --accent:    #C3F73A;
+
+  /* WwD step backgrounds */
+  --wwd-bg-1: #F6F3EE;
+  --wwd-bg-2: #EEE8DD;
+  --wwd-bg-3: #0E0E0D;
+  --wwd-bg-4: #D9D4C9;
+  --wwd-bg-5: #F1EEE8;
+  --wwd-fg-1: #0A0A0A;
+  --wwd-fg-2: #0A0A0A;
+  --wwd-fg-3: #F6F3EE;
+  --wwd-fg-4: #0A0A0A;
+  --wwd-fg-5: #0A0A0A;
+
+  /* Typography */
+  --font-serif: 'Fraunces', Georgia, serif;
+  --font-sans:  'Inter Tight', system-ui, sans-serif;
+  --font-mono:  'JetBrains Mono', 'Courier New', monospace;
+
+  /* Easing */
+  --ease:      cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-fast: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-in:   cubic-bezier(0.65, 0, 1, 1);
+
+  /* Layout */
+  --max:    1440px;
+  --gutter: clamp(20px, 5vw, 80px);
+
+  /* Section vertical rhythm */
+  --sv: clamp(100px, 12vw, 180px);
+
+  /* Type scale */
+  --t-xs:   11px;
+  --t-sm:   13px;
+  --t-base: clamp(15px, 1.1vw, 17px);
+  --t-md:   clamp(18px, 2vw, 26px);
+  --t-lg:   clamp(28px, 4vw, 54px);
+  --t-xl:   clamp(40px, 7vw, 100px);
+  --t-2xl:  clamp(48px, 9vw, 148px);
+}

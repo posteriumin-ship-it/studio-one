@@ -1,0 +1,70 @@
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero {
+  min-height: 100svh;
+  padding: 0 var(--gutter) clamp(60px, 8vw, 120px);
+  display: flex; flex-direction: column; justify-content: flex-end;
+  position: relative; overflow: hidden;
+}
+.hero__bg {
+  position: absolute; inset: 0; z-index: 0;
+  background: linear-gradient(160deg, var(--bone) 55%, var(--fog) 100%);
+}
+.hero__bg::after {
+  content: ""; position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(10,10,10,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(10,10,10,.04) 1px, transparent 1px);
+  background-size: clamp(44px,6vw,80px) clamp(44px,6vw,80px);
+}
+.hero__content { position: relative; z-index: 1; max-width: var(--max); width: 100%; }
+
+.hero__eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--t-xs); letter-spacing: .22em; text-transform: uppercase;
+  opacity: .5; margin-bottom: clamp(20px, 3vw, 40px); overflow: hidden;
+}
+.hero__eyebrow span { display: inline-block; }
+
+.hero__headline {
+  font-family: var(--font-serif); font-weight: 300;
+  font-size: var(--t-2xl);
+  line-height: .92; letter-spacing: -.04em;
+  max-width: 14ch; margin-bottom: clamp(40px, 5vw, 80px);
+}
+.hero__line { display: block; overflow: hidden; }
+.hero__line span { display: block; }
+
+.hero__bottom {
+  display: grid; grid-template-columns: 1fr auto;
+  align-items: flex-end; gap: 40px;
+  border-top: 1px solid rgba(10,10,10,.12);
+  padding-top: clamp(20px, 2.5vw, 36px);
+}
+.hero__sub {
+  font-size: var(--t-base); line-height: 1.55; opacity: .72; max-width: 52ch;
+}
+.hero__actions { display: flex; align-items: center; gap: 20px; flex-shrink: 0; }
+
+.hero__stats {
+  position: absolute; bottom: clamp(60px, 8vw, 120px); right: var(--gutter);
+  display: flex; flex-direction: column; gap: 18px;
+  z-index: 1; text-align: right;
+}
+.hero__stat { display: flex; flex-direction: column; }
+.hero__stat-n {
+  font-family: var(--font-serif); font-weight: 300; font-style: italic;
+  font-size: clamp(22px, 2.4vw, 32px); line-height: 1; letter-spacing: -.02em;
+}
+.hero__stat-l {
+  font-family: var(--font-mono); font-size: 10px;
+  letter-spacing: .14em; text-transform: uppercase; opacity: .45;
+  margin-top: 3px;
+}
+
+@media (max-width: 768px) {
+  .hero__bottom  { grid-template-columns: 1fr; gap: 24px; }
+  .hero__actions { flex-wrap: wrap; }
+  .hero__stats   { display: none; }
+}

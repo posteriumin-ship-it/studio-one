@@ -1,0 +1,557 @@
+<!doctype html>
+<html lang="sr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Studio One — Premium digitalni studio</title>
+  <meta name="description" content="Studio One izrađuje premium sajtove, vodi društvene mreže i gradi kampanje za biznise koji žele bolji prvi utisak." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,300;9..144,0,400;9..144,1,300;9..144,1,400&family=Inter+Tight:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/nav.css">
+  <link rel="stylesheet" href="css/hero.css">
+  <link rel="stylesheet" href="css/wwd.css">
+  <link rel="stylesheet" href="css/packages.css">
+  <link rel="stylesheet" href="css/services.css">
+  <link rel="stylesheet" href="css/misc.css">
+</head>
+<body>
+
+  <!-- ── CURSOR ─────────────────────────────── -->
+  <div class="c-ring" id="cRing"></div>
+  <div class="c-dot"  id="cDot"></div>
+
+  <!-- ── NAVIGATION ────────────────────────── -->
+  <nav class="nav" id="nav">
+    <a href="#" class="nav__logo">
+      <span class="nav__logo-dot"></span>Studio One
+    </a>
+    <div class="nav__links">
+      <a href="#usluge">Usluge</a>
+      <a href="#paketi">Kako radimo</a>
+      <a href="#proces">Proces</a>
+      <a href="pages/radovi.html">Radovi</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <a href="#kontakt" class="nav__cta" data-cursor="expand">Zakaži poziv</a>
+    <button class="nav__burger" id="navBurger" aria-label="Meni">
+      <span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="nav__mobile" id="navMobile">
+    <a href="#usluge">Usluge</a>
+    <a href="#paketi">Kako radimo</a>
+    <a href="#proces">Proces</a>
+    <a href="pages/radovi.html">Radovi</a>
+    <a href="#faq">FAQ</a>
+    <a href="#kontakt" class="nav__mobile-cta">Zakaži poziv →</a>
+  </div>
+
+  <!-- ── HERO ──────────────────────────────── -->
+  <section class="hero">
+    <div class="hero__bg"></div>
+    <div class="hero__content">
+      <p class="hero__eyebrow"><span>— Novi Sad, Serbia · Worldwide · 2022</span></p>
+      <h1 class="hero__headline">
+        <span class="hero__line"><span>Gradimo</span></span>
+        <span class="hero__line"><span>digitalni</span></span>
+        <span class="hero__line"><span>nastup.</span></span>
+      </h1>
+      <div class="hero__bottom">
+        <p class="hero__sub">Studio One izrađuje premium sajtove, vodi društvene mreže i gradi kampanje za biznise koji žele bolji prvi utisak, više poverenja i ozbiljniji put do klijenata.</p>
+        <div class="hero__actions">
+          <a href="#kontakt" class="btn-primary" data-cursor="expand">Zakaži poziv <span class="btn-arrow">→</span></a>
+          <a href="#usluge"  class="btn-ghost">Pogledaj usluge</a>
+        </div>
+      </div>
+    </div>
+    <div class="hero__stats" aria-hidden="true">
+      <div class="hero__stat"><span class="hero__stat-n" data-count="21">21</span>+<span class="hero__stat-l">projekata</span></div>
+      <div class="hero__stat"><span class="hero__stat-n">3</span><span class="hero__stat-l">oblasti</span></div>
+      <div class="hero__stat"><span class="hero__stat-n">WW</span><span class="hero__stat-l">klijenti</span></div>
+    </div>
+  </section>
+
+  <!-- ── MARQUEE ───────────────────────────── -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track">
+      <span class="marquee__i">Web dizajn</span><span class="marquee__s">·</span>
+      <span class="marquee__i">Društvene mreže</span><span class="marquee__s">·</span>
+      <span class="marquee__i">Kampanje i Ads</span><span class="marquee__s">·</span>
+      <span class="marquee__i">SEO</span><span class="marquee__s">·</span>
+      <span class="marquee__i">Branding</span><span class="marquee__s">·</span>
+      <span class="marquee__i">Content produkcija</span><span class="marquee__s">·</span>
+      <span class="marquee__i">Email marketing</span><span class="marquee__s">·</span>
+      <span class="marquee__i">Redizajn</span><span class="marquee__s">·</span>
+      <span class="marquee__i">Web dizajn</span><span class="marquee__s">·</span>
+      <span class="marquee__i">Društvene mreže</span><span class="marquee__s">·</span>
+      <span class="marquee__i">Kampanje i Ads</span><span class="marquee__s">·</span>
+      <span class="marquee__i">SEO</span><span class="marquee__s">·</span>
+      <span class="marquee__i">Branding</span><span class="marquee__s">·</span>
+      <span class="marquee__i">Content produkcija</span><span class="marquee__s">·</span>
+      <span class="marquee__i">Email marketing</span><span class="marquee__s">·</span>
+      <span class="marquee__i">Redizajn</span><span class="marquee__s">·</span>
+    </div>
+  </div>
+
+  <!-- ── MANIFESTO ─────────────────────────── -->
+  <section class="section manifesto">
+    <div class="section__inner">
+      <div class="manifesto__grid">
+        <div class="reveal">
+          <div class="section__label">Zašto Studio One</div>
+          <h2 class="manifesto__title">Ne pravimo<br>samo sajt.<br><em>Gradimo utisak.</em></h2>
+        </div>
+        <div class="manifesto__right reveal reveal-d2">
+          <p class="manifesto__body">Zbog kog vas tržište shvata ozbiljno. Svaki projekat počinjemo od pitanja — šta treba da se desi u glavi klijenta kada prvi put naiđe na vaš brend? Odatle gradimo sve ostalo.</p>
+          <p class="manifesto__body">Ne radimo po šablonu. Analiziramo kontekst, razumemo cilj i tek onda biramo pristup koji ima smisla za vaš biznis.</p>
+          <ul class="manifesto__list">
+            <li data-n="01">Premium prezentacija koja se pamti</li>
+            <li data-n="02">Jasan sistem, ne izolovani ekrani</li>
+            <li data-n="03">Partner koji razmišlja šire od izvedbe</li>
+            <li data-n="04">Rezultati koji traju duže od kampanje</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SERVICES ──────────────────────────── -->
+  <section class="section services" id="usluge">
+    <div class="section__inner">
+      <div class="section__label" style="color:rgba(246,243,238,.35)">Usluge</div>
+      <div class="services__grid">
+
+        <div class="svc-card reveal" data-cursor="expand">
+          <div class="svc-card__n">01 / Web</div>
+          <div class="svc-card__name">Izrada<br>sajtova</div>
+          <p class="svc-card__desc">Od landing stranica do potpunih business website-ova. Dizajniramo i gradimo sajtove koji prodaju pre nego što neko pročita jedan paragraf.</p>
+          <div class="svc-card__tags">
+            <span>Landing page</span><span>Business site</span>
+            <span>E-commerce</span><span>Redizajn</span>
+          </div>
+          <a href="#ponude" class="svc-card__link">Pogledaj ponude</a>
+        </div>
+
+        <div class="svc-card reveal reveal-d2" data-cursor="expand">
+          <div class="svc-card__n">02 / Social</div>
+          <div class="svc-card__name">Društvene<br>mreže</div>
+          <p class="svc-card__desc">Stabilan ritam objava, short-form video i community koji gradi poverenje mesec za mesecom — ne samo lajkove.</p>
+          <div class="svc-card__tags">
+            <span>Content plan</span><span>Reels</span>
+            <span>Story setovi</span><span>Community</span>
+          </div>
+          <a href="#ponude" class="svc-card__link">Pogledaj ponude</a>
+        </div>
+
+        <div class="svc-card reveal reveal-d3" data-cursor="expand">
+          <div class="svc-card__n">03 / Ads</div>
+          <div class="svc-card__name">Kampanje<br>i Ads</div>
+          <p class="svc-card__desc">Meta, TikTok, Google — testiramo, optimizujemo i skaliramo. Budžet za oglase uvek definišete vi, mi vodimo sistem koji ga troši pametno.</p>
+          <div class="svc-card__tags">
+            <span>Meta Ads</span><span>Google Ads</span>
+            <span>TikTok Ads</span><span>Remarketing</span>
+          </div>
+          <a href="#ponude" class="svc-card__link">Pogledaj ponude</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── WHAT WE DO (moved here) ──────────── -->
+  <section class="wwd" id="paketi">
+    <!-- Intro scrolls normally -->
+    <div class="wwd__intro section__inner">
+      <div>
+        <div class="wwd__intro-label">— Naš proces</div>
+        <h2 class="wwd__intro-title">Kako <em>vodimo</em><br>brend kroz proces.</h2>
+      </div>
+      <div class="wwd__intro-meta">Pet koraka<br>Od jasnoće do sistema</div>
+    </div>
+
+    <!-- Sticky scroll driver -->
+    <div class="wwd-outer" id="wwdOuter">
+      <div class="wwd-sticky" id="wwdSticky">
+
+        <!-- LEFT: nav + panels -->
+        <div class="wwd-left">
+          <nav class="wwd__dots" id="wwdDots">
+            <button class="wwd__dot is-active" data-step="1"><span class="wwd__dot-line"></span>01 — Identitet</button>
+            <button class="wwd__dot" data-step="2"><span class="wwd__dot-line"></span>02 — Sajt</button>
+            <button class="wwd__dot" data-step="3"><span class="wwd__dot-line"></span>03 — Animacija</button>
+            <button class="wwd__dot" data-step="4"><span class="wwd__dot-line"></span>04 — Sadržaj</button>
+            <button class="wwd__dot" data-step="5"><span class="wwd__dot-line"></span>05 — Sistem</button>
+          </nav>
+
+          <div class="wwd__panels">
+            <article class="wwd__panel is-active" data-panel="1">
+              <div class="wwd__step-tag">01 <span></span> Brand Identitet</div>
+              <h3 class="wwd__panel-title">Prvo, jasno<br>definišemo ko ste.</h3>
+              <p class="wwd__panel-body">Postavljamo osnovu brenda tako da prestane da deluje generično, nejasno ili zamenljivo. Cilj je trenutna prepoznatljivost, karakter i distinkcija.</p>
+              <ul class="wwd__micro">
+                <li>Pozicioniranje</li><li>Vizuelni pravac</li>
+                <li>Ton i karakter</li><li>Diferencijacija</li>
+              </ul>
+            </article>
+
+            <article class="wwd__panel" data-panel="2">
+              <div class="wwd__step-tag">02 <span></span> Digitalni prvi utisak</div>
+              <h3 class="wwd__panel-title">Zatim oblikujemo<br>prvi utisak.</h3>
+              <p class="wwd__panel-body">Sajt nije samo informacija. To je trenutak kada posetilac odlučuje da li vaš brend deluje pouzdano, relevantno, premijum — i vredno njihove pažnje.</p>
+              <ul class="wwd__micro">
+                <li>Struktura homepagea</li><li>Hijerarhija</li>
+                <li>Korisnički tok</li><li>Premium kompozicija</li>
+              </ul>
+            </article>
+
+            <article class="wwd__panel" data-panel="3">
+              <div class="wwd__step-tag">03 <span></span> Animacija sa svrhom</div>
+              <h3 class="wwd__panel-title">Koristimo animaciju<br>da vodimo pažnju.</h3>
+              <p class="wwd__panel-body">Animacija nikad ne sme biti dekorativna ili haotična. Treba da podrži jasnoću, stvori ritam i oseti se kao namera — ne kao efekat radi efekta.</p>
+              <ul class="wwd__micro">
+                <li>Reveal animacije</li><li>Hover stanja</li>
+                <li>Scroll ponašanje</li><li>Vizuelni ritam</li>
+              </ul>
+            </article>
+
+            <article class="wwd__panel" data-panel="4">
+              <div class="wwd__step-tag">04 <span></span> Sadržaj i dizajn</div>
+              <h3 class="wwd__panel-title">Dizajn i poruka<br>moraju zajedno.</h3>
+              <p class="wwd__panel-body">Lep vizual bez jasne komunikacije nikad nije dovoljno. Usklađujemo copy, hijerarhiju i dizajn tako da vrednost postane očigledna brzo i prirodno.</p>
+              <ul class="wwd__micro">
+                <li>Struktura teksta</li><li>CTA tok</li>
+                <li>Čitljivost</li><li>Konverzijska jasnoća</li>
+              </ul>
+            </article>
+
+            <article class="wwd__panel" data-panel="5">
+              <div class="wwd__step-tag">05 <span></span> Sistem</div>
+              <h3 class="wwd__panel-title">Na kraju, pretvaramo<br>to u sistem.</h3>
+              <p class="wwd__panel-body">Ne gradimo izolovane ekrane. Gradimo dizajn sistem koji raste sa brendom i ostaje dosledan kroz sajt, kampanje i budući sadržaj.</p>
+              <ul class="wwd__micro">
+                <li>Modularne sekcije</li><li>Responsive logika</li>
+                <li>Skalabilni identitet</li><li>Dugoročna doslednost</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+
+        <!-- RIGHT: visuals -->
+        <div class="wwd-right" data-cursor="view">
+          <div class="wwd__visuals" id="wwdVisuals">
+
+            <div class="wwd__vis is-active" data-vis="1">
+              <div class="wwd__vis-meta"><span>Identity / Sistem 01</span><span>A—01</span></div>
+              <div class="wwd-vis-v1">
+                <div class="v1__mark">Studio<em>,</em><br>One<em>.</em></div>
+                <div class="v1__palette"><span></span><span></span><span></span><span></span><span></span></div>
+                <div class="v1__spec"><span>Fraunces · Display</span><span>Inter Tight · Body</span></div>
+              </div>
+            </div>
+
+            <div class="wwd__vis" data-vis="2">
+              <div class="wwd__vis-meta"><span>Web / Hero kompozicija</span><span>B—02</span></div>
+              <div class="wwd-vis-v2">
+                <div class="v2__browser">
+                  <div class="v2__bar"><i></i><i></i><i></i><span>studioone.rs</span></div>
+                  <div class="v2__navbar"><span>Studio One</span><span class="v2__links"><b>Usluge</b><b>Galerija</b><b>Kontakt</b></span><span>Zakaži →</span></div>
+                  <div class="v2__hero">
+                    <h3>Gradimo nastup koji <em>ima smisla</em>.</h3>
+                    <div class="v2__foot"><span>— Novi Sad · WW</span><span class="v2__cta">Zakaži →</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="wwd__vis" data-vis="3">
+              <div class="wwd__vis-meta" style="color:rgba(246,243,238,.5)"><span>Motion / Frames</span><span>C—03</span></div>
+              <div class="wwd-vis-v3">
+                <div class="v3__grid">
+                  <div class="v3__frame" data-t="F01"><div class="v3__dot"></div></div>
+                  <div class="v3__frame" data-t="F02"><div class="v3__dot v3__dot--sm"></div></div>
+                  <div class="v3__frame" data-t="F03"><div class="v3__dot v3__dot--fade"></div></div>
+                  <div class="v3__frame" data-t="F04"><div class="v3__dot v3__dot--ring"></div></div>
+                  <div class="v3__frame" data-t="F05"><div class="v3__dot v3__dot--line"></div></div>
+                  <div class="v3__frame" data-t="F06"><div class="v3__dot v3__dot--rect"></div></div>
+                </div>
+                <div class="v3__tl"><div class="v3__tl-bar"></div></div>
+                <div class="v3__tl-labels"><span>00:00</span><span>ease-out · 900ms</span><span>00:02</span></div>
+              </div>
+            </div>
+
+            <div class="wwd__vis" data-vis="4">
+              <div class="wwd__vis-meta"><span>Editorial / Long-form</span><span>D—04</span></div>
+              <div class="wwd-vis-v4">
+                <div class="v4__eye">— Poglavlje III</div>
+                <h3 class="v4__lede">Jasnoća je <em>najkraći put</em> od namere do akcije.</h3>
+                <div class="v4__cols">
+                  <p>Copy nije dekoracija. Nosi težinu odluke — šta kliknuti, čemu verovati, šta pamtiti.</p>
+                  <p>Hijerarhija drži prostor. Ritam čini čitanje lakim. Oba moraju biti dizajnirana.</p>
+                </div>
+                <div class="v4__foot"><span>Pogledaj case study</span><span class="v4__btn">Otvori →</span></div>
+              </div>
+            </div>
+
+            <div class="wwd__vis" data-vis="5">
+              <div class="wwd__vis-meta"><span>Sistem / Responsive set</span><span>E—05</span></div>
+              <div class="wwd-vis-v5">
+                <div class="v5__set">
+                  <div class="v5__desk">
+                    <div class="v5__tbar"><i></i><i></i><i></i></div>
+                    <div class="v5__body">
+                      <div class="v5__h">Izgrađeno za rast.</div>
+                      <div class="v5__b w60"></div><div class="v5__b w40"></div>
+                      <div class="v5__media"></div>
+                    </div>
+                  </div>
+                  <div class="v5__mob">
+                    <div class="v5__tbar"><i></i></div>
+                    <div class="v5__body">
+                      <div class="v5__h">Rast.</div>
+                      <div class="v5__b w60"></div>
+                      <div class="v5__media"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="v5__tokens"><span>Tokeni · 48</span><span>Komponente · 24</span><span>Breakpoints · 4</span></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── OFFERS / PRICING ───────────────────── -->
+  <section class="section packages" id="ponude">
+    <div class="section__inner">
+      <div class="section__label">Ponude i cene</div>
+
+      <div class="packages__top reveal">
+        <div>
+          <h2 class="packages__title">Jasne ponude,<br><em>bez generičkih paketa.</em></h2>
+        </div>
+        <div class="packages__copy">
+          <p class="packages__body">Imamo polazne modele saradnje kako bi brzo video okvir ulaganja i obim rada. Finalna ponuda se zatim prilagođava cilju, dinamici i realnim potrebama projekta.</p>
+          <div class="packages__meta">Web · Social · Ads <span>•</span> Custom modeli po dogovoru</div>
+        </div>
+      </div>
+
+      <div class="pkg-cats reveal reveal-d1" role="tablist" aria-label="Kategorije ponuda">
+        <button class="pkg-cat is-active" data-cat="web" role="tab" aria-selected="true">Web</button>
+        <button class="pkg-cat" data-cat="social" role="tab" aria-selected="false">Društvene mreže</button>
+        <button class="pkg-cat" data-cat="ads" role="tab" aria-selected="false">Kampanje i ads</button>
+      </div>
+
+      <div class="pkg-layout reveal reveal-d2">
+        <div class="pkg-sel" id="pkgSel" aria-label="Lista paketa"></div>
+        <div class="pkg-detail" id="pkgDetail" aria-live="polite"></div>
+      </div>
+
+      <div class="pkg-note reveal reveal-d3">Sve cene su početni okvir i zavise od obima, dinamike, broja deliverables-a i specifičnih zahteva projekta.</div>
+    </div>
+  </section>
+
+  <!-- ── PROCESS ────────────────────────────── -->
+  <section class="section process" id="proces">
+    <div class="section__inner">
+      <div class="section__label">Kako izgleda saradnja</div>
+      <div class="process__grid">
+        <div class="process__step reveal">
+          <div class="process__n">01</div>
+          <h3 class="process__title">Uvodni razgovor i procena pravca</h3>
+          <p class="process__body">Kratki razgovor u kom procenjujemo gde se tvoj biznis nalazi, šta hoćeš da podigneš i da li Studio One može da donese stvarnu vrednost.</p>
+        </div>
+        <div class="process__step reveal reveal-d2">
+          <div class="process__n">02</div>
+          <h3 class="process__title">Analiza, ponuda i definisanje prioriteta</h3>
+          <p class="process__body">Analiziramo kontekst i konkurenciju, definišemo prioritete, šaljemo jasnu ponudu sa obimom, rokom i modelom saradnje.</p>
+        </div>
+        <div class="process__step reveal reveal-d3">
+          <div class="process__n">03</div>
+          <h3 class="process__title">Realizacija, feedback i optimizacija</h3>
+          <p class="process__body">Radimo u jasnim fazama sa redovnim feedback tačkama. Bez iznenađenja, bez čekanja — strukturiran proces od prve do poslednje verzije.</p>
+        </div>
+        <div class="process__step reveal reveal-d4">
+          <div class="process__n">04</div>
+          <h3 class="process__title">Lansiranje i dalji razvoj po potrebi</h3>
+          <p class="process__body">Lansiramo, pratimo rezultate i po potrebi nastavljamo saradnju kroz održavanje, unapređenja i nove kampanje.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CLIENTS + STATS ───────────────────── -->
+  <section class="section clients">
+    <div class="section__inner">
+      <div class="clients__row">
+        <div class="clients__stats reveal">
+          <div class="clients__stat"><span class="stat-n" data-count="21">0</span><span class="stat-l">projekata+</span></div>
+          <div class="clients__stat"><span class="stat-n">3</span><span class="stat-l">oblasti</span></div>
+          <div class="clients__stat"><span class="stat-n">WW</span><span class="stat-l">klijenti</span></div>
+          <div class="clients__stat"><span class="stat-n">NS</span><span class="stat-l">baza</span></div>
+        </div>
+        <div class="clients__copy reveal reveal-d2">
+          <h2 class="clients__title">Za biznise koji žele <em>partnera</em>,<br>ne samo izvršioca.</h2>
+          <p class="clients__body">Radimo sa firmama iz Srbije, regiona i inostranstva. Najviše vredimo u projektima gde su kvalitet prezentacije, jasan sistem i dugoročniji efekat zaista važni.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOR WHO ────────────────────────────── -->
+  <section class="section forwhom">
+    <div class="section__inner">
+      <div class="section__label">Za koga je Studio One</div>
+      <div class="forwhom__grid">
+        <div class="forwhom__col reveal">
+          <div class="forwhom__label" data-icon="✓">Jeste za vas</div>
+          <ul class="forwhom__list">
+            <li>Biznisi koji žele ozbiljniji digitalni nastup</li>
+            <li>Brendovi koji žele rast i bolju prezentaciju</li>
+            <li>Firme kojima treba redizajn ili jača prodajna logika</li>
+            <li>Oni koji traže partnera koji razmišlja šire od izvedbe</li>
+          </ul>
+        </div>
+        <div class="forwhom__col forwhom__col--neg reveal reveal-d2">
+          <div class="forwhom__label" data-icon="—">Nije za vas</div>
+          <ul class="forwhom__list">
+            <li>Oni koji traže samo najnižu cenu</li>
+            <li>Projekti bez jasne komunikacije i odgovornosti</li>
+            <li>Saradnje bez poverenja, rokova i strukture</li>
+            <li>Situacije gde se od starta traži previše za premalo</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ADDITIONAL SERVICES ───────────────── -->
+  <section class="section addl">
+    <div class="section__inner">
+      <div class="section__label" style="color:rgba(246,243,238,.3)">Dodatne usluge</div>
+      <div class="addl__grid">
+        <div class="addl__card reveal"><div class="addl__n">01 / Visibility</div><h3 class="addl__name">SEO</h3><p>Keyword research, on-page optimizacija i mesečno unapređenje SEO osnove.</p></div>
+        <div class="addl__card reveal reveal-d1"><div class="addl__n">02 / Identity</div><h3 class="addl__name">Branding</h3><p>Logo, osnovni vizuelni pravac i dosledan identitet kroz sajt i mreže.</p></div>
+        <div class="addl__card reveal reveal-d2"><div class="addl__n">03 / Production</div><h3 class="addl__name">Content produkcija</h3><p>Fotografije, video materijal, short-form edit, hookovi, titlovi i finalna obrada.</p></div>
+        <div class="addl__card reveal reveal-d3"><div class="addl__n">04 / Reach</div><h3 class="addl__name">Influencer outreach</h3><p>Pronalaženje profila, kontakt, pregovori i kontrola kvaliteta sadržaja.</p></div>
+        <div class="addl__card reveal reveal-d4"><div class="addl__n">05 / Channels</div><h3 class="addl__name">Marketplace</h3><p>Postavljanje i optimizacija na KupujemProdajem, Lalafo i Facebook Marketplace.</p></div>
+        <div class="addl__card reveal reveal-d5"><div class="addl__n">06 / Retention</div><h3 class="addl__name">Email marketing</h3><p>Sekvence, automatizacije i kampanje za ponovni kontakt sa publikom.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FAQ ────────────────────────────────── -->
+  <section class="section faq" id="faq">
+    <div class="section__inner">
+      <div class="section__label">Česta pitanja</div>
+      <div class="faq__list">
+        <div class="faq__item">
+          <button class="faq__q" data-cursor="expand"><h3>Da li radite samo sajtove ili i druge usluge?</h3><span class="faq__ico">+</span></button>
+          <div class="faq__a"><div class="faq__a-inner">Studio One pokriva izradu sajtova, društvene mreže, oglašavanje, SEO i dodatne digitalne usluge koje pomažu biznisima da izgrade ozbiljniji online nastup.</div></div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__q" data-cursor="expand"><h3>Da li radite sa klijentima iz inostranstva?</h3><span class="faq__ico">+</span></button>
+          <div class="faq__a"><div class="faq__a-inner">Da. Baza nam je u Novom Sadu, ali saradnju organizujemo i worldwide. Imamo klijente iz Srbije, regiona i inostranstva.</div></div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__q" data-cursor="expand"><h3>Da li je budžet za oglase uključen u cenu ads paketa?</h3><span class="faq__ico">+</span></button>
+          <div class="faq__a"><div class="faq__a-inner">Nije. Cena ads paketa odnosi se isključivo na našu uslugu vođenja, testiranja i optimizacije kampanja. Budžet za oglase se definiše posebno prema vašim mogućnostima i ciljevima.</div></div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__q" data-cursor="expand"><h3>Da li prihvatate svaki projekat?</h3><span class="faq__ico">+</span></button>
+          <div class="faq__a"><div class="faq__a-inner">Ne. Biramo saradnje u kojima verujemo da možemo da donesemo stvarnu vrednost, jasan pravac i ozbiljan rezultat.</div></div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__q" data-cursor="expand"><h3>Da li nudite mesečno održavanje i dalji razvoj sajta?</h3><span class="faq__ico">+</span></button>
+          <div class="faq__a"><div class="faq__a-inner">Da. Po potrebi nudimo mesečnu podršku, održavanje i dalje unapređenje sajta, naročito kada je reč o sajtovima koji se aktivno razvijaju.</div></div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__q" data-cursor="expand"><h3>Da li copywriting ulazi u uslugu?</h3><span class="faq__ico">+</span></button>
+          <div class="faq__a"><div class="faq__a-inner">Da. Pisanje prodajnog i komunikacijskog teksta je deo procesa kada je to potrebno projektu.</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CONTACT CTA ────────────────────────── -->
+  <section class="cta-band" id="kontakt">
+    <div class="cta-band__inner">
+      <div class="cta-band__label">— Sledeći korak</div>
+      <h2 class="cta-band__title">Hajde da napravimo<br><em>nešto što se pamti.</em></h2>
+      <div class="cta-band__actions">
+        <a href="mailto:hello@studioone.rs" class="btn-accent" data-cursor="expand">Zakaži poziv →</a>
+        <a href="mailto:hello@studioone.rs" class="btn-outline-light" data-cursor="expand">Pošalji upit</a>
+      </div>
+      <div class="cta-band__meta">
+        <span>Novi Sad, Serbia</span><span>·</span>
+        <span>Worldwide</span><span>·</span>
+        <span>Web · Social · Ads</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ─────────────────────────────── -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <div class="footer__brand-name"><span class="footer__brand-dot"></span>Studio One</div>
+          <p class="footer__brand-desc">Premium digitalni studio koji gradi ozbiljan online nastup — sajtovi, mreže, kampanje.</p>
+          <div class="footer__brand-loc">Novi Sad · Serbia · Worldwide<br>studioone.rs</div>
+        </div>
+        <div>
+          <div class="footer__col-title">Usluge</div>
+          <ul class="footer__links">
+            <li><a href="#usluge">Izrada sajtova</a></li>
+            <li><a href="#usluge">Društvene mreže</a></li>
+            <li><a href="#usluge">Kampanje i Ads</a></li>
+            <li><a href="#usluge">Redizajn sajta</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Dodatno</div>
+          <ul class="footer__links">
+            <li><a href="#usluge">SEO</a></li>
+            <li><a href="#usluge">Branding</a></li>
+            <li><a href="#usluge">Content produkcija</a></li>
+            <li><a href="#usluge">Email marketing</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Studio</div>
+          <ul class="footer__links">
+            <li><a href="#proces">Proces saradnje</a></li>
+            <li><a href="#paketi">Kako radimo</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#kontakt">Kontakt</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© Studio One 2026</span>
+        <span>Novi Sad · Serbia</span>
+        <span>studioone.rs</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/cursor.js" defer></script>
+  <script src="js/nav.js"    defer></script>
+  <script src="js/wwd.js"    defer></script>
+  <script src="js/packages.js" defer></script>
+  <script src="js/faq.js"    defer></script>
+  <script src="js/reveal.js" defer></script>
+  <script src="js/main.js"   defer></script>
+
+</body>
+</html>

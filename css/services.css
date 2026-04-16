@@ -1,0 +1,66 @@
+/* ============================================================
+   SERVICES
+   ============================================================ */
+.services { background: var(--ink); color: var(--bone); }
+
+.services__grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: rgba(246,243,238,.1);
+  border: 1px solid rgba(246,243,238,.1);
+  margin-top: clamp(40px, 5vw, 72px);
+}
+
+.svc-card {
+  background: var(--ink);
+  padding: clamp(28px, 4vw, 52px) clamp(24px, 3vw, 40px);
+  display: flex; flex-direction: column;
+  position: relative; overflow: hidden;
+  transition: color 400ms var(--ease);
+}
+.svc-card::before {
+  content: ""; position: absolute; inset: 0;
+  background: var(--accent);
+  transform: scaleY(0); transform-origin: bottom;
+  transition: transform 480ms var(--ease);
+  z-index: 0;
+}
+.svc-card:hover::before { transform: scaleY(1); }
+.svc-card:hover { color: var(--ink); }
+.svc-card > * { position: relative; z-index: 1; }
+
+.svc-card__n {
+  font-family: var(--font-mono); font-size: var(--t-xs);
+  letter-spacing: .2em; text-transform: uppercase;
+  opacity: .4; margin-bottom: clamp(32px, 5vw, 60px);
+}
+.svc-card__name {
+  font-family: var(--font-serif); font-weight: 300;
+  font-size: clamp(28px, 3.2vw, 46px);
+  letter-spacing: -.025em; line-height: 1; margin-bottom: 18px;
+}
+.svc-card__desc {
+  font-size: 14px; line-height: 1.55; opacity: .65;
+  margin-bottom: auto; padding-bottom: 28px; max-width: 32ch;
+}
+.svc-card__tags {
+  display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 28px;
+}
+.svc-card__tags span {
+  font-family: var(--font-mono); font-size: 10px;
+  letter-spacing: .1em; text-transform: uppercase;
+  border: 1px solid currentColor;
+  padding: 5px 10px; border-radius: 999px; opacity: .5;
+}
+.svc-card__link {
+  font-family: var(--font-mono); font-size: var(--t-xs);
+  letter-spacing: .18em; text-transform: uppercase;
+  display: flex; align-items: center; gap: 10px; opacity: .7;
+}
+.svc-card__link::after { content: "→"; transition: transform 250ms var(--ease); }
+.svc-card:hover .svc-card__link::after { transform: translateX(4px); }
+
+@media (max-width: 900px) {
+  .services__grid { grid-template-columns: 1fr; }
+  .svc-card { padding: clamp(28px,5vw,48px) 24px; }
+}
