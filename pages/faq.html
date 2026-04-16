@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="sr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FAQ — Studio One</title>
+  <meta name="description" content="Sve što klijenti najčešće žele da znaju pre početka saradnje — od procesa i rokova do načina rada, podrške i toga da li smo pravi studio za vaš projekat." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,300;9..144,0,400;9..144,1,300;9..144,1,400&family=Inter+Tight:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="stylesheet" href="../css/nav.css">
+  <link rel="stylesheet" href="../css/misc.css">
+  <link rel="stylesheet" href="../css/faq-page.css">
+</head>
+<body>
+
+  <!-- ── CURSOR ─────────────────────────────── -->
+  <div class="c-ring" id="cRing"></div>
+  <div class="c-dot"  id="cDot"></div>
+
+  <!-- ── NAVIGATION ────────────────────────── -->
+  <nav class="nav" id="nav">
+    <a href="../index.html" class="nav__logo">
+      <span class="nav__logo-dot"></span>Studio One
+    </a>
+    <div class="nav__links">
+      <a href="usluge.html">Usluge</a>
+      <a href="radovi.html">Radovi</a>
+      <a href="faq.html" class="nav__link--active">FAQ</a>
+      <a href="kontakt.html">Kontakt</a>
+    </div>
+    <div class="nav__lang">
+      <a href="faq.html" class="nav__lang-item is-active">SR</a>
+      <span class="nav__lang-sep">·</span>
+      <a href="../en/pages/faq.html" class="nav__lang-item">EN</a>
+    </div>
+    <a href="kontakt.html" class="nav__cta" data-cursor="book">Zakaži poziv</a>
+    <button class="nav__burger" id="navBurger" aria-label="Meni">
+      <span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="nav__mobile" id="navMobile">
+    <a href="usluge.html">Usluge</a>
+    <a href="radovi.html">Radovi</a>
+    <a href="faq.html">FAQ</a>
+    <a href="kontakt.html">Kontakt</a>
+    <a href="kontakt.html" class="nav__mobile-cta">Zakaži poziv →</a>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       HERO
+  ══════════════════════════════════════════════ -->
+  <section class="faq-hero">
+    <div class="faq-hero__inner">
+      <p class="faq-hero__label reveal">— Česta pitanja</p>
+      <h1 class="faq-hero__title reveal-clip">
+        <span>Česta pitanja,</span>
+        <span>jasno odgovorena.</span>
+      </h1>
+      <p class="faq-hero__sub reveal-blur">
+        Sve što klijenti najčešće žele da znaju pre početka saradnje —
+        od procesa i rokova do načina rada, podrške i toga da li smo
+        pravi studio za vaš projekat.
+      </p>
+      <div class="faq-hero__meta reveal">
+        <span>Saradnja</span><span>·</span>
+        <span>Proces i rokovi</span><span>·</span>
+        <span>Sadržaj i izrada</span><span>·</span>
+        <span>Budžet i sledeći korak</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       INTRO NOTE
+  ══════════════════════════════════════════════ -->
+  <div class="faq-intro">
+    <div class="faq-intro__inner">
+      <div class="faq-intro__side">Studio One<br>FAQ 2026</div>
+      <p class="faq-intro__text reveal-blur">
+        Volimo kada je saradnja jasna od samog početka. Zato smo na jednom mestu odgovorili na pitanja koja se najčešće javljaju — pre nego što projekat krene.
+      </p>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       FAQ KATEGORIJE
+  ══════════════════════════════════════════════ -->
+  <div class="faq-body">
+    <div class="faq-body__inner">
+
+      <!-- ─── Grupa 01: Saradnja ─────────────── -->
+      <div class="faq-group reveal">
+        <div class="faq-group__head">
+          <span class="faq-group__n">01</span>
+          <div>
+            <h2 class="faq-group__title">Saradnja</h2>
+            <p class="faq-group__intro">Ko smo, sa kim radimo i šta možete da očekujete.</p>
+          </div>
+        </div>
+
+        <div class="faq__list">
+
+          <div class="faq__item">
+            <button class="faq__q" data-cursor="open">
+              <h3>Da li prihvatate svaki projekat?</h3>
+              <span class="faq__ico">+</span>
+            </button>
+            <div class="faq__a"><div class="faq__a-inner">
+              Ne. Pre nego što prihvatimo projekat, procenimo da li postoji pravi fit — između toga šta klijent želi, šta mi umemo da uradimo dobro i da li zaista možemo da donesemo vrednost. Radimo sa brendovima koji shvataju da ozbiljan sajt nije trošak već investicija. Ako procenimo da nije pravi momenat ili kontekst, kažemo to direktno — bez zaobilaženja.
+            </div></div>
+          </div>
+
+          <div class="faq__item">
+            <button class="faq__q" data-cursor="open">
+              <h3>Da li radite sa klijentima izvan Srbije?</h3>
+              <span class="faq__ico">+</span>
+            </button>
+            <div class="faq__a"><div class="faq__a-inner">
+              Da. Geografija nije prepreka. Celokupnu komunikaciju vodimo online — od prvog razgovora do isporuke i podrške. Imamo iskustvo u saradnji sa klijentima iz Srbije, regiona i inostranstva, i nema razlike u pristupu ili kvalitetu.
+            </div></div>
+          </div>
+
+          <div class="faq__item">
+            <button class="faq__q" data-cursor="open">
+              <h3>Sa kakvim klijentima najčešće sarađujete?</h3>
+              <span class="faq__ico">+</span>
+            </button>
+            <div class="faq__a"><div class="faq__a-inner">
+              Radimo sa brendovima koji imaju jasan identitet ili ga aktivno grade — biznisima koji su prerasli generički sajt i žele nešto promišljenije, firmama kojima online nastup treba da reflektuje nivo onoga što stvarno nude. Najčešće su to mali i srednji biznisi, premium brendovi i profesionalci koji shvataju da prvi utisak nosi pravu cenu.
+            </div></div>
+          </div>
+
+          <div class="faq__item">
+            <button class="faq__q" data-cursor="open">
+              <h3>Tražite li ekskluzivnost ili dugotrajne ugovore?</h3>
+              <span class="faq__ico">+</span>
+            </button>
+            <div class="faq__a"><div class="faq__a-inner">
+              Ne. Svaka saradnja se dogovara prema potrebi — projektno ili kroz mesečni aranžman za održavanje i razvoj. Nema prinudnih dugotrajnih ugovora. Cilj nam je da saradnja ima smisla za obe strane — i da traje onoliko koliko je korisna.
+            </div></div>
+          </div>
+
+        </div>
+      </div><!-- /faq-group 01 -->
+
+      <!-- ─── Grupa 02: Proces i rokovi ─────── -->
+      <div class="faq-group reveal reveal-d1">
+        <div class="faq-group__head">
+          <span class="faq-group__n">02</span>
+          <div>
+            <h2 class="faq-group__title">Proces i rokovi</h2>
+            <p class="faq-group__intro">Kako izgleda saradnja iznutra i koliko traje.</p>
+          </div>
+        </div>
+
+        <div class="faq__list">
+
+          <div class="faq__item">
+            <button class="faq__q" data-cursor="open">
+              <h3>Kako izgleda početak saradnje?</h3>
+              <span class="faq__ico">+</span>
+            </button>
+            <div class="faq__a"><div class="faq__a-inner">
+              Sve počinje kratkim upitom ili razgovorom u kome procenimo suštinu projekta — cilj, kontekst, rok i obim. Ako postoji dobar fit, šaljemo jasnu ponudu sa definisanom strukturom i rokovima. Nema generičkih odgovora, nema nejasnih procena, nema čekanja nedeljama bez povratne informacije.
+            </div></div>
+          </div>
+
+          <div class="faq__item">
+            <button class="faq__q" data-cursor="open">
+              <h3>Koliko traje izrada sajta?</h3>
+              <span class="faq__ico">+</span>
+            </button>
+            <div class="faq__a"><div class="faq__a-inner">
+              Zavisi od obimu projekta. Landing stranice i manji web projekti traju između 2 i 4 nedelje. Kompletni prezentacioni ili e-commerce sajtovi su u rasponu od 4 do 8 nedelja — nekad i duže za kompleksnije projekte. Tačan rok uvek definišemo u ponudi, na osnovu realnog opsega — bez laži i lažnih obećanja.
+            </div></div>
+          </div>
+
+          <div class="faq__item">
+            <button class="faq__q" data-cursor="open">
+              <h3>Kako izgleda vaš radni proces?</h3>
+              <span class="faq__ico">+</span>
+            </button>
+            <div class="faq__a"><div class="faq__a-inner">
+              Radimo u jasno definisanim fazama — od strategije i žičane šeme, kroz dizajn sistem i prototip, do razvoja i testiranja. Na svakom ključnom koraku postoji feedback tačka. Bez iznenađenja, bez „šta je odjednom ovo" situacija. Transparentnost je deo procesa, ne bonus koji plaćate posebno.
+            </div></div>
+          </div>
+
+          <div class="faq__item">
+            <button class="faq__q" data-cursor="open">
+              <h3>Koliko aktivno morate biti uključeni tokom projekta?</h3>
+              <span class="faq__ico">+</span>
+            </button>
+            <div class="faq__a"><div class="faq__a-inner">
+              Strukturirali smo proces tako da ne zahteva puno vašeg vremena — ali tražimo jasnu komunikaciju na ključnim feedback tačkama. Što jasnije i brže dolazi feedback, projekat ide mirno. Ono čega ne volimo: čekanje od mesec dana bez odgovora usred izrade, pa onda hitno sve. To nikada ne daje dobre rezultate.
+            </div></div>
+          </div>
+
+        </div>
+      </div><!-- /faq-group 02 -->
+
+      <!-- ─── Grupa 03: Sadržaj i izrada ────── -->
+      <div class="faq-group reveal reveal-d1">
+        <div class="faq-group__head">
+          <span class="faq-group__n">03</span>
+          <div>
+            <h2 class="faq-group__title">Sadržaj i izrada</h2>
+            <p class="faq-group__intro">Šta je uključeno, šta donosite vi, a šta mi.</p>
+          </div>
+        </div>
+
+        <div class="faq__list">
+
+          <div class="faq__item">
+            <button class="faq__q" data-cursor="open">
+              <h3>Da li pomažete oko teksta i strukture sajta?</h3>
+              <span class="faq__ico">+</span>
+            </button>
+            <div class="faq__a"><div class="faq__a-inner">
+              Da. Pisanje prodajnog i komunikacijskog teksta je deo procesa kada to projekat zahteva. Pomažemo u definisanju poruka, hijerarhije sadržaja i tona komunikacije. Ne morate doći sa finalnim tekstovima — dovoljno je da znate šta vaša firma radi i šta želi da prenese. Ostatak gradimo zajedno.
+            </div></div>
+          </div>
+
+          <div class="faq__item">
+            <button class="faq__q" data-cursor="open">
+              <h3>Da li radite samo novu izradu ili i redizajn?</h3>
+              <span class="faq__ico">+</span>
+            </button>
+            <div class="faq__a"><div class="faq__a-inner">
+              Radimo i jedno i drugo. Redizajn je čest — mnogi klijenti dolaze sa sajtom koji tehnički postoji, ali ne komunicira na pravi način, deluje zastarelo ili jednostavno ne nosi brend. U tim slučajevima radimo celokupnu strukturnu i vizuelnu prepravku. Pristup je isti kao kod nove izrade — počinjemo od cilja, ne od surface-a.
+            </div></div>
+          </div>
+
+          <div class="faq__item">
+            <button class="faq__q" data-cursor="open">
+              <h3>Da li nudite održavanje sajta nakon objave?</h3>
+              <span class="faq__ico">+</span>
+            </button>
+            <div class="faq__a"><div class="faq__a-inner">
+              Da. Po potrebi nudimo mesečno tehničko održavanje, izmene i dalji razvoj sajta. Posebno je korisno za projekte koji se aktivno razvijaju ili kojima je potrebno redovno ažuriranje sadržaja. Sve se definiše kao posebna stavka saradnje — ne mora biti uključeno u svaki projekat.
+            </div></div>
+          </div>
+
+          <div class="faq__item">
+            <button class="faq__q" data-cursor="open">
+              <h3>Da li radite i druge digitalne usluge pored sajtova?</h3>
+              <span class="faq__ico">+</span>
+            </button>
+            <div class="faq__a"><div class="faq__a-inner">
+              Da, ali web je uvek osnova. Imamo kapacitet za vođenje Instagram profila, Meta i Google kampanje, SEO, branding i content produkciju. Ove usluge najčešće dolaze kao proširenje web saradnje — kao prirodni sledeći korak za brendove koji žele kompletan i dosledan digitalni nastup pod jednim krovom.
+            </div></div>
+          </div>
+
+        </div>
+      </div><!-- /faq-group 03 -->
+
+      <!-- ─── Grupa 04: Budžet i sledeći korak -->
+      <div class="faq-group reveal reveal-d1">
+        <div class="faq-group__head">
+          <span class="faq-group__n">04</span>
+          <div>
+            <h2 class="faq-group__title">Budžet i sledeći korak</h2>
+            <p class="faq-group__intro">Šta da znate pre nego što pošaljete upit.</p>
+          </div>
+        </div>
+
+        <div class="faq__list">
+
+          <div class="faq__item">
+            <button class="faq__q" data-cursor="open">
+              <h3>Da li imate fiksne pakete i cene?</h3>
+              <span class="faq__ico">+</span>
+            </button>
+            <div class="faq__a"><div class="faq__a-inner">
+              Imamo okvirne modele saradnje koji služe kao polazna tačka, ali konačna cena uvek zavisi od cilja, obimu i specifičnostima projekta. Nema skrivenih troškova — u svakoj ponudi dobijate jasan pregled šta je uključeno i po kojoj ceni, bez iznenađenja.
+            </div></div>
+          </div>
+
+          <div class="faq__item">
+            <button class="faq__q" data-cursor="open">
+              <h3>Koliki budžet je potreban za ozbiljan web projekat?</h3>
+              <span class="faq__ico">+</span>
+            </button>
+            <div class="faq__a"><div class="faq__a-inner">
+              Ozbiljan sajt sa jasnim ciljem, premium dizajnom i solidnom tehničkom osnovom podrazumeva odgovarajuću investiciju. Detalje ne dajemo bez poznavanja projekta — procena bez konteksta je samo broj bez smisla. Pošaljite upit, a mi ćemo proceniti i javiti se sa realnim okvirima.
+            </div></div>
+          </div>
+
+          <div class="faq__item">
+            <button class="faq__q" data-cursor="open">
+              <h3>Šta treba da pošaljemo u prvom upitu?</h3>
+              <span class="faq__ico">+</span>
+            </button>
+            <div class="faq__a"><div class="faq__a-inner">
+              Dovoljno je ukratko da opišete: koji je vaš biznis, šta vam je potrebno — novi sajt, redizajn ili nešto treće — okvirni rok i, ako postoji, link ka trenutnom sajtu ili Instagramu. Ne morate imati sve definisano. Ako procenimo da postoji dobar fit, javljamo se sa jasnim sledećim korakom.
+            </div></div>
+          </div>
+
+          <div class="faq__item">
+            <button class="faq__q" data-cursor="open">
+              <h3>Koliko brzo dobijamo odgovor?</h3>
+              <span class="faq__ico">+</span>
+            </button>
+            <div class="faq__a"><div class="faq__a-inner">
+              Trudimo se da odgovorimo u roku od 1 do 2 radna dana. Ukoliko je projekat koji opisujete pravi fit za ono što radimo, javićemo se sa konkretnim sledećim korakom. Ne šaljemo generičke odgovore tipa „primili smo vaš upit" — ako pišemo, pišemo sa smislom.
+            </div></div>
+          </div>
+
+        </div>
+      </div><!-- /faq-group 04 -->
+
+    </div>
+  </div><!-- /faq-body -->
+
+  <!-- ══════════════════════════════════════════
+       CTA — Završni blok
+  ══════════════════════════════════════════════ -->
+  <section class="faq-cta">
+    <div class="faq-cta__inner reveal">
+      <p class="faq-cta__label">— Sledeći korak</p>
+      <h2 class="faq-cta__title">
+        Ako vam je ostalo još jedno važno pitanje, to je obično znak<br>
+        <em>da treba da razgovaramo.</em>
+      </h2>
+      <p class="faq-cta__body">
+        Pošaljite upit i recite nam ukratko šta vam je potrebno. Ako procenimo da možemo da pomognemo, javljamo se sa jasnim sledećim korakom.
+      </p>
+      <div class="faq-cta__actions">
+        <a href="kontakt.html" class="btn-accent" data-cursor="send">Pošalji upit →</a>
+        <a href="radovi.html" class="btn-outline-light" data-cursor="view">Pogledaj radove</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ────────────────────────────── -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <div class="footer__brand-name"><span class="footer__brand-dot"></span>Studio One</div>
+          <p class="footer__brand-desc">
+            Studio za izradu, redizajn i razvoj sajtova za brendove koji žele ozbiljan online utisak i jasnu digitalnu osnovu.
+          </p>
+        </div>
+        <div>
+          <div class="footer__col-title">Izrada sajtova</div>
+          <ul class="footer__links">
+            <li><a href="usluge.html">Izrada sajtova</a></li>
+            <li><a href="usluge.html">Redizajn sajta</a></li>
+            <li><a href="usluge.html">Održavanje i razvoj</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Studio</div>
+          <ul class="footer__links">
+            <li><a href="radovi.html">Radovi</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="kontakt.html">Kontakt</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span class="footer__bottom-copy">© Studio One 2026</span>
+        <span class="footer__bottom-center">Worldwide</span>
+        <div class="footer__lang">
+          <a href="faq.html" class="footer__lang-item is-active">SR</a>
+          <span class="footer__lang-sep">·</span>
+          <a href="../en/pages/faq.html" class="footer__lang-item">EN</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../js/cursor.js" defer></script>
+  <script src="../js/nav.js"    defer></script>
+  <script src="../js/faq.js"    defer></script>
+  <script src="../js/reveal.js" defer></script>
+  <script src="../js/main.js"   defer></script>
+
+</body>
+</html>

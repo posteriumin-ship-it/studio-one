@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="sr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kontakt — Studio One</title>
+  <meta name="description" content="Recite nam šta vam je potrebno. Pošaljite upit i opišite projekat — ako procenimo da postoji dobar fit, javljamo se sa jasnim sledećim korakom." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,300;9..144,0,400;9..144,1,300;9..144,1,400&family=Inter+Tight:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="stylesheet" href="../css/nav.css">
+  <link rel="stylesheet" href="../css/misc.css">
+  <link rel="stylesheet" href="../css/kontakt.css">
+</head>
+<body>
+
+  <!-- ── CURSOR ─────────────────────────────── -->
+  <div class="c-ring" id="cRing"></div>
+  <div class="c-dot"  id="cDot"></div>
+
+  <!-- ── NAVIGATION ────────────────────────── -->
+  <nav class="nav" id="nav">
+    <a href="../index.html" class="nav__logo">
+      <span class="nav__logo-dot"></span>Studio One
+    </a>
+    <div class="nav__links">
+      <a href="usluge.html">Usluge</a>
+      <a href="radovi.html">Radovi</a>
+      <a href="faq.html">FAQ</a>
+      <a href="kontakt.html" class="nav__link--active">Kontakt</a>
+    </div>
+    <div class="nav__lang">
+      <a href="kontakt.html" class="nav__lang-item is-active">SR</a>
+      <span class="nav__lang-sep">·</span>
+      <a href="../en/pages/contact.html" class="nav__lang-item">EN</a>
+    </div>
+    <a href="kontakt.html" class="nav__cta nav__cta--active" data-cursor="book">Zakaži poziv</a>
+    <button class="nav__burger" id="navBurger" aria-label="Meni">
+      <span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="nav__mobile" id="navMobile">
+    <a href="usluge.html">Usluge</a>
+    <a href="radovi.html">Radovi</a>
+    <a href="faq.html">FAQ</a>
+    <a href="kontakt.html">Kontakt</a>
+    <a href="kontakt.html" class="nav__mobile-cta">Zakaži poziv →</a>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       HERO — dark
+  ══════════════════════════════════════════════ -->
+  <section class="kontakt-hero">
+    <div class="kontakt-hero__inner">
+
+      <!-- Levo: headline -->
+      <div>
+        <p class="kontakt-hero__label reveal">— Upit i saradnja</p>
+        <h1 class="kontakt-hero__title reveal-clip">
+          <span>Recite nam šta</span>
+          <span>vam je potrebno.</span>
+        </h1>
+        <p class="kontakt-hero__sub reveal-blur">
+          Ako tražite sajt koji treba da ostavi ozbiljan utisak i ima jasan cilj, pošaljite nam nekoliko osnovnih informacija o projektu.
+        </p>
+        <p class="kontakt-hero__note reveal reveal-d2">
+          Ne prihvatamo svaki projekat — prihvatamo one u kojima verujemo da možemo da napravimo stvarnu razliku.
+        </p>
+      </div>
+
+      <!-- Desno: kratak uvod -->
+      <div class="kontakt-hero__right reveal reveal-d2">
+        <p class="kontakt-hero__intro-label">Dovoljno je</p>
+        <p class="kontakt-hero__intro-text">
+          Ostavite osnovne informacije. Ne morate imati sve unapred savršeno definisano — važno je da razumemo suštinu projekta i vidimo da li postoji pravi fit.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       FORMA + INFO BLOK
+  ══════════════════════════════════════════════ -->
+  <section class="kontakt-main">
+    <div class="kontakt-main__inner">
+
+      <!-- ── Forma ─────────────────────────── -->
+      <div class="reveal">
+        <!-- Success state (shown after JS submit) -->
+        <div class="kontakt-success" id="kontaktSuccess">
+          <h2 class="kontakt-success__title">Primili smo vaš upit.</h2>
+          <p class="kontakt-success__text">
+            Pregledamo ga i, ako procenimo da postoji dobar fit, javljamo se u roku od 1 do 2 radna dana sa jasnim sledećim korakom.
+          </p>
+        </div>
+
+        <form
+          class="kontakt-form"
+          id="kontaktForm"
+          action="https://formspree.io/f/hello@studioone.rs"
+          method="POST"
+          novalidate
+        >
+
+          <!-- Ime i prezime + Email -->
+          <div class="kontakt-form__row">
+            <div class="kontakt-field">
+              <label class="kontakt-field__label" for="ime">Ime i prezime</label>
+              <input
+                class="kontakt-input" id="ime" name="ime" type="text"
+                placeholder="Vaše ime" autocomplete="name" required
+              />
+            </div>
+            <div class="kontakt-field">
+              <label class="kontakt-field__label" for="email">Email adresa</label>
+              <input
+                class="kontakt-input" id="email" name="email" type="email"
+                placeholder="hello@vašafirma.rs" autocomplete="email" required
+              />
+            </div>
+          </div>
+
+          <!-- Naziv brenda + Link -->
+          <div class="kontakt-form__row">
+            <div class="kontakt-field">
+              <label class="kontakt-field__label" for="brend">Naziv brenda ili firme</label>
+              <input
+                class="kontakt-input" id="brend" name="brend" type="text"
+                placeholder="Studio One, doo..." required
+              />
+            </div>
+            <div class="kontakt-field">
+              <label class="kontakt-field__label" for="link">Sajt ili Instagram (opciono)</label>
+              <input
+                class="kontakt-input" id="link" name="link" type="url"
+                placeholder="https://"
+              />
+            </div>
+          </div>
+
+          <!-- Šta je potrebno — pill selector -->
+          <div class="kontakt-field">
+            <span class="kontakt-field__label">Šta vam je potrebno?</span>
+            <div class="kontakt-pills" role="group" aria-label="Vrsta projekta">
+              <input class="kontakt-pill" type="radio" name="tip" id="tip-novi" value="Novi sajt" checked />
+              <label for="tip-novi">Novi sajt</label>
+
+              <input class="kontakt-pill" type="radio" name="tip" id="tip-redizajn" value="Redizajn" />
+              <label for="tip-redizajn">Redizajn</label>
+
+              <input class="kontakt-pill" type="radio" name="tip" id="tip-odrzavanje" value="Održavanje" />
+              <label for="tip-odrzavanje">Održavanje</label>
+
+              <input class="kontakt-pill" type="radio" name="tip" id="tip-ostalo" value="Nešto drugo" />
+              <label for="tip-ostalo">Nešto treće</label>
+            </div>
+          </div>
+
+          <!-- Opis projekta -->
+          <div class="kontakt-field">
+            <label class="kontakt-field__label" for="opis">Kratki opis projekta</label>
+            <textarea
+              class="kontakt-input kontakt-textarea"
+              id="opis" name="opis"
+              placeholder="Ko ste, šta prodajete ili nudite, šta želite da postignete sajtom, i šta vam se ne sviđa kod trenutnog rešenja (ako postoji)."
+              required
+            ></textarea>
+          </div>
+
+          <!-- Rok i investicija -->
+          <div class="kontakt-form__row">
+            <div class="kontakt-field">
+              <label class="kontakt-field__label" for="rok">Okvirni rok</label>
+              <select class="kontakt-input kontakt-select" id="rok" name="rok">
+                <option value="">Izaberite...</option>
+                <option value="Hitno (do mesec dana)">Hitno — do mesec dana</option>
+                <option value="U toku 1-2 meseca">U toku 1–2 meseca</option>
+                <option value="Do kraja kvartala">Do kraja kvartala</option>
+                <option value="Planiramo, nema pritiska">Planiramo, nema pritiska</option>
+              </select>
+            </div>
+            <div class="kontakt-field">
+              <span class="kontakt-field__label">Okvirna investicija</span>
+              <div class="kontakt-pills" role="group" aria-label="Okvirni budžet">
+                <input class="kontakt-pill" type="radio" name="budzet" id="b-open" value="Još nismo definisali" checked />
+                <label for="b-open">Još nismo definisali</label>
+
+                <input class="kontakt-pill" type="radio" name="budzet" id="b-start" value="Osnove (do €600)" />
+                <label for="b-start">Osnove</label>
+
+                <input class="kontakt-pill" type="radio" name="budzet" id="b-mid" value="Ozbiljan projekat (€600–€1.800)" />
+                <label for="b-mid">Ozbiljan projekat</label>
+
+                <input class="kontakt-pill" type="radio" name="budzet" id="b-premium" value="Ambiciozan obim (€1.800+)" />
+                <label for="b-premium">Ambiciozan obim</label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Submit -->
+          <div class="kontakt-submit">
+            <button type="submit" class="btn-primary" data-cursor="send">
+              Pošalji upit <span class="btn-arrow">→</span>
+            </button>
+            <p class="kontakt-form__note">
+              Ne šaljemo generičke odgovore. Javljamo se isključivo ako procenimo da postoji dobar fit.
+            </p>
+          </div>
+
+        </form>
+      </div>
+
+      <!-- ── Info blok ─────────────────────── -->
+      <div class="kontakt-info reveal reveal-d2">
+        <h2 class="kontakt-info__title">Kako izgleda<br>sledeći korak</h2>
+        <div class="kontakt-steps">
+          <div class="kontakt-step">
+            <div class="kontakt-step__n">01</div>
+            <div class="kontakt-step__body">
+              <div class="kontakt-step__title">Pregledamo vaš upit</div>
+              <p class="kontakt-step__text">Pažljivo čitamo svaki upit — ne preskačemo ni jedan detalj.</p>
+            </div>
+          </div>
+          <div class="kontakt-step">
+            <div class="kontakt-step__n">02</div>
+            <div class="kontakt-step__body">
+              <div class="kontakt-step__title">Procenjujemo da li postoji fit</div>
+              <p class="kontakt-step__text">Gledamo da li je projekat nešto u kome možemo napraviti stvarnu razliku.</p>
+            </div>
+          </div>
+          <div class="kontakt-step">
+            <div class="kontakt-step__n">03</div>
+            <div class="kontakt-step__body">
+              <div class="kontakt-step__title">Javljamo se sa sledećim korakom</div>
+              <p class="kontakt-step__text">Ako postoji dobar fit, dobijate konkretan odgovor — ne generički auto-reply.</p>
+            </div>
+          </div>
+        </div>
+        <div class="kontakt-info__note">
+          Što jasnije opišete cilj projekta, lakše i brže možemo da damo precizan odgovor.
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       REASSURANCE
+  ══════════════════════════════════════════════ -->
+  <div class="kontakt-reassurance reveal">
+    <div class="kontakt-reassurance__inner">
+      <p class="kontakt-reassurance__text">
+        "Ne šaljemo generičke odgovore. Ako procenimo da postoji dobar fit, javljamo se sa jasnim pravcem i sledećim korakom."
+      </p>
+      <div class="kontakt-reassurance__meta">
+        Odgovor u roku od<br>1–2 radna dana
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       ALT KONTAKT
+  ══════════════════════════════════════════════ -->
+  <div class="kontakt-alt">
+    <div class="kontakt-alt__inner">
+      <div>
+        <p class="kontakt-alt__label">Ili nam pišite direktno</p>
+        <a href="mailto:hello@studioone.rs" class="kontakt-alt__email" data-cursor="send">
+          hello@studioone.rs
+        </a>
+      </div>
+      <div>
+        <p class="kontakt-alt__label">Radno vreme</p>
+        <p style="font-size:14px; opacity:.6; letter-spacing:-.01em">Pon – Pet · 09:00 – 18:00</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       CLOSING BLOCK
+  ══════════════════════════════════════════════ -->
+  <section class="kontakt-close">
+    <div class="kontakt-close__inner reveal">
+      <p class="kontakt-close__label">— Zašto sada?</p>
+      <h2 class="kontakt-close__title">
+        Dobar projekat počinje<br><em>jasnim razgovorom.</em>
+      </h2>
+      <p class="kontakt-close__text">
+        Ako osećate da je vreme da vaš sajt konačno izgleda i funkcioniše na nivou vašeg brenda — pošaljite nam upit. Sve ostalo se dogovori.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ────────────────────────────── -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <div class="footer__brand-name"><span class="footer__brand-dot"></span>Studio One</div>
+          <p class="footer__brand-desc">
+            Studio za izradu, redizajn i razvoj sajtova za brendove koji žele ozbiljan online utisak i jasnu digitalnu osnovu.
+          </p>
+        </div>
+        <div>
+          <div class="footer__col-title">Izrada sajtova</div>
+          <ul class="footer__links">
+            <li><a href="usluge.html">Izrada sajtova</a></li>
+            <li><a href="usluge.html">Redizajn sajta</a></li>
+            <li><a href="usluge.html">Održavanje i razvoj</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Studio</div>
+          <ul class="footer__links">
+            <li><a href="radovi.html">Radovi</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="kontakt.html">Kontakt</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span class="footer__bottom-copy">© Studio One 2026</span>
+        <span class="footer__bottom-center">Worldwide</span>
+        <div class="footer__lang">
+          <a href="kontakt.html" class="footer__lang-item is-active">SR</a>
+          <span class="footer__lang-sep">·</span>
+          <a href="../en/pages/contact.html" class="footer__lang-item">EN</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../js/cursor.js" defer></script>
+  <script src="../js/nav.js"    defer></script>
+  <script src="../js/reveal.js" defer></script>
+  <script src="../js/main.js"   defer></script>
+
+  <!-- Form handling -->
+  <script>
+    (function() {
+      var form    = document.getElementById('kontaktForm');
+      var success = document.getElementById('kontaktSuccess');
+      if (!form) return;
+
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        var btn = form.querySelector('[type="submit"]');
+        btn.textContent = 'Šaljem...';
+        btn.disabled = true;
+
+        var data = new FormData(form);
+
+        fetch(form.action, {
+          method: 'POST',
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        })
+        .then(function(res) {
+          if (res.ok) {
+            form.style.display = 'none';
+            success.classList.add('is-visible');
+          } else {
+            btn.textContent = 'Greška — pokušajte ponovo';
+            btn.disabled = false;
+          }
+        })
+        .catch(function() {
+          btn.textContent = 'Greška — pokušajte ponovo';
+          btn.disabled = false;
+        });
+      });
+    })();
+  </script>
+
+</body>
+</html>
