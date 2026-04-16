@@ -21,58 +21,78 @@ button { background: none; border: none; font: inherit; color: inherit; cursor: 
 @media (hover: none) { button { cursor: auto; } }
 
 /* ── CURSOR ───────────────────────────────── */
-.c-ring {
-  position: fixed; top: 0; left: 0;
-  width: 36px; height: 36px;
-  margin: -18px 0 0 -18px;
-  border-radius: 50%;
-  border: 1.5px solid rgba(10, 10, 10, 0.55);
-  pointer-events: none;
-  z-index: 9000;
-  opacity: 0;
-  will-change: transform;
-  transition:
-    opacity   350ms var(--ease),
-    width     380ms var(--ease),
-    height    380ms var(--ease),
-    margin    380ms var(--ease),
-    border-color 300ms var(--ease),
-    background   300ms var(--ease);
-}
-.c-ring.is-vis     { opacity: 1; }
-.c-ring.is-expand  {
-  width: 58px; height: 58px; margin: -29px 0 0 -29px;
-  border-color: var(--accent);
-  background: rgba(195, 247, 58, 0.07);
-}
-.c-ring.is-view {
-  width: 66px; height: 66px; margin: -33px 0 0 -33px;
-  border-color: var(--ink);
-}
-.c-ring.is-view::after {
-  content: "View";
-  position: absolute; inset: 0;
-  display: flex; align-items: center; justify-content: center;
-  font-family: var(--font-mono);
-  font-size: 9px; letter-spacing: .2em; text-transform: uppercase;
-  color: var(--ink);
-}
-/* Dark-bg ring variant */
-.c-ring.is-dark { border-color: rgba(246,243,238,.55); }
-.c-ring.is-dark.is-expand { border-color: var(--accent); }
-.c-ring.is-dark.is-view { border-color: rgba(246,243,238,.9); }
-.c-ring.is-dark.is-view::after { color: var(--bone); }
 
+/* Dot — exact mouse position, always visible */
 .c-dot {
   position: fixed; top: 0; left: 0;
-  width: 4px; height: 4px; margin: -2px 0 0 -2px;
+  width: 5px; height: 5px;
+  margin: -2.5px 0 0 -2.5px;
   border-radius: 50%;
   background: var(--ink);
   pointer-events: none;
-  z-index: 9001;
-  transition: opacity 200ms, background 300ms;
+  z-index: 9002;
+  opacity: 0;
+  will-change: transform;
+  transition: opacity 300ms var(--ease), background 280ms var(--ease);
 }
-.c-dot.is-dark { background: var(--bone); }
+.c-dot.is-vis   { opacity: 1; }
+.c-dot.is-dark  { background: rgba(246,243,238,.9); }
+.c-dot.is-hover { opacity: 0; }       /* hides when pill is active */
+.c-dot.is-form  { opacity: 0; }       /* hides on form fields */
+
+/* Ring — lagging halo / morphs to pill on hover */
+.c-ring {
+  position: fixed; top: 0; left: 0;
+  /* Default: 28×28 circle */
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  border: 1px solid rgba(10,10,10,.22);
+  background: transparent;
+  pointer-events: none;
+  z-index: 9001;
+  opacity: 0;
+  will-change: transform;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+  /* All dimension transitions use spring-like easing */
+  transition:
+    opacity      400ms var(--ease),
+    width        380ms cubic-bezier(0.16, 1, 0.3, 1),
+    height       380ms cubic-bezier(0.16, 1, 0.3, 1),
+    border-radius 380ms cubic-bezier(0.16, 1, 0.3, 1),
+    border-color  260ms var(--ease),
+    background    260ms var(--ease);
+}
+.c-ring.is-vis { opacity: 1; }
+
+/* Pill state — triggered by hover on interactive elements */
+.c-ring.is-pill {
+  width: 86px; height: 26px;
+  border-radius: 13px;
+  border-color: var(--ink);
+  background: var(--ink);
+}
+
+/* Press feedback */
+.c-ring.is-press { transition: none; }
+
+/* Dark bg variants */
+.c-ring.is-dark               { border-color: rgba(246,243,238,.28); }
+.c-ring.is-dark.is-pill       { border-color: var(--bone); background: var(--bone); }
+
+/* Label inside pill */
+.c-ring__label {
+  position: absolute;
+  font-family: var(--font-mono); font-size: 9px;
+  letter-spacing: .16em; text-transform: uppercase;
+  color: var(--bone); white-space: nowrap;
+  opacity: 0; pointer-events: none;
+  transition: opacity 140ms var(--ease);
+  user-select: none;
+}
+.c-ring.is-pill .c-ring__label         { opacity: 1; }
+.c-ring.is-dark.is-pill .c-ring__label { color: var(--ink); }
+
 @media (hover: none) { .c-ring, .c-dot { display: none; } }
 
 /* ── SECTION WRAPPER ──────────────────────── */

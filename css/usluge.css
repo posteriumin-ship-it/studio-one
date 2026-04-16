@@ -65,6 +65,22 @@
   border-bottom-color: rgba(246,243,238,.08);
 }
 
+/* Primary service section — more space, accent stripe */
+.svc-section--primary {
+  padding-top:    clamp(100px, 15vw, 200px);
+  padding-bottom: clamp(100px, 15vw, 200px);
+}
+.svc-section--primary::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 2px; background: var(--accent);
+}
+
+/* Secondary sections — slightly reduced visual weight */
+.svc-text__title--secondary {
+  font-size: clamp(28px, 3.8vw, 58px);
+}
+
 .svc-section__inner {
   max-width: var(--max); margin: 0 auto;
   display: grid;
@@ -91,6 +107,33 @@
 }
 .svc-section--rev .svc-section__bg-n { right: auto; left: -0.05em; }
 .svc-section--dark .svc-section__bg-n { opacity: .06; }
+
+/* ─── Hierarchy badges ───────────────────────────────────────── */
+.svc-primary-badge {
+  font-style: normal;
+  display: inline-block;
+  font-family: var(--font-mono); font-size: 9px;
+  letter-spacing: .18em; text-transform: uppercase;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  padding: 2px 7px; border-radius: 99px;
+  vertical-align: middle; margin-left: 4px;
+  opacity: .9;
+}
+.svc-support-badge {
+  font-style: normal;
+  display: inline-block;
+  font-family: var(--font-mono); font-size: 9px;
+  letter-spacing: .16em; text-transform: uppercase;
+  color: rgba(10,10,10,.4);
+  border: 1px solid rgba(10,10,10,.2);
+  padding: 2px 7px; border-radius: 99px;
+  vertical-align: middle; margin-left: 4px;
+}
+.svc-support-badge--light {
+  color: rgba(246,243,238,.35);
+  border-color: rgba(246,243,238,.2);
+}
 
 /* ─── Left: text column ──────────────────────────────────────── */
 .svc-text { display: flex; flex-direction: column; }
