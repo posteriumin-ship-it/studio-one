@@ -32,8 +32,23 @@
   font-family: var(--font-sans); font-size: 13px; letter-spacing: .04em;
   border: 1px solid var(--ink); padding: 10px 22px; border-radius: 999px;
   transition: background 250ms var(--ease), color 250ms var(--ease);
+  white-space: nowrap;
 }
 .nav__cta:hover { background: var(--ink); color: var(--bone); }
+
+/* ── Language switcher ────────────────────── */
+.nav__lang {
+  display: flex; align-items: center; gap: 7px;
+  font-family: var(--font-mono); font-size: 10px;
+  letter-spacing: .18em; text-transform: uppercase;
+}
+.nav__lang-sep { opacity: .2; font-size: 11px; }
+.nav__lang-item { opacity: .3; transition: opacity 220ms var(--ease); }
+.nav__lang-item:hover { opacity: .7; }
+.nav__lang-item.is-active { opacity: 1; }
+
+/* ── Active nav link ──────────────────────── */
+.nav__link--active { opacity: 1 !important; }
 
 .nav__burger {
   display: none; flex-direction: column; gap: 5px;
@@ -62,6 +77,6 @@
 .nav__mobile-cta { color: var(--accent); }
 
 @media (max-width: 768px) {
-  .nav__links, .nav__cta { display: none; }
+  .nav__links, .nav__cta, .nav__lang { display: none; }
   .nav__burger { display: flex; }
 }

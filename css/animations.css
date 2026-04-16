@@ -24,24 +24,212 @@
   50%       { opacity: .65; }
 }
 
-/* ── Scroll reveal ────────────────────────── */
+/* ── CTA lock-in pulse ────────────────────── */
+@keyframes ctaPulse {
+  0%   { box-shadow: 0 0 0 0 rgba(10,10,10,.14); }
+  60%  { box-shadow: 0 0 0 8px rgba(10,10,10,0); }
+  100% { box-shadow: 0 0 0 0 rgba(10,10,10,0); }
+}
+@keyframes ctaPulseLight {
+  0%   { box-shadow: 0 0 0 0 rgba(246,243,238,.2); }
+  60%  { box-shadow: 0 0 0 10px rgba(246,243,238,0); }
+  100% { box-shadow: 0 0 0 0 rgba(246,243,238,0); }
+}
+
+/* ── Scroll reveal — standard ─────────────── */
 .reveal {
   opacity: 0; transform: translateY(22px);
   transition: opacity 800ms var(--ease), transform 900ms var(--ease);
 }
 .reveal.is-in { opacity: 1; transform: translateY(0); }
 
-/* Delay helpers */
+/* ── Clip-path headline reveal ────────────── */
+/* Wraps: .reveal-clip > span (one per line) */
+.reveal-clip {
+  overflow: hidden;
+}
+.reveal-clip > span {
+  display: block;
+  clip-path: inset(0 0 100% 0);
+  transform: translateY(12px);
+  transition:
+    clip-path 900ms var(--ease),
+    transform  900ms var(--ease);
+}
+.reveal-clip.is-in > span {
+  clip-path: inset(0 0 0% 0);
+  transform: translateY(0);
+}
+/* Stagger child spans inside .reveal-clip */
+.reveal-clip.is-in > span:nth-child(1) { transition-delay: 0ms; }
+.reveal-clip.is-in > span:nth-child(2) { transition-delay: 120ms; }
+.reveal-clip.is-in > span:nth-child(3) { transition-delay: 240ms; }
+.reveal-clip.is-in > span:nth-child(4) { transition-delay: 360ms; }
+
+/* ── Blur-rise paragraph reveal ──────────── */
+.reveal-blur {
+  opacity: 0;
+  filter: blur(6px);
+  transform: translateY(16px);
+  transition:
+    opacity  900ms var(--ease),
+    filter   900ms var(--ease),
+    transform 900ms var(--ease);
+}
+.reveal-blur.is-in {
+  opacity: 1;
+  filter: blur(0px);
+  transform: translateY(0);
+}
+
+/* ── Underline sweep on key words ─────────── */
+/* Usage: <em class="ul-sweep">word</em> */
+.ul-sweep {
+  font-style: normal;
+  position: relative;
+  display: inline;
+}
+.ul-sweep::after {
+  content: "";
+  position: absolute;
+  bottom: -2px; left: 0;
+  width: 100%; height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 700ms var(--ease);
+}
+.is-in .ul-sweep::after,
+.ul-sweep.is-in::after {
+  transform: scaleX(1);
+}
+
+/* ── Section focus line ───────────────────── */
+/* Adds a left accent line that draws down on reveal */
+.reveal-line {
+  position: relative;
+  opacity: 0;
+  transform: translateX(-8px);
+  transition: opacity 700ms var(--ease), transform 700ms var(--ease);
+}
+.reveal-line::before {
+  content: "";
+  position: absolute; top: 0; left: -20px;
+  width: 1px;
+  height: 0%;
+  background: var(--accent);
+  transition: height 800ms var(--ease) 300ms;
+}
+.reveal-line.is-in {
+  opacity: 1;
+  transform: translateX(0);
+}
+.reveal-line.is-in::before {
+  height: 100%;
+}
+
+/* ── Delay helpers ────────────────────────── */
 .reveal-d1 { transition-delay:  80ms; }
 .reveal-d2 { transition-delay: 180ms; }
 .reveal-d3 { transition-delay: 280ms; }
 .reveal-d4 { transition-delay: 380ms; }
 .reveal-d5 { transition-delay: 480ms; }
 
+/* ── Button micro-interactions ────────────── */
+
+/* Primary button: shift arrow, subtle lift */
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+}
+.btn-primary::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: rgba(10,10,10,.06);
+  transform: translateX(-101%);
+  transition: transform 350ms var(--ease);
+}
+.btn-primary:hover::before { transform: translateX(0); }
+.btn-primary:active { transform: scale(.97); }
+
+/* CTA lock-in pulse on the accent button */
+.btn-accent {
+  position: relative;
+}
+.btn-accent:hover {
+  animation: ctaPulse 600ms var(--ease) forwards;
+}
+.btn-accent:active { transform: scale(.97); }
+
+/* Outline light — fill-in on hover */
+.btn-outline-light {
+  overflow: hidden;
+  position: relative;
+}
+.btn-outline-light::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: rgba(246,243,238,.07);
+  transform: translateX(-101%);
+  transition: transform 350ms var(--ease);
+}
+.btn-outline-light:hover::before { transform: translateX(0); }
+.btn-outline-light:active { transform: scale(.97); }
+
+/* Primary light (usluge/cta-band) */
+.btn-primary-light {
+  position: relative;
+  overflow: hidden;
+}
+.btn-primary-light::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: rgba(246,243,238,.1);
+  transform: translateX(-101%);
+  transition: transform 350ms var(--ease);
+}
+.btn-primary-light:hover::before { transform: translateX(0); }
+.btn-primary-light:active { transform: scale(.97); }
+
+/* Nav CTA ring pulse on hover */
+.nav__cta:hover {
+  animation: ctaPulse 600ms var(--ease) forwards;
+}
+
+/* ── Section label accent line animation ──── */
+.section__label {
+  overflow: visible;
+}
+.section__label::before {
+  transition: width 600ms var(--ease);
+  width: 0;
+}
+.section__label.is-in::before {
+  width: 22px;
+}
+
+/* ── Manifesto list item reveal ──────────── */
+.manifesto__list li {
+  opacity: 0;
+  transform: translateX(-12px);
+  transition: opacity 600ms var(--ease), transform 600ms var(--ease);
+}
+.manifesto__list.is-in li:nth-child(1) { opacity:1; transform:translateX(0); transition-delay:  0ms; }
+.manifesto__list.is-in li:nth-child(2) { opacity:1; transform:translateX(0); transition-delay:100ms; }
+.manifesto__list.is-in li:nth-child(3) { opacity:1; transform:translateX(0); transition-delay:200ms; }
+.manifesto__list.is-in li:nth-child(4) { opacity:1; transform:translateX(0); transition-delay:300ms; }
+
 /* ── Reduced motion override ──────────────── */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration:   .01ms !important;
     transition-duration:  .01ms !important;
+  }
+  .reveal, .reveal-blur, .reveal-clip,
+  .reveal-line, .reveal-clip > span {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    clip-path: none !important;
   }
 }

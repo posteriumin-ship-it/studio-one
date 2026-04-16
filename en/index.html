@@ -1,0 +1,641 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Studio One — Premium web studio</title>
+  <meta name="description" content="Studio One builds premium websites, manages social media, and develops campaigns for businesses that want a serious online presence." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,300;9..144,0,400;9..144,1,300;9..144,1,400&family=Inter+Tight:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="stylesheet" href="../css/nav.css">
+  <link rel="stylesheet" href="../css/hero.css">
+  <link rel="stylesheet" href="../css/wwd.css">
+  <link rel="stylesheet" href="../css/packages.css">
+  <link rel="stylesheet" href="../css/services.css">
+  <link rel="stylesheet" href="../css/misc.css">
+</head>
+<body>
+
+  <!-- ── CURSOR ─────────────────────────────── -->
+  <div class="c-ring" id="cRing"></div>
+  <div class="c-dot"  id="cDot"></div>
+
+  <!-- ── NAVIGATION ────────────────────────── -->
+  <nav class="nav" id="nav">
+    <a href="index.html" class="nav__logo">
+      <span class="nav__logo-dot"></span>Studio One
+    </a>
+    <div class="nav__links">
+      <a href="pages/services.html">Services</a>
+      <a href="pages/work.html">Work</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="nav__lang">
+      <a href="../index.html" class="nav__lang-item">SR</a>
+      <span class="nav__lang-sep">·</span>
+      <a href="index.html" class="nav__lang-item is-active">EN</a>
+    </div>
+    <a href="#contact" class="nav__cta" data-cursor="book">Book a call</a>
+    <button class="nav__burger" id="navBurger" aria-label="Menu">
+      <span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="nav__mobile" id="navMobile">
+    <a href="pages/services.html">Services</a>
+    <a href="pages/work.html">Work</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contact">Contact</a>
+    <a href="#contact" class="nav__mobile-cta">Book a call →</a>
+  </div>
+
+  <!-- ── HERO ──────────────────────────────── -->
+  <section class="hero">
+    <div class="hero__bg"></div>
+    <div class="hero__content">
+      <h1 class="hero__headline">
+        <span class="hero__line"><span>We build websites</span></span>
+        <span class="hero__line"><span>that elevate</span></span>
+        <span class="hero__line"><span>your brand.</span></span>
+      </h1>
+      <div class="hero__bottom">
+        <p class="hero__sub">
+          For businesses where a website isn't just an online presence — it's the place
+          where trust, serious impression, and the decision to reach out all begin.
+        </p>
+        <div class="hero__actions">
+          <a href="#contact" class="btn-primary" data-cursor="book">Book a call <span class="btn-arrow">→</span></a>
+          <a href="#services" class="btn-ghost">See how we work</a>
+        </div>
+      </div>
+    </div>
+    <div class="hero__stats" aria-hidden="true">
+      <div class="hero__stat"><span class="hero__stat-n" data-count="21">21</span>+<span class="hero__stat-l">projects</span></div>
+      <div class="hero__stat"><span class="hero__stat-n">3</span><span class="hero__stat-l">disciplines</span></div>
+      <div class="hero__stat"><span class="hero__stat-n">WW</span><span class="hero__stat-l">clients</span></div>
+    </div>
+  </section>
+
+  <!-- ── MARQUEE ───────────────────────────── -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track">
+      <span class="marquee__i">Web Design</span><span class="marquee__s">·</span>
+      <span class="marquee__i">Social Media</span><span class="marquee__s">·</span>
+      <span class="marquee__i">Ad Campaigns</span><span class="marquee__s">·</span>
+      <span class="marquee__i">SEO</span><span class="marquee__s">·</span>
+      <span class="marquee__i">Branding</span><span class="marquee__s">·</span>
+      <span class="marquee__i">Content Production</span><span class="marquee__s">·</span>
+      <span class="marquee__i">Email Marketing</span><span class="marquee__s">·</span>
+      <span class="marquee__i">Redesign</span><span class="marquee__s">·</span>
+      <span class="marquee__i">Web Design</span><span class="marquee__s">·</span>
+      <span class="marquee__i">Social Media</span><span class="marquee__s">·</span>
+      <span class="marquee__i">Ad Campaigns</span><span class="marquee__s">·</span>
+      <span class="marquee__i">SEO</span><span class="marquee__s">·</span>
+      <span class="marquee__i">Branding</span><span class="marquee__s">·</span>
+      <span class="marquee__i">Content Production</span><span class="marquee__s">·</span>
+      <span class="marquee__i">Email Marketing</span><span class="marquee__s">·</span>
+      <span class="marquee__i">Redesign</span><span class="marquee__s">·</span>
+    </div>
+  </div>
+
+  <!-- ── MANIFESTO ─────────────────────────── -->
+  <section class="section manifesto">
+    <div class="section__inner">
+      <div class="manifesto__grid">
+        <div class="reveal">
+          <div class="section__label">Why Studio One</div>
+          <h2 class="manifesto__title">We don't build websites<br>just to exist.<br><em>We build them to carry the brand.</em></h2>
+        </div>
+        <div class="manifesto__right reveal reveal-d2">
+          <p class="manifesto__body">
+            First impressions today aren't made in conversation — they happen in seconds,
+            on a screen. That's why every project starts with one question: what should
+            your website communicate before a visitor reads a single long sentence?
+          </p>
+          <p class="manifesto__body">
+            We don't work from templates. We dig into the core of your business, understand
+            the goal, and only then build the structure, tone, and visual direction that
+            actually makes sense for that brand.
+          </p>
+          <ul class="manifesto__list">
+            <li data-n="01">First impression that builds trust immediately</li>
+            <li data-n="02">Structure that leads to inquiry, purchase, or contact</li>
+            <li data-n="03">Solution tailored to the business, not a template</li>
+            <li data-n="04">Support after launch</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SERVICES ──────────────────────────── -->
+  <section class="section services" id="services">
+    <div class="section__inner">
+      <div class="section__label" style="color:rgba(246,243,238,.35)">Services</div>
+      <div class="services__grid">
+
+        <div class="svc-card reveal" data-cursor="details">
+          <div class="svc-card__n">01 / Web</div>
+          <div class="svc-card__name">Website<br>Development</div>
+          <p class="svc-card__desc">
+            From landing pages to full presentation and e-commerce websites.
+            We build web projects that leave a serious impression from the very first visit.
+          </p>
+          <div class="svc-card__tags">
+            <span>Landing page</span><span>Business website</span>
+            <span>E-commerce</span><span>Custom structure</span>
+          </div>
+          <a href="#offers" class="svc-card__link">View collaboration models</a>
+        </div>
+
+        <div class="svc-card reveal reveal-d2" data-cursor="details">
+          <div class="svc-card__n">02 / Redesign</div>
+          <div class="svc-card__name">Redesign &amp;<br>Improvements</div>
+          <p class="svc-card__desc">
+            When your website no longer matches your brand's level, fails to communicate
+            clearly, or simply doesn't look serious enough — we rebuild and elevate it.
+          </p>
+          <div class="svc-card__tags">
+            <span>Redesign</span><span>UX improvements</span>
+            <span>New structure</span><span>Stronger impression</span>
+          </div>
+          <a href="#offers" class="svc-card__link">View collaboration models</a>
+        </div>
+
+        <div class="svc-card reveal reveal-d3" data-cursor="details">
+          <div class="svc-card__n">03 / Support</div>
+          <div class="svc-card__name">Maintenance &amp;<br>Development</div>
+          <p class="svc-card__desc">
+            After launch, things don't have to stop. We offer monthly support, changes,
+            technical maintenance, and continued development so the project grows with the brand.
+          </p>
+          <div class="svc-card__tags">
+            <span>Maintenance</span><span>Updates</span>
+            <span>Optimization</span><span>Long-term support</span>
+          </div>
+          <a href="#offers" class="svc-card__link">View collaboration models</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── WHAT WE DO ────────────────────────── -->
+  <section class="wwd" id="process">
+    <div class="wwd__intro section__inner">
+      <div>
+        <div class="wwd__intro-label">— Our process</div>
+        <h2 class="wwd__intro-title">How we <em>guide</em><br>a brand through the process.</h2>
+      </div>
+      <div class="wwd__intro-meta">Five steps<br>From clarity to system</div>
+    </div>
+
+    <div class="wwd-outer" id="wwdOuter">
+      <div class="wwd-sticky" id="wwdSticky">
+
+        <div class="wwd-left">
+          <nav class="wwd__dots" id="wwdDots">
+            <button class="wwd__dot is-active" data-step="1"><span class="wwd__dot-line"></span>01 — Identity</button>
+            <button class="wwd__dot" data-step="2"><span class="wwd__dot-line"></span>02 — Website</button>
+            <button class="wwd__dot" data-step="3"><span class="wwd__dot-line"></span>03 — Motion</button>
+            <button class="wwd__dot" data-step="4"><span class="wwd__dot-line"></span>04 — Content</button>
+            <button class="wwd__dot" data-step="5"><span class="wwd__dot-line"></span>05 — System</button>
+          </nav>
+
+          <div class="wwd__panels">
+            <article class="wwd__panel is-active" data-panel="1">
+              <div class="wwd__step-tag">01 <span></span> Brand Identity</div>
+              <h3 class="wwd__panel-title">First, we clearly<br>define who you are.</h3>
+              <p class="wwd__panel-body">We lay the brand foundation so it stops feeling generic, unclear, or interchangeable. The goal: immediate recognition, character, and distinction.</p>
+              <ul class="wwd__micro">
+                <li>Positioning</li><li>Visual direction</li>
+                <li>Tone &amp; character</li><li>Differentiation</li>
+              </ul>
+            </article>
+
+            <article class="wwd__panel" data-panel="2">
+              <div class="wwd__step-tag">02 <span></span> Digital first impression</div>
+              <h3 class="wwd__panel-title">Then we shape<br>the first impression.</h3>
+              <p class="wwd__panel-body">A website isn't just information. It's the moment a visitor decides whether your brand feels trustworthy, relevant, premium — and worth their attention.</p>
+              <ul class="wwd__micro">
+                <li>Homepage structure</li><li>Hierarchy</li>
+                <li>User flow</li><li>Premium composition</li>
+              </ul>
+            </article>
+
+            <article class="wwd__panel" data-panel="3">
+              <div class="wwd__step-tag">03 <span></span> Motion with purpose</div>
+              <h3 class="wwd__panel-title">We use animation<br>to guide attention.</h3>
+              <p class="wwd__panel-body">Animation should never be decorative or chaotic. It should support clarity, create rhythm, and feel like intention — not effect for effect's sake.</p>
+              <ul class="wwd__micro">
+                <li>Reveal animations</li><li>Hover states</li>
+                <li>Scroll behaviour</li><li>Visual rhythm</li>
+              </ul>
+            </article>
+
+            <article class="wwd__panel" data-panel="4">
+              <div class="wwd__step-tag">04 <span></span> Content &amp; design</div>
+              <h3 class="wwd__panel-title">Design and message<br>must work together.</h3>
+              <p class="wwd__panel-body">Beautiful visuals without clear communication are never enough. We align copy, hierarchy, and design so value becomes obvious — quickly and naturally.</p>
+              <ul class="wwd__micro">
+                <li>Text structure</li><li>CTA flow</li>
+                <li>Readability</li><li>Conversion clarity</li>
+              </ul>
+            </article>
+
+            <article class="wwd__panel" data-panel="5">
+              <div class="wwd__step-tag">05 <span></span> System</div>
+              <h3 class="wwd__panel-title">Finally, we turn it<br>into a system.</h3>
+              <p class="wwd__panel-body">We don't build isolated screens. We build a design system that grows with the brand and stays consistent across the website, campaigns, and future content.</p>
+              <ul class="wwd__micro">
+                <li>Modular sections</li><li>Responsive logic</li>
+                <li>Scalable identity</li><li>Long-term consistency</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+
+        <div class="wwd-right" data-cursor="drag">
+          <div class="wwd__visuals" id="wwdVisuals">
+
+            <div class="wwd__vis is-active" data-vis="1">
+              <div class="wwd__vis-meta"><span>Identity / System 01</span><span>A—01</span></div>
+              <div class="wwd-vis-v1">
+                <div class="v1__mark">Studio<em>,</em><br>One<em>.</em></div>
+                <div class="v1__palette"><span></span><span></span><span></span><span></span><span></span></div>
+                <div class="v1__spec"><span>Fraunces · Display</span><span>Inter Tight · Body</span></div>
+              </div>
+            </div>
+
+            <div class="wwd__vis" data-vis="2">
+              <div class="wwd__vis-meta"><span>Web / Hero composition</span><span>B—02</span></div>
+              <div class="wwd-vis-v2">
+                <div class="v2__browser">
+                  <div class="v2__bar"><i></i><i></i><i></i><span>studioone.rs</span></div>
+                  <div class="v2__navbar"><span>Studio One</span><span class="v2__links"><b>Services</b><b>Work</b><b>Contact</b></span><span>Book →</span></div>
+                  <div class="v2__hero">
+                    <h3>We build presence<br>that <em>makes sense</em>.</h3>
+                    <div class="v2__foot"><span>— Worldwide</span><span class="v2__cta">Book →</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="wwd__vis" data-vis="3">
+              <div class="wwd__vis-meta" style="color:rgba(246,243,238,.5)"><span>Motion / Frames</span><span>C—03</span></div>
+              <div class="wwd-vis-v3">
+                <div class="v3__grid">
+                  <div class="v3__frame" data-t="F01"><div class="v3__dot"></div></div>
+                  <div class="v3__frame" data-t="F02"><div class="v3__dot v3__dot--sm"></div></div>
+                  <div class="v3__frame" data-t="F03"><div class="v3__dot v3__dot--fade"></div></div>
+                  <div class="v3__frame" data-t="F04"><div class="v3__dot v3__dot--ring"></div></div>
+                  <div class="v3__frame" data-t="F05"><div class="v3__dot v3__dot--line"></div></div>
+                  <div class="v3__frame" data-t="F06"><div class="v3__dot v3__dot--rect"></div></div>
+                </div>
+                <div class="v3__tl"><div class="v3__tl-bar"></div></div>
+                <div class="v3__tl-labels"><span>00:00</span><span>ease-out · 900ms</span><span>00:02</span></div>
+              </div>
+            </div>
+
+            <div class="wwd__vis" data-vis="4">
+              <div class="wwd__vis-meta"><span>Editorial / Long-form</span><span>D—04</span></div>
+              <div class="wwd-vis-v4">
+                <div class="v4__eye">— Chapter III</div>
+                <h3 class="v4__lede">Clarity is <em>the shortest path</em> from intent to action.</h3>
+                <div class="v4__cols">
+                  <p>Copy isn't decoration. It carries the weight of the decision — what to click, what to trust, what to remember.</p>
+                  <p>Hierarchy holds space. Rhythm makes reading easy. Both must be designed.</p>
+                </div>
+                <div class="v4__foot"><span>View case study</span><span class="v4__btn">Open →</span></div>
+              </div>
+            </div>
+
+            <div class="wwd__vis" data-vis="5">
+              <div class="wwd__vis-meta"><span>System / Responsive set</span><span>E—05</span></div>
+              <div class="wwd-vis-v5">
+                <div class="v5__set">
+                  <div class="v5__desk">
+                    <div class="v5__tbar"><i></i><i></i><i></i></div>
+                    <div class="v5__body">
+                      <div class="v5__h">Built to grow.</div>
+                      <div class="v5__b w60"></div><div class="v5__b w40"></div>
+                      <div class="v5__media"></div>
+                    </div>
+                  </div>
+                  <div class="v5__mob">
+                    <div class="v5__tbar"><i></i></div>
+                    <div class="v5__body">
+                      <div class="v5__h">Growth.</div>
+                      <div class="v5__b w60"></div>
+                      <div class="v5__media"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="v5__tokens"><span>Tokens · 48</span><span>Components · 24</span><span>Breakpoints · 4</span></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── OFFERS / PRICING ───────────────────── -->
+  <section class="section packages" id="offers">
+    <div class="section__inner">
+      <div class="section__label">Collaboration models</div>
+
+      <div class="packages__top reveal">
+        <div>
+          <h2 class="packages__title">A clear collaboration framework,<br><em>without generic packages.</em></h2>
+        </div>
+        <div class="packages__copy">
+          <p class="packages__body">
+            We have starting collaboration models so it's immediately clear what's included
+            in a project. The final proposal is then shaped around the goal, scope, and
+            what your business actually needs.
+          </p>
+          <div class="packages__meta">Development · Redesign · Maintenance <span>•</span> Additional services as needed</div>
+        </div>
+      </div>
+
+      <div class="pkg-cats reveal reveal-d1" role="tablist" aria-label="Offer categories">
+        <button class="pkg-cat is-active" data-cat="web" role="tab" aria-selected="true">Web</button>
+        <button class="pkg-cat" data-cat="social" role="tab" aria-selected="false">Social media</button>
+        <button class="pkg-cat" data-cat="ads" role="tab" aria-selected="false">Campaigns &amp; ads</button>
+      </div>
+
+      <div class="pkg-layout reveal reveal-d2">
+        <div class="pkg-sel" id="pkgSel" aria-label="Package list"></div>
+        <div class="pkg-detail" id="pkgDetail" aria-live="polite"></div>
+      </div>
+
+      <div class="pkg-note reveal reveal-d3">
+        Every project has its own scope, pace, and goal. These models serve as a clear
+        starting framework — not a rigid template.
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PROCESS ────────────────────────────── -->
+  <section class="section process" id="how-we-work">
+    <div class="section__inner">
+      <div class="section__label">What collaboration looks like</div>
+      <div class="process__grid">
+        <div class="process__step reveal">
+          <div class="process__n">01</div>
+          <h3 class="process__title">Intro call &amp; assessment</h3>
+          <p class="process__body">
+            First, we look at where your business currently stands, what you want to
+            improve, and whether Studio One can truly make a difference in that project.
+          </p>
+        </div>
+        <div class="process__step reveal reveal-d2">
+          <div class="process__n">02</div>
+          <h3 class="process__title">Structure, direction &amp; proposal</h3>
+          <p class="process__body">
+            We define the goal, website structure, priorities, and collaboration scope.
+            You get a clear direction, realistic framework, and a precise proposal.
+          </p>
+        </div>
+        <div class="process__step reveal reveal-d3">
+          <div class="process__n">03</div>
+          <h3 class="process__title">Design, build &amp; feedback</h3>
+          <p class="process__body">
+            The project develops through clear phases and regular feedback points, so
+            the entire process is transparent, calm, and without unnecessary confusion.
+          </p>
+        </div>
+        <div class="process__step reveal reveal-d4">
+          <div class="process__n">04</div>
+          <h3 class="process__title">Launch &amp; continued development</h3>
+          <p class="process__body">
+            After going live, we continue collaboration through maintenance, improvements,
+            and support — so the site stays a living part of the brand, not a finished file.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CLIENTS + STATS ───────────────────── -->
+  <section class="section clients">
+    <div class="section__inner">
+      <div class="clients__row">
+        <div class="clients__stats reveal">
+          <div class="clients__stat"><span class="stat-n" data-count="21">0</span><span class="stat-l">projects+</span></div>
+          <div class="clients__stat"><span class="stat-n">3</span><span class="stat-l">disciplines</span></div>
+          <div class="clients__stat"><span class="stat-n">WW</span><span class="stat-l">clients</span></div>
+          <div class="clients__stat"><span class="stat-n">NS</span><span class="stat-l">base</span></div>
+        </div>
+        <div class="clients__copy reveal reveal-d2">
+          <h2 class="clients__title">We don't take every project.<br>We step in where we can make <em>a real difference</em>.</h2>
+          <p class="clients__body">
+            Not because we want to sound exclusive — but because we believe a serious
+            result requires serious focus. We choose collaborations where we can bring
+            clear direction, quality impression, and a solution that makes sense for
+            the specific business.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOR WHO ────────────────────────────── -->
+  <section class="section forwhom">
+    <div class="section__inner">
+      <div class="section__label">Who Studio One is for</div>
+      <div class="forwhom__grid">
+        <div class="forwhom__col reveal">
+          <div class="forwhom__label" data-icon="✓">It's for you</div>
+          <ul class="forwhom__list">
+            <li>For businesses that want their site to finally look serious</li>
+            <li>For brands that want a better first impression and more trust</li>
+            <li>For companies that need a quality redesign or a fresh start</li>
+            <li>For those looking for a partner, not just a task executor</li>
+          </ul>
+        </div>
+        <div class="forwhom__col forwhom__col--neg reveal reveal-d2">
+          <div class="forwhom__label" data-icon="—">It's not for you</div>
+          <ul class="forwhom__list">
+            <li>If your only criterion is the lowest price</li>
+            <li>If you expect a serious project without clear communication</li>
+            <li>If you want a website just to have one, without a real goal</li>
+            <li>If you need it fast and somehow, rather than well and considered</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ADDITIONAL SERVICES ───────────────── -->
+  <section class="section addl">
+    <div class="section__inner">
+      <div class="section__label" style="color:rgba(246,243,238,.3)">Additional services</div>
+      <div class="addl__grid">
+        <div class="addl__card reveal"><div class="addl__n">01 / Visibility</div><h3 class="addl__name">SEO</h3><p>Keyword research, on-page optimisation and monthly improvement of the SEO foundation.</p></div>
+        <div class="addl__card reveal reveal-d1"><div class="addl__n">02 / Identity</div><h3 class="addl__name">Branding</h3><p>Logo, basic visual direction, and consistent identity across site and social media.</p></div>
+        <div class="addl__card reveal reveal-d2"><div class="addl__n">03 / Production</div><h3 class="addl__name">Content production</h3><p>Photography, video material, short-form edit, hooks, captions, and final processing.</p></div>
+        <div class="addl__card reveal reveal-d3"><div class="addl__n">04 / Reach</div><h3 class="addl__name">Influencer outreach</h3><p>Profile sourcing, contact, negotiations, and content quality control.</p></div>
+        <div class="addl__card reveal reveal-d4"><div class="addl__n">05 / Channels</div><h3 class="addl__name">Marketplace</h3><p>Setup and optimisation on relevant online marketplaces and Facebook Marketplace.</p></div>
+        <div class="addl__card reveal reveal-d5"><div class="addl__n">06 / Retention</div><h3 class="addl__name">Email marketing</h3><p>Sequences, automations, and campaigns for re-engaging your audience.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FAQ ────────────────────────────────── -->
+  <section class="section faq" id="faq">
+    <div class="section__inner">
+      <div class="section__label">Frequently asked questions</div>
+
+      <div class="faq__list">
+        <div class="faq__item">
+          <button class="faq__q" data-cursor="open">
+            <h3>Do you only do websites, or other services too?</h3>
+            <span class="faq__ico">+</span>
+          </button>
+          <div class="faq__a">
+            <div class="faq__a-inner">
+              Studio One covers website development, social media, advertising, SEO, and additional digital services that help businesses build a more serious online presence.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq__item">
+          <button class="faq__q" data-cursor="open">
+            <h3>Do you work with international clients?</h3>
+            <span class="faq__ico">+</span>
+          </button>
+          <div class="faq__a">
+            <div class="faq__a-inner">
+              Yes. Our base is in Novi Sad, but we collaborate worldwide. We have clients from Serbia, the region, and internationally.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq__item">
+          <button class="faq__q" data-cursor="open">
+            <h3>Is the ad budget included in the ads package price?</h3>
+            <span class="faq__ico">+</span>
+          </button>
+          <div class="faq__a">
+            <div class="faq__a-inner">
+              No. The ads package price refers exclusively to our service of managing, testing, and optimising campaigns. The ad budget is defined separately based on your goals and means.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq__item">
+          <button class="faq__q" data-cursor="open">
+            <h3>Do you accept every project?</h3>
+            <span class="faq__ico">+</span>
+          </button>
+          <div class="faq__a">
+            <div class="faq__a-inner">
+              No. We choose collaborations where we believe we can bring real value, clear direction, and a serious result.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq__item">
+          <button class="faq__q" data-cursor="open">
+            <h3>Do you offer monthly maintenance and continued development?</h3>
+            <span class="faq__ico">+</span>
+          </button>
+          <div class="faq__a">
+            <div class="faq__a-inner">
+              Yes. When needed, we offer monthly support, maintenance, and continued site improvement — especially for actively developing websites.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq__item">
+          <button class="faq__q" data-cursor="open">
+            <h3>Is copywriting included in the service?</h3>
+            <span class="faq__ico">+</span>
+          </button>
+          <div class="faq__a">
+            <div class="faq__a-inner">
+              Yes. Writing sales and communication copy is part of the process when the project requires it.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CONTACT CTA ────────────────────────── -->
+  <section class="cta-band" id="contact">
+    <div class="cta-band__inner">
+      <div class="cta-band__label">— Next step</div>
+      <h2 class="cta-band__title">Let's build something<br><em>worth remembering.</em></h2>
+      <div class="cta-band__actions">
+        <a href="mailto:hello@studioone.rs" class="btn-accent" data-cursor="book">Book a call →</a>
+        <a href="mailto:hello@studioone.rs" class="btn-outline-light" data-cursor="send">Send an inquiry</a>
+      </div>
+      <div class="cta-band__meta">
+        <span>Novi Sad, Serbia</span><span>·</span>
+        <span>Worldwide</span><span>·</span>
+        <span>Web · Social · Ads</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ────────────────────────────── -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <div class="footer__brand-name"><span class="footer__brand-dot"></span>Studio One</div>
+          <p class="footer__brand-desc">
+            Studio for website development, redesign, and growth — for brands that want a serious online presence and a clear digital foundation.
+          </p>
+        </div>
+        <div>
+          <div class="footer__col-title">Website services</div>
+          <ul class="footer__links">
+            <li><a href="pages/services.html">Website development</a></li>
+            <li><a href="pages/services.html">Website redesign</a></li>
+            <li><a href="pages/services.html">Maintenance &amp; growth</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Studio</div>
+          <ul class="footer__links">
+            <li><a href="pages/work.html">Work</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span class="footer__bottom-copy">© Studio One 2026</span>
+        <span class="footer__bottom-center">Worldwide</span>
+        <div class="footer__lang">
+          <a href="../index.html" class="footer__lang-item">SR</a>
+          <span class="footer__lang-sep">·</span>
+          <a href="index.html" class="footer__lang-item is-active">EN</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../js/cursor.js" defer></script>
+  <script src="../js/nav.js"    defer></script>
+  <script src="../js/wwd.js"    defer></script>
+  <script src="../js/packages.js" defer></script>
+  <script src="../js/faq.js"    defer></script>
+  <script src="../js/reveal.js" defer></script>
+  <script src="../js/main.js"   defer></script>
+
+</body>
+</html>

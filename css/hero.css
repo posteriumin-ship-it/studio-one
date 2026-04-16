@@ -63,8 +63,15 @@
   margin-top: 3px;
 }
 
+/* Hide stats below 1200px — prevents CTA / stats overlap at medium desktop */
+@media (max-width: 1199px) {
+  .hero__stats { display: none; }
+}
+/* At wide viewports: reserve right column so stats never collide with content */
+@media (min-width: 1200px) {
+  .hero__content { padding-right: 160px; }
+}
 @media (max-width: 768px) {
   .hero__bottom  { grid-template-columns: 1fr; gap: 24px; }
   .hero__actions { flex-wrap: wrap; }
-  .hero__stats   { display: none; }
 }

@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Work — Studio One</title>
+  <meta name="description" content="Selected projects by Studio One — websites, photography, and Instagram profiles built for brands that want a serious online presence." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,300;9..144,0,400;9..144,1,300;9..144,1,400&family=Inter+Tight:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../css/tokens.css">
+  <link rel="stylesheet" href="../../css/base.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/nav.css">
+  <link rel="stylesheet" href="../../css/misc.css">
+  <link rel="stylesheet" href="../../css/radovi.css">
+</head>
+<body>
+
+  <!-- ── CURSOR ─────────────────────────────── -->
+  <div class="c-ring" id="cRing"></div>
+  <div class="c-dot"  id="cDot"></div>
+
+  <!-- ── NAVIGATION ────────────────────────── -->
+  <nav class="nav" id="nav">
+    <a href="../index.html" class="nav__logo">
+      <span class="nav__logo-dot"></span>Studio One
+    </a>
+    <div class="nav__links">
+      <a href="services.html">Services</a>
+      <a href="work.html" class="nav__link--active">Work</a>
+      <a href="../index.html#faq">FAQ</a>
+      <a href="../index.html#contact">Contact</a>
+    </div>
+    <div class="nav__lang">
+      <a href="../../pages/radovi.html" class="nav__lang-item">SR</a>
+      <span class="nav__lang-sep">·</span>
+      <a href="work.html" class="nav__lang-item is-active">EN</a>
+    </div>
+    <a href="../index.html#contact" class="nav__cta" data-cursor="book">Book a call</a>
+    <button class="nav__burger" id="navBurger" aria-label="Menu">
+      <span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="nav__mobile" id="navMobile">
+    <a href="services.html">Services</a>
+    <a href="work.html">Work</a>
+    <a href="../index.html#faq">FAQ</a>
+    <a href="../index.html#contact">Contact</a>
+    <a href="../index.html#contact" class="nav__mobile-cta">Book a call →</a>
+  </div>
+
+  <!-- ── PAGE HERO ─────────────────────────── -->
+  <div class="radovi-hero reveal">
+    <p class="radovi-hero__label">— Selected work</p>
+    <h1 class="radovi-hero__title">Projects that show<br><em>how we think.</em></h1>
+  </div>
+
+  <!-- ── FILTER BAR ────────────────────────── -->
+  <div class="radovi-filter" id="radoviFilter">
+    <button class="filter__tab is-active" data-cat="web">Websites</button>
+    <button class="filter__tab" data-cat="foto">Photography</button>
+    <button class="filter__tab" data-cat="ig">Instagram profiles</button>
+    <span class="filter__indicator" id="filterIndicator"></span>
+  </div>
+
+  <!-- ── PROJECT GRID ──────────────────────── -->
+  <div class="radovi-grid-wrap">
+    <div class="radovi-grid" id="radoviGrid">
+      <!-- populated by radovi.js -->
+    </div>
+  </div>
+
+  <!-- ── CTA BAND ──────────────────────────── -->
+  <section class="section cta-band">
+    <div class="cta-band__inner">
+      <p class="cta-band__label">— Next step</p>
+      <h2 class="cta-band__title">Want your next website<br>to be this <em>considered</em>.</h2>
+      <div class="cta-band__actions">
+        <a href="../index.html#contact" class="btn-primary-light" data-cursor="book">Book a call <span class="btn-arrow">→</span></a>
+        <a href="mailto:hello@studioone.rs" class="btn-outline-light" data-cursor="send">Send an inquiry</a>
+      </div>
+      <div class="cta-band__meta">
+        <span>Novi Sad, Serbia</span><span>·</span>
+        <span>Worldwide</span><span>·</span>
+        <span>Web · Social · Ads</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ────────────────────────────── -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <div class="footer__brand-name"><span class="footer__brand-dot"></span>Studio One</div>
+          <p class="footer__brand-desc">
+            Studio for website development, redesign, and growth — for brands that want a serious online presence and a clear digital foundation.
+          </p>
+        </div>
+        <div>
+          <div class="footer__col-title">Website services</div>
+          <ul class="footer__links">
+            <li><a href="services.html">Website development</a></li>
+            <li><a href="services.html">Website redesign</a></li>
+            <li><a href="services.html">Maintenance &amp; growth</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Studio</div>
+          <ul class="footer__links">
+            <li><a href="work.html">Work</a></li>
+            <li><a href="../index.html#faq">FAQ</a></li>
+            <li><a href="../index.html#contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span class="footer__bottom-copy">© Studio One 2026</span>
+        <span class="footer__bottom-center">Worldwide</span>
+        <div class="footer__lang">
+          <a href="../../pages/radovi.html" class="footer__lang-item">SR</a>
+          <span class="footer__lang-sep">·</span>
+          <a href="work.html" class="footer__lang-item is-active">EN</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../../js/cursor.js" defer></script>
+  <script src="../../js/nav.js"    defer></script>
+  <script src="../../js/reveal.js" defer></script>
+  <script src="../../js/main.js"   defer></script>
+  <script src="../../js/radovi.js" defer></script>
+
+  <!-- Override labels to English after radovi.js runs -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      /* radovi.js will have already populated the grid — nothing to override
+         since project names / domains are universal. Tab labels are set in HTML above. */
+    });
+  </script>
+
+</body>
+</html>
