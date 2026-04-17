@@ -32,6 +32,15 @@
   top: 64px;
 }
 
+/*
+   Prevent horizontal overflow caused by animated/clipped
+   hero elements and wide inline elements on small screens.
+*/
+html,
+body {
+  overflow-x: hidden;
+}
+
 
 /* ──────────────────────────────────────────────────────────
    TABLET  768–1199px
@@ -110,21 +119,38 @@
     padding: 0 20px;
   }
 
-  /* Mobile menu — premium full-screen overlay refinements */
+  /* Mobile menu — premium left-aligned editorial layout */
+  /*
+     nav.css defaults to align-items:center; justify-content:center.
+     On mobile we switch to top-left layout: items read left-aligned
+     from below the nav bar, CTA separated at the bottom.
+  */
   .nav__mobile {
-    gap: 22px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 88px var(--gutter) clamp(32px,7vw,56px);
+    gap: clamp(8px,3vw,18px);
     font-size: clamp(28px,8vw,40px);
-    padding: 0 var(--gutter);
+  }
+  /*
+     iOS Safari: `body { overflow: hidden }` alone does not prevent
+     scroll-through on the background page when the overlay is open.
+     `touch-action: none` on the open overlay blocks touch-scroll events
+     from reaching the underlying document.
+  */
+  .nav__mobile.is-open {
+    touch-action: none;
   }
   .nav__mobile-cta {
     font-size: 16px;
-    margin-top: 8px;
+    margin-top: 16px;
     letter-spacing: .01em;
     font-family: var(--font-sans);
     opacity: .75;
   }
   .nav__mobile-lang {
-    margin-top: 4px;
+    margin-top: 8px;
+    font-size: 10px;
   }
 
 
@@ -155,7 +181,7 @@
     padding: 11px 0;
   }
   .marquee__i {
-    font-size: 9px;
+    font-size: 10px;
     padding: 0 clamp(16px,4vw,32px);
   }
 
@@ -168,7 +194,7 @@
     font-size: 15px;
   }
   .manifesto__list li {
-    font-size: 9px;
+    font-size: 11px;
     padding: 12px 0;
   }
 
@@ -181,8 +207,102 @@
     font-size: clamp(24px,7vw,36px);
   }
 
-  /* ── WwD ──────────────────────────────────── */
-  /* Complete fallback already in wwd.css at 960px — no overrides needed */
+  /* ── WwD — horizontal swipe cards ────────── */
+  /*
+     Replaces the wwd.css 960px stacked-blocks fallback with a
+     horizontally scrollable snap-card rail at ≤767px.
+     Desktop sticky experience (≥961px) is untouched.
+  */
+
+  /* Release the overflow: hidden clip so the full-bleed rail works */
+  .wwd-sticky {
+    overflow: visible;
+  }
+
+  /* Dots: horizontal tappable step row */
+  .wwd__dots {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    gap: 0;
+    height: auto;
+    margin-bottom: clamp(20px,4vw,32px);
+  }
+  .wwd__dots::-webkit-scrollbar { display: none; }
+
+  .wwd__dot {
+    flex-shrink: 0;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+    padding-right: clamp(18px,4vw,28px);
+    font-size: 9px;
+    cursor: pointer;
+  }
+  .wwd__dot-line {
+    width: 16px;
+    transition: width 300ms var(--ease);
+  }
+  .wwd__dot.is-active .wwd__dot-line { width: 28px; }
+
+  /*
+     Panels rail: full-bleed horizontal snap-scroll container.
+     Negative margin breaks out of the parent gutter; padding
+     restores the left breathing room and the ::after spacer
+     fixes the iOS WebKit padding-right drop at the trailing edge.
+  */
+  .wwd__panels {
+    display: flex;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    margin: 0 calc(-1 * var(--gutter));
+    padding: 0 var(--gutter);
+    gap: 12px;
+    min-height: auto;
+  }
+  .wwd__panels::-webkit-scrollbar { display: none; }
+  .wwd__panels::after {
+    content: '';
+    flex-shrink: 0;
+    width: var(--gutter);
+  }
+
+  /* Each panel = snap card */
+  .wwd__panel {
+    flex-shrink: 0;
+    width: 82vw;
+    scroll-snap-align: start;
+    position: relative !important;
+    opacity: 1 !important;
+    transform: none !important;
+    pointer-events: auto !important;
+    visibility: visible !important;
+    z-index: 1 !important;
+    padding: clamp(28px,5vw,40px) clamp(18px,4vw,24px) !important;
+    border: 1px solid rgba(10,10,10,.1) !important;
+  }
+
+  /* Panel typography */
+  .wwd__panel-title {
+    font-size: clamp(22px,6vw,32px);
+  }
+  .wwd__panel-body {
+    font-size: 14px;
+    max-width: 100%;
+    margin-bottom: 20px;
+  }
+  .wwd__micro {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 12px;
+  }
+  .wwd__micro li {
+    font-size: 10px;
+    padding-top: 8px;
+  }
 
   /* ── Packages ─────────────────────────────── */
   /* Layout already stacks at 900px via packages.css */
@@ -195,10 +315,20 @@
     flex-wrap: nowrap;
   }
   .pkg-cats::-webkit-scrollbar { display: none; }
+  /*
+     WebKit (iOS Safari) drops the right-side padding on scrollable flex
+     containers. The ::after spacer restores the visual breathing room
+     at the trailing edge when the user scrolls to the last item.
+  */
+  .pkg-cats::after {
+    content: '';
+    flex-shrink: 0;
+    width: var(--gutter);
+  }
   .pkg-cat {
     flex-shrink: 0;
     padding: 14px 18px;
-    font-size: 9px;
+    font-size: 11px;
   }
   .pkg-sel {
     overflow-x: auto;
@@ -251,9 +381,18 @@
     font-size: 16px;
     flex-shrink: 0;
   }
-  /* Increase max-height so long answers don't clip on mobile */
+  /*
+     Use a fast ease-out transition so the accordion feels snappy
+     even with a large max-height ceiling. Without this, the default
+     500ms ease (slow-start) causes visible "dead time" on close when
+     max-height is set much higher than the actual content height.
+  */
+  .faq__a {
+    transition: max-height 280ms ease-out;
+  }
+  /* Increase max-height ceiling — prevents long answers from clipping */
   .faq__item.is-open .faq__a {
-    max-height: 400px;
+    max-height: 800px;
   }
 
   /* ── CTA band ─────────────────────────────── */
@@ -313,8 +452,14 @@
     height: 46px;
     gap: 16px;
   }
+  /* WebKit scroll-container trailing-edge spacer */
+  .svc-nav__inner::after {
+    content: '';
+    flex-shrink: 0;
+    width: var(--gutter);
+  }
   .svc-nav__item {
-    font-size: 9px;
+    font-size: 10px;
     letter-spacing: .12em;
   }
 
@@ -396,8 +541,14 @@
   /* ── Filter bar ───────────────────────────── */
   .filter__tab {
     padding: 20px 0;
-    font-size: 9px;
+    font-size: 10px;
     margin-right: clamp(20px,5vw,40px);
+  }
+  /* Same WebKit scroll-container right-padding fix as pkg-cats */
+  .radovi-filter::after {
+    content: '';
+    flex-shrink: 0;
+    width: var(--gutter);
   }
 
   /* ── Grid ─────────────────────────────────── */
@@ -409,7 +560,7 @@
     font-size: clamp(22px,7vw,36px);
   }
   .proj-card__cta {
-    font-size: 9px;
+    font-size: 10px;
   }
 
 
@@ -468,9 +619,10 @@
     font-size: 16px;
     flex-shrink: 0;
   }
-  /* Increase max-height for mobile (more text wrapping) */
+  /* Large ceiling so no answer clips (even multi-paragraph EN answers).
+     The fast ease-out transition set on .faq__a above keeps it snappy. */
   .faq-body .faq__item.is-open .faq__a {
-    max-height: 600px;
+    max-height: 1500px;
   }
 
   /* ── FAQ CTA ──────────────────────────────── */
@@ -490,7 +642,11 @@
   /* ══ KONTAKT PAGE ═══════════════════════════════════════ */
 
   /* ── Hero ─────────────────────────────────── */
-  /* Already 1col at 900px via kontakt.css */
+  /*
+     kontakt.css and faq-page.css both hardcode calc(64px + ...)
+     for top padding. On mobile the nav shrinks to 56px, so we
+     correct here to avoid ~8px of extra dead space.
+  */
   .kontakt-hero {
     padding-top: calc(56px + clamp(36px,6vw,52px));
     padding-bottom: clamp(36px,5vw,56px);
@@ -513,8 +669,12 @@
     margin-bottom: clamp(24px,5vw,36px);
   }
   .kontakt-field__label {
-    font-size: 9px;
+    font-size: 11px;   /* match --t-xs token; 9px was unreadably small */
     letter-spacing: .18em;
+  }
+  /* Validation error message: also bump from component's 9px to 11px */
+  .kontakt-field__error {
+    font-size: 11px;
   }
   /* Row already 1col at 600px via kontakt.css */
 

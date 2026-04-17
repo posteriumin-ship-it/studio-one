@@ -25,8 +25,6 @@
   transition: transform 480ms var(--ease);
   z-index: 0;
 }
-.svc-card:hover::before { transform: scaleY(1); }
-.svc-card:hover { color: var(--ink); }
 .svc-card > * { position: relative; z-index: 1; }
 
 .svc-card__n {
@@ -58,9 +56,18 @@
   display: flex; align-items: center; gap: 10px; opacity: .7;
 }
 .svc-card__link::after { content: "→"; transition: transform 250ms var(--ease); }
-.svc-card:hover .svc-card__link::after { transform: translateX(4px); }
 
 @media (max-width: 900px) {
   .services__grid { grid-template-columns: 1fr; }
   .svc-card { padding: clamp(28px,5vw,48px) 24px; }
+}
+
+/* ── Hover — pointer devices only ──────────────────────────
+   Touch devices must not fire hover states on tap.
+   Only real pointing devices (mouse / trackpad) match this.
+────────────────────────────────────────────────────────── */
+@media (hover: hover) and (pointer: fine) {
+  .svc-card:hover::before { transform: scaleY(1); }
+  .svc-card:hover { color: var(--ink); }
+  .svc-card:hover .svc-card__link::after { transform: translateX(4px); }
 }

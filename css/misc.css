@@ -106,7 +106,6 @@
   border-bottom: 3px solid transparent;
   transition: border-color 300ms var(--ease), background 300ms var(--ease);
 }
-.addl__card:hover { background: #141413; border-bottom-color: var(--accent); }
 .addl__n {
   font-family: var(--font-mono); font-size: 10px;
   letter-spacing: .2em; text-transform: uppercase; opacity: .28; margin-bottom: 20px;
@@ -212,7 +211,6 @@
 }
 .footer__links { display: flex; flex-direction: column; gap: 10px; }
 .footer__links a { font-size: 14px; transition: color 200ms; }
-.footer__links a:hover { color: var(--bone); }
 .footer__bottom {
   display: flex; justify-content: space-between; align-items: center;
   font-family: var(--font-mono); font-size: 10px;
@@ -228,7 +226,16 @@
 }
 .footer__lang-sep { opacity: .2; font-size: 11px; }
 .footer__lang-item { opacity: .3; transition: opacity 220ms var(--ease); }
-.footer__lang-item:hover { opacity: .7; }
 .footer__lang-item.is-active { opacity: 1; }
 @media (max-width: 900px) { .footer__top { grid-template-columns: 1fr 1fr; gap: 32px; } }
 @media (max-width: 560px) { .footer__top { grid-template-columns: 1fr; } }
+
+/* ── Hover — pointer devices only ──────────────────────────
+   Touch devices must not fire hover states on tap.
+   Only real pointing devices (mouse / trackpad) match this.
+────────────────────────────────────────────────────────── */
+@media (hover: hover) and (pointer: fine) {
+  .addl__card:hover { background: #141413; border-bottom-color: var(--accent); }
+  .footer__links a:hover { color: var(--bone); }
+  .footer__lang-item:hover { opacity: .7; }
+}

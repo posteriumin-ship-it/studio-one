@@ -127,6 +127,26 @@
 }
 .kontakt-field:focus-within::after { width: 100%; }
 
+/* ── Validation error state ───────────────── */
+.kontakt-field.is-error .kontakt-input {
+  border-bottom-color: rgba(220,50,50,.55);
+}
+.kontakt-field.is-error .kontakt-field__label {
+  opacity: .7;
+  color: rgba(200,40,40,.85);
+}
+.kontakt-field.is-error::after {
+  background: rgba(200,40,40,.75);
+  width: 100%;
+}
+.kontakt-field__error {
+  font-family: var(--font-mono);
+  font-size: 9px; letter-spacing: .14em; text-transform: uppercase;
+  color: rgba(200,40,40,.8);
+  margin-top: 6px;
+  min-height: 14px;
+}
+
 /* Textarea */
 .kontakt-textarea {
   resize: none;
@@ -158,7 +178,6 @@
   user-select: none;
   opacity: .7;
 }
-.kontakt-pill + label:hover { opacity: 1; border-color: rgba(10,10,10,.45); }
 .kontakt-pill:checked + label {
   background: var(--ink); color: var(--bone);
   border-color: var(--ink); opacity: 1;
@@ -267,7 +286,6 @@
   transform: scaleX(0); transform-origin: left center;
   transition: transform 320ms var(--ease);
 }
-.kontakt-alt__email:hover::after { transform: scaleX(1); }
 
 /* ── Closing block ────────────────────────── */
 .kontakt-close {
@@ -314,4 +332,13 @@
 }
 .kontakt-success__text {
   font-size: var(--t-base); line-height: 1.6; opacity: .6; max-width: 44ch; margin: 0 auto;
+}
+
+/* ── Hover — pointer devices only ──────────────────────────
+   Touch devices must not fire hover states on tap.
+   Only real pointing devices (mouse / trackpad) match this.
+────────────────────────────────────────────────────────── */
+@media (hover: hover) and (pointer: fine) {
+  .kontakt-pill + label:hover { opacity: 1; border-color: rgba(10,10,10,.45); }
+  .kontakt-alt__email:hover::after { transform: scaleX(1); }
 }

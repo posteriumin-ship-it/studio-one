@@ -166,8 +166,19 @@ function initWwd() {
   /* ── Dot click — jump to step ────────────────────────────── */
   dots.forEach(function(d) {
     d.addEventListener('click', function() {
-      if (isMobileMode) return;
-      var n          = +d.dataset.step - 1;
+      var n = +d.dataset.step - 1;
+      if (isMobileMode) {
+        /* Mobile: snap-scroll the panels rail to the target card */
+        if (panels[n]) {
+          panels[n].scrollIntoView({
+            behavior: 'smooth',
+            block: 'nearest',
+            inline: 'start'
+          });
+        }
+        return;
+      }
+      /* Desktop: drive the sticky scroll position */
       var outerTop   = outer.getBoundingClientRect().top + window.scrollY;
       var scrollable = outer.offsetHeight - window.innerHeight;
       window.scrollTo({

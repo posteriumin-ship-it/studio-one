@@ -1,46 +1,65 @@
 /* ============================================================
    Radovi — portfolio page
    Filter tabs + project grid + iframe preview overlay
+   Bilingual: tags and UI strings adapt to lang="sr|en".
    ============================================================ */
 function initRadovi() {
 
-  /* ── Project data ────────────────────────────────────────── */
+  /* ── Language detection ──────────────────── */
+  var isEN = document.documentElement.lang === 'en';
+
+  /* ── UI strings ──────────────────────────── */
+  var UI = isEN ? {
+    webCta      : 'Preview →',
+    fotoLabel   : 'Photography',
+  } : {
+    webCta      : 'Pregledaj →',
+    fotoLabel   : 'Fotografija',
+  };
+
+  /* ── Project data ────────────────────────── */
+  /* tag / tag_en — render based on language   */
   var PROJECTS = {
     web: [
       {
         n: '01', name: 'Posterium', domain: 'posteriumin.com',
         url: 'https://posteriumin.com/en',
-        tag: 'E-commerce · Brend'
+        tag: 'E-commerce · Brend',      tag_en: 'E-commerce · Brand'
       },
       {
         n: '02', name: 'Interplast-S', domain: 'interplast-s.com',
         url: 'https://interplast-s.com/',
-        tag: 'Korporativni sajt'
+        tag: 'Korporativni sajt',        tag_en: 'Corporate website'
       },
       {
         n: '03', name: 'Dr MetalPlus', domain: 'dr-metalplus.com',
         url: 'https://dr-metalplus.com/',
-        tag: 'Medicinski servis'
+        tag: 'Medicinski servis',        tag_en: 'Medical service'
       },
       {
         n: '04', name: 'EDC Satovi', domain: 'edcsatovishop.com',
         url: 'https://edcsatovishop.com/',
-        tag: 'Online prodavnica'
+        tag: 'Online prodavnica',        tag_en: 'Online store'
       }
     ],
     foto: [
-      { n: '01', name: 'Portret serija',     tag: 'Fotografija · 2025' },
-      { n: '02', name: 'Proizvodni shoot',   tag: 'Fotografija · 2024' },
-      { n: '03', name: 'Arhitekturalni set', tag: 'Fotografija · 2024' }
+      { n: '01', name: 'Portrait series',      tag: 'Fotografija · 2025', tag_en: 'Photography · 2025' },
+      { n: '02', name: 'Product shoot',        tag: 'Fotografija · 2024', tag_en: 'Photography · 2024' },
+      { n: '03', name: 'Architectural series', tag: 'Fotografija · 2024', tag_en: 'Photography · 2024' }
     ],
     ig: [
-      { n: '01', name: 'Posterium',     handle: '@posteriumin',     tag: 'E-commerce · Fashion' },
-      { n: '02', name: 'EDC Satovi',    handle: '@edcsatovishop',   tag: 'Online prodavnica' },
-      { n: '03', name: 'Projekat 03',   handle: 'Uskoro',           tag: 'U pripremi' }
+      { n: '01', name: 'Posterium',  handle: '@posteriumin',   tag: 'E-commerce · Fashion',    tag_en: 'E-commerce · Fashion'  },
+      { n: '02', name: 'EDC Satovi', handle: '@edcsatovishop', tag: 'Online prodavnica',        tag_en: 'Online store'          }
+      /* Note: third IG slot removed — placeholder "Projekat 03" was not real work */
     ]
   };
 
-  /* ── DOM refs ────────────────────────────────────────────── */
+  /* Helper: resolve correct tag string for current language */
+  function getTag(p) {
+    return isEN && p.tag_en ? p.tag_en : p.tag;
+  }
+
+  /* ── DOM refs ────────────────────────────── */
   var grid      = document.getElementById('radoviGrid');
   var filter    = document.getElementById('radoviFilter');
   var indicator = document.getElementById('filterIndicator');
@@ -58,7 +77,7 @@ function initRadovi() {
 
   var activeCat = 'web';
 
-  /* ── Build cards ─────────────────────────────────────────── */
+  /* ── Build cards ─────────────────────────── */
   function buildWebCard(p) {
     var el = document.createElement('div');
     el.className = 'proj-card proj-card--web';
@@ -66,8 +85,8 @@ function initRadovi() {
       '<span class="proj-card__n">' + p.n + '</span>' +
       '<span class="proj-card__domain">' + p.domain + '</span>' +
       '<h2 class="proj-card__name">' + p.name + '</h2>' +
-      '<span class="proj-card__tag">' + p.tag + '</span>' +
-      '<span class="proj-card__cta">Pregledaj →</span>';
+      '<span class="proj-card__tag">' + getTag(p) + '</span>' +
+      '<span class="proj-card__cta">' + UI.webCta + '</span>';
     el.addEventListener('click', function() { openPreview(p); });
     return el;
   }
@@ -77,9 +96,9 @@ function initRadovi() {
     el.className = 'proj-card proj-card--foto';
     el.innerHTML =
       '<span class="proj-card__n">' + p.n + '</span>' +
-      '<div class="foto-frame"><span class="foto-frame__label">Fotografija</span></div>' +
+      '<div class="foto-frame"><span class="foto-frame__label">' + UI.fotoLabel + '</span></div>' +
       '<h2 class="proj-card__name" style="position:absolute;bottom:66px;left:22px;right:22px;font-family:var(--font-serif);font-weight:300;font-size:clamp(22px,2.8vw,40px);line-height:.95;letter-spacing:-.03em;">' + p.name + '</h2>' +
-      '<span class="proj-card__tag">' + p.tag + '</span>';
+      '<span class="proj-card__tag">' + getTag(p) + '</span>';
     return el;
   }
 
@@ -94,11 +113,11 @@ function initRadovi() {
         '<div class="ig-phone__bar">' + p.handle + '</div>' +
         '<div class="ig-phone__grid">' + cells + '</div>' +
       '</div>' +
-      '<span class="proj-card__tag">' + p.tag + '</span>';
+      '<span class="proj-card__tag">' + getTag(p) + '</span>';
     return el;
   }
 
-  /* ── Render grid for a category ──────────────────────────── */
+  /* ── Render grid for a category ──────────── */
   function renderGrid(cat, animate) {
     var items = PROJECTS[cat] || [];
 
@@ -128,7 +147,7 @@ function initRadovi() {
     }, delay);
   }
 
-  /* ── Sliding indicator ───────────────────────────────────── */
+  /* ── Sliding indicator ───────────────────── */
   function moveIndicator(tab) {
     var filterRect = filter.getBoundingClientRect();
     var tabRect    = tab.getBoundingClientRect();
@@ -136,7 +155,7 @@ function initRadovi() {
     indicator.style.width = tabRect.width + 'px';
   }
 
-  /* ── Tab switching ───────────────────────────────────────── */
+  /* ── Tab switching ───────────────────────── */
   tabs.forEach(function(tab) {
     tab.addEventListener('click', function() {
       if (tab.dataset.cat === activeCat) return;
@@ -149,7 +168,7 @@ function initRadovi() {
     });
   });
 
-  /* ── iframe Preview ──────────────────────────────────────── */
+  /* ── iframe Preview ──────────────────────── */
   function openPreview(p) {
     if (!overlay) return;
 
@@ -199,7 +218,7 @@ function initRadovi() {
     if (e.key === 'Escape') closePreview();
   });
 
-  /* ── Init ────────────────────────────────────────────────── */
+  /* ── Init ────────────────────────────────── */
   renderGrid('web', false);
 
   /* Position indicator after layout paint */

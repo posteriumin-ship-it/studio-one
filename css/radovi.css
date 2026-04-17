@@ -44,7 +44,6 @@
 }
 .filter__tab:last-child { margin-right: 0; }
 .filter__tab.is-active  { opacity: 1; }
-.filter__tab:hover:not(.is-active) { opacity: .6; }
 
 /* Sliding underline indicator */
 .filter__indicator {
@@ -77,7 +76,6 @@
               border-color 400ms var(--ease);
 }
 .proj-card.is-in { opacity: 1; transform: translateY(0); }
-.proj-card:hover { border-color: rgba(10,10,10,.35); }
 
 .proj-card__n {
   position: absolute; top: 22px; left: 22px;
@@ -98,7 +96,6 @@
   transition: opacity 300ms var(--ease), transform 300ms var(--ease);
   pointer-events: none;
 }
-.proj-card:hover .proj-card__cta { opacity: 1; transform: translateY(0); }
 
 /* ─── Web cards ──────────────────────────────────────────────── */
 .proj-card--web { background: #0A0A0A; color: #F6F3EE; }
@@ -124,7 +121,6 @@
   transform: scaleX(0); transform-origin: left;
   transition: transform 450ms var(--ease);
 }
-.proj-card--web:hover::after { transform: scaleX(1); }
 
 /* ─── Photo cards ────────────────────────────────────────────── */
 .proj-card--foto {
@@ -213,7 +209,6 @@
   transition: background 300ms var(--ease), color 300ms var(--ease);
   flex-shrink: 0;
 }
-.preview__ext:hover { background: var(--accent); color: #0A0A0A; }
 .preview__close {
   width: 36px; height: 36px; border-radius: 50%;
   border: 1px solid rgba(246,243,238,.18);
@@ -222,9 +217,6 @@
   display: flex; align-items: center; justify-content: center;
   transition: border-color 300ms, color 300ms;
   flex-shrink: 0;
-}
-.preview__close:hover {
-  border-color: rgba(246,243,238,.6); color: #F6F3EE;
 }
 
 .preview__frame-wrap {
@@ -251,7 +243,6 @@
   padding: 12px 24px; text-decoration: none;
   transition: background 300ms;
 }
-.preview__blocked a:hover { background: var(--accent); color: #0A0A0A; }
 
 /* ─── Mobile ──────────────────────────────────────────────────── */
 @media (max-width: 768px) {
@@ -259,4 +250,18 @@
   .proj-card { aspect-ratio: 3 / 4; }
   .proj-card__cta { opacity: 1; transform: none; }
   .preview-overlay { display: none; }
+}
+
+/* ── Hover — pointer devices only ──────────────────────────
+   Touch devices must not fire hover states on tap.
+   Only real pointing devices (mouse / trackpad) match this.
+────────────────────────────────────────────────────────── */
+@media (hover: hover) and (pointer: fine) {
+  .filter__tab:hover:not(.is-active) { opacity: .6; }
+  .proj-card:hover { border-color: rgba(10,10,10,.35); }
+  .proj-card:hover .proj-card__cta { opacity: 1; transform: translateY(0); }
+  .proj-card--web:hover::after { transform: scaleX(1); }
+  .preview__ext:hover { background: var(--accent); color: #0A0A0A; }
+  .preview__close:hover { border-color: rgba(246,243,238,.6); color: #F6F3EE; }
+  .preview__blocked a:hover { background: var(--accent); color: #0A0A0A; }
 }

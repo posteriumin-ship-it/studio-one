@@ -27,15 +27,12 @@
   font-family: var(--font-sans); font-size: 13px; letter-spacing: .02em; opacity: .8;
 }
 .nav__links a { transition: opacity 200ms; }
-.nav__links a:hover { opacity: .45; }
 .nav__cta {
   font-family: var(--font-sans); font-size: 13px; letter-spacing: .04em;
   border: 1px solid var(--ink); padding: 10px 22px; border-radius: 999px;
   transition: background 250ms var(--ease), color 250ms var(--ease);
   white-space: nowrap;
 }
-.nav__cta:hover { background: var(--ink); color: var(--bone); }
-
 /* ── Language switcher ────────────────────── */
 .nav__lang {
   display: flex; align-items: center; gap: 7px;
@@ -44,7 +41,6 @@
 }
 .nav__lang-sep { opacity: .2; font-size: 11px; }
 .nav__lang-item { opacity: .3; transition: opacity 220ms var(--ease); }
-.nav__lang-item:hover { opacity: .7; }
 .nav__lang-item.is-active { opacity: 1; }
 
 /* ── Active nav link ──────────────────────── */
@@ -68,11 +64,6 @@ body[data-dark-hero] .nav:not(.is-scrolled) .nav__links {
 body[data-dark-hero] .nav:not(.is-scrolled) .nav__cta {
   border-color: rgba(246,243,238,.45);
   color: var(--bone);
-}
-body[data-dark-hero] .nav:not(.is-scrolled) .nav__cta:hover {
-  background: var(--bone);
-  color: var(--ink);
-  border-color: var(--bone);
 }
 body[data-dark-hero] .nav:not(.is-scrolled) .nav__burger span {
   background: var(--bone);
@@ -108,7 +99,6 @@ body[data-dark-hero] .nav:not(.is-scrolled) .nav__lang-sep {
 }
 .nav__mobile.is-open { opacity: 1; pointer-events: auto; }
 .nav__mobile a { transition: opacity 200ms; }
-.nav__mobile a:hover { opacity: .5; }
 .nav__mobile-cta { color: var(--accent); }
 
 @media (max-width: 768px) {
@@ -132,6 +122,22 @@ body[data-dark-hero] .nav:not(.is-scrolled) .nav__lang-sep {
   transition: opacity 220ms var(--ease);
   font-size: 11px;
 }
-.nav__mobile-lang .nav__lang-item:hover { opacity: .7; }
 .nav__mobile-lang .nav__lang-item.is-active { opacity: 1; }
 .nav__mobile-lang .nav__lang-sep { opacity: .2; }
+
+/* ── Hover — pointer devices only ──────────────────────────
+   Touch devices must not fire hover states on tap.
+   Only real pointing devices (mouse / trackpad) match this.
+────────────────────────────────────────────────────────── */
+@media (hover: hover) and (pointer: fine) {
+  .nav__links a:hover { opacity: .45; }
+  .nav__cta:hover { background: var(--ink); color: var(--bone); }
+  .nav__lang-item:hover { opacity: .7; }
+  body[data-dark-hero] .nav:not(.is-scrolled) .nav__cta:hover {
+    background: var(--bone);
+    color: var(--ink);
+    border-color: var(--bone);
+  }
+  .nav__mobile a:hover { opacity: .5; }
+  .nav__mobile-lang .nav__lang-item:hover { opacity: .7; }
+}

@@ -49,7 +49,6 @@
   display: flex; align-items: center; gap: 10px;
 }
 .svc-nav__item span { opacity: .5; }
-.svc-nav__item:hover { opacity: .7; }
 .svc-nav__item.is-active { opacity: 1; }
 
 /* ─── Service section (shared) ───────────────────────────────── */
@@ -193,7 +192,6 @@
   transition: opacity 350ms var(--ease), gap 350ms var(--ease);
   opacity: .6;
 }
-.svc-text__cta:hover { opacity: 1; gap: 18px; }
 
 /* ─── Right: visual column ───────────────────────────────────── */
 .svc-visual {
@@ -455,7 +453,6 @@
   transition: background 400ms var(--ease);
   cursor: default;
 }
-.addl-svc__card:hover { background: rgba(10,10,10,.03); }
 .addl-svc__card-n {
   font-family: var(--font-mono); font-size: var(--t-xs);
   letter-spacing: .14em; opacity: .3; margin-bottom: 10px;
@@ -525,7 +522,6 @@
   padding-bottom: 4px;
   transition: gap 350ms var(--ease);
 }
-.pkg-teaser__cta:hover { gap: 20px; }
 
 /* ─── Process ────────────────────────────────────────────────── */
 .usluge-process {
@@ -599,4 +595,15 @@
   .addl-svc__grid { grid-template-columns: 1fr; }
   .usluge-process__grid { grid-template-columns: 1fr; }
   .svc-includes { grid-template-columns: 1fr; }
+}
+
+/* ── Hover — pointer devices only ──────────────────────────
+   Touch devices must not fire hover states on tap.
+   Only real pointing devices (mouse / trackpad) match this.
+────────────────────────────────────────────────────────── */
+@media (hover: hover) and (pointer: fine) {
+  .svc-nav__item:hover { opacity: .7; }
+  .svc-text__cta:hover { opacity: 1; gap: 18px; }
+  .addl-svc__card:hover { background: rgba(10,10,10,.03); }
+  .pkg-teaser__cta:hover { gap: 20px; }
 }

@@ -39,15 +39,15 @@
    Total outer = 100vh + 450vh = 550vh       */
 .wwd-outer {
   position: relative;
-  height: calc(100vh + 500vh);
-  /* 100vh = sticky element height,
-     500vh = 5 steps × 100vh each           */
+  height: calc(100svh + 500svh);
+  /* 100svh = sticky element height (small viewport — iOS safe),
+     500svh = 5 steps × 100svh each                             */
 }
 
 /* ── Sticky panel pins to viewport ───────── */
 .wwd-sticky {
   position: sticky; top: 0;
-  height: 100vh; overflow: hidden;
+  height: 100svh; overflow: hidden;
   display: grid;
   grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
   gap: clamp(40px, 6vw, 96px);

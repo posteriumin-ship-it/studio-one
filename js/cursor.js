@@ -16,6 +16,9 @@ function initCursor() {
   label.className = 'c-ring__label';
   ring.appendChild(label);
 
+  /* ── Language detection ──────────────────── */
+  var isEN = document.documentElement.lang === 'en';
+
   /* ── State ───────────────────────────────── */
   var mx = 0, my = 0;   /* exact mouse */
   var cx = 0, cy = 0;   /* lerp position */
@@ -28,8 +31,18 @@ function initCursor() {
   var DEFAULT_W = 28, DEFAULT_H = 28;
   var PILL_W = 86,    PILL_H = 26;
 
-  /* ── Label map ───────────────────────────── */
-  var LABELS = {
+  /* ── Label map — bilingual ───────────────── */
+  var LABELS = isEN ? {
+    'open'    : 'Open',
+    'view'    : 'View',
+    'book'    : 'Book',
+    'send'    : 'Send',
+    'details' : 'Details',
+    'close'   : 'Close',
+    'drag'    : 'Drag',
+    'expand'  : 'Open',
+    'contact' : 'Contact',
+  } : {
     'open'    : 'Otvori',
     'view'    : 'Pogledaj',
     'book'    : 'Zakaži',
@@ -37,7 +50,7 @@ function initCursor() {
     'details' : 'Detalji',
     'close'   : 'Zatvori',
     'drag'    : 'Prevuci',
-    'expand'  : 'Otvori',   /* backward compat */
+    'expand'  : 'Otvori',
     'contact' : 'Kontakt',
   };
 
@@ -49,6 +62,7 @@ function initCursor() {
     { sel: '.btn-primary',             key: 'book'    },
     { sel: '.btn-primary-light',       key: 'book'    },
     { sel: '[href*="kontakt"]',        key: 'contact' },
+    { sel: '[href*="contact"]',        key: 'contact' },
     { sel: '[href*="mailto"]',         key: 'send'    },
     { sel: '.proj-card',               key: 'details' },
     { sel: '.pkg-sel__item',           key: 'view'    },
@@ -64,6 +78,8 @@ function initCursor() {
   var FORM_SEL = 'input, textarea, select, [contenteditable]';
 
   /* ── Mouse tracking ──────────────────────── */
+  var lastDarkCheck = 0;
+
   document.addEventListener('mousemove', function(e) {
     mx = e.clientX;
     my = e.clientY;
@@ -72,6 +88,12 @@ function initCursor() {
       visible = true;
       ring.classList.add('is-vis');
       dot.classList.add('is-vis');
+    }
+    /* ── Dark bg detection on mousemove, throttled ── */
+    var now = Date.now();
+    if (now - lastDarkCheck > 100) {
+      lastDarkCheck = now;
+      checkDark();
     }
   });
 
@@ -169,7 +191,7 @@ function initCursor() {
   });
 
   /* ── Dark bg detection ───────────────────── */
-  var darkTimer = null;
+  /* Called from mousemove (throttled to ~10/s) — no setInterval needed */
   function checkDark() {
     var el = document.elementFromPoint(mx, my);
     if (!el) return;
@@ -178,7 +200,7 @@ function initCursor() {
     while (node && node !== document.body) {
       var bg = getComputedStyle(node).backgroundColor;
       var m  = bg.match(/\d+/g);
-      if (m && +m[3 ] !== 0) { /* alpha present and non-zero */
+      if (m && +m[3] !== 0) { /* alpha present and non-zero */
         var lum = 0.299 * +m[0] + 0.587 * +m[1] + 0.114 * +m[2];
         var dark = lum < 85;
         if (dark !== isDark) {
@@ -204,5 +226,4 @@ function initCursor() {
       node = node.parentElement;
     }
   }
-  setInterval(checkDark, 120);
 }

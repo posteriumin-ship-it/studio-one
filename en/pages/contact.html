@@ -38,7 +38,7 @@
     <div class="nav__lang">
       <a href="../../pages/kontakt.html" class="nav__lang-item">SR</a>
       <span class="nav__lang-sep">·</span>
-      <a href="contact.html" class="nav__lang-item is-active">EN</a>
+      <span class="nav__lang-item is-active" aria-current="true">EN</span>
     </div>
     <a href="contact.html" class="nav__cta nav__cta--active" data-cursor="book">Book a call</a>
     <button class="nav__burger" id="navBurger" aria-label="Menu">
@@ -54,7 +54,7 @@
       <div class="nav__mobile-lang">
       <a href="../../pages/kontakt.html" class="nav__lang-item">SR</a>
       <span class="nav__lang-sep">·</span>
-      <a href="contact.html" class="nav__lang-item is-active">EN</a>
+      <span class="nav__lang-item is-active" aria-current="true">EN</span>
     </div>
     <a href="contact.html" class="nav__mobile-cta">Book a call →</a>
   </div>
@@ -110,7 +110,7 @@
         <form
           class="kontakt-form"
           id="kontaktForm"
-          action="https://formspree.io/f/hello@studioone.rs"
+          action="https://formspree.io/f/YOUR_FORM_ID_HERE"
           method="POST"
           novalidate
         >
@@ -343,7 +343,7 @@
         <div class="footer__lang">
           <a href="../../pages/kontakt.html" class="footer__lang-item">SR</a>
           <span class="footer__lang-sep">·</span>
-          <a href="contact.html" class="footer__lang-item is-active">EN</a>
+          <span class="footer__lang-item is-active" aria-current="true">EN</span>
         </div>
       </div>
     </div>
@@ -354,44 +354,7 @@
   <script src="../../js/nav.js"    defer></script>
   <script src="../../js/reveal.js" defer></script>
   <script src="../../js/main.js"   defer></script>
-
-  <!-- Form handling -->
-  <script>
-    (function() {
-      var form    = document.getElementById('kontaktForm');
-      var success = document.getElementById('kontaktSuccess');
-      if (!form) return;
-
-      form.addEventListener('submit', function(e) {
-        e.preventDefault();
-
-        var btn = form.querySelector('[type="submit"]');
-        btn.textContent = 'Sending...';
-        btn.disabled = true;
-
-        var data = new FormData(form);
-
-        fetch(form.action, {
-          method: 'POST',
-          body: data,
-          headers: { 'Accept': 'application/json' }
-        })
-        .then(function(res) {
-          if (res.ok) {
-            form.style.display = 'none';
-            success.classList.add('is-visible');
-          } else {
-            btn.textContent = 'Error — please try again';
-            btn.disabled = false;
-          }
-        })
-        .catch(function() {
-          btn.textContent = 'Error — please try again';
-          btn.disabled = false;
-        });
-      });
-    })();
-  </script>
+  <script src="../../js/form.js"   defer></script>
 
 </body>
 </html>

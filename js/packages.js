@@ -1,8 +1,11 @@
 /* ============================================================
    PACKAGES — data + dynamic selector/detail rendering
+   Bilingual: SR data used on lang="sr" pages,
+              EN data used on lang="en" pages.
+   Language is read from <html lang="sr|en">.
    ============================================================ */
 
-/* ── Package data ─────────────────────────── */
+/* ── Serbian package data ─────────────────── */
 var PKG_DATA = {
   web: [
     {
@@ -168,11 +171,177 @@ var PKG_DATA = {
   ]
 };
 
+/* ── English package data ─────────────────── */
+var PKG_DATA_EN = {
+  web: [
+    {
+      num: '01', name: 'Start Web', tagline: 'For a clear and professional start.',
+      price: 'Price on request', priceNote: 'Per project',
+      featured: false,
+      features: [
+        'Landing page or small website',
+        'Basic structure and CTA logic',
+        'Basic copy guidance',
+        'Contact form and integrations',
+        'Basic SEO foundation',
+        'Mobile-friendly'
+      ]
+    },
+    {
+      num: '02', name: 'Growth Web', tagline: 'For a more serious business presence.',
+      price: 'Price on request', priceNote: 'Per project',
+      featured: true,
+      features: [
+        'Multi-page business website',
+        'Advanced copy and funnel logic',
+        'Stronger visual identity through the site',
+        'CRM or email integrations',
+        'SEO-ready foundation',
+        'More than 3 pages'
+      ]
+    },
+    {
+      num: '03', name: 'Signature Web', tagline: 'For brands that demand full quality.',
+      price: 'Price on request', priceNote: 'Per project',
+      featured: false,
+      features: [
+        'Business and competitor analysis',
+        'Premium design and detailed logic',
+        'Advanced integrations and structure',
+        'Adapted to your business model',
+        'Stronger SEO foundation',
+        'Priority support'
+      ]
+    },
+    {
+      num: '04', name: 'Custom', tagline: 'When you need a tailored collaboration model.',
+      price: 'By arrangement', priceNote: 'Individual offer',
+      featured: false,
+      features: [
+        'Only specific parts of the service',
+        'Combination of multiple services',
+        'Special working dynamic',
+        'Offer based on goal and budget',
+        'Flexible scope',
+        'Direct communication'
+      ]
+    }
+  ],
+  social: [
+    {
+      num: '01', name: 'Presence', tagline: 'For a clean and active presence.',
+      price: 'From €230 / mo.', priceNote: 'Monthly collaboration',
+      featured: false,
+      features: [
+        '6–8 posts per month',
+        'Min. 2 short-form videos',
+        '2–3 story sets per week',
+        'Monthly content plan',
+        'Monthly report',
+        'Basic profile optimization'
+      ]
+    },
+    {
+      num: '02', name: 'Grow', tagline: 'For growth and higher quality content.',
+      price: 'From €490 / mo.', priceNote: 'Monthly collaboration',
+      featured: true,
+      features: [
+        '9–12 posts per month',
+        '4–6 short-form videos',
+        '4–5 story sets per week',
+        'Profile optimization',
+        'Content preparation for campaigns',
+        'Detailed report'
+      ]
+    },
+    {
+      num: '03', name: 'Authority', tagline: 'For a stronger identity and greater continuity.',
+      price: 'From €690 / mo.', priceNote: 'Monthly collaboration',
+      featured: false,
+      features: [
+        '12–16 posts per month',
+        '6–9 short-form videos',
+        'More frequent stories and active engagement',
+        'Storytelling approach',
+        'Community management elements',
+        'Monthly strategic analysis'
+      ]
+    },
+    {
+      num: '04', name: 'Custom', tagline: "When you don't need the full package.",
+      price: 'By arrangement', priceNote: 'Individual offer',
+      featured: false,
+      features: [
+        'Reels or short-form only',
+        'Stories and community work',
+        'Special content direction',
+        'Combined with ads service',
+        'Flexible schedule',
+        'Custom offer'
+      ]
+    }
+  ],
+  ads: [
+    {
+      num: '01', name: 'Boost', tagline: 'For initial testing.',
+      price: 'Meta/TikTok from €290', priceNote: 'Google Ads from €320 / mo.',
+      featured: false,
+      features: [
+        'Account setup and connection',
+        'Basic campaign structure',
+        'Audience and message testing',
+        'Basic optimization',
+        'Monthly report',
+        'One channel of choice'
+      ]
+    },
+    {
+      num: '02', name: 'Performance', tagline: 'For more active campaign management.',
+      price: 'Meta/TikTok from €490', priceNote: 'Google Ads from €550 / mo.',
+      featured: true,
+      features: [
+        'Multiple parallel tests',
+        'Audience segmentation',
+        'Basic remarketing',
+        'Budget and ad optimization',
+        'Detailed report with recommendations',
+        'Two channels of choice'
+      ]
+    },
+    {
+      num: '03', name: 'Scale', tagline: 'For a serious ads system.',
+      price: 'From €790 / mo.', priceNote: '2 channels of choice',
+      featured: false,
+      features: [
+        '2 channels of choice',
+        'Funnel approach',
+        'Advanced remarketing',
+        'Budget and campaign scaling',
+        'Strategic performance analysis',
+        'Priority optimization'
+      ]
+    },
+    {
+      num: '04', name: 'Custom', tagline: 'When you need a special ads model.',
+      price: 'By arrangement', priceNote: 'Individual offer',
+      featured: false,
+      features: [
+        'One part of the ads service',
+        'Special launch period',
+        'Remarketing or test phase',
+        'Combined with content support',
+        'Flexible scope',
+        'Offer based on goals'
+      ]
+    }
+  ]
+};
+
 /* ── Rendering ────────────────────────────── */
-function renderPkgSel(cat, activeIdx) {
+function renderPkgSel(cat, activeIdx, data) {
   var sel  = document.getElementById('pkgSel');
   if (!sel) return;
-  var items = PKG_DATA[cat];
+  var items = data[cat];
   var html  = '';
 
   items.forEach(function(pkg, i) {
@@ -194,16 +363,17 @@ function renderPkgSel(cat, activeIdx) {
   sel.querySelectorAll('.pkg-sel__item').forEach(function(btn) {
     btn.addEventListener('click', function() {
       var idx = +btn.dataset.idx;
-      renderPkgSel(cat, idx);
-      renderPkgDetail(cat, idx);
+      renderPkgSel(cat, idx, data);
+      renderPkgDetail(cat, idx, data, ui);
     });
   });
 }
 
-function renderPkgDetail(cat, idx) {
+/* ui = { badge, cta, ctaHref } */
+function renderPkgDetail(cat, idx, data, ui) {
   var detail = document.getElementById('pkgDetail');
   if (!detail) return;
-  var pkg = PKG_DATA[cat][idx];
+  var pkg = data[cat][idx];
   if (!pkg) return;
 
   var featuresHtml = pkg.features.map(function(f) {
@@ -211,7 +381,7 @@ function renderPkgDetail(cat, idx) {
   }).join('');
 
   var ctaClass = pkg.featured ? 'pkg-d__cta pkg-d__cta--accent' : 'pkg-d__cta';
-  var badge    = pkg.featured ? '<span class="pkg-d__badge">Najpopularnije</span>' : '';
+  var badge    = pkg.featured ? '<span class="pkg-d__badge">' + ui.badge + '</span>' : '';
 
   detail.innerHTML =
     '<div class="pkg-d is-active">' +
@@ -228,7 +398,7 @@ function renderPkgDetail(cat, idx) {
       '</div>' +
       '<ul class="pkg-d__features">' + featuresHtml + '</ul>' +
       '<div class="pkg-d__foot">' +
-        '<a href="#kontakt" class="' + ctaClass + '">Zakaži razgovor</a>' +
+        '<a href="' + ui.ctaHref + '" class="' + ctaClass + '">' + ui.cta + '</a>' +
         badge +
       '</div>' +
     '</div>';
@@ -239,20 +409,27 @@ function initPackages() {
   var cats = document.querySelectorAll('.pkg-cat');
   if (!cats.length) return;
 
+  /* ── Language detection ──────────────────── */
+  var isEN   = document.documentElement.lang === 'en';
+  var data   = isEN ? PKG_DATA_EN : PKG_DATA;
+  var ui     = isEN
+    ? { badge: 'Most popular', cta: 'Book a call',      ctaHref: 'pages/contact.html'  }
+    : { badge: 'Najpopularnije', cta: 'Zakaži razgovor', ctaHref: 'pages/kontakt.html' };
+
   var currentCat = 'web';
   var currentIdx = 1; // default: second (featured)
 
   function switchCat(cat) {
     currentCat = cat;
-    currentIdx = PKG_DATA[cat].findIndex(function(p) { return p.featured; });
+    currentIdx = data[cat].findIndex(function(p) { return p.featured; });
     if (currentIdx < 0) currentIdx = 0;
     cats.forEach(function(c) {
       var active = c.dataset.cat === cat;
       c.classList.toggle('is-active', active);
       c.setAttribute('aria-selected', active ? 'true' : 'false');
     });
-    renderPkgSel(cat, currentIdx);
-    renderPkgDetail(cat, currentIdx);
+    renderPkgSel(cat, currentIdx, data);
+    renderPkgDetail(cat, currentIdx, data, ui);
   }
 
   cats.forEach(function(c) {
