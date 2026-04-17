@@ -35,8 +35,15 @@
 /*
    Prevent horizontal overflow caused by animated/clipped
    hero elements and wide inline elements on small screens.
+
+   IMPORTANT: only body — NOT html.
+   Setting overflow-x: hidden on the <html> element makes it the
+   overflow container for position: sticky elements, breaking the
+   sticky scroll driver in the WwD section (and any other sticky
+   layout on the page).  Setting it only on <body> propagates the
+   overflow constraint to the viewport without creating a new scroll
+   context that traps sticky.
 */
-html,
 body {
   overflow-x: hidden;
 }

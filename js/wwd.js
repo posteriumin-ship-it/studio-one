@@ -132,8 +132,14 @@ function initWwd() {
     if (dominant !== lastDominant) {
       lastDominant = dominant;
       var tone = TONES[dominant];
-      sticky.style.backgroundColor = tone.bg;
-      sticky.style.color           = tone.fg;
+      /*
+         Use setProperty() — not style.backgroundColor — so CSS custom
+         property references like 'var(--wwd-bg-3)' are accepted.
+         The shorthand setter validates for computed colours and silently
+         drops var() values in some browser versions.
+      */
+      sticky.style.setProperty('background-color', tone.bg);
+      sticky.style.setProperty('color',            tone.fg);
       sticky.classList.toggle('is-dark', tone.dark);
 
       /* Cursor dark-mode sync */
@@ -186,8 +192,8 @@ function initWwd() {
         /* Sync dot rail position so the active tab stays in frame */
         scrollDotRailIntoView(n);
         var tone = TONES[n - 1] || TONES[0];
-        sticky.style.backgroundColor = tone.bg;
-        sticky.style.color           = tone.fg;
+        sticky.style.setProperty('background-color', tone.bg);
+        sticky.style.setProperty('color',            tone.fg);
         sticky.classList.toggle('is-dark', tone.dark);
       }
     });

@@ -39,15 +39,17 @@
    Total outer = 100vh + 450vh = 550vh       */
 .wwd-outer {
   position: relative;
-  height: calc(100svh + 500svh);
-  /* 100svh = sticky element height (small viewport — iOS safe),
-     500svh = 5 steps × 100svh each                             */
+  height: calc(100vh  + 500vh);   /* vh fallback for browsers without svh */
+  height: calc(100svh + 500svh);  /* svh preferred — trims iOS chrome safely */
+  /* 100svh = sticky viewport height, 500svh = 5 steps × 100svh each */
 }
 
 /* ── Sticky panel pins to viewport ───────── */
 .wwd-sticky {
   position: sticky; top: 0;
-  height: 100svh; overflow: hidden;
+  height: 100vh;   /* fallback */
+  height: 100svh;  /* preferred */
+  overflow: hidden;
   display: grid;
   grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
   gap: clamp(40px, 6vw, 96px);
@@ -244,6 +246,27 @@
 .v5__mob .v5__body { padding:9px; gap:5px; }
 .v5__mob .v5__h { font-size:11px; }
 .v5__tokens { margin-top:12px; display:flex; justify-content:space-between; font-family:var(--font-mono); font-size:9px; letter-spacing:.14em; text-transform:uppercase; opacity:.45; }
+
+/* ── Desktop safety net ──────────────────────
+   The desktop scroll animation relies entirely on JS inline styles.
+   If JS hasn't run yet (slow network, parse delay) the sticky area
+   would be blank — the first panel + visual must always be visible
+   as a CSS baseline.  Once update() runs it overrides with inline
+   opacity/transform on every panel, so this never fights the JS.
+────────────────────────────────────────────────────────────────── */
+@media (min-width: 961px) {
+  .wwd__panel:first-child {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+    pointer-events: auto;
+  }
+  .wwd__vis:first-child {
+    opacity: 1;
+    transform: scale(1);
+    visibility: visible;
+  }
+}
 
 /* ── Mobile fallback ─────────────────────── */
 @media (max-width: 960px) {
