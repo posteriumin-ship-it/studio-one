@@ -231,6 +231,15 @@ body {
     margin-bottom: clamp(20px,4vw,32px);
   }
   .wwd__dots::-webkit-scrollbar { display: none; }
+  /*
+     Trailing spacer so the last step tab doesn't press hard against
+     the scroll container edge (mirrors the panels ::after spacer).
+  */
+  .wwd__dots::after {
+    content: '';
+    flex-shrink: 0;
+    width: clamp(16px,4vw,24px);
+  }
 
   .wwd__dot {
     flex-shrink: 0;

@@ -26,7 +26,16 @@ function initWwd() {
 
   var lastDominant = -1;
   var ticking      = false;
+
+  /*
+     isMobileMode  — ≤960px: disables the scroll-driven sticky engine
+                     (both stacked tablet AND swipe mobile share this flag)
+     isSwipeMode   — ≤767px: enables horizontal snap-card behaviour
+                     (dot clicks scroll inline; dot rail auto-scrolls)
+     Keep both in sync on resize.
+  */
   var isMobileMode = false;
+  var isSwipeMode  = false;
 
   /* ── Helpers ─────────────────────────────────────────────── */
   function clamp(v, lo, hi) { return Math.max(lo, Math.min(hi, v)); }
@@ -37,6 +46,25 @@ function initWwd() {
   }
 
   function easeOut(t) { return 1 - Math.pow(1 - t, 2); }
+
+  /*
+     scrollDotRailIntoView — centres the active dot inside the horizontal
+     dot rail so it never hides off-screen when the user swipes to later
+     steps.  Uses scrollTo() on the parent rail element directly rather
+     than scrollIntoView() on the dot, which would scroll the whole page
+     on iOS Safari.
+  */
+  function scrollDotRailIntoView(stepN) {
+    if (!isSwipeMode) return;
+    var activeDot = dots[stepN - 1];
+    if (!activeDot) return;
+    var rail = activeDot.parentElement;
+    if (!rail) return;
+    var target = activeDot.offsetLeft
+               - (rail.offsetWidth / 2)
+               + (activeDot.offsetWidth / 2);
+    rail.scrollTo({ left: Math.max(0, target), behavior: 'smooth' });
+  }
 
   /* ── Core update — called every rAF on scroll ─────────────── */
   function update(raw) {
@@ -134,11 +162,13 @@ function initWwd() {
 
   window.addEventListener('resize', function() {
     isMobileMode = window.matchMedia('(max-width: 960px)').matches;
+    isSwipeMode  = window.matchMedia('(max-width: 767px)').matches;
     if (!isMobileMode) onScroll();
   });
 
   /* ── Mobile fallback: IntersectionObserver ───────────────── */
   isMobileMode = window.matchMedia('(max-width: 960px)').matches;
+  isSwipeMode  = window.matchMedia('(max-width: 767px)').matches;
 
   var panelIO = new IntersectionObserver(function(entries) {
     if (!isMobileMode) return;
@@ -153,6 +183,8 @@ function initWwd() {
         dots.forEach(function(d) {
           d.classList.toggle('is-active', +d.dataset.step === n);
         });
+        /* Sync dot rail position so the active tab stays in frame */
+        scrollDotRailIntoView(n);
         var tone = TONES[n - 1] || TONES[0];
         sticky.style.backgroundColor = tone.bg;
         sticky.style.color           = tone.fg;
@@ -168,17 +200,35 @@ function initWwd() {
     d.addEventListener('click', function() {
       var n = +d.dataset.step - 1;
       if (isMobileMode) {
-        /* Mobile: snap-scroll the panels rail to the target card */
-        if (panels[n]) {
-          panels[n].scrollIntoView({
-            behavior: 'smooth',
-            block: 'nearest',
-            inline: 'start'
-          });
+        if (isSwipeMode) {
+          /*
+             Mobile (≤767px) — panels are horizontal snap cards.
+             Scroll the card inline (horizontally).
+          */
+          if (panels[n]) {
+            panels[n].scrollIntoView({
+              behavior: 'smooth',
+              block: 'nearest',
+              inline: 'start'
+            });
+          }
+        } else {
+          /*
+             Tablet (768–960px) — panels are stacked blocks.
+             Scroll vertically to bring the panel into view.
+          */
+          if (panels[n]) {
+            panels[n].scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
         }
+        /* Keep the dot rail centred on the tapped step */
+        scrollDotRailIntoView(n + 1);
         return;
       }
-      /* Desktop: drive the sticky scroll position */
+      /* Desktop (≥961px) — drive the sticky scroll position */
       var outerTop   = outer.getBoundingClientRect().top + window.scrollY;
       var scrollable = outer.offsetHeight - window.innerHeight;
       window.scrollTo({
