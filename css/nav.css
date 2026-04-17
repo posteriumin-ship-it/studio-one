@@ -115,3 +115,23 @@ body[data-dark-hero] .nav:not(.is-scrolled) .nav__lang-sep {
   .nav__links, .nav__cta, .nav__lang { display: none; }
   .nav__burger { display: flex; }
 }
+
+/* ── Mobile menu lang switch ──────────────── */
+/*
+   .nav__mobile-lang sits above the CTA inside .nav__mobile.
+   Reuses .nav__lang-item styles (already defined above).
+   Mobile-specific sizing and centering applied here.
+*/
+.nav__mobile-lang {
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--font-mono); font-size: 11px;
+  letter-spacing: .2em; text-transform: uppercase;
+}
+.nav__mobile-lang .nav__lang-item {
+  opacity: .3;
+  transition: opacity 220ms var(--ease);
+  font-size: 11px;
+}
+.nav__mobile-lang .nav__lang-item:hover { opacity: .7; }
+.nav__mobile-lang .nav__lang-item.is-active { opacity: 1; }
+.nav__mobile-lang .nav__lang-sep { opacity: .2; }

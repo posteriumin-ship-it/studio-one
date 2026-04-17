@@ -16,8 +16,9 @@
   <link rel="stylesheet" href="../../css/nav.css">
   <link rel="stylesheet" href="../../css/misc.css">
   <link rel="stylesheet" href="../../css/kontakt.css">
+  <link rel="stylesheet" href="../../css/responsive.css">
 </head>
-<body data-dark-hero>
+<body class="page-kontakt lang-en" data-dark-hero>
 
   <!-- ── CURSOR ─────────────────────────────── -->
   <div class="c-ring" id="cRing"></div>
@@ -50,6 +51,11 @@
     <a href="work.html">Work</a>
     <a href="faq.html">FAQ</a>
     <a href="contact.html">Contact</a>
+      <div class="nav__mobile-lang">
+      <a href="../../pages/kontakt.html" class="nav__lang-item">SR</a>
+      <span class="nav__lang-sep">·</span>
+      <a href="contact.html" class="nav__lang-item is-active">EN</a>
+    </div>
     <a href="contact.html" class="nav__mobile-cta">Book a call →</a>
   </div>
 
@@ -177,14 +183,20 @@
           <!-- Timeline + Investment -->
           <div class="kontakt-form__row">
             <div class="kontakt-field">
-              <label class="kontakt-field__label" for="rok">Rough timeline</label>
-              <select class="kontakt-input kontakt-select" id="rok" name="timeline">
-                <option value="">Select...</option>
-                <option value="Urgent (within a month)">Urgent — within a month</option>
-                <option value="Within 1-2 months">Within 1–2 months</option>
-                <option value="By end of quarter">By end of quarter</option>
-                <option value="Planning, no rush">Planning, no rush</option>
-              </select>
+              <span class="kontakt-field__label">Rough timeline</span>
+              <div class="kontakt-pills" role="group" aria-label="Rough timeline">
+                <input class="kontakt-pill" type="radio" name="timeline" id="rok-hitno" value="Urgent (within a month)" />
+                <label for="rok-hitno">Urgent</label>
+
+                <input class="kontakt-pill" type="radio" name="timeline" id="rok-1-2" value="Within 1-2 months" checked />
+                <label for="rok-1-2">1–2 months</label>
+
+                <input class="kontakt-pill" type="radio" name="timeline" id="rok-kvartal" value="By end of quarter" />
+                <label for="rok-kvartal">By quarter</label>
+
+                <input class="kontakt-pill" type="radio" name="timeline" id="rok-planiramo" value="Planning, no rush" />
+                <label for="rok-planiramo">No rush</label>
+              </div>
             </div>
             <div class="kontakt-field">
               <span class="kontakt-field__label">Rough investment</span>

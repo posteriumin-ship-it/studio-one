@@ -1,0 +1,720 @@
+/* ============================================================
+   RESPONSIVE — Mobile & small-screen overrides
+   Studio One · Last stylesheet on every page
+
+   ── Breakpoint reference ───────────────────────────────────
+   Tablet:        768–1199px   @media (max-width: 1199px)
+   Mobile:        ≤767px       @media (max-width: 767px)
+   Mobile small:  ≤479px       @media (max-width: 479px)
+
+   ── Page targeting ─────────────────────────────────────────
+   .page-home / .page-usluge / .page-radovi / .page-faq / .page-kontakt
+   .lang-sr / .lang-en
+   [data-dark-hero]
+
+   ── Rules ──────────────────────────────────────────────────
+   - Never duplicate breakpoints already in component files.
+   - Only override; never reset component files entirely.
+   - Input font-size ≥ 16px everywhere (iOS zoom prevention).
+   ============================================================ */
+
+
+/* ──────────────────────────────────────────────────────────
+   GLOBAL FIXES (all screen sizes)
+────────────────────────────────────────────────────────── */
+
+/*
+   The sticky service-nav on the usluge page had top:0,
+   placing it directly behind the 64px fixed main nav.
+   Fix: offset by nav height so it sticks below the nav.
+*/
+.svc-nav {
+  top: 64px;
+}
+
+
+/* ──────────────────────────────────────────────────────────
+   TABLET  768–1199px
+────────────────────────────────────────────────────────── */
+@media (max-width: 1199px) {
+
+  /* ── Global section spacing ──────────────── */
+  .cta-band {
+    padding: clamp(72px,10vw,120px) var(--gutter);
+  }
+
+  /* ── Homepage hero ───────────────────────── */
+  /* hero__stats are already hidden via hero.css at 1199px */
+  .hero__headline {
+    font-size: clamp(52px,9vw,110px);
+  }
+
+  /* ── Packages intro ──────────────────────── */
+  /* packages__top already collapses at 900px via packages.css */
+
+}
+
+
+/* ──────────────────────────────────────────────────────────
+   MOBILE  ≤767px
+────────────────────────────────────────────────────────── */
+@media (max-width: 767px) {
+
+  /* ══ GLOBAL ══════════════════════════════════════════════ */
+
+  /* iOS input zoom prevention — all inputs must be ≥16px */
+  input,
+  textarea,
+  select {
+    font-size: 16px !important;
+  }
+
+  /* Touch-friendly tap targets */
+  .btn-primary,
+  .btn-accent,
+  .btn-outline-light,
+  .nav__cta,
+  .pkg-sel__item,
+  .filter__tab {
+    min-height: 44px;
+  }
+  .btn-primary,
+  .btn-accent,
+  .btn-outline-light {
+    padding: 14px 24px;
+  }
+  /* Pills: increase tap area via padding (inline elements can't use min-height) */
+  .kontakt-pill + label {
+    display: inline-flex;
+    align-items: center;
+    min-height: 40px;
+  }
+  .pkg-cat {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  /* Section vertical spacing — tighten for mobile */
+  .section {
+    padding-top: clamp(56px,9vw,80px);
+    padding-bottom: clamp(56px,9vw,80px);
+  }
+
+
+  /* ══ NAVIGATION ═════════════════════════════════════════ */
+
+  /* Reduce nav height slightly on mobile */
+  .nav {
+    height: 56px;
+    padding: 0 20px;
+  }
+
+  /* Mobile menu — premium full-screen overlay refinements */
+  .nav__mobile {
+    gap: 22px;
+    font-size: clamp(28px,8vw,40px);
+    padding: 0 var(--gutter);
+  }
+  .nav__mobile-cta {
+    font-size: 16px;
+    margin-top: 8px;
+    letter-spacing: .01em;
+    font-family: var(--font-sans);
+    opacity: .75;
+  }
+  .nav__mobile-lang {
+    margin-top: 4px;
+  }
+
+
+  /* ══ HOMEPAGE ═══════════════════════════════════════════ */
+
+  /* ── Hero ─────────────────────────────────── */
+  .hero {
+    padding-bottom: clamp(48px,8vw,80px);
+  }
+  .hero__headline {
+    font-size: clamp(40px,10vw,64px);
+    margin-bottom: clamp(28px,5vw,48px);
+  }
+  .hero__eyebrow {
+    margin-bottom: clamp(16px,3vw,28px);
+  }
+  .hero__sub {
+    font-size: 15px;
+    opacity: .7;
+  }
+  /* hero__bottom already 1col at 768px via hero.css */
+  .hero__actions {
+    gap: 12px;
+  }
+
+  /* ── Marquee ──────────────────────────────── */
+  .marquee {
+    padding: 11px 0;
+  }
+  .marquee__i {
+    font-size: 9px;
+    padding: 0 clamp(16px,4vw,32px);
+  }
+
+  /* ── Manifesto ────────────────────────────── */
+  /* Grid already 1col at 900px via base.css */
+  .manifesto__title {
+    font-size: clamp(32px,9vw,52px);
+  }
+  .manifesto__body {
+    font-size: 15px;
+  }
+  .manifesto__list li {
+    font-size: 9px;
+    padding: 12px 0;
+  }
+
+  /* ── Services cards (homepage) ────────────── */
+  /* Already 1col at 900px via services.css */
+  .svc-card {
+    min-height: 0;
+  }
+  .svc-card__name {
+    font-size: clamp(24px,7vw,36px);
+  }
+
+  /* ── WwD ──────────────────────────────────── */
+  /* Complete fallback already in wwd.css at 960px — no overrides needed */
+
+  /* ── Packages ─────────────────────────────── */
+  /* Layout already stacks at 900px via packages.css */
+  .packages__title {
+    font-size: clamp(28px,8vw,48px);
+  }
+  .pkg-cats {
+    overflow-x: auto;
+    scrollbar-width: none;
+    flex-wrap: nowrap;
+  }
+  .pkg-cats::-webkit-scrollbar { display: none; }
+  .pkg-cat {
+    flex-shrink: 0;
+    padding: 14px 18px;
+    font-size: 9px;
+  }
+  .pkg-sel {
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .pkg-sel::-webkit-scrollbar { display: none; }
+  .pkg-sel__item {
+    flex-shrink: 0;
+  }
+  .pkg-d__name {
+    font-size: clamp(22px,6vw,36px);
+  }
+
+  /* ── Process (homepage) ───────────────────── */
+  /* Already 2col at 900px, 1col at 500px via misc.css */
+  .process__n {
+    font-size: clamp(36px,10vw,56px);
+  }
+  .process__title {
+    font-size: clamp(15px,4vw,20px);
+  }
+
+  /* ── Clients ──────────────────────────────── */
+  /* Already 1col at 800px via misc.css */
+  .clients__title {
+    font-size: clamp(22px,7vw,36px);
+  }
+  .stat-n {
+    font-size: clamp(36px,9vw,56px);
+  }
+
+  /* ── ForWhom ──────────────────────────────── */
+  /* Already 1col at 700px via misc.css */
+  .forwhom__col {
+    padding: clamp(24px,5vw,36px) 20px;
+  }
+
+  /* ── Addl (homepage) ──────────────────────── */
+  /* Already 2col at 900px, 1col at 500px via misc.css */
+  .addl__name {
+    font-size: clamp(16px,5vw,22px);
+  }
+
+  /* ── FAQ preview (homepage) ───────────────── */
+  .faq__q h3 {
+    font-size: clamp(15px,4vw,18px);
+  }
+  .faq__ico {
+    width: 28px; height: 28px;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+  /* Increase max-height so long answers don't clip on mobile */
+  .faq__item.is-open .faq__a {
+    max-height: 400px;
+  }
+
+  /* ── CTA band ─────────────────────────────── */
+  .cta-band {
+    padding: clamp(60px,10vw,100px) var(--gutter);
+  }
+  .cta-band__title {
+    font-size: clamp(36px,9vw,60px);
+    margin-bottom: clamp(24px,5vw,40px);
+  }
+  .cta-band__actions {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+  .cta-band__meta {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+
+  /* ══ FOOTER ═════════════════════════════════════════════ */
+
+  /* Already stacks at 900px (2col) and 560px (1col) via misc.css */
+  .footer__bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .footer__brand-desc {
+    max-width: 100%;
+  }
+
+
+  /* ══ USLUGE PAGE ════════════════════════════════════════ */
+
+  /* ── Hero ─────────────────────────────────── */
+  .usluge-hero {
+    padding-top: calc(56px + clamp(36px,7vw,56px));
+    padding-bottom: clamp(36px,6vw,56px);
+  }
+  .usluge-hero__title {
+    font-size: clamp(40px,10vw,68px);
+    margin-bottom: 20px;
+  }
+  .usluge-hero__sub {
+    font-size: 15px;
+    max-width: 100%;
+  }
+
+  /* ── Sticky service nav ──────────────────── */
+  .svc-nav {
+    top: 56px; /* match reduced mobile nav height */
+  }
+  .svc-nav__inner {
+    height: 46px;
+    gap: 16px;
+  }
+  .svc-nav__item {
+    font-size: 9px;
+    letter-spacing: .12em;
+  }
+
+  /* ── Service sections ─────────────────────── */
+  /* Already 1col at 960px via usluge.css */
+  .svc-section {
+    padding: clamp(56px,8vw,80px) var(--gutter);
+  }
+  .svc-section--primary {
+    padding-top: clamp(64px,10vw,96px);
+    padding-bottom: clamp(64px,10vw,96px);
+  }
+  .svc-text__title {
+    font-size: clamp(28px,8vw,48px);
+    margin-bottom: 18px;
+  }
+  .svc-text__title--secondary {
+    font-size: clamp(24px,7vw,40px);
+  }
+  .svc-text__body {
+    font-size: 15px;
+    margin-bottom: 24px;
+  }
+  .svc-section__bg-n {
+    display: none; /* Hide decorative number on mobile for clarity */
+  }
+
+  /* Visual mockups — scale down on mobile */
+  .sv-web, .sv-ads {
+    max-width: 100%;
+  }
+  .sv-social {
+    max-width: 180px;
+  }
+
+  /* ── Additional services (usluge page) ─────── */
+  /* Already 2col at 960px, 1col at 600px via usluge.css */
+  .addl-svc {
+    padding: clamp(56px,8vw,80px) var(--gutter);
+  }
+  .addl-svc__title {
+    font-size: clamp(24px,7vw,36px);
+  }
+
+  /* ── Package teaser (usluge page) ─────────── */
+  /* Already 1col at 960px via usluge.css */
+  .pkg-teaser {
+    padding: clamp(56px,8vw,80px) var(--gutter);
+  }
+  .pkg-teaser__title {
+    font-size: clamp(28px,8vw,48px);
+    margin-bottom: 32px;
+  }
+  .pkg-teaser__item {
+    padding: clamp(20px,4vw,32px);
+  }
+
+  /* ── Usluge process ───────────────────────── */
+  /* Already 2col at 960px, 1col at 600px via usluge.css */
+  .usluge-process {
+    padding: clamp(56px,8vw,80px) var(--gutter);
+  }
+  .usluge-process__title {
+    font-size: clamp(24px,7vw,36px);
+  }
+
+
+  /* ══ RADOVI PAGE ════════════════════════════════════════ */
+
+  /* ── Hero ─────────────────────────────────── */
+  .radovi-hero {
+    padding-top: calc(56px + clamp(36px,7vw,56px));
+    padding-bottom: clamp(36px,6vw,56px);
+  }
+  .radovi-hero__title {
+    font-size: clamp(40px,10vw,68px);
+  }
+
+  /* ── Filter bar ───────────────────────────── */
+  .filter__tab {
+    padding: 20px 0;
+    font-size: 9px;
+    margin-right: clamp(20px,5vw,40px);
+  }
+
+  /* ── Grid ─────────────────────────────────── */
+  /* Already 1col at 768px via radovi.css */
+  .radovi-grid-wrap {
+    padding: clamp(28px,5vw,48px) var(--gutter);
+  }
+  .proj-card__name {
+    font-size: clamp(22px,7vw,36px);
+  }
+  .proj-card__cta {
+    font-size: 9px;
+  }
+
+
+  /* ══ FAQ PAGE ═══════════════════════════════════════════ */
+
+  /* ── Hero ─────────────────────────────────── */
+  /* Already 1col at 900px via faq-page.css */
+  .faq-hero {
+    padding-top: calc(56px + clamp(36px,6vw,52px));
+    padding-bottom: clamp(32px,5vw,52px);
+  }
+  .faq-hero__title {
+    font-size: clamp(32px,9vw,56px);
+  }
+  .faq-hero__sub {
+    font-size: 15px;
+  }
+
+  /* ── Intro ────────────────────────────────── */
+  /* Already 1col at 700px via faq-page.css */
+  .faq-intro {
+    padding: clamp(40px,6vw,64px) var(--gutter);
+  }
+  .faq-intro__text {
+    font-size: clamp(16px,4vw,20px);
+  }
+
+  /* ── Body ─────────────────────────────────── */
+  .faq-body {
+    padding-bottom: clamp(60px,8vw,100px);
+  }
+  .faq-group {
+    padding-top: clamp(44px,7vw,72px);
+    margin-top: clamp(44px,7vw,72px);
+  }
+  .faq-group__n {
+    font-size: clamp(40px,10vw,64px);
+  }
+  .faq-group__title {
+    font-size: clamp(20px,6vw,30px);
+  }
+  .faq-group__intro {
+    max-width: 100%;
+  }
+
+  /* ── Accordion tap zones ──────────────────── */
+  .faq-body .faq__q {
+    padding: clamp(18px,3vw,24px) 0;
+    gap: 16px;
+  }
+  .faq-body .faq__q h3 {
+    font-size: clamp(15px,4vw,18px);
+  }
+  .faq-body .faq__ico {
+    width: 30px; height: 30px;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+  /* Increase max-height for mobile (more text wrapping) */
+  .faq-body .faq__item.is-open .faq__a {
+    max-height: 600px;
+  }
+
+  /* ── FAQ CTA ──────────────────────────────── */
+  .faq-cta {
+    padding: clamp(60px,10vw,96px) var(--gutter);
+  }
+  .faq-cta__title {
+    font-size: clamp(26px,8vw,44px);
+  }
+  .faq-cta__actions {
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+
+
+  /* ══ KONTAKT PAGE ═══════════════════════════════════════ */
+
+  /* ── Hero ─────────────────────────────────── */
+  /* Already 1col at 900px via kontakt.css */
+  .kontakt-hero {
+    padding-top: calc(56px + clamp(36px,6vw,52px));
+    padding-bottom: clamp(36px,5vw,56px);
+  }
+  .kontakt-hero__title {
+    font-size: clamp(32px,9vw,54px);
+  }
+  .kontakt-hero__sub {
+    font-size: 15px;
+  }
+
+  /* ── Main section ─────────────────────────── */
+  .kontakt-main {
+    padding: clamp(52px,7vw,80px) var(--gutter);
+  }
+  /* Grid already 1col at 1000px via kontakt.css */
+
+  /* ── Form ─────────────────────────────────── */
+  .kontakt-field {
+    margin-bottom: clamp(24px,5vw,36px);
+  }
+  .kontakt-field__label {
+    font-size: 9px;
+    letter-spacing: .18em;
+  }
+  /* Row already 1col at 600px via kontakt.css */
+
+  /* ── Pill selectors ───────────────────────── */
+  .kontakt-pills {
+    gap: 8px;
+    padding-bottom: 12px;
+  }
+  .kontakt-pill + label {
+    font-size: 12px;
+    padding: 10px 14px;
+  }
+
+  /* ── Submit area ──────────────────────────── */
+  .kontakt-submit {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  /* ── Info block ───────────────────────────── */
+  .kontakt-info__title {
+    font-size: clamp(20px,6vw,28px);
+  }
+  .kontakt-step__n {
+    font-size: clamp(28px,8vw,40px);
+    width: 40px;
+  }
+  .kontakt-step {
+    gap: 14px;
+  }
+  .kontakt-info__note {
+    max-width: 100%;
+    font-size: 13px;
+  }
+
+  /* ── Reassurance ──────────────────────────── */
+  .kontakt-reassurance {
+    padding: clamp(36px,6vw,56px) var(--gutter);
+  }
+  .kontakt-reassurance__inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: clamp(20px,4vw,32px);
+  }
+  .kontakt-reassurance__text {
+    font-size: clamp(15px,4vw,18px);
+  }
+
+  /* ── Alt contact ──────────────────────────── */
+  .kontakt-alt {
+    padding: clamp(36px,6vw,56px) var(--gutter);
+  }
+  .kontakt-alt__email {
+    font-size: clamp(15px,4vw,18px);
+  }
+
+  /* ── Closing block ────────────────────────── */
+  .kontakt-close {
+    padding: clamp(64px,10vw,100px) var(--gutter);
+  }
+  .kontakt-close__title {
+    font-size: clamp(24px,7vw,40px);
+  }
+
+}
+
+
+/* ──────────────────────────────────────────────────────────
+   MOBILE SMALL  ≤479px
+────────────────────────────────────────────────────────── */
+@media (max-width: 479px) {
+
+  /* ── Global spacing tighten ───────────────── */
+  .section {
+    padding-top: clamp(44px,10vw,64px);
+    padding-bottom: clamp(44px,10vw,64px);
+  }
+
+  /* ── Navigation ───────────────────────────── */
+  .nav {
+    padding: 0 16px;
+  }
+  .nav__logo {
+    font-size: 17px;
+  }
+  .nav__mobile {
+    font-size: clamp(26px,8vw,36px);
+    gap: 18px;
+  }
+
+  /* ── Homepage hero ───────────────────────── */
+  .hero__headline {
+    font-size: clamp(36px,11vw,52px);
+    max-width: 100%;
+  }
+  .hero__sub {
+    font-size: 14px;
+  }
+
+  /* ── Manifesto ────────────────────────────── */
+  .manifesto__title {
+    font-size: clamp(28px,10vw,44px);
+  }
+
+  /* ── Services cards ───────────────────────── */
+  .svc-card__name {
+    font-size: clamp(22px,8vw,32px);
+  }
+
+  /* ── Packages ─────────────────────────────── */
+  .packages__title {
+    font-size: clamp(24px,9vw,40px);
+  }
+  .pkg-d__name {
+    font-size: clamp(20px,7vw,30px);
+  }
+  .pkg-d__price {
+    font-size: clamp(18px,6vw,26px);
+  }
+
+  /* ── CTA band ─────────────────────────────── */
+  .cta-band {
+    padding: clamp(52px,10vw,80px) var(--gutter);
+  }
+  .cta-band__title {
+    font-size: clamp(30px,10vw,48px);
+  }
+  .cta-band__actions {
+    width: 100%;
+  }
+  .cta-band__actions .btn-primary,
+  .cta-band__actions .btn-outline-light {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* ── Footer ───────────────────────────────── */
+  .footer {
+    padding-top: clamp(44px,8vw,64px);
+  }
+  .footer__brand-name {
+    font-size: clamp(18px,6vw,24px);
+  }
+
+  /* ── Usluge hero ──────────────────────────── */
+  .usluge-hero__title {
+    font-size: clamp(36px,11vw,56px);
+  }
+
+  /* ── Usluge service sections ──────────────── */
+  .svc-text__title {
+    font-size: clamp(24px,9vw,40px);
+  }
+  .svc-text__title--secondary {
+    font-size: clamp(22px,8vw,34px);
+  }
+
+  /* ── Radovi hero ──────────────────────────── */
+  .radovi-hero__title {
+    font-size: clamp(36px,11vw,56px);
+  }
+  .proj-card__name {
+    font-size: clamp(20px,7vw,30px);
+  }
+
+  /* ── FAQ hero ─────────────────────────────── */
+  .faq-hero__title {
+    font-size: clamp(28px,10vw,44px);
+  }
+  .faq-group__title {
+    font-size: clamp(18px,6vw,26px);
+  }
+  .faq-cta__title {
+    font-size: clamp(22px,8vw,36px);
+  }
+
+  /* ── Kontakt hero ─────────────────────────── */
+  .kontakt-hero__title {
+    font-size: clamp(28px,10vw,44px);
+  }
+  .kontakt-close__title {
+    font-size: clamp(22px,8vw,34px);
+  }
+
+  /* ── Kontakt pills ────────────────────────── */
+  .kontakt-pill + label {
+    font-size: 11px;
+    padding: 9px 12px;
+  }
+
+  /* ── Submit button ────────────────────────── */
+  .kontakt-submit .btn-primary {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* ── FAQ body accordion ───────────────────── */
+  .faq-body .faq__q h3 {
+    font-size: 14px;
+  }
+
+}

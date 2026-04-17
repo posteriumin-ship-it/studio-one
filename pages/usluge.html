@@ -16,8 +16,9 @@
   <link rel="stylesheet" href="../css/nav.css">
   <link rel="stylesheet" href="../css/misc.css">
   <link rel="stylesheet" href="../css/usluge.css">
+  <link rel="stylesheet" href="../css/responsive.css">
 </head>
-<body>
+<body class="page-usluge lang-sr">
 
   <!-- ── CURSOR ─────────────────────────────── -->
   <div class="c-ring" id="cRing"></div>
@@ -50,6 +51,11 @@
     <a href="radovi.html">Radovi</a>
     <a href="faq.html">FAQ</a>
     <a href="kontakt.html">Kontakt</a>
+      <div class="nav__mobile-lang">
+      <a href="usluge.html" class="nav__lang-item is-active">SR</a>
+      <span class="nav__lang-sep">·</span>
+      <a href="../en/pages/services.html" class="nav__lang-item">EN</a>
+    </div>
     <a href="kontakt.html" class="nav__mobile-cta">Zakaži poziv →</a>
   </div>
 
@@ -477,8 +483,8 @@
           <div class="footer__col-title">Studio</div>
           <ul class="footer__links">
             <li><a href="radovi.html">Radovi</a></li>
-            <li><a href="../index.html#faq">FAQ</a></li>
-            <li><a href="../index.html#kontakt">Kontakt</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="kontakt.html">Kontakt</a></li>
           </ul>
         </div>
       </div>
@@ -495,9 +501,9 @@
   </footer>
 
   <!-- ── SCRIPTS ───────────────────────────── -->
-  <script src="../js/cursor.js"></script>
-  <script src="../js/nav.js"></script>
-  <script src="../js/reveal.js"></script>
+  <script src="../js/cursor.js" defer></script>
+  <script src="../js/nav.js" defer></script>
+  <script src="../js/reveal.js" defer></script>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       if (typeof initCursor === 'function') initCursor();

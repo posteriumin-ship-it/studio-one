@@ -16,8 +16,9 @@
   <link rel="stylesheet" href="../css/nav.css">
   <link rel="stylesheet" href="../css/misc.css">
   <link rel="stylesheet" href="../css/kontakt.css">
+  <link rel="stylesheet" href="../css/responsive.css">
 </head>
-<body data-dark-hero>
+<body class="page-kontakt lang-sr" data-dark-hero>
 
   <!-- ── CURSOR ─────────────────────────────── -->
   <div class="c-ring" id="cRing"></div>
@@ -50,6 +51,11 @@
     <a href="radovi.html">Radovi</a>
     <a href="faq.html">FAQ</a>
     <a href="kontakt.html">Kontakt</a>
+      <div class="nav__mobile-lang">
+      <a href="kontakt.html" class="nav__lang-item is-active">SR</a>
+      <span class="nav__lang-sep">·</span>
+      <a href="../en/pages/contact.html" class="nav__lang-item">EN</a>
+    </div>
     <a href="kontakt.html" class="nav__mobile-cta">Zakaži poziv →</a>
   </div>
 
@@ -177,14 +183,20 @@
           <!-- Rok i investicija -->
           <div class="kontakt-form__row">
             <div class="kontakt-field">
-              <label class="kontakt-field__label" for="rok">Okvirni rok</label>
-              <select class="kontakt-input kontakt-select" id="rok" name="rok">
-                <option value="">Izaberite...</option>
-                <option value="Hitno (do mesec dana)">Hitno — do mesec dana</option>
-                <option value="U toku 1-2 meseca">U toku 1–2 meseca</option>
-                <option value="Do kraja kvartala">Do kraja kvartala</option>
-                <option value="Planiramo, nema pritiska">Planiramo, nema pritiska</option>
-              </select>
+              <span class="kontakt-field__label">Okvirni rok</span>
+              <div class="kontakt-pills" role="group" aria-label="Okvirni rok">
+                <input class="kontakt-pill" type="radio" name="rok" id="rok-hitno" value="Hitno (do mesec dana)" />
+                <label for="rok-hitno">Hitno</label>
+
+                <input class="kontakt-pill" type="radio" name="rok" id="rok-1-2" value="U toku 1-2 meseca" checked />
+                <label for="rok-1-2">1–2 meseca</label>
+
+                <input class="kontakt-pill" type="radio" name="rok" id="rok-kvartal" value="Do kraja kvartala" />
+                <label for="rok-kvartal">Do kraja kvartala</label>
+
+                <input class="kontakt-pill" type="radio" name="rok" id="rok-planiramo" value="Planiramo, nema pritiska" />
+                <label for="rok-planiramo">Planiramo</label>
+              </div>
             </div>
             <div class="kontakt-field">
               <span class="kontakt-field__label">Okvirna investicija</span>
