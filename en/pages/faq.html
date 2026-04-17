@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FAQ — Studio One</title>
+  <meta name="description" content="Everything clients typically want to know before starting a project — from process and timelines to working style, support, and whether we're the right studio for you." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,300;9..144,0,400;9..144,1,300;9..144,1,400&family=Inter+Tight:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../css/tokens.css">
+  <link rel="stylesheet" href="../../css/base.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/nav.css">
+  <link rel="stylesheet" href="../../css/misc.css">
+  <link rel="stylesheet" href="../../css/faq-page.css">
+</head>
+<body>
+
+  <!-- ── CURSOR ─────────────────────────────── -->
+  <div class="c-ring" id="cRing"></div>
+  <div class="c-dot"  id="cDot"></div>
+
+  <!-- ── NAVIGATION ────────────────────────── -->
+  <nav class="nav" id="nav">
+    <a href="../index.html" class="nav__logo">
+      <span class="nav__logo-dot"></span>Studio One
+    </a>
+    <div class="nav__links">
+      <a href="services.html">Services</a>
+      <a href="work.html">Work</a>
+      <a href="faq.html" class="nav__link--active">FAQ</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="nav__lang">
+      <a href="../../pages/faq.html" class="nav__lang-item">SR</a>
+      <span class="nav__lang-sep">·</span>
+      <a href="faq.html" class="nav__lang-item is-active">EN</a>
+    </div>
+    <a href="contact.html" class="nav__cta" data-cursor="book">Book a call</a>
+    <button class="nav__burger" id="navBurger" aria-label="Menu">
+      <span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="nav__mobile" id="navMobile">
+    <a href="services.html">Services</a>
+    <a href="work.html">Work</a>
+    <a href="faq.html">FAQ</a>
+    <a href="contact.html">Contact</a>
+    <a href="contact.html" class="nav__mobile-cta">Book a call →</a>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       HERO
+  ══════════════════════════════════════════════ -->
+  <section class="faq-hero">
+    <div class="faq-hero__inner">
+      <div class="faq-hero__left">
+        <p class="faq-hero__label reveal">— Frequently asked questions</p>
+        <h1 class="faq-hero__title reveal-clip">
+          <span>Common questions,</span>
+          <span>clearly answered.</span>
+        </h1>
+      </div>
+      <div class="faq-hero__right">
+        <p class="faq-hero__sub reveal-blur">
+          Everything clients typically want to know before starting a
+          project — from process and timelines to working style, support,
+          and whether we're the right studio for you.
+        </p>
+        <div class="faq-hero__meta reveal">
+          <span>Collaboration</span><span>·</span>
+          <span>Process &amp; timelines</span><span>·</span>
+          <span>Content &amp; delivery</span><span>·</span>
+          <span>Budget &amp; next steps</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       INTRO NOTE
+  ══════════════════════════════════════════════ -->
+  <div class="faq-intro">
+    <div class="faq-intro__inner">
+      <div class="faq-intro__side">Studio One<br>FAQ 2026</div>
+      <p class="faq-intro__text reveal-blur">
+        We believe great collaboration starts with clarity. That's why we've gathered the questions that come up most often — before a project even begins.
+      </p>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       FAQ CATEGORIES
+  ══════════════════════════════════════════════ -->
+  <div class="faq-body">
+    <div class="faq-body__inner">
+
+      <!-- ─── Group 01: Collaboration ──────────── -->
+      <div class="faq-group reveal">
+        <div class="faq-group__head">
+          <span class="faq-group__n">01</span>
+          <div>
+            <h2 class="faq-group__title">Collaboration</h2>
+            <p class="faq-group__intro">Who we are, who we work with, and what to expect.</p>
+          </div>
+        </div>
+
+        <div class="faq__list">
+
+          <div class="faq__item">
+            <button class="faq__q" data-cursor="open">
+              <h3>Do you take on every project?</h3>
+              <span class="faq__ico">+</span>
+            </button>
+            <div class="faq__a"><div class="faq__a-inner">
+              No. Before accepting a project we assess whether there's a genuine fit — between what the client needs, what we do well, and whether we can actually add value. We work with brands that understand a serious website isn't a cost but an investment. If we feel the timing or context isn't right, we say so directly — without dancing around it.
+            </div></div>
+          </div>
+
+          <div class="faq__item">
+            <button class="faq__q" data-cursor="open">
+              <h3>Do you work with clients outside Serbia?</h3>
+              <span class="faq__ico">+</span>
+            </button>
+            <div class="faq__a"><div class="faq__a-inner">
+              Yes. Geography is not a barrier. We manage everything online — from the first conversation through delivery and ongoing support. We've worked with clients from Serbia, the wider region, and internationally, and there's no difference in approach or quality.
+            </div></div>
+          </div>
+
+          <div class="faq__item">
+            <button class="faq__q" data-cursor="open">
+              <h3>What kind of clients do you usually work with?</h3>
+              <span class="faq__ico">+</span>
+            </button>
+            <div class="faq__a"><div class="faq__a-inner">
+              We work with brands that have a clear identity or are actively building one — businesses that have outgrown a generic website and want something more considered, companies whose online presence needs to reflect the level of what they actually offer. Most often: small and medium businesses, premium brands, and professionals who understand that first impressions carry real cost.
+            </div></div>
+          </div>
+
+          <div class="faq__item">
+            <button class="faq__q" data-cursor="open">
+              <h3>Do you require exclusivity or long-term contracts?</h3>
+              <span class="faq__ico">+</span>
+            </button>
+            <div class="faq__a"><div class="faq__a-inner">
+              No. Every collaboration is structured around the actual need — project-based or through a monthly retainer for maintenance and development. No forced long-term commitments. The goal is for the collaboration to make sense for both sides — and to last as long as it's useful.
+            </div></div>
+          </div>
+
+        </div>
+      </div><!-- /faq-group 01 -->
+
+      <!-- ─── Group 02: Process & Timelines ────── -->
+      <div class="faq-group reveal reveal-d1">
+        <div class="faq-group__head">
+          <span class="faq-group__n">02</span>
+          <div>
+            <h2 class="faq-group__title">Process &amp; timelines</h2>
+            <p class="faq-group__intro">What working with us looks like from the inside.</p>
+          </div>
+        </div>
+
+        <div class="faq__list">
+
+          <div class="faq__item">
+            <button class="faq__q" data-cursor="open">
+              <h3>How does the engagement begin?</h3>
+              <span class="faq__ico">+</span>
+            </button>
+            <div class="faq__a"><div class="faq__a-inner">
+              It starts with a brief inquiry or conversation where we assess the essence of the project — goal, context, deadline, and scope. If there's a good fit, we send a clear proposal with a defined structure and timeline. No generic replies, no vague estimates, no weeks of silence before a response.
+            </div></div>
+          </div>
+
+          <div class="faq__item">
+            <button class="faq__q" data-cursor="open">
+              <h3>How long does a website take to build?</h3>
+              <span class="faq__ico">+</span>
+            </button>
+            <div class="faq__a"><div class="faq__a-inner">
+              It depends on scope. Landing pages and smaller web projects typically take 2 to 4 weeks. Full presentational or e-commerce sites range from 4 to 8 weeks — sometimes longer for complex projects. We always define an exact timeline in the proposal, based on the real scope — no false promises.
+            </div></div>
+          </div>
+
+          <div class="faq__item">
+            <button class="faq__q" data-cursor="open">
+              <h3>What does your working process look like?</h3>
+              <span class="faq__ico">+</span>
+            </button>
+            <div class="faq__a"><div class="faq__a-inner">
+              We work in clearly defined phases — from strategy and wireframing, through the design system and prototype, to development and testing. There's a feedback point at every key step. No surprises, no "what is this suddenly" moments. Transparency is part of the process, not an add-on you pay extra for.
+            </div></div>
+          </div>
+
+          <div class="faq__item">
+            <button class="faq__q" data-cursor="open">
+              <h3>How involved do you need to be during the project?</h3>
+              <span class="faq__ico">+</span>
+            </button>
+            <div class="faq__a"><div class="faq__a-inner">
+              We've structured the process to minimise how much of your time it takes — but we do need clear, timely communication at key feedback points. The clearer and faster the feedback, the smoother the project runs. What we don't work well with: waiting a month for a response mid-build, then needing everything urgently. That rarely produces good results.
+            </div></div>
+          </div>
+
+        </div>
+      </div><!-- /faq-group 02 -->
+
+      <!-- ─── Group 03: Content & Delivery ─────── -->
+      <div class="faq-group reveal reveal-d1">
+        <div class="faq-group__head">
+          <span class="faq-group__n">03</span>
+          <div>
+            <h2 class="faq-group__title">Content &amp; delivery</h2>
+            <p class="faq-group__intro">What's included, what you bring, and what we handle.</p>
+          </div>
+        </div>
+
+        <div class="faq__list">
+
+          <div class="faq__item">
+            <button class="faq__q" data-cursor="open">
+              <h3>Do you help with copy and site structure?</h3>
+              <span class="faq__ico">+</span>
+            </button>
+            <div class="faq__a"><div class="faq__a-inner">
+              Yes. Writing sales and communication copy is part of the process when the project calls for it. We help define messaging, content hierarchy, and tone of voice. You don't need to arrive with finished texts — it's enough to know what your business does and what it wants to communicate. We build the rest together.
+            </div></div>
+          </div>
+
+          <div class="faq__item">
+            <button class="faq__q" data-cursor="open">
+              <h3>Do you build new sites only, or also redesigns?</h3>
+              <span class="faq__ico">+</span>
+            </button>
+            <div class="faq__a"><div class="faq__a-inner">
+              Both. Redesign is common — many clients come with a site that technically exists but doesn't communicate correctly, looks dated, or simply doesn't carry the brand. In those cases we do a full structural and visual overhaul. The approach is identical to a new build — we start from the goal, not the surface.
+            </div></div>
+          </div>
+
+          <div class="faq__item">
+            <button class="faq__q" data-cursor="open">
+              <h3>Do you offer maintenance after launch?</h3>
+              <span class="faq__ico">+</span>
+            </button>
+            <div class="faq__a"><div class="faq__a-inner">
+              Yes. Where needed, we offer monthly technical maintenance, updates, and ongoing development. It's especially useful for projects that are actively evolving or need regular content updates. This is always defined as a separate arrangement — it doesn't have to be part of every project.
+            </div></div>
+          </div>
+
+          <div class="faq__item">
+            <button class="faq__q" data-cursor="open">
+              <h3>Do you offer services beyond websites?</h3>
+              <span class="faq__ico">+</span>
+            </button>
+            <div class="faq__a"><div class="faq__a-inner">
+              Yes, though web is always the foundation. We have capacity for Instagram management, Meta and Google campaigns, SEO, branding, and content production. These services most often come as extensions of a web engagement — a natural next step for brands that want a complete and consistent digital presence under one roof.
+            </div></div>
+          </div>
+
+        </div>
+      </div><!-- /faq-group 03 -->
+
+      <!-- ─── Group 04: Budget & Next Steps ─────── -->
+      <div class="faq-group reveal reveal-d1">
+        <div class="faq-group__head">
+          <span class="faq-group__n">04</span>
+          <div>
+            <h2 class="faq-group__title">Budget &amp; next steps</h2>
+            <p class="faq-group__intro">What to know before you send an inquiry.</p>
+          </div>
+        </div>
+
+        <div class="faq__list">
+
+          <div class="faq__item">
+            <button class="faq__q" data-cursor="open">
+              <h3>Do you have fixed packages and prices?</h3>
+              <span class="faq__ico">+</span>
+            </button>
+            <div class="faq__a"><div class="faq__a-inner">
+              We have rough models that serve as a starting point, but the final price always depends on the goal, scope, and specifics of the project. There are no hidden costs — every proposal includes a clear breakdown of what's included and at what price, with no surprises.
+            </div></div>
+          </div>
+
+          <div class="faq__item">
+            <button class="faq__q" data-cursor="open">
+              <h3>What budget is needed for a serious web project?</h3>
+              <span class="faq__ico">+</span>
+            </button>
+            <div class="faq__a"><div class="faq__a-inner">
+              A serious website with a clear goal, premium design, and solid technical foundation requires a corresponding investment. We don't give numbers without knowing the project — an estimate without context is just a number without meaning. Send an inquiry, and we'll assess and come back with realistic ranges.
+            </div></div>
+          </div>
+
+          <div class="faq__item">
+            <button class="faq__q" data-cursor="open">
+              <h3>What should I include in my first inquiry?</h3>
+              <span class="faq__ico">+</span>
+            </button>
+            <div class="faq__a"><div class="faq__a-inner">
+              It's enough to briefly describe: what your business is, what you need — a new site, a redesign, or something else — your rough timeline, and, if it exists, a link to your current site or Instagram. You don't need to have everything defined. If we feel there's a good fit, we'll come back with a clear next step.
+            </div></div>
+          </div>
+
+          <div class="faq__item">
+            <button class="faq__q" data-cursor="open">
+              <h3>How quickly will you respond?</h3>
+              <span class="faq__ico">+</span>
+            </button>
+            <div class="faq__a"><div class="faq__a-inner">
+              We aim to respond within 1 to 2 business days. If the project you describe is a genuine fit for what we do, we'll reply with a concrete next step. We don't send generic "we've received your inquiry" messages — if we write, we write with purpose.
+            </div></div>
+          </div>
+
+        </div>
+      </div><!-- /faq-group 04 -->
+
+    </div>
+  </div><!-- /faq-body -->
+
+  <!-- ══════════════════════════════════════════
+       CTA — Closing block
+  ══════════════════════════════════════════════ -->
+  <section class="faq-cta">
+    <div class="faq-cta__inner reveal">
+      <p class="faq-cta__label">— Next step</p>
+      <h2 class="faq-cta__title">
+        If you still have one important question left,<br>
+        <em>that's usually a sign we should talk.</em>
+      </h2>
+      <p class="faq-cta__body">
+        Send an inquiry and tell us briefly what you need. If we feel we can help, we'll come back with a clear next step.
+      </p>
+      <div class="faq-cta__actions">
+        <a href="contact.html" class="btn-accent" data-cursor="send">Send an inquiry →</a>
+        <a href="work.html" class="btn-outline-light" data-cursor="view">See our work</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ────────────────────────────── -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <div class="footer__brand-name"><span class="footer__brand-dot"></span>Studio One</div>
+          <p class="footer__brand-desc">
+            A studio for building, redesigning, and developing websites for brands that want a serious online presence and a clear digital foundation.
+          </p>
+        </div>
+        <div>
+          <div class="footer__col-title">Web services</div>
+          <ul class="footer__links">
+            <li><a href="services.html">Website builds</a></li>
+            <li><a href="services.html">Website redesign</a></li>
+            <li><a href="services.html">Maintenance &amp; development</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Studio</div>
+          <ul class="footer__links">
+            <li><a href="work.html">Work</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span class="footer__bottom-copy">© Studio One 2026</span>
+        <span class="footer__bottom-center">Worldwide</span>
+        <div class="footer__lang">
+          <a href="../../pages/faq.html" class="footer__lang-item">SR</a>
+          <span class="footer__lang-sep">·</span>
+          <a href="faq.html" class="footer__lang-item is-active">EN</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../../js/cursor.js" defer></script>
+  <script src="../../js/nav.js"    defer></script>
+  <script src="../../js/faq.js"    defer></script>
+  <script src="../../js/reveal.js" defer></script>
+  <script src="../../js/main.js"   defer></script>
+
+</body>
+</html>

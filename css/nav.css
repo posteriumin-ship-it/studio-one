@@ -50,6 +50,41 @@
 /* ── Active nav link ──────────────────────── */
 .nav__link--active { opacity: 1 !important; }
 
+/* ── Dark hero variant ────────────────────── */
+/*
+   Pages with a dark/ink hero add data-dark-hero on <body>.
+   Nav starts with bone-coloured text; once .is-scrolled kicks in,
+   the bone backdrop + ink text takes over automatically.
+*/
+body[data-dark-hero] .nav:not(.is-scrolled) {
+  color: var(--bone);
+}
+body[data-dark-hero] .nav:not(.is-scrolled) .nav__logo {
+  color: var(--bone);
+}
+body[data-dark-hero] .nav:not(.is-scrolled) .nav__links {
+  color: var(--bone);
+}
+body[data-dark-hero] .nav:not(.is-scrolled) .nav__cta {
+  border-color: rgba(246,243,238,.45);
+  color: var(--bone);
+}
+body[data-dark-hero] .nav:not(.is-scrolled) .nav__cta:hover {
+  background: var(--bone);
+  color: var(--ink);
+  border-color: var(--bone);
+}
+body[data-dark-hero] .nav:not(.is-scrolled) .nav__burger span {
+  background: var(--bone);
+}
+body[data-dark-hero] .nav:not(.is-scrolled) .nav__lang-item {
+  color: var(--bone);
+}
+body[data-dark-hero] .nav:not(.is-scrolled) .nav__lang-sep {
+  color: var(--bone);
+  opacity: .25;
+}
+
 .nav__burger {
   display: none; flex-direction: column; gap: 5px;
   width: 28px; padding: 2px 0;
