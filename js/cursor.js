@@ -129,6 +129,9 @@ function initCursor() {
     if (el.matches && el.matches(FORM_SEL)) return 'form';
     if (el.closest && el.closest(FORM_SEL)) return 'form';
 
+    /* Radovi preview should stay visually clean on hover */
+    if (el.closest && el.closest('.work-card__preview')) return null;
+
     /* data-cursor attribute takes priority */
     var dataCursor = el.closest ? el.closest('[data-cursor]') : null;
     if (dataCursor) {

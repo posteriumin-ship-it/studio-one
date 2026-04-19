@@ -10,7 +10,6 @@ function initRadovi() {
   var assetBase = document.body.classList.contains('lang-en')
     ? '../../assets/work-previews/'
     : '../assets/work-previews/';
-  var supportsHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
   var UI = isEN ? {
     industry: 'Industry',
@@ -43,7 +42,6 @@ function initRadovi() {
       services_en: ['UX structure', 'Shopify build', 'Product storytelling', 'Conversion flow'],
       preview: {
         type: 'image',
-        cover: 'covers/posterium-cover-clean.webp',
         src: 'posterium.webp',
         ratio: '1600 / 920',
         accent: '#E36D49',
@@ -56,9 +54,8 @@ function initRadovi() {
         ink: '#16222A',
         pill: 'rgba(255, 255, 255, 0.76)',
         state: 'rgba(10, 10, 10, 0.05)',
-        start: '0%',
-        end: '-18%',
-        mobile: '-6%'
+        travel: 0.18,
+        mobileTravel: 0.04
       }
     },
     {
@@ -75,7 +72,6 @@ function initRadovi() {
       services_en: ['Information architecture', 'B2B copy', 'Lead capture', 'Responsive UI'],
       preview: {
         type: 'image',
-        cover: 'covers/interplast-cover-clean.webp',
         src: 'interplast.webp',
         ratio: '1600 / 920',
         accent: '#4E67E8',
@@ -88,9 +84,8 @@ function initRadovi() {
         ink: '#17203A',
         pill: 'rgba(255, 255, 255, 0.82)',
         state: 'rgba(10, 10, 10, 0.05)',
-        start: '0%',
-        end: '-10%',
-        mobile: '-3%'
+        travel: 0.14,
+        mobileTravel: 0.025
       }
     },
     {
@@ -107,7 +102,6 @@ function initRadovi() {
       services_en: ['Positioning', 'Service architecture', 'Technical enquiry flow', 'Custom development'],
       preview: {
         type: 'image',
-        cover: 'covers/dr-metalplus-cover-clean.webp',
         src: 'dr-metalplus.webp',
         ratio: '1600 / 920',
         accent: '#63B23D',
@@ -120,9 +114,8 @@ function initRadovi() {
         ink: '#193117',
         pill: 'rgba(255, 255, 255, 0.8)',
         state: 'rgba(10, 10, 10, 0.05)',
-        start: '0%',
-        end: '-20%',
-        mobile: '-8%'
+        travel: 0.17,
+        mobileTravel: 0.05
       }
     },
     {
@@ -139,7 +132,6 @@ function initRadovi() {
       services_en: ['E-commerce UX', 'Catalogue system', 'Visual merchandising', 'Mobile shopping'],
       preview: {
         type: 'image',
-        cover: 'covers/edc-satovi-cover-clean.webp',
         src: 'edc-satovi.webp',
         ratio: '1600 / 920',
         accent: '#C8A24B',
@@ -152,9 +144,8 @@ function initRadovi() {
         ink: '#E8C373',
         pill: 'rgba(255, 255, 255, 0.08)',
         state: 'rgba(255, 255, 255, 0.08)',
-        start: '0%',
-        end: '-8%',
-        mobile: '-4%'
+        travel: 0.15,
+        mobileTravel: 0.03
       }
     }
   ];
@@ -185,22 +176,6 @@ function initRadovi() {
     );
   }
 
-  function coverMarkup(project, index) {
-    var preview = project.preview || {};
-    if (!preview.cover) return '';
-
-    var src = assetBase + preview.cover;
-    var alt = project.name + ' — ' + (isEN ? 'website preview' : 'website preview');
-    var loading = index === 0 ? 'eager' : 'lazy';
-    var fetchPriority = index === 0 ? 'high' : 'auto';
-
-    return (
-      '<div class="work-card__cover">' +
-        '<img class="work-card__cover-media" src="' + src + '" alt="' + alt + '" loading="' + loading + '" decoding="async" fetchpriority="' + fetchPriority + '">' +
-      '</div>'
-    );
-  }
-
   function renderProject(project, index) {
     var preview = project.preview || {};
     var services = getLocalized(project, 'services') || [];
@@ -217,13 +192,7 @@ function initRadovi() {
       '--project-ink:' + (preview.ink || '#0A0A0A'),
       '--project-pill:' + (preview.pill || 'rgba(255, 255, 255, 0.76)'),
       '--project-state:' + (preview.state || 'rgba(10, 10, 10, 0.05)'),
-      '--project-ratio:' + (preview.ratio || '16 / 9.2'),
-      '--project-cover-scale:' + (preview.coverScale || '1'),
-      '--project-cover-shift-x:' + (preview.coverShiftX || '0%'),
-      '--project-cover-shift-y:' + (preview.coverShiftY || '0%'),
-      '--preview-start:' + (preview.start || '0%'),
-      '--preview-end:' + (preview.end || '-12%'),
-      '--preview-mobile:' + (preview.mobile || '0%')
+      '--project-ratio:' + (preview.ratio || '16 / 9.2')
     ].join(';');
 
     return (
@@ -252,7 +221,7 @@ function initRadovi() {
             '<span class="work-card__domain">' + project.domain + '</span>' +
           '</div>' +
         '</div>' +
-        '<a class="work-card__preview" href="' + project.url + '" target="_blank" rel="noopener" aria-label="' + UI.openProject + project.name + '" data-cursor="view">' +
+        '<a class="work-card__preview" href="' + project.url + '" target="_blank" rel="noopener" aria-label="' + UI.openProject + project.name + '" data-preview-travel="' + (preview.travel || 0.16) + '" data-preview-mobile="' + (preview.mobileTravel || 0.03) + '">' +
           '<div class="work-card__preview-shell">' +
             '<div class="work-card__window">' +
               '<div class="work-card__browser-bar">' +
@@ -264,7 +233,7 @@ function initRadovi() {
                 '<div class="work-card__scroll">' +
                   mediaMarkup(project, index) +
                 '</div>' +
-                coverMarkup(project, index) +
+                '<span class="work-card__scroll-rail" aria-hidden="true"><span class="work-card__scroll-thumb"></span></span>' +
                 '<span class="work-card__preview-note">' + previewNote + '</span>' +
               '</div>' +
             '</div>' +
@@ -302,40 +271,72 @@ function initRadovi() {
     });
   }
 
-  function initPreviewMotion() {
-    if (!supportsHover) return;
+  function initPreviewMetrics() {
+    var previews = Array.prototype.slice.call(showcase.querySelectorAll('.work-card__preview'));
+    if (!previews.length) return;
 
-    var previews = showcase.querySelectorAll('.work-card__preview');
+    function clamp(value, min, max) {
+      return Math.min(max, Math.max(min, value));
+    }
+
+    function syncPreview(preview) {
+      var viewport = preview.querySelector('.work-card__viewport');
+      var media = preview.querySelector('.work-card__media');
+      if (!viewport || !media || media.tagName !== 'IMG') return;
+      if (!media.naturalWidth || !media.naturalHeight) return;
+
+      var frameWidth = viewport.clientWidth;
+      var frameHeight = viewport.clientHeight;
+      if (!frameWidth || !frameHeight) return;
+
+      var renderedHeight = frameWidth * (media.naturalHeight / media.naturalWidth);
+      var maxScroll = Math.min(0, frameHeight - renderedHeight);
+      var travel = clamp(parseFloat(preview.dataset.previewTravel || '0.16'), 0, 1);
+      var mobileTravel = clamp(parseFloat(preview.dataset.previewMobile || '0.03'), 0, travel);
+      var scrollProgress = maxScroll < -8 ? travel : 0;
+      var mobileProgress = maxScroll < -8 ? mobileTravel : 0;
+      var thumbRatio = clamp(frameHeight / renderedHeight, 0.14, 0.76);
+      var thumbTravel = (1 - thumbRatio) * scrollProgress;
+      var duration = clamp(1200 + Math.abs(maxScroll) * 0.18, 1200, 2200);
+
+      preview.style.setProperty('--preview-end', (maxScroll * scrollProgress).toFixed(2) + 'px');
+      preview.style.setProperty('--preview-mobile', (maxScroll * mobileProgress).toFixed(2) + 'px');
+      preview.style.setProperty('--scroll-thumb-size', (thumbRatio * 100).toFixed(2) + '%');
+      preview.style.setProperty('--scroll-thumb-shift', (thumbTravel * 100).toFixed(2) + '%');
+      preview.style.setProperty('--preview-duration', duration.toFixed(0) + 'ms');
+      preview.classList.toggle('is-scrollable', maxScroll < -8);
+    }
 
     previews.forEach(function(preview) {
-      var shell = preview.querySelector('.work-card__preview-shell');
-      if (!shell) return;
+      var media = preview.querySelector('.work-card__media');
+      if (!media) return;
 
-      function resetMotion() {
-        shell.style.setProperty('--preview-shift-x', '0px');
-        shell.style.setProperty('--preview-shift-y', '0px');
-        shell.style.setProperty('--preview-rotate-x', '0deg');
-        shell.style.setProperty('--preview-rotate-y', '0deg');
-      }
+      if (media.complete) syncPreview(preview);
+      media.addEventListener('load', function() {
+        syncPreview(preview);
+      });
+    });
 
-      preview.addEventListener('pointermove', function(event) {
-        var rect = preview.getBoundingClientRect();
-        var relX = (event.clientX - rect.left) / rect.width - 0.5;
-        var relY = (event.clientY - rect.top) / rect.height - 0.5;
-
-        shell.style.setProperty('--preview-shift-x', (relX * 12).toFixed(2) + 'px');
-        shell.style.setProperty('--preview-shift-y', (relY * 10).toFixed(2) + 'px');
-        shell.style.setProperty('--preview-rotate-x', (relY * -3).toFixed(2) + 'deg');
-        shell.style.setProperty('--preview-rotate-y', (relX * 4).toFixed(2) + 'deg');
+    if ('ResizeObserver' in window) {
+      var resizeObserver = new ResizeObserver(function(entries) {
+        entries.forEach(function(entry) {
+          var preview = entry.target.closest('.work-card__preview');
+          if (preview) syncPreview(preview);
+        });
       });
 
-      preview.addEventListener('pointerleave', resetMotion);
-      preview.addEventListener('blur', resetMotion, true);
-      resetMotion();
-    });
+      previews.forEach(function(preview) {
+        var viewport = preview.querySelector('.work-card__viewport');
+        if (viewport) resizeObserver.observe(viewport);
+      });
+    } else {
+      window.addEventListener('resize', function() {
+        previews.forEach(syncPreview);
+      });
+    }
   }
 
   renderShowcase();
   initRevealObserver();
-  initPreviewMotion();
+  initPreviewMetrics();
 }

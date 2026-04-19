@@ -324,7 +324,6 @@
   display: block;
   color: inherit;
   text-decoration: none;
-  perspective: 1200px;
 }
 
 .work-card__preview-shell {
@@ -339,12 +338,7 @@
   box-shadow:
     0 24px 52px rgba(10, 10, 10, 0.10),
     inset 0 1px 0 rgba(255, 255, 255, 0.82);
-  transform:
-    translate3d(var(--preview-shift-x, 0px), var(--preview-shift-y, 0px), 0)
-    rotateX(var(--preview-rotate-x, 0deg))
-    rotateY(var(--preview-rotate-y, 0deg));
-  transform-style: preserve-3d;
-  transition: transform 550ms var(--ease), box-shadow 420ms var(--ease), border-color 420ms var(--ease);
+  transition: transform 420ms var(--ease), box-shadow 420ms var(--ease), border-color 420ms var(--ease);
 }
 
 .work-card__preview-shell::before {
@@ -444,13 +438,25 @@
     linear-gradient(180deg, color-mix(in srgb, var(--project-frame) 75%, white), var(--project-frame));
 }
 
-.work-card__scroll {
+.work-card__viewport::after {
+  content: '';
   position: absolute;
   inset: 0;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0) 14%),
+    linear-gradient(0deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0) 14%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.work-card__scroll {
+  position: absolute;
+  inset: 0 auto auto 0;
   z-index: 1;
-  transform: translate3d(0, var(--preview-start), 0);
-  transform-origin: top center;
-  transition: transform 1400ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  width: 100%;
+  transform: translate3d(0, 0, 0);
+  transform-origin: top left;
+  transition: transform var(--preview-duration, 1700ms) cubic-bezier(0.22, 1, 0.36, 1);
   will-change: transform;
 }
 
@@ -465,30 +471,41 @@ video.work-card__media {
   object-fit: cover;
 }
 
-.work-card__cover {
+.work-card__scroll-rail {
   position: absolute;
-  inset: 0;
-  z-index: 2;
-  transition: opacity 420ms var(--ease);
+  top: 18px;
+  right: 12px;
+  bottom: 18px;
+  width: 4px;
+  z-index: 3;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--project-ink) 10%, rgba(255, 255, 255, 0.22));
+  opacity: 0;
+  transform: translateX(6px);
+  pointer-events: none;
+  transition: opacity 280ms ease, transform 280ms ease;
 }
 
-.work-card__cover-media {
+.work-card__preview:not(.is-scrollable) .work-card__scroll-rail {
+  display: none;
+}
+
+.work-card__scroll-thumb {
   display: block;
   width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: top center;
-  transform:
-    translate3d(var(--project-cover-shift-x, 0%), var(--project-cover-shift-y, 0%), 0)
-    scale(var(--project-cover-scale, 1));
-  transform-origin: center top;
+  height: var(--scroll-thumb-size, 18%);
+  border-radius: inherit;
+  background: color-mix(in srgb, var(--project-accent) 55%, white);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.26);
+  transform: translateY(0);
+  transition: transform var(--preview-duration, 1700ms) cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .work-card__preview-note {
   position: absolute;
   left: 18px;
   bottom: 18px;
-  z-index: 3;
+  z-index: 4;
   padding: 9px 12px;
   border-radius: 999px;
   background: color-mix(in srgb, rgba(10, 10, 10, 0.74) 88%, var(--project-accent));
@@ -565,8 +582,8 @@ video.work-card__media {
     transform: translate3d(0, var(--preview-mobile), 0);
   }
 
-  .work-card__cover {
-    opacity: 1 !important;
+  .work-card__scroll-rail {
+    display: none;
   }
 
   .work-card__preview-note {
@@ -593,6 +610,7 @@ video.work-card__media {
 @media (hover: hover) and (pointer: fine) {
   .work-card:hover .work-card__preview-shell,
   .work-card__preview:focus-visible .work-card__preview-shell {
+    transform: translateY(-4px);
     border-color: color-mix(in srgb, var(--project-line) 88%, rgba(10, 10, 10, 0.08));
     box-shadow:
       0 36px 74px rgba(10, 10, 10, 0.14),
@@ -604,9 +622,15 @@ video.work-card__media {
     transform: translate3d(0, var(--preview-end), 0);
   }
 
-  .work-card:hover .work-card__cover,
-  .work-card__preview:focus-visible .work-card__cover {
-    opacity: 0;
+  .work-card:hover .work-card__scroll-rail,
+  .work-card__preview:focus-visible .work-card__scroll-rail {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .work-card:hover .work-card__scroll-thumb,
+  .work-card__preview:focus-visible .work-card__scroll-thumb {
+    transform: translateY(var(--scroll-thumb-shift, 0%));
   }
 
   .work-card:hover .work-card__preview-note,
