@@ -46,6 +46,9 @@ function initRadovi() {
         src: 'posterium.webp',
         accent: '#E36D49',
         glow: 'rgba(227, 109, 73, 0.18)',
+        wash: 'rgba(227, 109, 73, 0.065)',
+        line: 'rgba(227, 109, 73, 0.18)',
+        chip: 'rgba(227, 109, 73, 0.08)',
         frame: '#F2ECE4',
         chrome: '#FBF7F2',
         ink: '#16222A',
@@ -73,6 +76,9 @@ function initRadovi() {
         src: 'interplast.webp',
         accent: '#4E67E8',
         glow: 'rgba(78, 103, 232, 0.16)',
+        wash: 'rgba(78, 103, 232, 0.06)',
+        line: 'rgba(78, 103, 232, 0.18)',
+        chip: 'rgba(78, 103, 232, 0.08)',
         frame: '#EEF2FF',
         chrome: '#F7F9FF',
         ink: '#17203A',
@@ -100,6 +106,9 @@ function initRadovi() {
         src: 'dr-metalplus.webp',
         accent: '#63B23D',
         glow: 'rgba(99, 178, 61, 0.16)',
+        wash: 'rgba(99, 178, 61, 0.06)',
+        line: 'rgba(99, 178, 61, 0.16)',
+        chip: 'rgba(99, 178, 61, 0.075)',
         frame: '#EFF4EA',
         chrome: '#F8FBF4',
         ink: '#193117',
@@ -127,6 +136,9 @@ function initRadovi() {
         src: 'edc-satovi.webp',
         accent: '#C8A24B',
         glow: 'rgba(200, 162, 75, 0.18)',
+        wash: 'rgba(200, 162, 75, 0.07)',
+        line: 'rgba(200, 162, 75, 0.18)',
+        chip: 'rgba(200, 162, 75, 0.1)',
         frame: '#191713',
         chrome: '#1D1A14',
         ink: '#E8C373',
@@ -173,6 +185,9 @@ function initRadovi() {
     var style = [
       '--project-accent:' + (preview.accent || '#0A0A0A'),
       '--project-glow:' + (preview.glow || 'rgba(10, 10, 10, 0.12)'),
+      '--project-wash:' + (preview.wash || 'rgba(10, 10, 10, 0.04)'),
+      '--project-line:' + (preview.line || 'rgba(10, 10, 10, 0.1)'),
+      '--project-chip:' + (preview.chip || 'rgba(255, 255, 255, 0.72)'),
       '--project-frame:' + (preview.frame || '#F4F1EC'),
       '--project-chrome:' + (preview.chrome || '#FFFFFF'),
       '--project-ink:' + (preview.ink || '#0A0A0A'),
@@ -211,16 +226,20 @@ function initRadovi() {
         '</div>' +
         '<a class="work-card__preview" href="' + project.url + '" target="_blank" rel="noopener" aria-label="' + UI.openProject + project.name + '" data-cursor="view">' +
           '<div class="work-card__preview-shell">' +
-            '<div class="work-card__browser-bar">' +
-              '<div class="work-card__browser-dots"><span></span><span></span><span></span></div>' +
-              '<span class="work-card__browser-address">' + project.domain + '</span>' +
-              '<span class="work-card__browser-state">' + UI.live + '</span>' +
-            '</div>' +
-            '<div class="work-card__viewport">' +
-              mediaMarkup(project, index) +
+            '<div class="work-card__window">' +
+              '<div class="work-card__browser-bar">' +
+                '<div class="work-card__browser-dots"><span></span><span></span><span></span></div>' +
+                '<span class="work-card__browser-address">' + project.domain + '</span>' +
+                '<span class="work-card__browser-state">' + UI.live + '</span>' +
+              '</div>' +
+              '<div class="work-card__viewport">' +
+                '<div class="work-card__scroll">' +
+                  mediaMarkup(project, index) +
+                '</div>' +
+                '<span class="work-card__preview-note">' + previewNote + '</span>' +
+              '</div>' +
             '</div>' +
           '</div>' +
-          '<span class="work-card__preview-note">' + previewNote + '</span>' +
         '</a>' +
       '</article>'
     );
