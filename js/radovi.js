@@ -154,10 +154,7 @@ function initRadovi() {
         state: 'rgba(255, 255, 255, 0.08)',
         start: '0%',
         end: '-8%',
-        mobile: '-4%',
-        coverScale: '1.065',
-        coverShiftX: '2.4%',
-        coverShiftY: '-0.35%'
+        mobile: '-4%'
       }
     }
   ];
