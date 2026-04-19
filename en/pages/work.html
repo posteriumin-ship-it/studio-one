@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Work — Studio One</title>
-  <meta name="description" content="Selected projects by Studio One — websites, photography, and Instagram profiles built for brands that want a serious online presence." />
+  <meta name="description" content="Selected website projects by Studio One — premium websites for brands that need a serious digital presence." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -60,25 +60,49 @@
   </div>
 
   <!-- ── PAGE HERO ─────────────────────────── -->
-  <div class="radovi-hero reveal">
-    <p class="radovi-hero__label">— Selected work</p>
-    <h1 class="radovi-hero__title">Projects that show<br><em>how we think.</em></h1>
-  </div>
+  <section class="radovi-hero reveal">
+    <div class="radovi-hero__grid">
+      <div class="radovi-hero__copy">
+        <p class="radovi-hero__label">— Website selection</p>
+        <h1 class="radovi-hero__title">Website work built to make a <em>serious first impression.</em></h1>
+      </div>
+      <div class="radovi-hero__aside">
+        <p class="radovi-hero__lede">
+          This page shows websites only. Every preview sits inside a refined browser frame so the user sees pacing, hierarchy, and finish level — not just a static image dropped into a card.
+        </p>
+        <div class="radovi-hero__stats" aria-label="Selection overview">
+          <div class="radovi-stat">
+            <strong>4</strong>
+            <span>selected website projects</span>
+          </div>
+          <div class="radovi-stat">
+            <strong>B2B / DTC</strong>
+            <span>industrial, corporate, and e-commerce focus</span>
+          </div>
+          <div class="radovi-stat">
+            <strong>Frame preview</strong>
+            <span>clean showcase without heavy embeds</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <!-- ── FILTER BAR ────────────────────────── -->
-  <div class="radovi-filter" id="radoviFilter">
-    <button class="filter__tab is-active" data-cat="web">Websites</button>
-    <button class="filter__tab" data-cat="foto">Photography</button>
-    <button class="filter__tab" data-cat="ig">Instagram profiles</button>
-    <span class="filter__indicator" id="filterIndicator"></span>
-  </div>
+  <section class="radovi-showcase" aria-labelledby="radoviShowcaseTitle">
+    <div class="radovi-showcase__intro reveal">
+      <p class="radovi-showcase__label">— Selected website projects</p>
+      <div class="radovi-showcase__intro-copy">
+        <h2 class="radovi-showcase__title" id="radoviShowcaseTitle">Selected Work</h2>
+        <p class="radovi-showcase__text">
+          A focused selection where structure, composition, and performance are all tuned to create a stronger business impression from the first seconds.
+        </p>
+      </div>
+    </div>
 
-  <!-- ── PROJECT GRID ──────────────────────── -->
-  <div class="radovi-grid-wrap">
-    <div class="radovi-grid" id="radoviGrid">
+    <div class="radovi-showcase__list" id="radoviShowcase">
       <!-- populated by radovi.js -->
     </div>
-  </div>
+  </section>
 
   <!-- ── CTA BAND ──────────────────────────── -->
   <section class="section cta-band">
@@ -140,14 +164,13 @@
   <script src="../../js/cursor.js" defer></script>
   <script src="../../js/nav.js"    defer></script>
   <script src="../../js/reveal.js" defer></script>
-  <script src="../../js/main.js"   defer></script>
   <script src="../../js/radovi.js" defer></script>
-
-  <!-- Override labels to English after radovi.js runs -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      /* radovi.js will have already populated the grid — nothing to override
-         since project names / domains are universal. Tab labels are set in HTML above. */
+      if (typeof initCursor === 'function') initCursor();
+      if (typeof initNav === 'function') initNav();
+      if (typeof initReveal === 'function') initReveal();
+      if (typeof initRadovi === 'function') initRadovi();
     });
   </script>
 

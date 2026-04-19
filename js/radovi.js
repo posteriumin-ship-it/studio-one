@@ -1,235 +1,293 @@
 /* ============================================================
-   Radovi — portfolio page
-   Filter tabs + project grid + iframe preview overlay
-   Bilingual: tags and UI strings adapt to lang="sr|en".
+   Radovi — editorial website showcase
+   Website-only, reusable data model with premium preview frames
    ============================================================ */
 function initRadovi() {
-
-  /* ── Language detection ──────────────────── */
   var isEN = document.documentElement.lang === 'en';
+  var showcase = document.getElementById('radoviShowcase');
+  if (!showcase) return;
 
-  /* ── UI strings ──────────────────────────── */
+  var assetBase = document.body.classList.contains('lang-en')
+    ? '../../assets/work-previews/'
+    : '../assets/work-previews/';
+  var supportsHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
   var UI = isEN ? {
-    webCta      : 'Preview →',
-    fotoLabel   : 'Photography',
+    industry: 'Industry',
+    services: 'Scope',
+    cta: 'View project',
+    live: 'Live site',
+    openProject: 'Open project ',
+    previewLabel: 'Curated preview'
   } : {
-    webCta      : 'Pregledaj →',
-    fotoLabel   : 'Fotografija',
+    industry: 'Industrija',
+    services: 'Opseg',
+    cta: 'Otvori projekat',
+    live: 'Live sajt',
+    openProject: 'Otvori projekat ',
+    previewLabel: 'Kurirani preview'
   };
 
-  /* ── Project data ────────────────────────── */
-  /* tag / tag_en — render based on language   */
-  var PROJECTS = {
-    web: [
-      {
-        n: '01', name: 'Posterium', domain: 'posteriumin.com',
-        url: 'https://posteriumin.com/en',
-        tag: 'E-commerce · Brend',      tag_en: 'E-commerce · Brand'
-      },
-      {
-        n: '02', name: 'Interplast-S', domain: 'interplast-s.com',
-        url: 'https://interplast-s.com/',
-        tag: 'Korporativni sajt',        tag_en: 'Corporate website'
-      },
-      {
-        n: '03', name: 'Dr MetalPlus', domain: 'dr-metalplus.com',
-        url: 'https://dr-metalplus.com/',
-        tag: 'Medicinski servis',        tag_en: 'Medical service'
-      },
-      {
-        n: '04', name: 'EDC Satovi', domain: 'edcsatovishop.com',
-        url: 'https://edcsatovishop.com/',
-        tag: 'Online prodavnica',        tag_en: 'Online store'
+  var PROJECTS = [
+    {
+      name: 'Posterium',
+      domain: 'posteriumin.com',
+      url: 'https://posteriumin.com/en',
+      type: 'E-commerce website',
+      type_en: 'E-commerce website',
+      description: 'E-commerce iskustvo za brend koji personalizovanu automobilsku estetiku prevodi u proizvod sa jasnim premium osećajem i čistim prodajnim tokom.',
+      description_en: 'An e-commerce experience for a brand translating personalised automotive culture into a digital product with a clear premium feel and a clean sales flow.',
+      industry: 'Custom automotive art / DTC retail',
+      industry_en: 'Custom automotive art / DTC retail',
+      services: ['UX struktura', 'Shopify build', 'Product storytelling', 'Konverzijski tok'],
+      services_en: ['UX structure', 'Shopify build', 'Product storytelling', 'Conversion flow'],
+      preview: {
+        type: 'image',
+        src: 'posterium.webp',
+        accent: '#E36D49',
+        glow: 'rgba(227, 109, 73, 0.18)',
+        frame: '#F2ECE4',
+        chrome: '#FBF7F2',
+        ink: '#16222A',
+        pill: 'rgba(255, 255, 255, 0.76)',
+        state: 'rgba(10, 10, 10, 0.05)',
+        start: '0%',
+        end: '-18%',
+        mobile: '-6%'
       }
-    ],
-    foto: [
-      { n: '01', name: 'Portrait series',      tag: 'Fotografija · 2025', tag_en: 'Photography · 2025' },
-      { n: '02', name: 'Product shoot',        tag: 'Fotografija · 2024', tag_en: 'Photography · 2024' },
-      { n: '03', name: 'Architectural series', tag: 'Fotografija · 2024', tag_en: 'Photography · 2024' }
-    ],
-    ig: [
-      { n: '01', name: 'Posterium',  handle: '@posteriumin',   tag: 'E-commerce · Fashion',    tag_en: 'E-commerce · Fashion'  },
-      { n: '02', name: 'EDC Satovi', handle: '@edcsatovishop', tag: 'Online prodavnica',        tag_en: 'Online store'          }
-      /* Note: third IG slot removed — placeholder "Projekat 03" was not real work */
-    ]
-  };
+    },
+    {
+      name: 'Interplast S',
+      domain: 'interplast-s.com',
+      url: 'https://interplast-s.com/',
+      type: 'Corporate B2B website',
+      type_en: 'Corporate B2B website',
+      description: 'Korporativni B2B sajt za industrijsku firmu, sa jasnim putanjama ka materijalima, obradi i brzom tehničkom upitu.',
+      description_en: 'A corporate B2B website for an industrial company, with clear paths toward materials, machining services, and fast technical enquiries.',
+      industry: 'Industrial plastics / manufacturing',
+      industry_en: 'Industrial plastics / manufacturing',
+      services: ['Informaciona arhitektura', 'B2B copy', 'Lead capture', 'Responsive UI'],
+      services_en: ['Information architecture', 'B2B copy', 'Lead capture', 'Responsive UI'],
+      preview: {
+        type: 'image',
+        src: 'interplast.webp',
+        accent: '#4E67E8',
+        glow: 'rgba(78, 103, 232, 0.16)',
+        frame: '#EEF2FF',
+        chrome: '#F7F9FF',
+        ink: '#17203A',
+        pill: 'rgba(255, 255, 255, 0.82)',
+        state: 'rgba(10, 10, 10, 0.05)',
+        start: '0%',
+        end: '-10%',
+        mobile: '-3%'
+      }
+    },
+    {
+      name: 'DR-METALPLUS',
+      domain: 'dr-metalplus.com',
+      url: 'https://dr-metalplus.com/',
+      type: 'Service website',
+      type_en: 'Service website',
+      description: 'Servisni i prodajni website za mašinsku obradu, elise i tehničke zahteve, građen da odmah ulije poverenje u stručnost i kapacitet.',
+      description_en: 'A service and sales website for machining, propellers, and technical requests, built to signal expertise and capacity from the first screen.',
+      industry: 'CNC machining / marine components',
+      industry_en: 'CNC machining / marine components',
+      services: ['Pozicioniranje', 'Arhitektura usluga', 'Tehnički upit', 'Custom development'],
+      services_en: ['Positioning', 'Service architecture', 'Technical enquiry flow', 'Custom development'],
+      preview: {
+        type: 'image',
+        src: 'dr-metalplus.webp',
+        accent: '#63B23D',
+        glow: 'rgba(99, 178, 61, 0.16)',
+        frame: '#EFF4EA',
+        chrome: '#F8FBF4',
+        ink: '#193117',
+        pill: 'rgba(255, 255, 255, 0.8)',
+        state: 'rgba(10, 10, 10, 0.05)',
+        start: '0%',
+        end: '-20%',
+        mobile: '-8%'
+      }
+    },
+    {
+      name: 'EDC Satovi',
+      domain: 'edcsatovishop.com',
+      url: 'https://edcsatovishop.com/',
+      type: 'E-commerce website',
+      type_en: 'E-commerce website',
+      description: 'E-commerce platforma za prodaju satova, sa fokusom na merchandising, brz izbor proizvoda i premium osećaj kupovine.',
+      description_en: 'An e-commerce platform for watches, focused on merchandising, faster product discovery, and a more premium shopping feel.',
+      industry: 'Watches & accessories / online retail',
+      industry_en: 'Watches & accessories / online retail',
+      services: ['E-commerce UX', 'Katalog sistem', 'Visual merchandising', 'Mobile shopping'],
+      services_en: ['E-commerce UX', 'Catalogue system', 'Visual merchandising', 'Mobile shopping'],
+      preview: {
+        type: 'image',
+        src: 'edc-satovi.webp',
+        accent: '#C8A24B',
+        glow: 'rgba(200, 162, 75, 0.18)',
+        frame: '#191713',
+        chrome: '#1D1A14',
+        ink: '#E8C373',
+        pill: 'rgba(255, 255, 255, 0.08)',
+        state: 'rgba(255, 255, 255, 0.08)',
+        start: '0%',
+        end: '-8%',
+        mobile: '-4%'
+      }
+    }
+  ];
 
-  /* Helper: resolve correct tag string for current language */
-  function getTag(p) {
-    return isEN && p.tag_en ? p.tag_en : p.tag;
+  function getLocalized(project, key) {
+    var enKey = key + '_en';
+    return isEN && project[enKey] ? project[enKey] : project[key];
   }
 
-  /* ── DOM refs ────────────────────────────── */
-  var grid      = document.getElementById('radoviGrid');
-  var filter    = document.getElementById('radoviFilter');
-  var indicator = document.getElementById('filterIndicator');
-  var tabs      = Array.from(document.querySelectorAll('.filter__tab'));
+  function mediaMarkup(project, index) {
+    var preview = project.preview || {};
+    var src = assetBase + preview.src;
+    var alt = project.name + ' — ' + (isEN ? 'website preview' : 'website preview');
+    var loading = index === 0 ? 'eager' : 'lazy';
+    var fetchPriority = index === 0 ? 'high' : 'auto';
 
-  var overlay      = document.getElementById('previewOverlay');
-  var iframe       = document.getElementById('previewIframe');
-  var siteName     = document.getElementById('previewSiteName');
-  var extLink      = document.getElementById('previewExtLink');
-  var closeBtn     = document.getElementById('previewClose');
-  var blocked      = document.getElementById('previewBlocked');
-  var blockedLink  = document.getElementById('previewBlockedLink');
+    if (preview.type === 'video') {
+      var poster = preview.poster ? ' poster="' + assetBase + preview.poster + '"' : '';
+      return (
+        '<video class="work-card__media" autoplay muted loop playsinline' + poster + '>' +
+          '<source src="' + src + '" type="video/mp4">' +
+        '</video>'
+      );
+    }
 
-  if (!grid || !filter) return;
-
-  var activeCat = 'web';
-
-  /* ── Build cards ─────────────────────────── */
-  function buildWebCard(p) {
-    var el = document.createElement('div');
-    el.className = 'proj-card proj-card--web';
-    el.innerHTML =
-      '<span class="proj-card__n">' + p.n + '</span>' +
-      '<span class="proj-card__domain">' + p.domain + '</span>' +
-      '<h2 class="proj-card__name">' + p.name + '</h2>' +
-      '<span class="proj-card__tag">' + getTag(p) + '</span>' +
-      '<span class="proj-card__cta">' + UI.webCta + '</span>';
-    el.addEventListener('click', function() { openPreview(p); });
-    return el;
+    return (
+      '<img class="work-card__media" src="' + src + '" alt="' + alt + '" loading="' + loading + '" decoding="async" fetchpriority="' + fetchPriority + '">' 
+    );
   }
 
-  function buildFotoCard(p) {
-    var el = document.createElement('div');
-    el.className = 'proj-card proj-card--foto';
-    el.innerHTML =
-      '<span class="proj-card__n">' + p.n + '</span>' +
-      '<div class="foto-frame"><span class="foto-frame__label">' + UI.fotoLabel + '</span></div>' +
-      '<h2 class="proj-card__name" style="position:absolute;bottom:66px;left:22px;right:22px;font-family:var(--font-serif);font-weight:300;font-size:clamp(22px,2.8vw,40px);line-height:.95;letter-spacing:-.03em;">' + p.name + '</h2>' +
-      '<span class="proj-card__tag">' + getTag(p) + '</span>';
-    return el;
+  function renderProject(project, index) {
+    var preview = project.preview || {};
+    var services = getLocalized(project, 'services') || [];
+    var reverseClass = index % 2 === 1 ? ' work-card--reverse' : '';
+    var previewNote = UI.previewLabel;
+    var style = [
+      '--project-accent:' + (preview.accent || '#0A0A0A'),
+      '--project-glow:' + (preview.glow || 'rgba(10, 10, 10, 0.12)'),
+      '--project-frame:' + (preview.frame || '#F4F1EC'),
+      '--project-chrome:' + (preview.chrome || '#FFFFFF'),
+      '--project-ink:' + (preview.ink || '#0A0A0A'),
+      '--project-pill:' + (preview.pill || 'rgba(255, 255, 255, 0.76)'),
+      '--project-state:' + (preview.state || 'rgba(10, 10, 10, 0.05)'),
+      '--preview-start:' + (preview.start || '0%'),
+      '--preview-end:' + (preview.end || '-12%'),
+      '--preview-mobile:' + (preview.mobile || '0%')
+    ].join(';');
+
+    return (
+      '<article class="work-card' + reverseClass + '" style="' + style + '">' +
+        '<div class="work-card__content">' +
+          '<div class="work-card__topline">' +
+            '<span class="work-card__index">' + String(index + 1).padStart(2, '0') + '</span>' +
+            '<span class="work-card__type">' + getLocalized(project, 'type') + '</span>' +
+          '</div>' +
+          '<h3 class="work-card__title">' + project.name + '</h3>' +
+          '<p class="work-card__description">' + getLocalized(project, 'description') + '</p>' +
+          '<div class="work-card__detail">' +
+            '<span class="work-card__detail-label">' + UI.industry + '</span>' +
+            '<p class="work-card__detail-value">' + getLocalized(project, 'industry') + '</p>' +
+          '</div>' +
+          '<div class="work-card__detail work-card__detail--services">' +
+            '<span class="work-card__detail-label">' + UI.services + '</span>' +
+            '<ul class="work-card__tags">' +
+              services.map(function(service) {
+                return '<li class="work-card__tag">' + service + '</li>';
+              }).join('') +
+            '</ul>' +
+          '</div>' +
+          '<div class="work-card__actions">' +
+            '<a href="' + project.url + '" class="work-card__cta" target="_blank" rel="noopener" data-cursor="view">' + UI.cta + '</a>' +
+            '<span class="work-card__domain">' + project.domain + '</span>' +
+          '</div>' +
+        '</div>' +
+        '<a class="work-card__preview" href="' + project.url + '" target="_blank" rel="noopener" aria-label="' + UI.openProject + project.name + '" data-cursor="view">' +
+          '<div class="work-card__preview-shell">' +
+            '<div class="work-card__browser-bar">' +
+              '<div class="work-card__browser-dots"><span></span><span></span><span></span></div>' +
+              '<span class="work-card__browser-address">' + project.domain + '</span>' +
+              '<span class="work-card__browser-state">' + UI.live + '</span>' +
+            '</div>' +
+            '<div class="work-card__viewport">' +
+              mediaMarkup(project, index) +
+            '</div>' +
+          '</div>' +
+          '<span class="work-card__preview-note">' + previewNote + '</span>' +
+        '</a>' +
+      '</article>'
+    );
   }
 
-  function buildIgCard(p) {
-    var cells = '';
-    for (var i = 0; i < 9; i++) { cells += '<div class="ig-phone__cell"></div>'; }
-    var el = document.createElement('div');
-    el.className = 'proj-card proj-card--ig';
-    el.innerHTML =
-      '<span class="proj-card__n">' + p.n + '</span>' +
-      '<div class="ig-phone">' +
-        '<div class="ig-phone__bar">' + p.handle + '</div>' +
-        '<div class="ig-phone__grid">' + cells + '</div>' +
-      '</div>' +
-      '<span class="proj-card__tag">' + getTag(p) + '</span>';
-    return el;
+  function renderShowcase() {
+    showcase.innerHTML = PROJECTS.map(renderProject).join('');
   }
 
-  /* ── Render grid for a category ──────────── */
-  function renderGrid(cat, animate) {
-    var items = PROJECTS[cat] || [];
+  function initRevealObserver() {
+    var cards = Array.prototype.slice.call(showcase.querySelectorAll('.work-card'));
+    if (!cards.length) return;
 
-    /* Fade out existing cards */
-    var existing = Array.from(grid.querySelectorAll('.proj-card'));
-    existing.forEach(function(c) {
-      c.style.opacity = '0';
-      c.style.transform = 'translateY(10px)';
-    });
-
-    var delay = animate && existing.length ? 180 : 0;
-
-    setTimeout(function() {
-      grid.innerHTML = '';
-      items.forEach(function(p, idx) {
-        var card;
-        if (cat === 'web')  card = buildWebCard(p);
-        if (cat === 'foto') card = buildFotoCard(p);
-        if (cat === 'ig')   card = buildIgCard(p);
-        grid.appendChild(card);
-
-        /* Staggered entrance */
-        setTimeout(function() {
-          card.classList.add('is-in');
-        }, 60 + idx * 90);
+    if (!('IntersectionObserver' in window)) {
+      cards.forEach(function(card) {
+        card.classList.add('is-visible');
       });
-    }, delay);
-  }
+      return;
+    }
 
-  /* ── Sliding indicator ───────────────────── */
-  function moveIndicator(tab) {
-    var filterRect = filter.getBoundingClientRect();
-    var tabRect    = tab.getBoundingClientRect();
-    indicator.style.left  = (tabRect.left - filterRect.left + filter.scrollLeft) + 'px';
-    indicator.style.width = tabRect.width + 'px';
-  }
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.2 });
 
-  /* ── Tab switching ───────────────────────── */
-  tabs.forEach(function(tab) {
-    tab.addEventListener('click', function() {
-      if (tab.dataset.cat === activeCat) return;
-      activeCat = tab.dataset.cat;
-
-      tabs.forEach(function(t) { t.classList.remove('is-active'); });
-      tab.classList.add('is-active');
-      moveIndicator(tab);
-      renderGrid(activeCat, true);
+    cards.forEach(function(card) {
+      observer.observe(card);
     });
-  });
+  }
 
-  /* ── iframe Preview ──────────────────────── */
-  function openPreview(p) {
-    if (!overlay) return;
+  function initPreviewMotion() {
+    if (!supportsHover) return;
 
-    siteName.textContent    = p.domain || p.name;
-    extLink.href            = p.url;
-    blockedLink.href        = p.url;
-    blocked.classList.remove('is-visible');
-    iframe.src              = '';
+    var previews = showcase.querySelectorAll('.work-card__preview');
 
-    overlay.classList.add('is-open');
-    document.body.style.overflow = 'hidden';
+    previews.forEach(function(preview) {
+      var shell = preview.querySelector('.work-card__preview-shell');
+      if (!shell) return;
 
-    /* Small delay before loading iframe so overlay animates in first */
-    setTimeout(function() {
-      iframe.src = p.url;
-    }, 200);
-
-    /* Detect if iframe was blocked (X-Frame-Options) */
-    iframe.onload = function() {
-      try {
-        /* If we can access contentWindow.location it loaded OK */
-        var loc = iframe.contentWindow.location.href;
-        if (!loc || loc === 'about:blank') throw new Error('blank');
-        blocked.classList.remove('is-visible');
-      } catch(e) {
-        /* Cross-origin or blocked — show fallback */
-        blocked.classList.add('is-visible');
+      function resetMotion() {
+        shell.style.setProperty('--preview-shift-x', '0px');
+        shell.style.setProperty('--preview-shift-y', '0px');
+        shell.style.setProperty('--preview-rotate-x', '0deg');
+        shell.style.setProperty('--preview-rotate-y', '0deg');
       }
-    };
 
-    iframe.onerror = function() {
-      blocked.classList.add('is-visible');
-    };
+      preview.addEventListener('pointermove', function(event) {
+        var rect = preview.getBoundingClientRect();
+        var relX = (event.clientX - rect.left) / rect.width - 0.5;
+        var relY = (event.clientY - rect.top) / rect.height - 0.5;
+
+        shell.style.setProperty('--preview-shift-x', (relX * 12).toFixed(2) + 'px');
+        shell.style.setProperty('--preview-shift-y', (relY * 10).toFixed(2) + 'px');
+        shell.style.setProperty('--preview-rotate-x', (relY * -3).toFixed(2) + 'deg');
+        shell.style.setProperty('--preview-rotate-y', (relX * 4).toFixed(2) + 'deg');
+      });
+
+      preview.addEventListener('pointerleave', resetMotion);
+      preview.addEventListener('blur', resetMotion, true);
+      resetMotion();
+    });
   }
 
-  function closePreview() {
-    overlay.classList.remove('is-open');
-    document.body.style.overflow = '';
-    setTimeout(function() { iframe.src = ''; }, 500);
-  }
-
-  if (closeBtn)  closeBtn.addEventListener('click', closePreview);
-  if (overlay)   overlay.addEventListener('click', function(e) {
-    if (e.target === overlay) closePreview();
-  });
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') closePreview();
-  });
-
-  /* ── Init ────────────────────────────────── */
-  renderGrid('web', false);
-
-  /* Position indicator after layout paint */
-  requestAnimationFrame(function() {
-    var activeTab = tabs.find(function(t) { return t.classList.contains('is-active'); });
-    if (activeTab) moveIndicator(activeTab);
-  });
-
-  /* Reposition on resize */
-  window.addEventListener('resize', function() {
-    var activeTab = tabs.find(function(t) { return t.classList.contains('is-active'); });
-    if (activeTab) moveIndicator(activeTab);
-  });
+  renderShowcase();
+  initRevealObserver();
+  initPreviewMotion();
 }

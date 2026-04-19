@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Radovi — Studio One</title>
-  <meta name="description" content="Sajtovi, fotografije i Instagram profili koje je izgradio Studio One — premium digitalni studio iz Novog Sada." />
+  <meta name="description" content="Odabrani website projekti studija Studio One — premium sajtovi za brendove koji žele ozbiljan digitalni utisak." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -60,25 +60,49 @@
   </div>
 
   <!-- ── PAGE HERO ─────────────────────────── -->
-  <div class="radovi-hero reveal">
-    <p class="radovi-hero__label">— Odabrani radovi</p>
-    <h1 class="radovi-hero__title">Projekti koji pokazuju<br><em>kako razmišljamo.</em></h1>
-  </div>
+  <section class="radovi-hero reveal">
+    <div class="radovi-hero__grid">
+      <div class="radovi-hero__copy">
+        <p class="radovi-hero__label">— Website selection</p>
+        <h1 class="radovi-hero__title">Website radovi koji odmah nose <em>ozbiljan prvi utisak.</em></h1>
+      </div>
+      <div class="radovi-hero__aside">
+        <p class="radovi-hero__lede">
+          Ovde prikazujemo samo website projekte. Svaki preview je postavljen u elegantan browser frame kako bi se video ritam, hijerarhija i nivo završne obrade — ne samo statična slika.
+        </p>
+        <div class="radovi-hero__stats" aria-label="Pregled selekcije">
+          <div class="radovi-stat">
+            <strong>4</strong>
+            <span>odabrana website projekta</span>
+          </div>
+          <div class="radovi-stat">
+            <strong>B2B / DTC</strong>
+            <span>industrijski, korporativni i e-commerce fokus</span>
+          </div>
+          <div class="radovi-stat">
+            <strong>Frame preview</strong>
+            <span>čist showcase bez teških embedova</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <!-- ── FILTER BAR ────────────────────────── -->
-  <div class="radovi-filter" id="radoviFilter">
-    <button class="filter__tab is-active" data-cat="web">Web sajtovi</button>
-    <button class="filter__tab" data-cat="foto">Fotografije</button>
-    <button class="filter__tab" data-cat="ig">Instagram profili</button>
-    <span class="filter__indicator" id="filterIndicator"></span>
-  </div>
+  <section class="radovi-showcase" aria-labelledby="radoviShowcaseTitle">
+    <div class="radovi-showcase__intro reveal">
+      <p class="radovi-showcase__label">— Odabrani website projekti</p>
+      <div class="radovi-showcase__intro-copy">
+        <h2 class="radovi-showcase__title" id="radoviShowcaseTitle">Selected Work</h2>
+        <p class="radovi-showcase__text">
+          Selekcija radova gde su struktura, kompozicija i performanse podređeni ozbiljnom poslovnom utisku. Fokus je na onome što korisnik oseti u prvim sekundama.
+        </p>
+      </div>
+    </div>
 
-  <!-- ── PROJECT GRID ──────────────────────── -->
-  <div class="radovi-grid-wrap">
-    <div class="radovi-grid" id="radoviGrid">
+    <div class="radovi-showcase__list" id="radoviShowcase">
       <!-- populated by radovi.js -->
     </div>
-  </div>
+  </section>
 
   <!-- ── CTA BAND ──────────────────────────── -->
   <section class="section cta-band">
@@ -135,27 +159,6 @@
       </div>
     </div>
   </footer>
-
-  <!-- ── PREVIEW OVERLAY (iframe modal) ────── -->
-  <div class="preview-overlay" id="previewOverlay">
-    <div class="preview__bar">
-      <div class="preview__dots">
-        <span></span><span></span><span></span>
-      </div>
-      <span class="preview__site-name" id="previewSiteName"></span>
-      <a href="#" class="preview__ext" id="previewExtLink" target="_blank" rel="noopener">
-        Poseti sajt ↗
-      </a>
-      <button class="preview__close" id="previewClose" aria-label="Zatvori">✕</button>
-    </div>
-    <div class="preview__frame-wrap">
-      <iframe id="previewIframe" src="" title="Pregled sajta" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
-      <div class="preview__blocked" id="previewBlocked">
-        <span>Ovaj sajt ne dozvoljava prikaz u okviru</span>
-        <a href="#" id="previewBlockedLink" target="_blank" rel="noopener">Otvori sajt direktno ↗</a>
-      </div>
-    </div>
-  </div>
 
   <!-- ── SCRIPTS ───────────────────────────── -->
   <script src="../js/cursor.js" defer></script>

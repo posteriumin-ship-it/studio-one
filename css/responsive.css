@@ -553,30 +553,31 @@ body {
   .radovi-hero__title {
     font-size: clamp(40px,10vw,68px);
   }
-
-  /* ── Filter bar ───────────────────────────── */
-  .filter__tab {
-    padding: 20px 0;
-    font-size: 10px;
-    margin-right: clamp(20px,5vw,40px);
+  .radovi-hero__lede {
+    max-width: 100%;
   }
-  /* Same WebKit scroll-container right-padding fix as pkg-cats */
-  .radovi-filter::after {
-    content: '';
-    flex-shrink: 0;
-    width: var(--gutter);
+  .radovi-showcase {
+    padding-bottom: clamp(72px, 10vw, 120px);
   }
-
-  /* ── Grid ─────────────────────────────────── */
-  /* Already 1col at 768px via radovi.css */
-  .radovi-grid-wrap {
-    padding: clamp(28px,5vw,48px) var(--gutter);
+  .radovi-showcase__intro {
+    padding-top: clamp(22px, 4vw, 32px);
+    padding-bottom: clamp(32px, 5vw, 52px);
   }
-  .proj-card__name {
-    font-size: clamp(22px,7vw,36px);
+  .radovi-showcase__title {
+    font-size: clamp(30px, 8vw, 50px);
   }
-  .proj-card__cta {
-    font-size: 10px;
+  .work-card + .work-card {
+    margin-top: clamp(48px, 7vw, 72px);
+    padding-top: clamp(48px, 7vw, 72px);
+  }
+  .work-card__title {
+    font-size: clamp(32px, 9vw, 54px);
+  }
+  .work-card__description {
+    font-size: 15px;
+  }
+  .work-card__browser-state {
+    display: none;
   }
 
 
@@ -853,8 +854,19 @@ body {
   .radovi-hero__title {
     font-size: clamp(36px,11vw,56px);
   }
-  .proj-card__name {
-    font-size: clamp(20px,7vw,30px);
+  .radovi-showcase__title {
+    font-size: clamp(28px,9vw,40px);
+  }
+  .work-card__title {
+    font-size: clamp(28px,10vw,42px);
+  }
+  .work-card__browser-address {
+    padding: 9px 12px;
+  }
+  .work-card__preview-note {
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
   }
 
   /* ── FAQ hero ─────────────────────────────── */
