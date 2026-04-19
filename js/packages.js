@@ -338,7 +338,7 @@ var PKG_DATA_EN = {
 };
 
 /* ── Rendering ────────────────────────────── */
-function renderPkgSel(cat, activeIdx, data) {
+function renderPkgSel(cat, activeIdx, data, ui) {
   var sel  = document.getElementById('pkgSel');
   if (!sel) return;
   var items = data[cat];
@@ -363,7 +363,7 @@ function renderPkgSel(cat, activeIdx, data) {
   sel.querySelectorAll('.pkg-sel__item').forEach(function(btn) {
     btn.addEventListener('click', function() {
       var idx = +btn.dataset.idx;
-      renderPkgSel(cat, idx, data);
+      renderPkgSel(cat, idx, data, ui);
       renderPkgDetail(cat, idx, data, ui);
     });
   });
@@ -428,7 +428,7 @@ function initPackages() {
       c.classList.toggle('is-active', active);
       c.setAttribute('aria-selected', active ? 'true' : 'false');
     });
-    renderPkgSel(cat, currentIdx, data);
+    renderPkgSel(cat, currentIdx, data, ui);
     renderPkgDetail(cat, currentIdx, data, ui);
   }
 

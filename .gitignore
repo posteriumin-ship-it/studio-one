@@ -31,3 +31,5 @@ node_modules/
 # Build output (if ever added)
 dist/
 build/
+.vercel
+.env*.local
