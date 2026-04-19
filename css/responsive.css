@@ -421,7 +421,7 @@ body {
   }
   .cta-band__actions {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     gap: 14px;
   }
   .cta-band__meta {
@@ -822,11 +822,16 @@ body {
   }
   .cta-band__actions {
     width: 100%;
+    flex-direction: column;
+    align-items: center;
   }
   .cta-band__actions .btn-primary,
+  .cta-band__actions .btn-primary-light,
+  .cta-band__actions .btn-accent,
   .cta-band__actions .btn-outline-light {
     width: 100%;
     justify-content: center;
+    text-align: center;
   }
 
   /* ── Footer ───────────────────────────────── */
