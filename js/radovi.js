@@ -43,7 +43,9 @@ function initRadovi() {
       services_en: ['UX structure', 'Shopify build', 'Product storytelling', 'Conversion flow'],
       preview: {
         type: 'image',
+        cover: 'covers/posterium-cover-clean.webp',
         src: 'posterium.webp',
+        ratio: '1600 / 920',
         accent: '#E36D49',
         glow: 'rgba(227, 109, 73, 0.18)',
         wash: 'rgba(227, 109, 73, 0.065)',
@@ -73,7 +75,9 @@ function initRadovi() {
       services_en: ['Information architecture', 'B2B copy', 'Lead capture', 'Responsive UI'],
       preview: {
         type: 'image',
+        cover: 'covers/interplast-cover-clean.webp',
         src: 'interplast.webp',
+        ratio: '1600 / 920',
         accent: '#4E67E8',
         glow: 'rgba(78, 103, 232, 0.16)',
         wash: 'rgba(78, 103, 232, 0.06)',
@@ -103,7 +107,9 @@ function initRadovi() {
       services_en: ['Positioning', 'Service architecture', 'Technical enquiry flow', 'Custom development'],
       preview: {
         type: 'image',
+        cover: 'covers/dr-metalplus-cover-clean.webp',
         src: 'dr-metalplus.webp',
+        ratio: '1600 / 920',
         accent: '#63B23D',
         glow: 'rgba(99, 178, 61, 0.16)',
         wash: 'rgba(99, 178, 61, 0.06)',
@@ -133,7 +139,9 @@ function initRadovi() {
       services_en: ['E-commerce UX', 'Catalogue system', 'Visual merchandising', 'Mobile shopping'],
       preview: {
         type: 'image',
+        cover: 'covers/edc-satovi-cover-clean.webp',
         src: 'edc-satovi.webp',
+        ratio: '1600 / 920',
         accent: '#C8A24B',
         glow: 'rgba(200, 162, 75, 0.18)',
         wash: 'rgba(200, 162, 75, 0.07)',
@@ -146,7 +154,10 @@ function initRadovi() {
         state: 'rgba(255, 255, 255, 0.08)',
         start: '0%',
         end: '-8%',
-        mobile: '-4%'
+        mobile: '-4%',
+        coverScale: '1.065',
+        coverShiftX: '2.4%',
+        coverShiftY: '-0.35%'
       }
     }
   ];
@@ -177,6 +188,22 @@ function initRadovi() {
     );
   }
 
+  function coverMarkup(project, index) {
+    var preview = project.preview || {};
+    if (!preview.cover) return '';
+
+    var src = assetBase + preview.cover;
+    var alt = project.name + ' — ' + (isEN ? 'website preview' : 'website preview');
+    var loading = index === 0 ? 'eager' : 'lazy';
+    var fetchPriority = index === 0 ? 'high' : 'auto';
+
+    return (
+      '<div class="work-card__cover">' +
+        '<img class="work-card__cover-media" src="' + src + '" alt="' + alt + '" loading="' + loading + '" decoding="async" fetchpriority="' + fetchPriority + '">' +
+      '</div>'
+    );
+  }
+
   function renderProject(project, index) {
     var preview = project.preview || {};
     var services = getLocalized(project, 'services') || [];
@@ -193,6 +220,10 @@ function initRadovi() {
       '--project-ink:' + (preview.ink || '#0A0A0A'),
       '--project-pill:' + (preview.pill || 'rgba(255, 255, 255, 0.76)'),
       '--project-state:' + (preview.state || 'rgba(10, 10, 10, 0.05)'),
+      '--project-ratio:' + (preview.ratio || '16 / 9.2'),
+      '--project-cover-scale:' + (preview.coverScale || '1'),
+      '--project-cover-shift-x:' + (preview.coverShiftX || '0%'),
+      '--project-cover-shift-y:' + (preview.coverShiftY || '0%'),
       '--preview-start:' + (preview.start || '0%'),
       '--preview-end:' + (preview.end || '-12%'),
       '--preview-mobile:' + (preview.mobile || '0%')
@@ -236,6 +267,7 @@ function initRadovi() {
                 '<div class="work-card__scroll">' +
                   mediaMarkup(project, index) +
                 '</div>' +
+                coverMarkup(project, index) +
                 '<span class="work-card__preview-note">' + previewNote + '</span>' +
               '</div>' +
             '</div>' +
