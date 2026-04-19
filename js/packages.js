@@ -10,12 +10,12 @@ var PKG_DATA = {
   web: [
     {
       num: '01', name: 'Start Web', tagline: 'Za jasan i profesionalan početak.',
-      price: 'Cena na upit', priceNote: 'Po projektu',
+      pricePrefix: 'od', priceValue: '900 €', priceNote: 'Startni okvir po projektu',
       featured: false,
       features: [
         'Landing stranica ili manji sajt',
         'Osnovna struktura i CTA logika',
-        'Osnovni copy guidance',
+        'Osnovne copy smernice',
         'Kontakt forma i integracije',
         'Osnovna SEO osnova',
         'Mobilna prilagođenost'
@@ -23,20 +23,20 @@ var PKG_DATA = {
     },
     {
       num: '02', name: 'Growth Web', tagline: 'Za ozbiljniji poslovni nastup.',
-      price: 'Cena na upit', priceNote: 'Po projektu',
+      pricePrefix: 'od', priceValue: '1.900 €', priceNote: 'Startni okvir po projektu',
       featured: true,
       features: [
-        'Višestranični business website',
+        'Višestranični poslovni sajt',
         'Napredniji copy i funnel logika',
         'Jači vizuelni identitet kroz sajt',
         'CRM ili email integracije',
-        'SEO-ready osnova',
+        'SEO spremna osnova',
         'Više od 3 stranice'
       ]
     },
     {
       num: '03', name: 'Signature Web', tagline: 'Za brendove kojima treba pun kvalitet.',
-      price: 'Cena na upit', priceNote: 'Po projektu',
+      pricePrefix: 'od', priceValue: '3.900 €', priceNote: 'Startni okvir po projektu',
       featured: false,
       features: [
         'Analiza biznisa i konkurencije',
@@ -48,27 +48,27 @@ var PKG_DATA = {
       ]
     },
     {
-      num: '04', name: 'Custom', tagline: 'Kada vam treba model saradnje po meri.',
-      price: 'Po dogovoru', priceNote: 'Individualna ponuda',
+      num: '04', name: 'Po meri', tagline: 'Kada vam treba model saradnje po meri.',
+      priceValue: 'Na upit', priceNote: 'Individualna ponuda',
       featured: false,
       features: [
         'Samo određeni delovi usluge',
         'Kombinacija više servisa',
         'Posebna dinamika rada',
         'Ponuda prema cilju i budžetu',
-        'Fleksibilan scope',
+        'Fleksibilan opseg',
         'Direktna komunikacija'
       ]
     }
   ],
   social: [
     {
-      num: '01', name: 'Presence', tagline: 'Za uredan i aktivan nastup.',
+      num: '01', name: 'Prisustvo', tagline: 'Za uredan i aktivan nastup.',
       price: 'Od 230€ / mes.', priceNote: 'Mesečna saradnja',
       featured: false,
       features: [
         '6–8 objava mesečno',
-        'Min. 2 short-form videa',
+        'Min. 2 kratka videa',
         '2–3 seta storija nedeljno',
         'Mesečni plan objava',
         'Mesečni izveštaj',
@@ -76,12 +76,12 @@ var PKG_DATA = {
       ]
     },
     {
-      num: '02', name: 'Grow', tagline: 'Za rast i kvalitetniji sadržaj.',
+      num: '02', name: 'Rast', tagline: 'Za rast i kvalitetniji sadržaj.',
       price: 'Od 490€ / mes.', priceNote: 'Mesečna saradnja',
       featured: true,
       features: [
         '9–12 objava mesečno',
-        '4–6 short-form videa',
+        '4–6 kratkih videa',
         '4–5 setova storija nedeljno',
         'Optimizacija profila',
         'Priprema sadržaja za kampanje',
@@ -89,20 +89,20 @@ var PKG_DATA = {
       ]
     },
     {
-      num: '03', name: 'Authority', tagline: 'Za jači identitet i veći kontinuitet.',
+      num: '03', name: 'Autoritet', tagline: 'Za jači identitet i veći kontinuitet.',
       price: 'Od 690€ / mes.', priceNote: 'Mesečna saradnja',
       featured: false,
       features: [
         '12–16 objava mesečno',
-        '6–9 short-form videa',
+        '6–9 kratkih videa',
         'Češći storiji i aktivna komunikacija',
         'Storytelling pristup',
-        'Community management elementi',
+        'Elementi komunikacije sa zajednicom',
         'Strateška analiza mesečno'
       ]
     },
     {
-      num: '04', name: 'Custom', tagline: 'Kada vam ne treba ceo paket.',
+      num: '04', name: 'Po meri', tagline: 'Kada vam ne treba ceo paket.',
       price: 'Po dogovoru', priceNote: 'Individualna ponuda',
       featured: false,
       features: [
@@ -117,11 +117,11 @@ var PKG_DATA = {
   ],
   ads: [
     {
-      num: '01', name: 'Boost', tagline: 'Za početno testiranje.',
+      num: '01', name: 'Start', tagline: 'Za početno testiranje.',
       price: 'Meta/TikTok od 290€', priceNote: 'Google Ads od 320€ / mes.',
       featured: false,
       features: [
-        'Setup i povezivanje naloga',
+        'Postavljanje i povezivanje naloga',
         'Osnovna struktura kampanje',
         'Testiranje publike i poruke',
         'Osnovna optimizacija',
@@ -130,7 +130,7 @@ var PKG_DATA = {
       ]
     },
     {
-      num: '02', name: 'Performance', tagline: 'Za aktivnije upravljanje kampanjama.',
+      num: '02', name: 'Performanse', tagline: 'Za aktivnije upravljanje kampanjama.',
       price: 'Meta/TikTok od 490€', priceNote: 'Google Ads od 550€ / mes.',
       featured: true,
       features: [
@@ -143,7 +143,7 @@ var PKG_DATA = {
       ]
     },
     {
-      num: '03', name: 'Scale', tagline: 'Za ozbiljniji ads sistem.',
+      num: '03', name: 'Skaliranje', tagline: 'Za ozbiljniji oglasni sistem.',
       price: 'Od 790€ / mes.', priceNote: '2 kanala po izboru',
       featured: false,
       features: [
@@ -156,15 +156,15 @@ var PKG_DATA = {
       ]
     },
     {
-      num: '04', name: 'Custom', tagline: 'Kada vam treba poseban ads model.',
+      num: '04', name: 'Po meri', tagline: 'Kada vam treba poseban oglasni model.',
       price: 'Po dogovoru', priceNote: 'Individualna ponuda',
       featured: false,
       features: [
         'Jedan deo ads usluge',
-        'Poseban launch period',
+        'Poseban period lansiranja',
         'Remarketing ili test faza',
-        'Kombinacija sa content podrškom',
-        'Fleksibilan scope',
+        'Kombinacija sa sadržajnom podrškom',
+        'Fleksibilan opseg',
         'Ponuda prema ciljevima'
       ]
     }
@@ -176,7 +176,7 @@ var PKG_DATA_EN = {
   web: [
     {
       num: '01', name: 'Start Web', tagline: 'For a clear and professional start.',
-      price: 'Price on request', priceNote: 'Per project',
+      pricePrefix: 'from', priceValue: '€900', priceNote: 'Starting point per project',
       featured: false,
       features: [
         'Landing page or small website',
@@ -189,7 +189,7 @@ var PKG_DATA_EN = {
     },
     {
       num: '02', name: 'Growth Web', tagline: 'For a more serious business presence.',
-      price: 'Price on request', priceNote: 'Per project',
+      pricePrefix: 'from', priceValue: '€1,900', priceNote: 'Starting point per project',
       featured: true,
       features: [
         'Multi-page business website',
@@ -202,7 +202,7 @@ var PKG_DATA_EN = {
     },
     {
       num: '03', name: 'Signature Web', tagline: 'For brands that demand full quality.',
-      price: 'Price on request', priceNote: 'Per project',
+      pricePrefix: 'from', priceValue: '€3,900', priceNote: 'Starting point per project',
       featured: false,
       features: [
         'Business and competitor analysis',
@@ -215,7 +215,7 @@ var PKG_DATA_EN = {
     },
     {
       num: '04', name: 'Custom', tagline: 'When you need a tailored collaboration model.',
-      price: 'By arrangement', priceNote: 'Individual offer',
+      priceValue: 'On request', priceNote: 'Individual offer',
       featured: false,
       features: [
         'Only specific parts of the service',
@@ -338,6 +338,17 @@ var PKG_DATA_EN = {
 };
 
 /* ── Rendering ────────────────────────────── */
+function formatPkgPriceInner(pkg) {
+  if (pkg.priceValue) {
+    return (
+      (pkg.pricePrefix ? '<span class="pkg-price-prefix">' + pkg.pricePrefix + '</span>' : '') +
+      '<span class="pkg-price-value">' + pkg.priceValue + '</span>' +
+      (pkg.priceSuffix ? '<span class="pkg-price-suffix">' + pkg.priceSuffix + '</span>' : '')
+    );
+  }
+  return pkg.price || '';
+}
+
 function renderPkgSel(cat, activeIdx, data, ui) {
   var sel  = document.getElementById('pkgSel');
   if (!sel) return;
@@ -350,7 +361,7 @@ function renderPkgSel(cat, activeIdx, data, ui) {
       (i === activeIdx ? ' is-active' : '') +
       '" data-idx="' + i + '">' +
       '<span class="pkg-sel__item-name">' + pkg.name + '</span>' +
-      '<span class="pkg-sel__item-price">' + pkg.price + '</span>' +
+      '<span class="pkg-sel__item-price' + (pkg.priceValue ? ' pkg-price' : '') + '">' + formatPkgPriceInner(pkg) + '</span>' +
       '</button>';
     if (i < items.length - 1) {
       html += '<div class="pkg-sel__divider"></div>';
@@ -392,7 +403,7 @@ function renderPkgDetail(cat, idx, data, ui) {
           '<p class="pkg-d__tagline">' + pkg.tagline + '</p>' +
         '</div>' +
         '<div class="pkg-d__price-block">' +
-          '<div class="pkg-d__price">' + pkg.price + '</div>' +
+          '<div class="pkg-d__price' + (pkg.priceValue ? ' pkg-price' : '') + '">' + formatPkgPriceInner(pkg) + '</div>' +
           '<div class="pkg-d__price-note">' + pkg.priceNote + '</div>' +
         '</div>' +
       '</div>' +

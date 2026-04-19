@@ -51,6 +51,24 @@
   font-family: var(--font-mono); font-size: 10px;
   letter-spacing: .1em; text-transform: uppercase; opacity: .55;
 }
+.pkg-price {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.pkg-price-prefix,
+.pkg-price-suffix {
+  font-family: var(--font-mono);
+  font-size: .72em;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  opacity: .48;
+}
+.pkg-price-value {
+  font: inherit;
+  letter-spacing: inherit;
+}
 .pkg-sel__item.is-active {
   opacity: 1;
   border-left-color: var(--ink);
@@ -104,6 +122,12 @@
 .pkg-d__price {
   font-family: var(--font-serif); font-weight: 300; font-style: italic;
   font-size: clamp(22px, 2.8vw, 38px); letter-spacing: -.02em; line-height: 1;
+}
+.pkg-d__price.pkg-price { gap: 10px; }
+.pkg-d__price .pkg-price-prefix,
+.pkg-d__price .pkg-price-suffix {
+  font-size: .34em;
+  opacity: .55;
 }
 .pkg-d__price-note {
   font-family: var(--font-mono); font-size: 10px;

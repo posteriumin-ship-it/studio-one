@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Kontakt — Studio One</title>
-  <meta name="description" content="Recite nam šta vam je potrebno. Pošaljite upit i opišite projekat — ako procenimo da postoji dobar fit, javljamo se sa jasnim sledećim korakom." />
+  <meta name="description" content="Pošaljite upit za izradu sajta, redizajn ili dalji razvoj. Prvi razgovor služi da procenimo fit, realan obim projekta i sledeći korak." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -73,10 +73,11 @@
           <span>vam je potrebno.</span>
         </h1>
         <p class="kontakt-hero__sub reveal-blur">
-          Ako tražite sajt koji treba da ostavi ozbiljan utisak i ima jasan cilj, pošaljite nam nekoliko osnovnih informacija o projektu.
+          Ako tražite sajt ili redizajn koji treba da ostavi ozbiljan utisak i ima jasan cilj,
+          pošaljite nam nekoliko osnovnih informacija o projektu.
         </p>
         <p class="kontakt-hero__note reveal reveal-d2">
-          Ne prihvatamo svaki projekat — prihvatamo one u kojima verujemo da možemo da napravimo stvarnu razliku.
+          Prvi razgovor služi da procenimo da li postoji fit, koji je realan obim i koji je najbolji sledeći korak.
         </p>
       </div>
 
@@ -84,7 +85,8 @@
       <div class="kontakt-hero__right reveal reveal-d2">
         <p class="kontakt-hero__intro-label">Dovoljno je</p>
         <p class="kontakt-hero__intro-text">
-          Ostavite osnovne informacije. Ne morate imati sve unapred savršeno definisano — važno je da razumemo suštinu projekta i vidimo da li postoji pravi fit.
+          Ostavite osnovne informacije o firmi, postojećem sajtu, budžetskom okviru i cilju.
+          Ne morate imati sve unapred savršeno definisano — dovoljno je da možemo da razumemo suštinu projekta.
         </p>
       </div>
 
@@ -149,7 +151,7 @@
               />
             </div>
             <div class="kontakt-field">
-              <label class="kontakt-field__label" for="link">Sajt ili Instagram (opciono)</label>
+              <label class="kontakt-field__label" for="link">Link postojećeg sajta (ako postoji)</label>
               <input
                 class="kontakt-input" id="link" name="link" type="url"
                 placeholder="https://"
@@ -159,19 +161,19 @@
 
           <!-- Šta je potrebno — pill selector -->
           <div class="kontakt-field">
-            <span class="kontakt-field__label">Šta vam je potrebno?</span>
+            <span class="kontakt-field__label">Koja usluga vas zanima?</span>
             <div class="kontakt-pills" role="group" aria-label="Vrsta projekta">
               <input class="kontakt-pill" type="radio" name="tip" id="tip-novi" value="Novi sajt" checked />
               <label for="tip-novi">Novi sajt</label>
 
-              <input class="kontakt-pill" type="radio" name="tip" id="tip-redizajn" value="Redizajn" />
+              <input class="kontakt-pill" type="radio" name="tip" id="tip-redizajn" value="Redizajn sajta" />
               <label for="tip-redizajn">Redizajn</label>
 
-              <input class="kontakt-pill" type="radio" name="tip" id="tip-odrzavanje" value="Održavanje" />
+              <input class="kontakt-pill" type="radio" name="tip" id="tip-odrzavanje" value="Održavanje i razvoj" />
               <label for="tip-odrzavanje">Održavanje</label>
 
-              <input class="kontakt-pill" type="radio" name="tip" id="tip-ostalo" value="Nešto drugo" />
-              <label for="tip-ostalo">Nešto treće</label>
+              <input class="kontakt-pill" type="radio" name="tip" id="tip-ostalo" value="Dodatna podrška" />
+              <label for="tip-ostalo">Dodatna podrška</label>
             </div>
           </div>
 
@@ -181,7 +183,7 @@
             <textarea
               class="kontakt-input kontakt-textarea"
               id="opis" name="opis"
-              placeholder="Ko ste, šta prodajete ili nudite, šta želite da postignete sajtom, i šta vam se ne sviđa kod trenutnog rešenja (ako postoji)."
+              placeholder="Ko ste, šta nudite, šta treba da se promeni ili napravi, šta je glavni cilj sajta i šta trenutno ne funkcioniše kako treba."
               required
             ></textarea>
           </div>
@@ -210,14 +212,17 @@
                 <input class="kontakt-pill" type="radio" name="budzet" id="b-open" value="Još nismo definisali" checked />
                 <label for="b-open">Još nismo definisali</label>
 
-                <input class="kontakt-pill" type="radio" name="budzet" id="b-start" value="Osnove (do €600)" />
-                <label for="b-start">Osnove</label>
+                <input class="kontakt-pill" type="radio" name="budzet" id="b-start" value="Start Web (oko 900 €)" />
+                <label for="b-start">Start Web</label>
 
-                <input class="kontakt-pill" type="radio" name="budzet" id="b-mid" value="Ozbiljan projekat (€600–€1.800)" />
-                <label for="b-mid">Ozbiljan projekat</label>
+                <input class="kontakt-pill" type="radio" name="budzet" id="b-mid" value="Growth Web (oko 1.900 €)" />
+                <label for="b-mid">Growth Web</label>
 
-                <input class="kontakt-pill" type="radio" name="budzet" id="b-premium" value="Ambiciozan obim (€1.800+)" />
-                <label for="b-premium">Ambiciozan obim</label>
+                <input class="kontakt-pill" type="radio" name="budzet" id="b-premium" value="Signature Web (3.900 €+)" />
+                <label for="b-premium">Signature Web</label>
+
+                <input class="kontakt-pill" type="radio" name="budzet" id="b-custom" value="Opseg po meri / veći obim" />
+                <label for="b-custom">Po meri</label>
               </div>
             </div>
           </div>
@@ -228,7 +233,7 @@
               Pošalji upit <span class="btn-arrow">→</span>
             </button>
             <p class="kontakt-form__note">
-              Ne šaljemo generičke odgovore. Javljamo se isključivo ako procenimo da postoji dobar fit.
+              Ako procenimo da postoji dobar fit, javljamo se sa realnim obimom projekta i jasnim sledećim korakom.
             </p>
           </div>
 
@@ -345,7 +350,7 @@
       </div>
       <div class="footer__bottom">
         <span class="footer__bottom-copy">© Studio One 2026</span>
-        <span class="footer__bottom-center">Worldwide</span>
+        <span class="footer__bottom-center">Međunarodno</span>
         <div class="footer__lang">
           <span class="footer__lang-item is-active" aria-current="true">SR</span>
           <span class="footer__lang-sep">·</span>

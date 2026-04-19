@@ -151,7 +151,7 @@
     transform 420ms var(--ease) 80ms;
   max-width: 68ch;
 }
-.faq-body .faq__item.is-open .faq__a { max-height: 400px; }
+.faq-body .faq__item.is-open .faq__a { max-height: 560px; }
 .faq-body .faq__item.is-open .faq__a-inner {
   opacity: .68;
   transform: translateY(0);

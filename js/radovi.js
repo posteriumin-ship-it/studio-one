@@ -12,19 +12,21 @@ function initRadovi() {
     : '../assets/work-previews/';
 
   var UI = isEN ? {
-    industry: 'Industry',
+    industry: 'Business type',
+    focus: 'Project focus',
     services: 'Scope',
     cta: 'View project',
     live: 'Live site',
     openProject: 'Open project ',
-    previewLabel: 'Curated preview'
+    previewLabel: 'Website preview'
   } : {
-    industry: 'Industrija',
-    services: 'Opseg',
+    industry: 'Tip biznisa',
+    focus: 'Fokus projekta',
+    services: 'Rađeno',
     cta: 'Otvori projekat',
-    live: 'Live sajt',
+    live: 'Aktivan sajt',
     openProject: 'Otvori projekat ',
-    previewLabel: 'Kurirani preview'
+    previewLabel: 'Prikaz sajta'
   };
 
   var PROJECTS = [
@@ -32,13 +34,15 @@ function initRadovi() {
       name: 'Posterium',
       domain: 'posteriumin.com',
       url: 'https://posteriumin.com/en',
-      type: 'E-commerce website',
+      type: 'E-commerce sajt',
       type_en: 'E-commerce website',
-      description: 'E-commerce iskustvo za brend koji personalizovanu automobilsku estetiku prevodi u proizvod sa jasnim premium osećajem i čistim prodajnim tokom.',
-      description_en: 'An e-commerce experience for a brand translating personalised automotive culture into a digital product with a clear premium feel and a clean sales flow.',
-      industry: 'Custom automotive art / DTC retail',
+      description: 'E-commerce sajt za specijalizovani brend personalizovanih auto postera, građen da proizvod deluje premium, a izbor dizajna bude jasan već na prvom prolazu.',
+      description_en: 'An e-commerce site for a niche custom poster brand, built so the product feels premium and the design selection becomes clear from the first pass.',
+      industry: 'Automotive art / direktna online prodaja',
       industry_en: 'Custom automotive art / DTC retail',
-      services: ['UX struktura', 'Shopify build', 'Product storytelling', 'Konverzijski tok'],
+      focus: 'Fokus je bio na jasnijoj UX strukturi, Shopify izradi, storytelling pristupu proizvodu i čistijem konverzijskom toku.',
+      focus_en: 'The focus was on a clearer UX structure, a Shopify build, stronger product storytelling, and a cleaner conversion flow.',
+      services: ['UX struktura', 'Shopify izrada', 'Storytelling proizvoda', 'Konverzijski tok'],
       services_en: ['UX structure', 'Shopify build', 'Product storytelling', 'Conversion flow'],
       preview: {
         type: 'image',
@@ -62,13 +66,15 @@ function initRadovi() {
       name: 'Interplast S',
       domain: 'interplast-s.com',
       url: 'https://interplast-s.com/',
-      type: 'Corporate B2B website',
+      type: 'Korporativni B2B sajt',
       type_en: 'Corporate B2B website',
-      description: 'Korporativni B2B sajt za industrijsku firmu, sa jasnim putanjama ka materijalima, obradi i brzom tehničkom upitu.',
-      description_en: 'A corporate B2B website for an industrial company, with clear paths toward materials, machining services, and fast technical enquiries.',
-      industry: 'Industrial plastics / manufacturing',
+      description: 'Korporativni B2B sajt za industrijsku firmu, postavljen tako da tehnički sadržaj deluje pregledno, ozbiljno i lako dostupno pravom kupcu.',
+      description_en: 'A corporate B2B website for an industrial company, structured so technical content feels clear, serious, and easy to navigate for the right buyer.',
+      industry: 'Industrijska plastika / proizvodnja',
       industry_en: 'Industrial plastics / manufacturing',
-      services: ['Informaciona arhitektura', 'B2B copy', 'Lead capture', 'Responsive UI'],
+      focus: 'Fokus projekta bio je na jasnijoj informacionoj arhitekturi, B2B tekstovima, tačkama za upit i responzivnom interfejsu.',
+      focus_en: 'The project focused on clearer information architecture, sharper B2B copy, lead capture points, and a responsive UI system.',
+      services: ['Informaciona arhitektura', 'B2B tekstovi', 'Tačke za upit', 'Responzivni interfejs'],
       services_en: ['Information architecture', 'B2B copy', 'Lead capture', 'Responsive UI'],
       preview: {
         type: 'image',
@@ -92,13 +98,15 @@ function initRadovi() {
       name: 'DR-METALPLUS',
       domain: 'dr-metalplus.com',
       url: 'https://dr-metalplus.com/',
-      type: 'Service website',
+      type: 'Servisni sajt',
       type_en: 'Service website',
-      description: 'Servisni i prodajni website za mašinsku obradu, elise i tehničke zahteve, građen da odmah ulije poverenje u stručnost i kapacitet.',
-      description_en: 'A service and sales website for machining, propellers, and technical requests, built to signal expertise and capacity from the first screen.',
-      industry: 'CNC machining / marine components',
+      description: 'Servisni i prodajni sajt za mašinsku obradu, elise i tehničke zahteve, građen da odmah prenese stručnost, kapacitet i poslovno poverenje.',
+      description_en: 'A service and sales website for machining, propellers, and technical requests, built to communicate expertise, capacity, and business trust from the first screen.',
+      industry: 'CNC obrada / marine komponente',
       industry_en: 'CNC machining / marine components',
-      services: ['Pozicioniranje', 'Arhitektura usluga', 'Tehnički upit', 'Custom development'],
+      focus: 'Fokus je bio na pozicioniranju usluga, jasnijoj arhitekturi ponude, tehničkom upitu i prilagođenom razvoju rešenja.',
+      focus_en: 'The focus was on service positioning, a clearer service architecture, technical enquiry flow, and custom development tailored to the business.',
+      services: ['Pozicioniranje', 'Arhitektura usluga', 'Tehnički upit', 'Prilagođeni razvoj'],
       services_en: ['Positioning', 'Service architecture', 'Technical enquiry flow', 'Custom development'],
       preview: {
         type: 'image',
@@ -122,13 +130,15 @@ function initRadovi() {
       name: 'EDC Satovi',
       domain: 'edcsatovishop.com',
       url: 'https://edcsatovishop.com/',
-      type: 'E-commerce website',
+      type: 'E-commerce sajt',
       type_en: 'E-commerce website',
-      description: 'E-commerce platforma za prodaju satova, sa fokusom na merchandising, brz izbor proizvoda i premium osećaj kupovine.',
-      description_en: 'An e-commerce platform for watches, focused on merchandising, faster product discovery, and a more premium shopping feel.',
-      industry: 'Watches & accessories / online retail',
+      description: 'E-commerce platforma za satove, građena da pregled, katalog i izbor proizvoda deluju premium, brzo i sigurno.',
+      description_en: 'An e-commerce platform for watches, built so browsing, catalogue navigation, and product choice feel premium, fast, and reliable.',
+      industry: 'Satovi i aksesoari / online prodaja',
       industry_en: 'Watches & accessories / online retail',
-      services: ['E-commerce UX', 'Katalog sistem', 'Visual merchandising', 'Mobile shopping'],
+      focus: 'Fokus projekta bio je na e-commerce UX-u, katalog sistemu, merchandising logici i mobile shopping iskustvu.',
+      focus_en: 'The project focused on e-commerce UX, catalogue system logic, visual merchandising, and a stronger mobile shopping experience.',
+      services: ['UX prodavnice', 'Katalog sistem', 'Merchandising logika', 'Kupovina na mobilnom'],
       services_en: ['E-commerce UX', 'Catalogue system', 'Visual merchandising', 'Mobile shopping'],
       preview: {
         type: 'image',
@@ -158,7 +168,7 @@ function initRadovi() {
   function mediaMarkup(project, index) {
     var preview = project.preview || {};
     var src = assetBase + preview.src;
-    var alt = project.name + ' — ' + (isEN ? 'website preview' : 'website preview');
+    var alt = project.name + ' — ' + (isEN ? 'website preview' : 'prikaz sajta');
     var loading = index === 0 ? 'eager' : 'lazy';
     var fetchPriority = index === 0 ? 'high' : 'auto';
 
@@ -207,6 +217,10 @@ function initRadovi() {
           '<div class="work-card__detail">' +
             '<span class="work-card__detail-label">' + UI.industry + '</span>' +
             '<p class="work-card__detail-value">' + getLocalized(project, 'industry') + '</p>' +
+          '</div>' +
+          '<div class="work-card__detail">' +
+            '<span class="work-card__detail-label">' + UI.focus + '</span>' +
+            '<p class="work-card__detail-value">' + getLocalized(project, 'focus') + '</p>' +
           '</div>' +
           '<div class="work-card__detail work-card__detail--services">' +
             '<span class="work-card__detail-label">' + UI.services + '</span>' +
