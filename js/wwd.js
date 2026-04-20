@@ -13,8 +13,16 @@ function initWwd() {
 
   /* ── Constants ──────────────────────────────────────────── */
   var STEPS      = 5;
-  var FADE_HOLD  = 0.18;   // fully opaque within ±0.18 of step center
-  var FADE_RANGE = 0.62;   // fades to 0 by ±0.80 from center
+  /*
+     FADE_HOLD  — fully opaque within ±0.20 of step center
+     FADE_RANGE — fades to 0 by ±0.75 from center
+     Slightly tightened from the previous 0.18/0.62 so each step has
+     a cleaner dominant moment before the next fades in.
+  */
+  var FADE_HOLD  = 0.20;
+  var FADE_RANGE = 0.55;
+  /* Nav offset for dot-click scroll targets (fixed nav sits at top) */
+  var NAV_OFFSET = 64;
 
   var TONES = [
     { bg: 'var(--wwd-bg-1)', fg: 'var(--wwd-fg-1)', dark: false },
@@ -32,10 +40,17 @@ function initWwd() {
                      (both stacked tablet AND swipe mobile share this flag)
      isSwipeMode   — ≤767px: enables horizontal snap-card behaviour
                      (dot clicks scroll inline; dot rail auto-scrolls)
-     Keep both in sync on resize.
+     reducedMotion — respects prefers-reduced-motion; snaps steps
+                     instead of tweening opacity/scale
+     Keep the media-query flags in sync on resize.
   */
-  var isMobileMode = false;
-  var isSwipeMode  = false;
+  var isMobileMode  = false;
+  var isSwipeMode   = false;
+  var motionMQ      = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var reducedMotion = motionMQ.matches;
+  if (motionMQ.addEventListener) {
+    motionMQ.addEventListener('change', function(e) { reducedMotion = e.matches; });
+  }
 
   /* ── Helpers ─────────────────────────────────────────────── */
   function clamp(v, lo, hi) { return Math.max(lo, Math.min(hi, v)); }
@@ -46,6 +61,15 @@ function initWwd() {
   }
 
   function easeOut(t) { return 1 - Math.pow(1 - t, 2); }
+
+  function syncAria(dominantStep) {
+    dots.forEach(function(d) {
+      var active = +d.dataset.step === dominantStep;
+      d.classList.toggle('is-active', active);
+      if (active) d.setAttribute('aria-current', 'step');
+      else        d.removeAttribute('aria-current');
+    });
+  }
 
   /*
      scrollDotRailIntoView — centres the active dot inside the horizontal
@@ -69,6 +93,37 @@ function initWwd() {
   /* ── Core update — called every rAF on scroll ─────────────── */
   function update(raw) {
     raw = clamp(raw, 0.001, STEPS - 0.001);
+
+    /*
+       Reduced-motion: snap to the nearest step — no tween. The panel +
+       visual for the dominant step are shown at full opacity, the rest
+       are hidden. Preserves comprehension without motion discomfort.
+    */
+    if (reducedMotion) {
+      var snap = Math.min(STEPS - 1, Math.floor(raw));
+      panels.forEach(function(panel, i) {
+        var active = i === snap;
+        panel.style.opacity       = active ? '1' : '0';
+        panel.style.transform     = 'none';
+        panel.style.pointerEvents = active ? 'auto' : 'none';
+        panel.style.visibility    = active ? 'visible' : 'hidden';
+        panel.style.zIndex        = active ? '10' : '0';
+      });
+      visuals.forEach(function(vis, i) {
+        var active = i === snap;
+        vis.style.opacity       = active ? '1' : '0';
+        vis.style.transform     = 'none';
+        vis.style.pointerEvents = active ? 'auto' : 'none';
+        vis.style.visibility    = active ? 'visible' : 'hidden';
+        vis.style.zIndex        = active ? '10' : '0';
+      });
+      if (snap !== lastDominant) {
+        lastDominant = snap;
+        applyTone(snap);
+        syncAria(snap + 1);
+      }
+      return;
+    }
 
     var maxOp     = -1;
     var dominant  = 0;
@@ -122,32 +177,39 @@ function initWwd() {
       }
     });
 
-    /* Dot nav — follows dominant step */
-    var dominantStep = dominant + 1;
-    dots.forEach(function(d) {
-      d.classList.toggle('is-active', +d.dataset.step === dominantStep);
-    });
+    /* Dot nav + ARIA — follows dominant step */
+    syncAria(dominant + 1);
 
     /* Background tone — only update on dominant change (CSS transition handles the fade) */
     if (dominant !== lastDominant) {
       lastDominant = dominant;
-      var tone = TONES[dominant];
-      /*
-         Use setProperty() — not style.backgroundColor — so CSS custom
-         property references like 'var(--wwd-bg-3)' are accepted.
-         The shorthand setter validates for computed colours and silently
-         drops var() values in some browser versions.
-      */
-      sticky.style.setProperty('background-color', tone.bg);
-      sticky.style.setProperty('color',            tone.fg);
-      sticky.classList.toggle('is-dark', tone.dark);
-
-      /* Cursor dark-mode sync */
-      var cDot  = document.getElementById('cDot');
-      var cRing = document.getElementById('cRing');
-      if (cDot)  cDot.classList.toggle('is-dark',  tone.dark);
-      if (cRing) cRing.classList.toggle('is-dark', tone.dark);
+      applyTone(dominant);
     }
+  }
+
+  /*
+     applyTone — set sticky background/fg from the tones table and
+     sync cursor dark-mode. Extracted so the reduced-motion branch
+     and the scroll-driven branch share one code path.
+  */
+  function applyTone(stepIndex) {
+    var tone = TONES[stepIndex];
+    if (!tone) return;
+    /*
+       Use setProperty() — not style.backgroundColor — so CSS custom
+       property references like 'var(--wwd-bg-3)' are accepted.
+       The shorthand setter validates for computed colours and silently
+       drops var() values in some browser versions.
+    */
+    sticky.style.setProperty('background-color', tone.bg);
+    sticky.style.setProperty('color',            tone.fg);
+    sticky.classList.toggle('is-dark', tone.dark);
+
+    /* Cursor dark-mode sync */
+    var cDot  = document.getElementById('cDot');
+    var cRing = document.getElementById('cRing');
+    if (cDot)  cDot.classList.toggle('is-dark',  tone.dark);
+    if (cRing) cRing.classList.toggle('is-dark', tone.dark);
   }
 
   /* ── Scroll handler ──────────────────────────────────────── */
@@ -186,63 +248,84 @@ function initWwd() {
           p.style.cssText = '';
           p.classList.toggle('is-active', +p.dataset.panel === n);
         });
-        dots.forEach(function(d) {
-          d.classList.toggle('is-active', +d.dataset.step === n);
-        });
+        syncAria(n);
         /* Sync dot rail position so the active tab stays in frame */
         scrollDotRailIntoView(n);
-        var tone = TONES[n - 1] || TONES[0];
-        sticky.style.setProperty('background-color', tone.bg);
-        sticky.style.setProperty('color',            tone.fg);
-        sticky.classList.toggle('is-dark', tone.dark);
+        applyTone(n - 1);
       }
     });
   }, { threshold: [0.45, 0.65] });
 
   panels.forEach(function(p) { panelIO.observe(p); });
 
+  /*
+     jumpToStep — unified step target used by both dot clicks and
+     keyboard arrow navigation. Mobile modes scroll the panel into
+     view; desktop drives the sticky scroll position directly.
+  */
+  function jumpToStep(n /* 0-indexed */) {
+    if (n < 0 || n >= STEPS) return;
+    if (isMobileMode) {
+      if (isSwipeMode) {
+        if (panels[n]) {
+          panels[n].scrollIntoView({
+            behavior: 'smooth', block: 'nearest', inline: 'start'
+          });
+        }
+      } else {
+        if (panels[n]) {
+          panels[n].scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+      scrollDotRailIntoView(n + 1);
+      return;
+    }
+    /*
+       Desktop — land the sticky at the center of step n. Offset by
+       NAV_OFFSET so the fixed nav doesn't obscure the sticky pin.
+    */
+    var outerTop   = outer.getBoundingClientRect().top + window.scrollY;
+    var scrollable = outer.offsetHeight - window.innerHeight;
+    window.scrollTo({
+      top: outerTop + ((n + 0.5) / STEPS) * scrollable - NAV_OFFSET,
+      behavior: 'smooth'
+    });
+  }
+
   /* ── Dot click — jump to step ────────────────────────────── */
   dots.forEach(function(d) {
     d.addEventListener('click', function() {
-      var n = +d.dataset.step - 1;
-      if (isMobileMode) {
-        if (isSwipeMode) {
-          /*
-             Mobile (≤767px) — panels are horizontal snap cards.
-             Scroll the card inline (horizontally).
-          */
-          if (panels[n]) {
-            panels[n].scrollIntoView({
-              behavior: 'smooth',
-              block: 'nearest',
-              inline: 'start'
-            });
-          }
-        } else {
-          /*
-             Tablet (768–960px) — panels are stacked blocks.
-             Scroll vertically to bring the panel into view.
-          */
-          if (panels[n]) {
-            panels[n].scrollIntoView({
-              behavior: 'smooth',
-              block: 'start'
-            });
-          }
-        }
-        /* Keep the dot rail centred on the tapped step */
-        scrollDotRailIntoView(n + 1);
-        return;
-      }
-      /* Desktop (≥961px) — drive the sticky scroll position */
-      var outerTop   = outer.getBoundingClientRect().top + window.scrollY;
-      var scrollable = outer.offsetHeight - window.innerHeight;
-      window.scrollTo({
-        top: outerTop + ((n + 0.5) / STEPS) * scrollable,
-        behavior: 'smooth'
-      });
+      jumpToStep(+d.dataset.step - 1);
     });
   });
+
+  /*
+     Keyboard navigation — when a dot is focused, ←/↑ steps back,
+     →/↓ steps forward, Home/End jump to first/last. Desktop only
+     (mobile users have touch + native scroll). Moves focus along
+     with the step so screen readers follow.
+  */
+  var dotRail = document.getElementById('wwdDots');
+  if (dotRail) {
+    dotRail.addEventListener('keydown', function(e) {
+      var focused = document.activeElement;
+      if (!focused || !focused.classList.contains('wwd__dot')) return;
+      var current = dots.indexOf(focused);
+      if (current === -1) return;
+
+      var next = current;
+      if      (e.key === 'ArrowRight' || e.key === 'ArrowDown') next = current + 1;
+      else if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   next = current - 1;
+      else if (e.key === 'Home')                                 next = 0;
+      else if (e.key === 'End')                                  next = STEPS - 1;
+      else return;
+
+      e.preventDefault();
+      next = clamp(next, 0, STEPS - 1);
+      if (dots[next]) dots[next].focus();
+      jumpToStep(next);
+    });
+  }
 
   /* ── Init ────────────────────────────────────────────────── */
   if (!isMobileMode) {
@@ -250,5 +333,6 @@ function initWwd() {
     requestAnimationFrame(onScroll);
   } else {
     if (panels[0]) panels[0].classList.add('is-active');
+    syncAria(1);
   }
 }

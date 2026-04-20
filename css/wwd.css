@@ -33,15 +33,16 @@
 }
 
 /* ── Sticky scroll driver ─────────────────
-   Height = 100vh (one visible screen)
-   + 5 × scroll-distance per step
-   We give ~90vh per step = 450vh
-   Total outer = 100vh + 450vh = 550vh       */
+   Total outer = 100svh (one visible screen of sticky) + 400svh driver
+                = 5 steps × 80svh each.
+   Previously 500svh — cut back to 400svh to reclaim a full viewport of
+   vertical real estate without losing cinematic pacing. The overlap
+   fade-range (driven in JS) still gives each step ~50vh of transition.
+───────────────────────────────────────── */
 .wwd-outer {
   position: relative;
-  height: calc(100vh  + 500vh);   /* vh fallback for browsers without svh */
-  height: calc(100svh + 500svh);  /* svh preferred — trims iOS chrome safely */
-  /* 100svh = sticky viewport height, 500svh = 5 steps × 100svh each */
+  height: calc(100vh  + 400vh);   /* vh fallback for browsers without svh */
+  height: calc(100svh + 400svh);  /* svh preferred — trims iOS chrome safely */
 }
 
 /* ── Sticky panel pins to viewport ───────── */
@@ -92,11 +93,23 @@
 }
 .wwd__dot.is-active { opacity: 1; }
 .wwd__dot.is-active .wwd__dot-line { width: 36px; }
+.wwd__dot:focus-visible {
+  outline: 1px solid currentColor;
+  outline-offset: 6px;
+  opacity: 1;
+}
 
-/* Text panels */
-.wwd__panels { position: relative; min-height: 300px; }
+/* ── Text panels ──────────────────────────
+   Desktop (≥961px) uses a CSS grid single-cell stack so all panels
+   share the same grid area. The container auto-sizes to the tallest
+   panel (no min-height scaffold) and JS drives opacity/transform for
+   the overlap transition. Tablet (768–960) resets to block flow for
+   the stacked fallback; mobile (≤767) overrides to flex in
+   responsive.css for the horizontal snap rail.
+─────────────────────────────────────────── */
+.wwd__panels { position: relative; }
 .wwd__panel {
-  position: absolute; inset: 0;
+  /* Default (mobile/tablet) — block flow */
   opacity: 0; transform: translateY(22px);
   /* No CSS transition — JS drives opacity/transform directly for cinematic overlap */
   pointer-events: none;
@@ -152,7 +165,7 @@
 }
 
 .wwd__vis {
-  position: absolute; inset: 0;
+  /* Default (mobile/tablet) — JS hides this stage entirely via .wwd-right */
   opacity: 0; transform: scale(1.035);
   /* No CSS transition — JS drives opacity/transform directly for cinematic overlap */
   pointer-events: none;
@@ -165,11 +178,18 @@
   letter-spacing: .18em; text-transform: uppercase; opacity: .5;
   margin-bottom: clamp(14px, 2vw, 24px);
 }
+/*
+   Dark visual variant — was previously an inline style="color:..."
+   on the panel-3 meta row. Lifted into a modifier so markup stays
+   clean and the declaration is scoped + reusable.
+*/
+.wwd__vis--dark .wwd__vis-meta { color: rgba(246,243,238,.5); }
 
 /* ── Visual 1: Identity ───────────────────── */
-.wwd-vis-v1 { flex: 1; display: flex; flex-direction: column; background: linear-gradient(180deg,#F6F3EE,#EEE8DD); color: #0A0A0A; margin: -22px -44px -22px -44px; padding: 22px 44px; }
-@media (max-width: 960px) {
-  .wwd-vis-v1 { margin: -20px; padding: 20px; }
+.wwd-vis-v1 {
+  flex: 1; display: flex; flex-direction: column;
+  background: linear-gradient(180deg,#F6F3EE,#EEE8DD); color: #0A0A0A;
+  margin: -22px -44px; padding: 22px 44px;
 }
 .v1__mark {
   font-family: var(--font-serif); font-weight: 400; font-style: normal;
@@ -191,8 +211,11 @@
 }
 
 /* ── Visual 2: Web mockup ─────────────────── */
-.wwd-vis-v2 { flex: 1; display: flex; flex-direction: column; background: #E9E4DB; color: #0A0A0A; margin: -22px -44px -22px -44px; padding: 22px 44px; }
-@media (max-width: 960px) { .wwd-vis-v2 { margin: -20px; padding: 20px; } }
+.wwd-vis-v2 {
+  flex: 1; display: flex; flex-direction: column;
+  background: #E9E4DB; color: #0A0A0A;
+  margin: -22px -44px; padding: 22px 44px;
+}
 .v2__browser { background:#fff; border:1px solid rgba(10,10,10,.08); border-radius:3px; flex:1; display:flex; flex-direction:column; overflow:hidden; }
 .v2__bar { height:24px; border-bottom:1px solid rgba(10,10,10,.06); display:flex; align-items:center; gap:5px; padding:0 10px; font-family:var(--font-mono); font-size:9px; opacity:.4; }
 .v2__bar i { width:6px; height:6px; border-radius:50%; background:rgba(10,10,10,.15); }
@@ -206,8 +229,11 @@
 .v2__cta { border:1px solid #0A0A0A; padding:8px 14px; border-radius:999px; opacity:1; }
 
 /* ── Visual 3: Motion frames ──────────────── */
-.wwd-vis-v3 { flex:1; display:flex; flex-direction:column; background:#0E0E0D; color:#F6F3EE; margin:-22px -44px -22px -44px; padding:22px 44px; }
-@media (max-width:960px) { .wwd-vis-v3 { margin:-20px; padding:20px; } }
+.wwd-vis-v3 {
+  flex: 1; display: flex; flex-direction: column;
+  background: #0E0E0D; color: #F6F3EE;
+  margin: -22px -44px; padding: 22px 44px;
+}
 .v3__grid { flex:1; display:grid; grid-template-columns:repeat(3,1fr); grid-template-rows:repeat(2,1fr); gap:7px; }
 .v3__frame { position:relative; border:1px solid rgba(246,243,238,.1); display:flex; align-items:center; justify-content:center; overflow:hidden; }
 .v3__frame::before { content:attr(data-t); position:absolute; top:7px; left:8px; font-family:var(--font-mono); font-size:9px; letter-spacing:.12em; opacity:.38; }
@@ -222,8 +248,11 @@
 .v3__tl-labels { display:flex; justify-content:space-between; margin-top:7px; font-family:var(--font-mono); font-size:9px; letter-spacing:.14em; opacity:.4; }
 
 /* ── Visual 4: Editorial ─────────────────── */
-.wwd-vis-v4 { flex:1; display:flex; flex-direction:column; background:#D9D4C9; color:#0A0A0A; margin:-22px -44px -22px -44px; padding:22px 44px; }
-@media (max-width:960px) { .wwd-vis-v4 { margin:-20px; padding:20px; } }
+.wwd-vis-v4 {
+  flex: 1; display: flex; flex-direction: column;
+  background: #D9D4C9; color: #0A0A0A;
+  margin: -22px -44px; padding: 22px 44px;
+}
 .v4__eye { font-family:var(--font-mono); font-size:10px; letter-spacing:.2em; text-transform:uppercase; opacity:.5; }
 .v4__lede { font-family:var(--font-serif); font-weight:300; font-size:clamp(18px,2.6vw,34px); line-height:1.05; letter-spacing:-.02em; margin-top:14px; max-width:18ch; }
 .v4__lede em { font-style:italic; opacity:.65; }
@@ -232,8 +261,11 @@
 .v4__btn { border:1px solid #0A0A0A; padding:9px 18px; border-radius:999px; }
 
 /* ── Visual 5: System ────────────────────── */
-.wwd-vis-v5 { flex:1; display:flex; flex-direction:column; background:#F1EEE8; color:#0A0A0A; margin:-22px -44px -22px -44px; padding:22px 44px; }
-@media (max-width:960px) { .wwd-vis-v5 { margin:-20px; padding:20px; } }
+.wwd-vis-v5 {
+  flex: 1; display: flex; flex-direction: column;
+  background: #F1EEE8; color: #0A0A0A;
+  margin: -22px -44px; padding: 22px 44px;
+}
 .v5__set { flex:1; display:grid; grid-template-columns:2fr 1fr; gap:12px; }
 .v5__desk, .v5__mob { background:#fff; border:1px solid rgba(10,10,10,.07); border-radius:3px; overflow:hidden; display:flex; flex-direction:column; }
 .v5__tbar { height:17px; border-bottom:1px solid rgba(10,10,10,.05); display:flex; align-items:center; gap:4px; padding:0 7px; }
@@ -247,20 +279,28 @@
 .v5__mob .v5__h { font-size:11px; }
 .v5__tokens { margin-top:12px; display:flex; justify-content:space-between; font-family:var(--font-mono); font-size:9px; letter-spacing:.14em; text-transform:uppercase; opacity:.45; }
 
-/* ── Desktop safety net ──────────────────────
-   The desktop scroll animation relies entirely on JS inline styles.
-   If JS hasn't run yet (slow network, parse delay) the sticky area
-   would be blank — the first panel + visual must always be visible
-   as a CSS baseline.  Once update() runs it overrides with inline
-   opacity/transform on every panel, so this never fights the JS.
-────────────────────────────────────────────────────────────────── */
+/* ── Desktop (≥961px) — sticky scroll engine ─────────────────
+   Grid-stack replaces the old `position: absolute; inset: 0` pattern:
+   every panel/visual shares grid-column:1 / grid-row:1, so the
+   container auto-sizes to the tallest child. No min-height scaffold,
+   no abs-positioning, same overlap behaviour driven by JS opacity.
+
+   The :first-child baseline is the desktop safety net — if JS hasn't
+   run yet (slow network, parse delay), the first panel + visual are
+   visible. Once update() runs it overrides with inline styles.
+──────────────────────────────────────────────────────────────── */
 @media (min-width: 961px) {
+  .wwd__panels  { display: grid; }
+  .wwd__panels > .wwd__panel { grid-column: 1; grid-row: 1; }
   .wwd__panel:first-child {
     opacity: 1;
     transform: translateY(0);
     visibility: visible;
     pointer-events: auto;
   }
+
+  .wwd__visuals { display: grid; }
+  .wwd__visuals > .wwd__vis { grid-column: 1; grid-row: 1; }
   .wwd__vis:first-child {
     opacity: 1;
     transform: scale(1);
@@ -268,7 +308,11 @@
   }
 }
 
-/* ── Mobile fallback ─────────────────────── */
+/* ── Tablet + mobile fallback (≤960px) ─────
+   Sticky engine off; panels read as stacked editorial blocks.
+   Mobile (≤767) further overrides to a horizontal snap rail in
+   responsive.css — those overrides come after this block.
+─────────────────────────────────────────── */
 @media (max-width: 960px) {
   .wwd-outer { height: auto; }
   .wwd-sticky {
@@ -289,11 +333,11 @@
   .wwd__dots {
     flex-direction: row; flex-wrap: wrap;
     gap: 8px 16px; margin-bottom: 0;
-    display: none; /* Hide dots on mobile — panels show as blocks */
+    display: none; /* Hide dots on tablet — panels show as stacked blocks */
   }
-  .wwd__panels { position: static; min-height: auto; }
+  .wwd__panels { position: static; }
   .wwd__panel {
-    position: static; opacity: 1; transform: none;
+    opacity: 1; transform: none;
     padding: clamp(40px, 8vw, 80px) 0;
     border-top: 1px solid rgba(10,10,10,.1);
     pointer-events: auto;
@@ -301,4 +345,31 @@
   .wwd__panel:first-child { border-top: none; padding-top: 24px; }
   .wwd-right { display: none; }
   .wwd__micro { grid-template-columns: repeat(2, minmax(0,1fr)); }
+
+  /*
+     Consolidated visual-mockup reset (previously repeated 5×, once per
+     .wwd-vis-vN). All mockups use the same -22px / -44px desktop offset
+     to break out of .wwd__vis padding — at this breakpoint we collapse
+     that to a shared -20px/20px rhythm.
+  */
+  .wwd-vis-v1,
+  .wwd-vis-v2,
+  .wwd-vis-v3,
+  .wwd-vis-v4,
+  .wwd-vis-v5 {
+    margin: -20px;
+    padding: 20px;
+  }
+}
+
+/* ── Reduced motion ─────────────────────────
+   Users who've opted out of motion get a calmer experience:
+   - sticky bg transitions are disabled (instant tone flip)
+   - JS respects the same flag and snap-activates instead of tweening
+   (see js/wwd.js :: prefersReducedMotion)
+───────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .wwd-sticky { transition: none; }
+  .wwd__dot,
+  .wwd__dot-line { transition: none; }
 }
