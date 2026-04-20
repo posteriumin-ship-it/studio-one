@@ -25,39 +25,53 @@
   <div class="c-dot"  id="cDot"></div>
 
   <!-- ── NAVIGATION ────────────────────────── -->
-  <nav class="nav" id="nav">
-    <a href="../index.html" class="nav__logo">
-      <span class="nav__logo-dot"></span>Studio One
+  <nav class="nav" id="nav" aria-label="Glavna navigacija">
+    <a href="../index.html" class="nav__logo" aria-label="Studio One — naslovna">
+      <span class="nav__logo-dot" aria-hidden="true"></span>Studio One
     </a>
+
     <div class="nav__links">
       <a href="usluge.html">Usluge</a>
       <a href="radovi.html" class="nav__link--active">Radovi</a>
       <a href="faq.html">FAQ</a>
       <a href="kontakt.html">Kontakt</a>
     </div>
-    <div class="nav__lang">
+
+    <div class="nav__lang" aria-label="Jezik">
       <span class="nav__lang-item is-active" aria-current="true">SR</span>
-      <span class="nav__lang-sep">·</span>
-      <a href="../en/pages/work.html" class="nav__lang-item">EN</a>
+      <span class="nav__lang-sep" aria-hidden="true">·</span>
+      <a href="../en/pages/work.html" class="nav__lang-item" hreflang="en">EN</a>
     </div>
+
     <a href="kontakt.html" class="nav__cta" data-cursor="book">Zakaži poziv</a>
-    <button class="nav__burger" id="navBurger" aria-label="Meni">
-      <span></span><span></span>
+
+    <button
+      class="nav__burger"
+      id="navBurger"
+      type="button"
+      aria-label="Otvori meni"
+      aria-expanded="false"
+      aria-controls="navMobile">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
     </button>
   </nav>
 
-  <div class="nav__mobile" id="navMobile">
+  <nav class="nav__mobile" id="navMobile" aria-label="Mobilni meni" aria-hidden="true">
     <a href="usluge.html">Usluge</a>
     <a href="radovi.html">Radovi</a>
     <a href="faq.html">FAQ</a>
     <a href="kontakt.html">Kontakt</a>
-      <div class="nav__mobile-lang">
+
+    <div class="nav__mobile-lang" aria-label="Jezik">
       <span class="nav__lang-item is-active" aria-current="true">SR</span>
-      <span class="nav__lang-sep">·</span>
-      <a href="../en/pages/work.html" class="nav__lang-item">EN</a>
+      <span class="nav__lang-sep" aria-hidden="true">·</span>
+      <a href="../en/pages/work.html" class="nav__lang-item" hreflang="en">EN</a>
     </div>
+
     <a href="kontakt.html" class="nav__mobile-cta">Zakaži poziv →</a>
-  </div>
+  </nav>
 
   <!-- ── PAGE HERO ─────────────────────────── -->
   <section class="radovi-hero reveal">

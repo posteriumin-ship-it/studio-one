@@ -130,12 +130,14 @@ body {
   /*
      nav.css defaults to align-items:center; justify-content:center.
      On mobile we switch to top-left layout: items read left-aligned
-     from below the nav bar, CTA separated at the bottom.
+     from below the nav bar, CTA separated at the bottom. The
+     bottom padding adds safe-area-inset so the CTA never sits
+     under an iPhone home-indicator.
   */
   .nav__mobile {
     align-items: flex-start;
     justify-content: flex-start;
-    padding: 88px var(--gutter) clamp(32px,7vw,56px);
+    padding: 88px var(--gutter) calc(clamp(32px,7vw,56px) + env(safe-area-inset-bottom, 0px));
     gap: clamp(8px,3vw,18px);
     font-size: clamp(28px,8vw,40px);
   }

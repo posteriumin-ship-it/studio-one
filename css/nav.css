@@ -1,143 +1,210 @@
 /* ============================================================
-   NAVIGATION
+   NAVIGATION  —  Studio One
+   ------------------------------------------------------------
+   Structure
+     .nav              → fixed top bar (desktop + mobile header)
+     .nav__logo        → wordmark + dot
+     .nav__links       → primary links (desktop)
+     .nav__lang        → SR/EN switcher (desktop)
+     .nav__cta         → "Zakaži poziv" pill
+     .nav__burger      → mobile toggle (3-span hamburger → X)
+     .nav__mobile      → full-screen overlay menu (mobile)
+
+   Notes
+     - Color is driven by CSS custom properties (`--nav-fg`,
+       `--nav-border`, `--nav-cta-*`) so variants (dark-hero,
+       scrolled) only need to redeclare a few vars.
+     - Breakpoint: ≤767px = mobile. Matches responsive.css.
    ============================================================ */
+
+/* ── Tokens local to the nav ───────────────────────────────── */
 .nav {
+  --nav-fg:           var(--ink);
+  --nav-border:       var(--ink);
+  --nav-cta-hover-bg: var(--ink);
+  --nav-cta-hover-fg: var(--bone);
+
   position: fixed; top: 0; left: 0; right: 0; z-index: 200;
   height: 64px; padding: 0 var(--gutter);
   display: flex; align-items: center; justify-content: space-between;
-  transition: background 500ms var(--ease), border-bottom 500ms;
+  color: var(--nav-fg);
+  transition: background 500ms var(--ease), border-color 500ms var(--ease);
+  border-bottom: 1px solid transparent;
 }
+
 .nav.is-scrolled {
-  background: rgba(246,243,238,.9);
-  backdrop-filter: blur(16px);
+  background: rgba(246, 243, 238, .9);
   -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--fog);
+          backdrop-filter: blur(16px);
+  border-bottom-color: var(--fog);
 }
+
+/* ── Logo ──────────────────────────────────────────────────── */
 .nav__logo {
   font-family: var(--font-serif); font-weight: 400; font-size: 20px;
   letter-spacing: -.03em;
-  display: flex; align-items: center; gap: 8px;
+  display: inline-flex; align-items: center; gap: 8px;
+  color: var(--nav-fg);
 }
 .nav__logo-dot {
   width: 7px; height: 7px; border-radius: 50%;
   background: var(--accent); flex-shrink: 0;
 }
+
+/* ── Primary links ─────────────────────────────────────────── */
 .nav__links {
   display: flex; align-items: center; gap: clamp(20px, 2.5vw, 40px);
-  font-family: var(--font-sans); font-size: 13px; letter-spacing: .02em; opacity: .8;
+  font-family: var(--font-sans); font-size: 13px; letter-spacing: .02em;
+  opacity: .8;
 }
-.nav__links a { transition: opacity 200ms; }
+.nav__links a {
+  color: inherit;
+  transition: opacity 200ms var(--ease);
+}
+.nav__link--active { opacity: 1 !important; }
+
+/* ── CTA pill ──────────────────────────────────────────────── */
 .nav__cta {
   font-family: var(--font-sans); font-size: 13px; letter-spacing: .04em;
-  border: 1px solid var(--ink); padding: 10px 22px; border-radius: 999px;
-  transition: background 250ms var(--ease), color 250ms var(--ease);
+  color: var(--nav-fg);
+  border: 1px solid var(--nav-border);
+  padding: 10px 22px; border-radius: 999px;
   white-space: nowrap;
+  transition: background 250ms var(--ease),
+              color      250ms var(--ease),
+              border-color 250ms var(--ease);
 }
-/* ── Language switcher ────────────────────── */
+
+/* ── Language switcher ─────────────────────────────────────── */
 .nav__lang {
   display: flex; align-items: center; gap: 7px;
   font-family: var(--font-mono); font-size: 10px;
   letter-spacing: .18em; text-transform: uppercase;
+  color: var(--nav-fg);
 }
 .nav__lang-sep { opacity: .2; font-size: 11px; }
-.nav__lang-item { opacity: .3; transition: opacity 220ms var(--ease); }
+.nav__lang-item {
+  color: inherit; opacity: .3;
+  transition: opacity 220ms var(--ease);
+}
 .nav__lang-item.is-active { opacity: 1; }
 
-/* ── Active nav link ──────────────────────── */
-.nav__link--active { opacity: 1 !important; }
-
-/* ── Dark hero variant ────────────────────── */
-/*
-   Pages with a dark/ink hero add data-dark-hero on <body>.
-   Nav starts with bone-coloured text; once .is-scrolled kicks in,
-   the bone backdrop + ink text takes over automatically.
-*/
+/* ── Dark-hero variant ─────────────────────────────────────────
+   Pages with a dark/ink hero set [data-dark-hero] on <body>.
+   While the nav is not yet .is-scrolled, redeclare a handful of
+   custom props — no need to re-specify each child selector.
+─────────────────────────────────────────────────────────────── */
 body[data-dark-hero] .nav:not(.is-scrolled) {
-  color: var(--bone);
-}
-body[data-dark-hero] .nav:not(.is-scrolled) .nav__logo {
-  color: var(--bone);
-}
-body[data-dark-hero] .nav:not(.is-scrolled) .nav__links {
-  color: var(--bone);
-}
-body[data-dark-hero] .nav:not(.is-scrolled) .nav__cta {
-  border-color: rgba(246,243,238,.45);
-  color: var(--bone);
-}
-body[data-dark-hero] .nav:not(.is-scrolled) .nav__burger span {
-  background: var(--bone);
-}
-body[data-dark-hero] .nav:not(.is-scrolled) .nav__lang-item {
-  color: var(--bone);
-}
-body[data-dark-hero] .nav:not(.is-scrolled) .nav__lang-sep {
-  color: var(--bone);
-  opacity: .25;
+  --nav-fg:           var(--bone);
+  --nav-border:       rgba(246, 243, 238, .45);
+  --nav-cta-hover-bg: var(--bone);
+  --nav-cta-hover-fg: var(--ink);
 }
 
+/* ── Burger (3-span hamburger → X) ─────────────────────────── */
 .nav__burger {
-  display: none; flex-direction: column; gap: 5px;
-  width: 28px; padding: 2px 0;
+  display: none;                       /* Shown at ≤767px */
+  flex-direction: column;
+  justify-content: space-between;
+  width: 28px; height: 14px;
+  padding: 0;
+  background: none; border: 0;
+  cursor: pointer;
 }
 .nav__burger span {
-  width: 100%; height: 1px; background: var(--ink);
-  transition: transform 300ms var(--ease), opacity 300ms;
   display: block;
+  width: 100%; height: 1px;
+  background: var(--nav-fg);
+  transform-origin: center;
+  transition: transform 300ms var(--ease),
+              opacity   200ms var(--ease);
 }
 .nav__burger.is-open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
-.nav__burger.is-open span:nth-child(2) { opacity: 0; }
+.nav__burger.is-open span:nth-child(2) { opacity: 0; transform: scaleX(.4); }
+.nav__burger.is-open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
 
+/* ── Mobile overlay menu ───────────────────────────────────── */
 .nav__mobile {
-  display: flex; position: fixed; inset: 0; z-index: 190;
-  flex-direction: column; align-items: center; justify-content: center; gap: 28px;
+  position: fixed; inset: 0; z-index: 190;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 28px;
   background: var(--bone);
   font-family: var(--font-serif); font-weight: 300;
   font-size: clamp(28px, 7vw, 44px); letter-spacing: -.02em;
-  opacity: 0; pointer-events: none;
-  transition: opacity 400ms var(--ease);
+
+  /* Closed: invisible AND removed from tab order.
+     visibility is delayed so the fade-out can play first. */
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity    400ms var(--ease),
+              visibility 0s linear 400ms;
 }
-.nav__mobile.is-open { opacity: 1; pointer-events: auto; }
-.nav__mobile a { transition: opacity 200ms; }
+.nav__mobile.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition: opacity 400ms var(--ease),
+              visibility 0s linear 0s;
+}
+.nav__mobile a {
+  color: var(--ink);
+  transition: opacity 200ms var(--ease);
+}
 .nav__mobile-cta { color: var(--accent); }
 
-@media (max-width: 768px) {
-  .nav__links, .nav__cta, .nav__lang { display: none; }
-  .nav__burger { display: flex; }
-}
-
-/* ── Mobile menu lang switch ──────────────── */
-/*
-   .nav__mobile-lang sits above the CTA inside .nav__mobile.
-   Reuses .nav__lang-item styles (already defined above).
-   Mobile-specific sizing and centering applied here.
-*/
+/* Mobile-menu language switcher — inherits .nav__lang-item colors */
 .nav__mobile-lang {
   display: flex; align-items: center; gap: 10px;
   font-family: var(--font-mono); font-size: 11px;
   letter-spacing: .2em; text-transform: uppercase;
+  color: var(--ink);
 }
-.nav__mobile-lang .nav__lang-item {
-  opacity: .3;
-  transition: opacity 220ms var(--ease);
-  font-size: 11px;
-}
-.nav__mobile-lang .nav__lang-item.is-active { opacity: 1; }
-.nav__mobile-lang .nav__lang-sep { opacity: .2; }
+.nav__mobile-lang .nav__lang-item { font-size: 11px; }
 
-/* ── Hover — pointer devices only ──────────────────────────
+/* ── Breakpoint: hide desktop nav, show burger ─────────────── */
+@media (max-width: 767px) {
+  .nav__links,
+  .nav__cta,
+  .nav__lang { display: none; }
+  .nav__burger { display: flex; }
+}
+
+/* ── Hover — pointer devices only ──────────────────────────────
    Touch devices must not fire hover states on tap.
    Only real pointing devices (mouse / trackpad) match this.
-────────────────────────────────────────────────────────── */
+─────────────────────────────────────────────────────────────── */
 @media (hover: hover) and (pointer: fine) {
-  .nav__links a:hover { opacity: .45; }
-  .nav__cta:hover { background: var(--ink); color: var(--bone); }
-  .nav__lang-item:hover { opacity: .7; }
-  body[data-dark-hero] .nav:not(.is-scrolled) .nav__cta:hover {
-    background: var(--bone);
-    color: var(--ink);
-    border-color: var(--bone);
+  .nav__links a:hover       { opacity: .45; }
+  .nav__lang-item:hover     { opacity: .7; }
+  .nav__mobile a:hover      { opacity: .5; }
+  .nav__cta:hover {
+    background:   var(--nav-cta-hover-bg);
+    color:        var(--nav-cta-hover-fg);
+    border-color: var(--nav-cta-hover-bg);
   }
-  .nav__mobile a:hover { opacity: .5; }
-  .nav__mobile-lang .nav__lang-item:hover { opacity: .7; }
+}
+
+/* ── Keyboard focus ────────────────────────────────────────── */
+.nav a:focus-visible,
+.nav__burger:focus-visible,
+.nav__mobile a:focus-visible {
+  outline: 2px solid var(--nav-fg, var(--ink));
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+.nav__cta:focus-visible {
+  outline-offset: 6px;
+}
+
+/* ── Reduced motion ────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .nav,
+  .nav__burger span,
+  .nav__mobile,
+  .nav__links a,
+  .nav__lang-item,
+  .nav__cta {
+    transition: none !important;
+  }
 }
