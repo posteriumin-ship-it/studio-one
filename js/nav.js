@@ -6,7 +6,7 @@
 
    Launch setup: Google Analytics 4 via gtag.js
    - shared loader for all pages
-   - no event tracking yet
+   - basic CTA / lead tracking included
    - inert until the real GA4 Measurement ID is inserted
    - no user-facing behavior changes
 
@@ -18,6 +18,12 @@
     provider: 'ga4',
     measurementId: 'REPLACE_WITH_GA4_MEASUREMENT_ID',
     scriptSrc: 'https://www.googletagmanager.com/gtag/js'
+  };
+
+  window.StudioOneAnalytics = window.StudioOneAnalytics || {};
+  window.StudioOneAnalytics.track = function trackAnalyticsEvent(eventName, params) {
+    if (!eventName || typeof window.gtag !== 'function') return;
+    window.gtag('event', eventName, params || {});
   };
 
   var host = window.location.hostname;
@@ -40,6 +46,33 @@
   window.gtag('config', config.measurementId);
 })();
 
+var CTA_TRACKING_SELECTOR = [
+  'a.nav__cta',
+  'a.nav__mobile-cta',
+  'a.btn-primary',
+  'a.btn-primary-light',
+  'a.btn-accent',
+  'a.btn-outline-light',
+  'a.pkg-help',
+  'a.pkg-d__cta'
+].join(', ');
+
+var hasBoundCtaTracking = false;
+
+function getTrackedCtaText(link) {
+  return (link.textContent || '').replace(/\s+/g, ' ').trim();
+}
+
+function getTrackedCtaContext(link) {
+  var container = link.closest('[id], section, header, footer, nav, main');
+  if (!container) return 'page';
+  if (container.id) return container.id;
+  if (typeof container.className === 'string' && container.className.trim()) {
+    return container.className.trim().split(/\s+/)[0];
+  }
+  return container.tagName.toLowerCase();
+}
+
 /* ============================================================
    NAV  —  scroll state + mobile menu + anchor scroll
    ------------------------------------------------------------
@@ -58,6 +91,29 @@ function initNav() {
   var burger = document.getElementById('navBurger');
   var mobile = document.getElementById('navMobile');
   if (!nav) return;
+
+  if (!hasBoundCtaTracking) {
+    document.addEventListener('click', function(e) {
+      var target = e.target;
+      if (!target || typeof target.closest !== 'function') return;
+
+      var link = target.closest(CTA_TRACKING_SELECTOR);
+      var href = link && link.getAttribute('href');
+      if (!link || !href) return;
+      if (link.closest('form')) return;
+      if (href.indexOf('mailto:') === 0) return;
+
+      window.StudioOneAnalytics.track('cta_click', {
+        cta_text: getTrackedCtaText(link),
+        cta_href: href,
+        cta_context: getTrackedCtaContext(link),
+        page_path: window.location.pathname,
+        transport_type: 'beacon'
+      });
+    });
+
+    hasBoundCtaTracking = true;
+  }
 
   /* ── Scrolled class (rAF-throttled) ───────────────────── */
   var ticking = false;

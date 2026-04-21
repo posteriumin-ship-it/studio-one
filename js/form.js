@@ -5,13 +5,9 @@
    Used by: pages/kontakt.html AND en/pages/contact.html
 
    ── Setup ───────────────────────────────────────────────────
-   1. Create two Formspree forms: one for SR and one for EN.
-   2. Add and verify posterium.in@gmail.com as a linked/target email.
-   3. Set the form actions to:
-        /pages/kontakt.html    → https://formspree.io/f/REPLACE_WITH_SR_FORM_ID
-        /en/pages/contact.html → https://formspree.io/f/REPLACE_WITH_EN_FORM_ID
-   4. Keeping SR and EN separate makes language-specific autoresponses
-      much cleaner, while both forms can still send to the same inbox.
+   SR and EN contact pages use separate Formspree endpoints so
+   each language can keep its own confirmation flow while still
+   sending inquiries to the same inbox.
 
    ── Mailto fallback ─────────────────────────────────────────
    While the Formspree endpoint is not configured, submit opens
@@ -257,6 +253,17 @@
     return hasFieldErrors;
   }
 
+  function trackSuccessfulSubmit() {
+    if (!window.StudioOneAnalytics || typeof window.StudioOneAnalytics.track !== 'function') return;
+
+    window.StudioOneAnalytics.track('generate_lead', {
+      form_id: 'kontaktForm',
+      form_locale: isEN ? 'en' : 'sr',
+      page_path: window.location.pathname,
+      transport_type: 'beacon'
+    });
+  }
+
   /* ── Submit ──────────────────────────────── */
   form.addEventListener('submit', function(e) {
     e.preventDefault();
@@ -304,6 +311,7 @@
     })
     .then(function(result) {
       if (result.ok) {
+        trackSuccessfulSubmit();
         showSuccess();
         return;
       }
