@@ -3,15 +3,30 @@
    Bilingual: SR data used on lang="sr" pages,
               EN data used on lang="en" pages.
    Language is read from <html lang="sr|en">.
+
+   Data model per package:
+     num         '01' .. '04'            tier number
+     name        display name
+     tagline     short supporting line
+     bestFor     one-line audience fit (NEW)
+     pricePrefix 'od' / 'from'           optional mono eyebrow
+     priceValue  large price string      (used with pricePrefix)
+     price       fallback when no value/prefix split is needed
+     priceNote   small line under price
+     featured    highlighted tier        (accent + badge)
+     custom      non-tier custom path    (visually demoted, below divider)
+     features    array of feature strings
    ============================================================ */
 
 /* ── Serbian package data ─────────────────── */
 var PKG_DATA = {
   web: [
     {
-      num: '01', name: 'Start Web', tagline: 'Za jasan i profesionalan početak.',
+      num: '01', name: 'Start Web',
+      tagline: 'Uravnotežen izbor za jasan, profesionalan sajt.',
+      bestFor: 'većinu firmi kojima treba jasan i profesionalan sajt',
       pricePrefix: 'od', priceValue: '900 €', priceNote: 'Startni okvir po projektu',
-      featured: false,
+      featured: true,
       features: [
         'Landing stranica ili manji sajt',
         'Osnovna struktura i CTA logika',
@@ -22,9 +37,11 @@ var PKG_DATA = {
       ]
     },
     {
-      num: '02', name: 'Growth Web', tagline: 'Za ozbiljniji poslovni nastup.',
+      num: '02', name: 'Growth Web',
+      tagline: 'Za širi obim, dublju strukturu i ozbiljniji nastup.',
+      bestFor: 'firme sa većim obimom, više sadržaja i složenijim tokovima',
       pricePrefix: 'od', priceValue: '1.900 €', priceNote: 'Startni okvir po projektu',
-      featured: true,
+      featured: false,
       features: [
         'Višestranični poslovni sajt',
         'Napredniji copy i funnel logika',
@@ -35,7 +52,9 @@ var PKG_DATA = {
       ]
     },
     {
-      num: '03', name: 'Signature Web', tagline: 'Za brendove kojima treba pun kvalitet.',
+      num: '03', name: 'Signature Web',
+      tagline: 'Za brendove kojima treba pun kvalitet.',
+      bestFor: 'brendove koji grade ozbiljan digitalni utisak',
       pricePrefix: 'od', priceValue: '3.900 €', priceNote: 'Startni okvir po projektu',
       featured: false,
       features: [
@@ -48,9 +67,11 @@ var PKG_DATA = {
       ]
     },
     {
-      num: '04', name: 'Po meri', tagline: 'Kada vam treba model saradnje po meri.',
+      num: '04', name: 'Po meri',
+      tagline: 'Kada vam treba model saradnje po meri.',
+      bestFor: 'poseban opseg ili kombinacija usluga',
       priceValue: 'Na upit', priceNote: 'Individualna ponuda',
-      featured: false,
+      featured: false, custom: true,
       features: [
         'Samo određeni delovi usluge',
         'Kombinacija više servisa',
@@ -63,7 +84,9 @@ var PKG_DATA = {
   ],
   social: [
     {
-      num: '01', name: 'Prisustvo', tagline: 'Za uredan i aktivan nastup.',
+      num: '01', name: 'Prisustvo',
+      tagline: 'Za uredan i aktivan nastup.',
+      bestFor: 'uredan i dosledan mesečni nastup',
       price: 'Od 230€ / mes.', priceNote: 'Mesečna saradnja',
       featured: false,
       features: [
@@ -76,7 +99,9 @@ var PKG_DATA = {
       ]
     },
     {
-      num: '02', name: 'Rast', tagline: 'Za rast i kvalitetniji sadržaj.',
+      num: '02', name: 'Rast',
+      tagline: 'Za rast i kvalitetniji sadržaj.',
+      bestFor: 'brendove u aktivnoj fazi rasta',
       price: 'Od 490€ / mes.', priceNote: 'Mesečna saradnja',
       featured: true,
       features: [
@@ -89,7 +114,9 @@ var PKG_DATA = {
       ]
     },
     {
-      num: '03', name: 'Autoritet', tagline: 'Za jači identitet i veći kontinuitet.',
+      num: '03', name: 'Autoritet',
+      tagline: 'Za jači identitet i veći kontinuitet.',
+      bestFor: 'izgradnju autoriteta i zajednice',
       price: 'Od 690€ / mes.', priceNote: 'Mesečna saradnja',
       featured: false,
       features: [
@@ -102,9 +129,11 @@ var PKG_DATA = {
       ]
     },
     {
-      num: '04', name: 'Po meri', tagline: 'Kada vam ne treba ceo paket.',
+      num: '04', name: 'Po meri',
+      tagline: 'Kada vam ne treba ceo paket.',
+      bestFor: 'specifičan content fokus',
       price: 'Po dogovoru', priceNote: 'Individualna ponuda',
-      featured: false,
+      featured: false, custom: true,
       features: [
         'Samo reels ili short-form',
         'Storiji i community rad',
@@ -117,7 +146,9 @@ var PKG_DATA = {
   ],
   ads: [
     {
-      num: '01', name: 'Start', tagline: 'Za početno testiranje.',
+      num: '01', name: 'Start',
+      tagline: 'Za početno testiranje.',
+      bestFor: 'prvo testiranje publike i poruke',
       price: 'Meta/TikTok od 290€', priceNote: 'Google Ads od 320€ / mes.',
       featured: false,
       features: [
@@ -130,7 +161,9 @@ var PKG_DATA = {
       ]
     },
     {
-      num: '02', name: 'Performanse', tagline: 'Za aktivnije upravljanje kampanjama.',
+      num: '02', name: 'Performanse',
+      tagline: 'Za aktivnije upravljanje kampanjama.',
+      bestFor: 'kampanje koje treba aktivnije pratiti',
       price: 'Meta/TikTok od 490€', priceNote: 'Google Ads od 550€ / mes.',
       featured: true,
       features: [
@@ -143,7 +176,9 @@ var PKG_DATA = {
       ]
     },
     {
-      num: '03', name: 'Skaliranje', tagline: 'Za ozbiljniji oglasni sistem.',
+      num: '03', name: 'Skaliranje',
+      tagline: 'Za ozbiljniji oglasni sistem.',
+      bestFor: 'ozbiljniji oglasni sistem sa ciljem skaliranja',
       price: 'Od 790€ / mes.', priceNote: '2 kanala po izboru',
       featured: false,
       features: [
@@ -156,9 +191,11 @@ var PKG_DATA = {
       ]
     },
     {
-      num: '04', name: 'Po meri', tagline: 'Kada vam treba poseban oglasni model.',
+      num: '04', name: 'Po meri',
+      tagline: 'Kada vam treba poseban oglasni model.',
+      bestFor: 'poseban period ili segment',
       price: 'Po dogovoru', priceNote: 'Individualna ponuda',
-      featured: false,
+      featured: false, custom: true,
       features: [
         'Jedan deo ads usluge',
         'Poseban period lansiranja',
@@ -175,9 +212,11 @@ var PKG_DATA = {
 var PKG_DATA_EN = {
   web: [
     {
-      num: '01', name: 'Start Web', tagline: 'For a clear and professional start.',
+      num: '01', name: 'Start Web',
+      tagline: 'The balanced choice for a clear, professional site.',
+      bestFor: 'most businesses that want a clear, professional site',
       pricePrefix: 'from', priceValue: '€900', priceNote: 'Starting point per project',
-      featured: false,
+      featured: true,
       features: [
         'Landing page or small website',
         'Basic structure and CTA logic',
@@ -188,9 +227,11 @@ var PKG_DATA_EN = {
       ]
     },
     {
-      num: '02', name: 'Growth Web', tagline: 'For a more serious business presence.',
+      num: '02', name: 'Growth Web',
+      tagline: 'For greater scope, deeper structure and a more serious presence.',
+      bestFor: 'businesses with larger scope, more content and more complex flows',
       pricePrefix: 'from', priceValue: '€1,900', priceNote: 'Starting point per project',
-      featured: true,
+      featured: false,
       features: [
         'Multi-page business website',
         'Advanced copy and funnel logic',
@@ -201,7 +242,9 @@ var PKG_DATA_EN = {
       ]
     },
     {
-      num: '03', name: 'Signature Web', tagline: 'For brands that demand full quality.',
+      num: '03', name: 'Signature Web',
+      tagline: 'For brands that demand full quality.',
+      bestFor: 'brands building a serious digital impression',
       pricePrefix: 'from', priceValue: '€3,900', priceNote: 'Starting point per project',
       featured: false,
       features: [
@@ -214,9 +257,11 @@ var PKG_DATA_EN = {
       ]
     },
     {
-      num: '04', name: 'Custom', tagline: 'When you need a tailored collaboration model.',
+      num: '04', name: 'Custom',
+      tagline: 'When you need a tailored collaboration model.',
+      bestFor: 'special scope or combination of services',
       priceValue: 'On request', priceNote: 'Individual offer',
-      featured: false,
+      featured: false, custom: true,
       features: [
         'Only specific parts of the service',
         'Combination of multiple services',
@@ -229,7 +274,9 @@ var PKG_DATA_EN = {
   ],
   social: [
     {
-      num: '01', name: 'Presence', tagline: 'For a clean and active presence.',
+      num: '01', name: 'Presence',
+      tagline: 'For a clean and active presence.',
+      bestFor: 'a clean, consistent monthly presence',
       price: 'From €230 / mo.', priceNote: 'Monthly collaboration',
       featured: false,
       features: [
@@ -242,7 +289,9 @@ var PKG_DATA_EN = {
       ]
     },
     {
-      num: '02', name: 'Grow', tagline: 'For growth and higher quality content.',
+      num: '02', name: 'Grow',
+      tagline: 'For growth and higher quality content.',
+      bestFor: 'brands in an active growth phase',
       price: 'From €490 / mo.', priceNote: 'Monthly collaboration',
       featured: true,
       features: [
@@ -255,7 +304,9 @@ var PKG_DATA_EN = {
       ]
     },
     {
-      num: '03', name: 'Authority', tagline: 'For a stronger identity and greater continuity.',
+      num: '03', name: 'Authority',
+      tagline: 'For a stronger identity and greater continuity.',
+      bestFor: 'authority building and community',
       price: 'From €690 / mo.', priceNote: 'Monthly collaboration',
       featured: false,
       features: [
@@ -268,9 +319,11 @@ var PKG_DATA_EN = {
       ]
     },
     {
-      num: '04', name: 'Custom', tagline: "When you don't need the full package.",
+      num: '04', name: 'Custom',
+      tagline: "When you don't need the full package.",
+      bestFor: 'a specific content focus',
       price: 'By arrangement', priceNote: 'Individual offer',
-      featured: false,
+      featured: false, custom: true,
       features: [
         'Reels or short-form only',
         'Stories and community work',
@@ -283,7 +336,9 @@ var PKG_DATA_EN = {
   ],
   ads: [
     {
-      num: '01', name: 'Boost', tagline: 'For initial testing.',
+      num: '01', name: 'Boost',
+      tagline: 'For initial testing.',
+      bestFor: 'initial audience and messaging tests',
       price: 'Meta/TikTok from €290', priceNote: 'Google Ads from €320 / mo.',
       featured: false,
       features: [
@@ -296,7 +351,9 @@ var PKG_DATA_EN = {
       ]
     },
     {
-      num: '02', name: 'Performance', tagline: 'For more active campaign management.',
+      num: '02', name: 'Performance',
+      tagline: 'For more active campaign management.',
+      bestFor: 'campaigns that need active management',
       price: 'Meta/TikTok from €490', priceNote: 'Google Ads from €550 / mo.',
       featured: true,
       features: [
@@ -309,7 +366,9 @@ var PKG_DATA_EN = {
       ]
     },
     {
-      num: '03', name: 'Scale', tagline: 'For a serious ads system.',
+      num: '03', name: 'Scale',
+      tagline: 'For a serious ads system.',
+      bestFor: 'a serious ads system aimed at scaling',
       price: 'From €790 / mo.', priceNote: '2 channels of choice',
       featured: false,
       features: [
@@ -322,9 +381,11 @@ var PKG_DATA_EN = {
       ]
     },
     {
-      num: '04', name: 'Custom', tagline: 'When you need a special ads model.',
+      num: '04', name: 'Custom',
+      tagline: 'When you need a special ads model.',
+      bestFor: 'a special period or segment',
       price: 'By arrangement', priceNote: 'Individual offer',
-      featured: false,
+      featured: false, custom: true,
       features: [
         'One part of the ads service',
         'Special launch period',
@@ -337,7 +398,7 @@ var PKG_DATA_EN = {
   ]
 };
 
-/* ── Rendering ────────────────────────────── */
+/* ── Helpers ──────────────────────────────── */
 function formatPkgPriceInner(pkg) {
   if (pkg.priceValue) {
     return (
@@ -349,30 +410,57 @@ function formatPkgPriceInner(pkg) {
   return pkg.price || '';
 }
 
-function renderPkgSel(cat, activeIdx, data, ui) {
-  var sel  = document.getElementById('pkgSel');
-  if (!sel) return;
-  var items = data[cat];
-  var html  = '';
+function escHtml(str) {
+  if (str == null) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+}
 
-  items.forEach(function(pkg, i) {
-    html += '<button class="pkg-sel__item' +
-      (pkg.featured ? ' is-featured' : '') +
-      (i === activeIdx ? ' is-active' : '') +
-      '" data-idx="' + i + '">' +
-      '<span class="pkg-sel__item-name">' + pkg.name + '</span>' +
-      '<span class="pkg-sel__item-price' + (pkg.priceValue ? ' pkg-price' : '') + '">' + formatPkgPriceInner(pkg) + '</span>' +
-      '</button>';
-    if (i < items.length - 1) {
-      html += '<div class="pkg-sel__divider"></div>';
+/* ── Selector (left rail) ─────────────────── */
+function renderPkgSel(cat, activeIdx, data, ui) {
+  var sel = document.getElementById('pkgSel');
+  if (!sel) return;
+
+  var items = data[cat];
+  var html = '';
+  var dividerInserted = false;
+
+  items.forEach(function (pkg, i) {
+    // Insert one divider before the first "custom" entry to visually
+    // separate custom options from the tiered ladder.
+    if (pkg.custom && !dividerInserted) {
+      html += '<div class="pkg-sel__divider" aria-hidden="true"></div>';
+      dividerInserted = true;
     }
+
+    var classes = ['pkg-sel__item'];
+    if (pkg.featured)        classes.push('is-featured');
+    if (pkg.custom)          classes.push('is-custom');
+    if (i === activeIdx)     classes.push('is-active');
+
+    var priceClasses = 'pkg-sel__item-price' + (pkg.priceValue ? ' pkg-price' : '');
+    var featuredDot  = pkg.featured
+      ? '<span class="pkg-sel__item-dot" aria-hidden="true"></span>'
+      : '';
+
+    html +=
+      '<button class="' + classes.join(' ') + '" data-idx="' + i + '" type="button">' +
+        '<div class="pkg-sel__item-top">' +
+          '<span class="pkg-sel__item-num">' + escHtml(pkg.num) + '</span>' +
+          '<span class="pkg-sel__item-name">' + escHtml(pkg.name) + featuredDot + '</span>' +
+          '<span class="' + priceClasses + '">' + formatPkgPriceInner(pkg) + '</span>' +
+        '</div>' +
+        '<span class="pkg-sel__item-tag">' + escHtml(pkg.bestFor || pkg.tagline || '') + '</span>' +
+      '</button>';
   });
 
   sel.innerHTML = html;
 
   // Bind events
-  sel.querySelectorAll('.pkg-sel__item').forEach(function(btn) {
-    btn.addEventListener('click', function() {
+  sel.querySelectorAll('.pkg-sel__item').forEach(function (btn) {
+    btn.addEventListener('click', function () {
       var idx = +btn.dataset.idx;
       renderPkgSel(cat, idx, data, ui);
       renderPkgDetail(cat, idx, data, ui);
@@ -380,37 +468,58 @@ function renderPkgSel(cat, activeIdx, data, ui) {
   });
 }
 
-/* ui = { badge, cta, ctaHref } */
+/* ── Detail (right panel) ─────────────────── */
+/* ui = { badge, bestForLabel, featuresLabel, cta, ctaHref } */
 function renderPkgDetail(cat, idx, data, ui) {
   var detail = document.getElementById('pkgDetail');
   if (!detail) return;
+
   var pkg = data[cat][idx];
   if (!pkg) return;
 
-  var featuresHtml = pkg.features.map(function(f) {
-    return '<li class="pkg-d__feature">' + f + '</li>';
+  var featuresHtml = pkg.features.map(function (f) {
+    return '<li class="pkg-d__feature">' + escHtml(f) + '</li>';
   }).join('');
 
   var ctaClass = pkg.featured ? 'pkg-d__cta pkg-d__cta--accent' : 'pkg-d__cta';
-  var badge    = pkg.featured ? '<span class="pkg-d__badge">' + ui.badge + '</span>' : '';
+  var badge    = pkg.featured
+    ? '<span class="pkg-d__badge"><span class="pkg-d__badge-dot" aria-hidden="true"></span>' + escHtml(ui.badge) + '</span>'
+    : '';
+
+  var bestForHtml = pkg.bestFor
+    ? '<p class="pkg-d__bestfor">' +
+        '<span class="pkg-d__bestfor-label">' + escHtml(ui.bestForLabel) + '</span>' +
+        '<span class="pkg-d__bestfor-text">' + escHtml(pkg.bestFor) + '</span>' +
+      '</p>'
+    : '';
+
+  var detailClasses = ['pkg-d', 'is-active'];
+  if (pkg.featured) detailClasses.push('pkg-d--featured');
+  if (pkg.custom)   detailClasses.push('pkg-d--custom');
 
   detail.innerHTML =
-    '<div class="pkg-d is-active">' +
+    '<div class="' + detailClasses.join(' ') + '">' +
+      '<div class="pkg-d__top">' +
+        '<span class="pkg-d__num">' + escHtml(pkg.num) + ' / ' + String(data[cat].length).padStart(2, '0') + '</span>' +
+        badge +
+      '</div>' +
       '<div class="pkg-d__header">' +
-        '<div>' +
-          '<div class="pkg-d__num">' + pkg.num + '</div>' +
-          '<h3 class="pkg-d__name">' + pkg.name + '</h3>' +
-          '<p class="pkg-d__tagline">' + pkg.tagline + '</p>' +
+        '<div class="pkg-d__header-main">' +
+          '<h3 class="pkg-d__name">' + escHtml(pkg.name) + '</h3>' +
+          '<p class="pkg-d__tagline">' + escHtml(pkg.tagline) + '</p>' +
+          bestForHtml +
         '</div>' +
         '<div class="pkg-d__price-block">' +
           '<div class="pkg-d__price' + (pkg.priceValue ? ' pkg-price' : '') + '">' + formatPkgPriceInner(pkg) + '</div>' +
-          '<div class="pkg-d__price-note">' + pkg.priceNote + '</div>' +
+          '<div class="pkg-d__price-note">' + escHtml(pkg.priceNote || '') + '</div>' +
         '</div>' +
       '</div>' +
-      '<ul class="pkg-d__features">' + featuresHtml + '</ul>' +
+      '<div class="pkg-d__features-wrap">' +
+        '<div class="pkg-d__features-label">' + escHtml(ui.featuresLabel) + '</div>' +
+        '<ul class="pkg-d__features">' + featuresHtml + '</ul>' +
+      '</div>' +
       '<div class="pkg-d__foot">' +
-        '<a href="' + ui.ctaHref + '" class="' + ctaClass + '">' + ui.cta + '</a>' +
-        badge +
+        '<a href="' + ui.ctaHref + '" class="' + ctaClass + '" data-cursor="book">' + escHtml(ui.cta) + ' <span class="pkg-d__cta-arrow" aria-hidden="true">→</span></a>' +
       '</div>' +
     '</div>';
 }
@@ -421,20 +530,32 @@ function initPackages() {
   if (!cats.length) return;
 
   /* ── Language detection ──────────────────── */
-  var isEN   = document.documentElement.lang === 'en';
-  var data   = isEN ? PKG_DATA_EN : PKG_DATA;
-  var ui     = isEN
-    ? { badge: 'Most popular', cta: 'Book a call',      ctaHref: 'pages/contact.html'  }
-    : { badge: 'Najpopularnije', cta: 'Zakaži razgovor', ctaHref: 'pages/kontakt.html' };
+  var isEN = document.documentElement.lang === 'en';
+  var data = isEN ? PKG_DATA_EN : PKG_DATA;
+  var ui   = isEN
+    ? {
+        badge:         'Most popular',
+        bestForLabel:  'Best for',
+        featuresLabel: 'What you get',
+        cta:           'Book a call',
+        ctaHref:       'pages/contact.html'
+      }
+    : {
+        badge:         'Najpopularnije',
+        bestForLabel:  'Idealno za',
+        featuresLabel: 'Šta dobijate',
+        cta:           'Zakaži razgovor',
+        ctaHref:       'pages/kontakt.html'
+      };
 
   var currentCat = 'web';
   var currentIdx = 1; // default: second (featured)
 
   function switchCat(cat) {
     currentCat = cat;
-    currentIdx = data[cat].findIndex(function(p) { return p.featured; });
+    currentIdx = data[cat].findIndex(function (p) { return p.featured; });
     if (currentIdx < 0) currentIdx = 0;
-    cats.forEach(function(c) {
+    cats.forEach(function (c) {
       var active = c.dataset.cat === cat;
       c.classList.toggle('is-active', active);
       c.setAttribute('aria-selected', active ? 'true' : 'false');
@@ -443,10 +564,12 @@ function initPackages() {
     renderPkgDetail(cat, currentIdx, data, ui);
   }
 
-  cats.forEach(function(c) {
-    c.addEventListener('click', function() { switchCat(c.dataset.cat); });
+  cats.forEach(function (c) {
+    c.addEventListener('click', function () { switchCat(c.dataset.cat); });
   });
 
   // Initial render
   switchCat('web');
 }
+
+/* initPackages() is called by js/main.js after DOMContentLoaded. */

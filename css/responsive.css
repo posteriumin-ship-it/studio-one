@@ -340,10 +340,22 @@ body {
   }
 
   /* ── Packages ─────────────────────────────── */
-  /* Layout already stacks at 900px via packages.css */
+  /*
+     Mobile pricing pattern:
+       - Category tabs: horizontally scrollable (Web / Social / Ads)
+       - Selector: vertical, stacked tier rows (NOT horizontal strip).
+         Each row reads as a full editorial line — tier num, name,
+         price aligned right, best-for line below. Active row gets
+         a left accent rule + soft fill.
+       - Detail panel: stacks below, full width, generous spacing.
+     Layout stacking from 900px is handled in packages.css; the
+     overrides here are mobile typography + tap-target polish.
+  */
   .packages__title {
     font-size: clamp(28px,8vw,48px);
   }
+
+  /* Category tabs — horizontal scroll keeps room for longer SR labels */
   .pkg-cats {
     overflow-x: auto;
     scrollbar-width: none;
@@ -365,16 +377,75 @@ body {
     padding: 14px 18px;
     font-size: 11px;
   }
+
+  /* Selector — vertical list of tier rows */
   .pkg-sel {
-    overflow-x: auto;
-    scrollbar-width: none;
+    padding: 4px 0;
   }
-  .pkg-sel::-webkit-scrollbar { display: none; }
   .pkg-sel__item {
-    flex-shrink: 0;
+    padding: 18px 18px 16px 20px;
+    gap: 6px;
+    min-height: 64px;
+  }
+  .pkg-sel__item::before {
+    top: 10px;
+    bottom: 10px;
+  }
+  .pkg-sel__item-name {
+    font-size: clamp(17px, 5vw, 20px);
+  }
+  .pkg-sel__item-price {
+    font-size: 11px;
+  }
+  .pkg-sel__item-tag {
+    font-size: 12px;
+    padding-left: 26px;
+  }
+  .pkg-sel__divider {
+    margin: 6px 18px 4px 20px;
+  }
+
+  /* Detail panel */
+  .pkg-detail {
+    padding: clamp(24px, 6vw, 40px) clamp(20px, 5vw, 32px);
+  }
+  .pkg-d__top {
+    margin-bottom: 18px;
   }
   .pkg-d__name {
-    font-size: clamp(22px,6vw,36px);
+    font-size: clamp(24px,7vw,38px);
+  }
+  .pkg-d__tagline {
+    font-size: 14px;
+    margin-top: 10px;
+  }
+  .pkg-d__bestfor {
+    margin-top: 14px;
+    padding: 9px 12px;
+    border-radius: 14px;
+  }
+  .pkg-d__bestfor-text {
+    font-size: 12.5px;
+  }
+  .pkg-d__price {
+    font-size: clamp(22px, 7vw, 32px);
+  }
+  .pkg-d__feature {
+    font-size: 13.5px;
+    padding: 11px 0;
+  }
+  .pkg-d__cta {
+    width: 100%;
+    justify-content: center;
+    padding: 14px 22px;
+  }
+
+  /* Outro — stacks vertically, soft prompt full-width */
+  .pkg-outro {
+    margin-top: 18px;
+  }
+  .pkg-help {
+    width: 100%;
   }
 
   /* ── Process (homepage) ───────────────────── */
@@ -694,6 +765,19 @@ body {
     font-size: 15px;
   }
 
+  /* Trust list stays visible on mobile (it's doing real conversion
+     work). Tighten its internal rhythm. */
+  .kontakt-trust__label {
+    margin-bottom: 14px;
+  }
+  .kontakt-trust li {
+    padding: 12px 0;
+    gap: 14px;
+  }
+  .kontakt-trust__t {
+    font-size: 13px;
+  }
+
   /* ── Main section ─────────────────────────── */
   .kontakt-main {
     padding: clamp(52px,7vw,80px) var(--gutter);
@@ -701,6 +785,15 @@ body {
   /* Grid already 1col at 1000px via kontakt.css */
 
   /* ── Form ─────────────────────────────────── */
+  .kontakt-formhead {
+    font-size: 11px;
+    letter-spacing: .18em;
+    gap: 12px;
+    margin: clamp(6px,1vw,14px) 0 clamp(18px,3vw,24px);
+  }
+  .kontakt-formhead__n {
+    font-size: 18px;
+  }
   .kontakt-field {
     margin-bottom: clamp(24px,5vw,36px);
   }
@@ -711,6 +804,11 @@ body {
   /* Validation error message: also bump from component's 9px to 11px */
   .kontakt-field__error {
     font-size: 11px;
+  }
+  .kontakt-field__hint {
+    font-size: 11px;
+    letter-spacing: .16em;
+    margin-top: 10px;
   }
   /* Row already 1col at 600px via kontakt.css */
 
@@ -728,7 +826,35 @@ body {
   .kontakt-submit {
     flex-direction: column;
     align-items: flex-start;
-    gap: 16px;
+    gap: 18px;
+  }
+  .kontakt-submit__meta {
+    max-width: 100%;
+    gap: 10px;
+  }
+  .kontakt-submit__note {
+    font-size: 13px;
+    line-height: 1.55;
+  }
+  .kontakt-submit__privacy {
+    font-size: 11px;
+    letter-spacing: .16em;
+  }
+
+  /* ── Success state (mobile) ────────────────── */
+  .kontakt-success {
+    padding: clamp(32px,7vw,56px) 0;
+  }
+  .kontakt-success__title {
+    font-size: clamp(24px,7vw,36px);
+  }
+  .kontakt-success__text {
+    font-size: 15px;
+  }
+  .kontakt-success__links {
+    flex-direction: column;
+    gap: 14px;
+    align-items: flex-start;
   }
 
   /* ── Info block ───────────────────────────── */
@@ -844,11 +970,31 @@ body {
   .packages__title {
     font-size: clamp(24px,9vw,40px);
   }
+  /*
+     At very narrow widths the selector row's 3-col grid (num · name · price)
+     can crowd. Drop the price to a second line, name keeps its full width,
+     so each tier stays readable without truncation.
+  */
+  .pkg-sel__item-top {
+    grid-template-columns: auto 1fr;
+    row-gap: 4px;
+  }
+  .pkg-sel__item-price {
+    grid-column: 2;
+    text-align: left;
+    opacity: .7;
+  }
+  .pkg-sel__item-tag {
+    padding-left: 0;
+  }
   .pkg-d__name {
     font-size: clamp(20px,7vw,30px);
   }
   .pkg-d__price {
     font-size: clamp(18px,6vw,26px);
+  }
+  .pkg-d__bestfor {
+    width: 100%;
   }
 
   /* ── CTA band ─────────────────────────────── */

@@ -88,20 +88,28 @@
         </h1>
         <p class="kontakt-hero__sub reveal-blur">
           If you're looking for a website or redesign that needs to leave a serious impression
-          and has a clear purpose, send us a few basic details about the project.
-        </p>
-        <p class="kontakt-hero__note reveal reveal-d2">
-          The first conversation is there to assess fit, realistic scope, and the best next step for the project.
+          and has a clear purpose, send us a few basic details about the project. The first
+          conversation is there to assess fit, realistic scope, and the best next step.
         </p>
       </div>
 
-      <!-- Right: brief intro -->
+      <!-- Right: "At a glance" trust list -->
       <div class="kontakt-hero__right reveal reveal-d2">
-        <p class="kontakt-hero__intro-label">That's all it takes</p>
-        <p class="kontakt-hero__intro-text">
-          Leave the basics about the business, current website, budget range, and goal.
-          You don't need to have everything perfectly defined yet — we just need enough to understand the shape of the project.
-        </p>
+        <p class="kontakt-trust__label">At a glance</p>
+        <ul class="kontakt-trust">
+          <li>
+            <span class="kontakt-trust__n">01</span>
+            <span class="kontakt-trust__t">Reply within 1–2 business days</span>
+          </li>
+          <li>
+            <span class="kontakt-trust__n">02</span>
+            <span class="kontakt-trust__t">A concrete next step, not an auto-reply</span>
+          </li>
+          <li>
+            <span class="kontakt-trust__n">03</span>
+            <span class="kontakt-trust__t">Your inquiry stays between us — never shared</span>
+          </li>
+        </ul>
       </div>
 
     </div>
@@ -116,20 +124,49 @@
       <!-- ── Form ─────────────────────────── -->
       <div class="reveal">
         <!-- Success state (shown after JS submit) -->
-        <div class="kontakt-success" id="kontaktSuccess">
-          <h2 class="kontakt-success__title">We've received your inquiry.</h2>
+        <div class="kontakt-success" id="kontaktSuccess" aria-live="polite">
+          <p class="kontakt-success__label">— Received</p>
+          <h2 class="kontakt-success__title">Your inquiry is in.</h2>
           <p class="kontakt-success__text">
-            We'll review it, and if we feel there's a genuine fit, we'll get back to you within 1 to 2 business days with a clear next step.
+            We'll review it and come back within <strong>1–2 business days</strong> with a clear next step<span class="kontakt-success__email" id="kontaktSuccessEmail"></span>.
           </p>
+          <div class="kontakt-success__next">
+            <p class="kontakt-success__next-label">In the meantime</p>
+            <div class="kontakt-success__links">
+              <a href="work.html" data-cursor="explore">See selected work →</a>
+              <a href="faq.html" data-cursor="explore">Read the FAQ →</a>
+              <a href="../index.html" data-cursor="explore">Back to home →</a>
+            </div>
+          </div>
         </div>
 
         <form
           class="kontakt-form"
           id="kontaktForm"
-          action="https://formspree.io/f/YOUR_FORM_ID_HERE"
+          action="https://formspree.io/f/mnjlbobv"
           method="POST"
           novalidate
         >
+          <!-- Formspree live setup:
+               Recommended: use a SEPARATE EN form ID and a separate SR form ID,
+               both targeting the same inbox (posteriu.in@gmail.com).
+               This keeps submissions tidy and lets you set a clean
+               language-specific autoresponse for each contact page.
+               Until the endpoint is replaced with a real Formspree ID,
+               form.js opens a mailto draft as a safe backup.
+          -->
+
+          <!-- Honeypot — hidden from users, filled only by bots -->
+          <input type="text" class="kontakt-honey" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" />
+          <input type="hidden" name="subject" value="Studio One — EN contact inquiry" />
+          <input type="hidden" name="form_locale" value="en" />
+          <input type="hidden" name="form_page" value="/en/pages/contact.html" />
+
+          <!-- ─── Section 01: About you ────────── -->
+          <p class="kontakt-formhead">
+            <span class="kontakt-formhead__n">01</span>
+            About you
+          </p>
 
           <!-- Name + Email -->
           <div class="kontakt-form__row">
@@ -154,33 +191,39 @@
             <div class="kontakt-field">
               <label class="kontakt-field__label" for="brend">Brand or company name</label>
               <input
-                class="kontakt-input" id="brend" name="brand" type="text"
+                class="kontakt-input" id="brend" name="company" type="text"
                 placeholder="Your brand name..." required
               />
             </div>
             <div class="kontakt-field">
               <label class="kontakt-field__label" for="link">Existing website link (if any)</label>
               <input
-                class="kontakt-input" id="link" name="link" type="url"
+                class="kontakt-input" id="link" name="website" type="url"
                 placeholder="https://"
               />
             </div>
           </div>
 
+          <!-- ─── Section 02: The project ──────── -->
+          <p class="kontakt-formhead">
+            <span class="kontakt-formhead__n">02</span>
+            The project
+          </p>
+
           <!-- What do you need — pill selector -->
           <div class="kontakt-field">
             <span class="kontakt-field__label">Which service are you interested in?</span>
             <div class="kontakt-pills" role="group" aria-label="Project type">
-              <input class="kontakt-pill" type="radio" name="type" id="tip-novi" value="New website" checked />
+              <input class="kontakt-pill" type="radio" name="service" id="tip-novi" value="New website" checked />
               <label for="tip-novi">New website</label>
 
-              <input class="kontakt-pill" type="radio" name="type" id="tip-redizajn" value="Website redesign" />
+              <input class="kontakt-pill" type="radio" name="service" id="tip-redizajn" value="Website redesign" />
               <label for="tip-redizajn">Redesign</label>
 
-              <input class="kontakt-pill" type="radio" name="type" id="tip-odrzavanje" value="Maintenance and growth" />
+              <input class="kontakt-pill" type="radio" name="service" id="tip-odrzavanje" value="Maintenance and growth" />
               <label for="tip-odrzavanje">Maintenance</label>
 
-              <input class="kontakt-pill" type="radio" name="type" id="tip-ostalo" value="Additional support" />
+              <input class="kontakt-pill" type="radio" name="service" id="tip-ostalo" value="Additional support" />
               <label for="tip-ostalo">Additional support</label>
             </div>
           </div>
@@ -190,11 +233,20 @@
             <label class="kontakt-field__label" for="opis">Brief project description</label>
             <textarea
               class="kontakt-input kontakt-textarea"
-              id="opis" name="description"
-              placeholder="Who you are, what you offer, what needs to be built or improved, what the website should achieve, and what currently is not working well."
+              id="opis" name="message"
+              placeholder="Who you are, what you offer, what needs to be built or improved, and what the website should achieve."
               required
             ></textarea>
+            <span class="kontakt-field__hint">
+              2–3 sentences is enough — we fill in the details together.
+            </span>
           </div>
+
+          <!-- ─── Section 03: Scope &amp; timing ───── -->
+          <p class="kontakt-formhead">
+            <span class="kontakt-formhead__n">03</span>
+            Scope &amp; timing
+          </p>
 
           <!-- Timeline + Investment -->
           <div class="kontakt-form__row">
@@ -235,14 +287,21 @@
             </div>
           </div>
 
-          <!-- Submit -->
+          <!-- ─── Submit ─────────────────────── -->
           <div class="kontakt-submit">
             <button type="submit" class="btn-primary" data-cursor="send">
-              Send inquiry <span class="btn-arrow">→</span>
+              <span class="btn-label">Send inquiry</span>
+              <span class="btn-arrow" aria-hidden="true">→</span>
             </button>
-            <p class="kontakt-form__note">
-              If we feel there's a genuine fit, we come back with a realistic project scope and a clear next step.
-            </p>
+            <div class="kontakt-submit__meta">
+              <p class="kontakt-submit__note">
+                If we feel there's a genuine fit, we come back with a realistic project scope and a clear next step.
+              </p>
+              <p class="kontakt-submit__privacy">
+                <span class="kontakt-submit__privacy-dot" aria-hidden="true"></span>
+                Your details stay between us — no newsletter, no sharing.
+              </p>
+            </div>
           </div>
 
         </form>
@@ -303,13 +362,13 @@
     <div class="kontakt-alt__inner">
       <div>
         <p class="kontakt-alt__label">Or write to us directly</p>
-        <a href="mailto:hello@studioone.rs" class="kontakt-alt__email" data-cursor="send">
-          hello@studioone.rs
+        <a href="mailto:posterium.in@gmail.com" class="kontakt-alt__email" data-cursor="send">
+          posterium.in@gmail.com
         </a>
       </div>
       <div>
         <p class="kontakt-alt__label">Working hours</p>
-        <p style="font-size:14px; opacity:.6; letter-spacing:-.01em">Mon – Fri · 09:00 – 18:00 CET</p>
+        <p class="kontakt-alt__value">Mon – Fri · 09:00 – 18:00 CET</p>
       </div>
     </div>
   </div>

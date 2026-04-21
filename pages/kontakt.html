@@ -88,20 +88,28 @@
         </h1>
         <p class="kontakt-hero__sub reveal-blur">
           Ako tražite sajt ili redizajn koji treba da ostavi ozbiljan utisak i ima jasan cilj,
-          pošaljite nam nekoliko osnovnih informacija o projektu.
-        </p>
-        <p class="kontakt-hero__note reveal reveal-d2">
-          Prvi razgovor služi da procenimo da li postoji fit, koji je realan obim i koji je najbolji sledeći korak.
+          pošaljite nam nekoliko osnovnih informacija o projektu. Prvi razgovor služi
+          da procenimo fit, realan obim i najbolji sledeći korak.
         </p>
       </div>
 
-      <!-- Desno: kratak uvod -->
+      <!-- Desno: "Na prvi pogled" trust list -->
       <div class="kontakt-hero__right reveal reveal-d2">
-        <p class="kontakt-hero__intro-label">Dovoljno je</p>
-        <p class="kontakt-hero__intro-text">
-          Ostavite osnovne informacije o firmi, postojećem sajtu, budžetskom okviru i cilju.
-          Ne morate imati sve unapred savršeno definisano — dovoljno je da možemo da razumemo suštinu projekta.
-        </p>
+        <p class="kontakt-trust__label">Na prvi pogled</p>
+        <ul class="kontakt-trust">
+          <li>
+            <span class="kontakt-trust__n">01</span>
+            <span class="kontakt-trust__t">Odgovor u roku od 1–2 radna dana</span>
+          </li>
+          <li>
+            <span class="kontakt-trust__n">02</span>
+            <span class="kontakt-trust__t">Konkretan sledeći korak, ne auto-reply</span>
+          </li>
+          <li>
+            <span class="kontakt-trust__n">03</span>
+            <span class="kontakt-trust__t">Upit ostaje između nas — ne delimo ništa</span>
+          </li>
+        </ul>
       </div>
 
     </div>
@@ -116,33 +124,55 @@
       <!-- ── Forma ─────────────────────────── -->
       <div class="reveal">
         <!-- Success state (shown after JS submit) -->
-        <div class="kontakt-success" id="kontaktSuccess">
-          <h2 class="kontakt-success__title">Primili smo vaš upit.</h2>
+        <div class="kontakt-success" id="kontaktSuccess" aria-live="polite">
+          <p class="kontakt-success__label">— Primljeno</p>
+          <h2 class="kontakt-success__title">Vaš upit je stigao.</h2>
           <p class="kontakt-success__text">
-            Pregledamo ga i, ako procenimo da postoji dobar fit, javljamo se u roku od 1 do 2 radna dana sa jasnim sledećim korakom.
+            Pregledamo ga i javljamo se u roku od <strong>1–2 radna dana</strong> sa jasnim sledećim korakom<span class="kontakt-success__email" id="kontaktSuccessEmail"></span>.
           </p>
+          <div class="kontakt-success__next">
+            <p class="kontakt-success__next-label">U međuvremenu</p>
+            <div class="kontakt-success__links">
+              <a href="radovi.html" data-cursor="explore">Pogledajte radove →</a>
+              <a href="faq.html" data-cursor="explore">Česta pitanja →</a>
+              <a href="../index.html" data-cursor="explore">Nazad na početnu →</a>
+            </div>
+          </div>
         </div>
 
         <form
           class="kontakt-form"
           id="kontaktForm"
-          action="https://formspree.io/f/YOUR_FORM_ID_HERE"
+          action="https://formspree.io/f/meevlpzw"
           method="POST"
           novalidate
         >
-          <!-- ⚠️  Formspree setup:
-               1. Idite na https://formspree.io i napravite nalog
-               2. Kreirajte novi form i kopirajte Form ID (npr. xpwzabcd)
-               3. Zamenite YOUR_FORM_ID_HERE pravim ID-jem
-               4. Koristite isti ID i u en/pages/contact.html
+          <!-- Formspree live setup:
+               Preporuka: koristite POSEBAN SR form ID i poseban EN form ID,
+               oba sa istim target email-om (posteriu.in@gmail.com).
+               Tako dobijate čist inbox i odvojene autoresponse poruke po jeziku.
+               Dok endpoint nije zamenjen pravim Formspree ID-jem, form.js
+               otvara mailto draft kao bezbedan backup.
           -->
+
+          <!-- Honeypot — hidden from users, filled only by bots -->
+          <input type="text" class="kontakt-honey" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" />
+          <input type="hidden" name="subject" value="Studio One — SR kontakt upit" />
+          <input type="hidden" name="form_locale" value="sr" />
+          <input type="hidden" name="form_page" value="/pages/kontakt.html" />
+
+          <!-- ─── Sekcija 01: O vama ───────────── -->
+          <p class="kontakt-formhead">
+            <span class="kontakt-formhead__n">01</span>
+            O vama
+          </p>
 
           <!-- Ime i prezime + Email -->
           <div class="kontakt-form__row">
             <div class="kontakt-field">
               <label class="kontakt-field__label" for="ime">Ime i prezime</label>
               <input
-                class="kontakt-input" id="ime" name="ime" type="text"
+                class="kontakt-input" id="ime" name="name" type="text"
                 placeholder="Vaše ime" autocomplete="name" required
               />
             </div>
@@ -160,33 +190,39 @@
             <div class="kontakt-field">
               <label class="kontakt-field__label" for="brend">Naziv brenda ili firme</label>
               <input
-                class="kontakt-input" id="brend" name="brend" type="text"
+                class="kontakt-input" id="brend" name="company" type="text"
                 placeholder="Studio One, doo..." required
               />
             </div>
             <div class="kontakt-field">
               <label class="kontakt-field__label" for="link">Link postojećeg sajta (ako postoji)</label>
               <input
-                class="kontakt-input" id="link" name="link" type="url"
+                class="kontakt-input" id="link" name="website" type="url"
                 placeholder="https://"
               />
             </div>
           </div>
 
+          <!-- ─── Sekcija 02: O projektu ────────── -->
+          <p class="kontakt-formhead">
+            <span class="kontakt-formhead__n">02</span>
+            O projektu
+          </p>
+
           <!-- Šta je potrebno — pill selector -->
           <div class="kontakt-field">
             <span class="kontakt-field__label">Koja usluga vas zanima?</span>
             <div class="kontakt-pills" role="group" aria-label="Vrsta projekta">
-              <input class="kontakt-pill" type="radio" name="tip" id="tip-novi" value="Novi sajt" checked />
+              <input class="kontakt-pill" type="radio" name="service" id="tip-novi" value="Novi sajt" checked />
               <label for="tip-novi">Novi sajt</label>
 
-              <input class="kontakt-pill" type="radio" name="tip" id="tip-redizajn" value="Redizajn sajta" />
+              <input class="kontakt-pill" type="radio" name="service" id="tip-redizajn" value="Redizajn sajta" />
               <label for="tip-redizajn">Redizajn</label>
 
-              <input class="kontakt-pill" type="radio" name="tip" id="tip-odrzavanje" value="Održavanje i razvoj" />
+              <input class="kontakt-pill" type="radio" name="service" id="tip-odrzavanje" value="Održavanje i razvoj" />
               <label for="tip-odrzavanje">Održavanje</label>
 
-              <input class="kontakt-pill" type="radio" name="tip" id="tip-ostalo" value="Dodatna podrška" />
+              <input class="kontakt-pill" type="radio" name="service" id="tip-ostalo" value="Dodatna podrška" />
               <label for="tip-ostalo">Dodatna podrška</label>
             </div>
           </div>
@@ -196,59 +232,75 @@
             <label class="kontakt-field__label" for="opis">Kratki opis projekta</label>
             <textarea
               class="kontakt-input kontakt-textarea"
-              id="opis" name="opis"
-              placeholder="Ko ste, šta nudite, šta treba da se promeni ili napravi, šta je glavni cilj sajta i šta trenutno ne funkcioniše kako treba."
+              id="opis" name="message"
+              placeholder="Ko ste, šta nudite, šta treba da se promeni ili napravi i šta je glavni cilj sajta."
               required
             ></textarea>
+            <span class="kontakt-field__hint">
+              2–3 rečenice su dovoljne — detalje razrešavamo zajedno.
+            </span>
           </div>
+
+          <!-- ─── Sekcija 03: Okvir i tempo ────── -->
+          <p class="kontakt-formhead">
+            <span class="kontakt-formhead__n">03</span>
+            Okvir i tempo
+          </p>
 
           <!-- Rok i investicija -->
           <div class="kontakt-form__row">
             <div class="kontakt-field">
               <span class="kontakt-field__label">Okvirni rok</span>
               <div class="kontakt-pills" role="group" aria-label="Okvirni rok">
-                <input class="kontakt-pill" type="radio" name="rok" id="rok-hitno" value="Hitno (do mesec dana)" />
+                <input class="kontakt-pill" type="radio" name="timeline" id="rok-hitno" value="Hitno (do mesec dana)" />
                 <label for="rok-hitno">Hitno</label>
 
-                <input class="kontakt-pill" type="radio" name="rok" id="rok-1-2" value="U toku 1-2 meseca" checked />
+                <input class="kontakt-pill" type="radio" name="timeline" id="rok-1-2" value="U toku 1-2 meseca" checked />
                 <label for="rok-1-2">1–2 meseca</label>
 
-                <input class="kontakt-pill" type="radio" name="rok" id="rok-kvartal" value="Do kraja kvartala" />
+                <input class="kontakt-pill" type="radio" name="timeline" id="rok-kvartal" value="Do kraja kvartala" />
                 <label for="rok-kvartal">Do kraja kvartala</label>
 
-                <input class="kontakt-pill" type="radio" name="rok" id="rok-planiramo" value="Planiramo, nema pritiska" />
+                <input class="kontakt-pill" type="radio" name="timeline" id="rok-planiramo" value="Planiramo, nema pritiska" />
                 <label for="rok-planiramo">Planiramo</label>
               </div>
             </div>
             <div class="kontakt-field">
               <span class="kontakt-field__label">Okvirna investicija</span>
               <div class="kontakt-pills" role="group" aria-label="Okvirni budžet">
-                <input class="kontakt-pill" type="radio" name="budzet" id="b-open" value="Još nismo definisali" checked />
+                <input class="kontakt-pill" type="radio" name="budget" id="b-open" value="Još nismo definisali" checked />
                 <label for="b-open">Još nismo definisali</label>
 
-                <input class="kontakt-pill" type="radio" name="budzet" id="b-start" value="Start Web (oko 900 €)" />
+                <input class="kontakt-pill" type="radio" name="budget" id="b-start" value="Start Web (oko 900 €)" />
                 <label for="b-start">Start Web</label>
 
-                <input class="kontakt-pill" type="radio" name="budzet" id="b-mid" value="Growth Web (oko 1.900 €)" />
+                <input class="kontakt-pill" type="radio" name="budget" id="b-mid" value="Growth Web (oko 1.900 €)" />
                 <label for="b-mid">Growth Web</label>
 
-                <input class="kontakt-pill" type="radio" name="budzet" id="b-premium" value="Signature Web (3.900 €+)" />
+                <input class="kontakt-pill" type="radio" name="budget" id="b-premium" value="Signature Web (3.900 €+)" />
                 <label for="b-premium">Signature Web</label>
 
-                <input class="kontakt-pill" type="radio" name="budzet" id="b-custom" value="Opseg po meri / veći obim" />
+                <input class="kontakt-pill" type="radio" name="budget" id="b-custom" value="Opseg po meri / veći obim" />
                 <label for="b-custom">Po meri</label>
               </div>
             </div>
           </div>
 
-          <!-- Submit -->
+          <!-- ─── Submit ─────────────────────── -->
           <div class="kontakt-submit">
             <button type="submit" class="btn-primary" data-cursor="send">
-              Pošalji upit <span class="btn-arrow">→</span>
+              <span class="btn-label">Pošalji upit</span>
+              <span class="btn-arrow" aria-hidden="true">→</span>
             </button>
-            <p class="kontakt-form__note">
-              Ako procenimo da postoji dobar fit, javljamo se sa realnim obimom projekta i jasnim sledećim korakom.
-            </p>
+            <div class="kontakt-submit__meta">
+              <p class="kontakt-submit__note">
+                Ako procenimo da postoji dobar fit, javljamo se sa realnim obimom projekta i jasnim sledećim korakom.
+              </p>
+              <p class="kontakt-submit__privacy">
+                <span class="kontakt-submit__privacy-dot" aria-hidden="true"></span>
+                Podaci iz upita ostaju između nas — bez newslettera i bez deljenja.
+              </p>
+            </div>
           </div>
 
         </form>
@@ -309,13 +361,13 @@
     <div class="kontakt-alt__inner">
       <div>
         <p class="kontakt-alt__label">Ili nam pišite direktno</p>
-        <a href="mailto:hello@studioone.rs" class="kontakt-alt__email" data-cursor="send">
-          hello@studioone.rs
+        <a href="mailto:posterium.in@gmail.com" class="kontakt-alt__email" data-cursor="send">
+          posterium.in@gmail.com
         </a>
       </div>
       <div>
         <p class="kontakt-alt__label">Radno vreme</p>
-        <p style="font-size:14px; opacity:.6; letter-spacing:-.01em">Pon – Pet · 09:00 – 18:00</p>
+        <p class="kontakt-alt__value">Pon – Pet · 09:00 – 18:00</p>
       </div>
     </div>
   </div>

@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="css/packages.css">
   <link rel="stylesheet" href="css/services.css">
   <link rel="stylesheet" href="css/misc.css">
+  <link rel="stylesheet" href="css/faq.css">
   <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body class="page-home lang-sr">
@@ -477,9 +478,15 @@
         <div class="pkg-detail" id="pkgDetail" aria-live="polite"></div>
       </div>
 
-      <div class="pkg-note reveal reveal-d3">
-        Svaki projekat ima svoj obim, tempo i cilj. Zato ovi modeli služe kao jasan
-        početni okvir, a ne kao krut šablon.
+      <div class="pkg-outro reveal reveal-d3">
+        <p class="pkg-note">
+          Svaki projekat ima svoj obim, tempo i cilj. Zato ovi modeli služe kao jasan
+          početni okvir, a ne kao krut šablon.
+        </p>
+        <a href="pages/kontakt.html" class="pkg-help" data-cursor="book">
+          <span class="pkg-help__eyebrow">Nisi siguran koji model?</span>
+          <span class="pkg-help__label">Napravićemo predlog na kratkom pozivu <span class="pkg-help__arrow">→</span></span>
+        </a>
       </div>
     </div>
   </section>
@@ -595,83 +602,161 @@
     </div>
   </section>
 
-    <!-- ── FAQ ────────────────────────────────── -->
+  <!-- ── FAQ ────────────────────────────────── -->
   <section class="section faq" id="faq">
-    <div class="section__inner">
-      <div class="section__label">Česta pitanja</div>
+    <div class="section__inner faq-home">
+      <div class="faq-home__layout">
+        <div class="faq-home__intro reveal">
+          <div class="section__label">Pre prvog razgovora</div>
+          <h2 class="faq-home__title">
+            Najvažnije stvari koje ozbiljni klijenti obično žele da razjasne pre upita.
+          </h2>
+          <p class="faq-home__body">
+            Ovaj deo je tu da brzo razjasni fit, okvir ulaganja i način saradnje. Bez generičkih
+            odgovora i bez nejasnog pristupa u kome se ozbiljne stvari rešavaju usput.
+          </p>
 
-      <div class="faq__list">
-        <div class="faq__item">
-          <button class="faq__q" data-cursor="open">
-            <h3>Da li radite samo sajtove ili i druge usluge?</h3>
-            <span class="faq__ico">+</span>
-          </button>
-          <div class="faq__a">
-            <div class="faq__a-inner">
-              Web je naš glavni fokus: izrada sajtova, redizajn i dalji razvoj. Dodatne digitalne
-              usluge postoje kao podrška kada je potrebno da ceo nastup bude dosledniji i jači.
-            </div>
+          <div class="faq-home__signals">
+            <article class="faq-home__signal">
+              <span class="faq-home__signal-n">01</span>
+              <h3>Odgovor bez razvlačenja</h3>
+              <p>Na upite se vraćamo u roku od 1–2 radna dana sa jasnim sledećim korakom.</p>
+            </article>
+
+            <article class="faq-home__signal">
+              <span class="faq-home__signal-n">02</span>
+              <h3>Web je glavni fokus</h3>
+              <p>Izrada, redizajn i razvoj sajtova su osnova studija. Ostalo postoji samo kao podrška.</p>
+            </article>
+
+            <article class="faq-home__signal">
+              <span class="faq-home__signal-n">03</span>
+              <h3>Jasan start okvir</h3>
+              <p>Web projekti kreću od 900 €, a tačna ponuda zavisi od realnog scope-a i cilja.</p>
+            </article>
+
+            <article class="faq-home__signal">
+              <span class="faq-home__signal-n">04</span>
+              <h3>Podrška i posle lansiranja</h3>
+              <p>Po potrebi ostajemo uključeni kroz održavanje, sitna unapređenja i dalji razvoj.</p>
+            </article>
           </div>
         </div>
 
-        <div class="faq__item">
-          <button class="faq__q" data-cursor="open">
-            <h3>Da li radite sa klijentima iz inostranstva?</h3>
-            <span class="faq__ico">+</span>
-          </button>
-          <div class="faq__a">
-            <div class="faq__a-inner">
-              Da. Baza nam je u Novom Sadu, ali saradnju organizujemo i međunarodno. Imamo klijente iz Srbije, regiona i inostranstva.
+        <div class="faq-home__panel reveal reveal-d2">
+          <div class="faq-home__panel-head">
+            <div>
+              <p class="faq-home__panel-label">Najčešće nedoumice</p>
+              <p class="faq-home__panel-copy">
+                Kratki odgovori koji pomažu da procenite da li je pravi trenutak da nam pišete.
+              </p>
             </div>
+            <a href="pages/faq.html" class="faq-home__more" data-cursor="explore">Cela FAQ strana →</a>
           </div>
-        </div>
 
-        <div class="faq__item">
-          <button class="faq__q" data-cursor="open">
-            <h3>Da li postoji okvirni budžet za početak web saradnje?</h3>
-            <span class="faq__ico">+</span>
-          </button>
-          <div class="faq__a">
-            <div class="faq__a-inner">
-              Da. Start Web kreće od 900 €, Growth Web od 1.900 €, a Signature Web od 3.900 €.
-              Tačan raspon zavisi od obima, copyja, broja stranica i integracija.
-            </div>
-          </div>
-        </div>
+          <div class="faq__list faq-home__list">
+            <article class="faq__item is-open">
+              <button class="faq__q" data-cursor="open">
+                <div class="faq__q-copy">
+                  <span class="faq__q-kicker">Rokovi</span>
+                  <h3>Koliko obično traje izrada ili redizajn sajta?</h3>
+                </div>
+                <span class="faq__ico" aria-hidden="true">+</span>
+              </button>
+              <div class="faq__a">
+                <div class="faq__a-inner">
+                  Najčešće od nekoliko nedelja do nekoliko meseci, u zavisnosti od obima, broja
+                  stranica, copyja, materijala i brzine feedbacka. Precizan rok definišemo tek kada
+                  razjasnimo realan scope, kako bismo dali plan koji je izvodljiv, a ne samo brz odgovor.
+                </div>
+              </div>
+            </article>
 
-        <div class="faq__item">
-          <button class="faq__q" data-cursor="open">
-            <h3>Da li prihvatate svaki projekat?</h3>
-            <span class="faq__ico">+</span>
-          </button>
-          <div class="faq__a">
-            <div class="faq__a-inner">
-              Ne. Biramo saradnje u kojima verujemo da možemo da donesemo stvarnu vrednost, jasan pravac i ozbiljan rezultat.
-            </div>
-          </div>
-        </div>
+            <article class="faq__item">
+              <button class="faq__q" data-cursor="open">
+                <div class="faq__q-copy">
+                  <span class="faq__q-kicker">Budžet</span>
+                  <h3>Da li postoji jasan budžetski okvir pre prvog razgovora?</h3>
+                </div>
+                <span class="faq__ico" aria-hidden="true">+</span>
+              </button>
+              <div class="faq__a">
+                <div class="faq__a-inner">
+                  Da. Za web saradnje trenutno imamo jasan start okvir: Start Web od 900 €, Growth
+                  Web od 1.900 €, a Signature Web od 3.900 €. Tačna ponuda zavisi od strukture,
+                  copyja, integracija i obima projekta, ali početni raspon ne držimo nejasnim.
+                </div>
+              </div>
+            </article>
 
-        <div class="faq__item">
-          <button class="faq__q" data-cursor="open">
-            <h3>Da li nudite mesečno održavanje i dalji razvoj sajta?</h3>
-            <span class="faq__ico">+</span>
-          </button>
-          <div class="faq__a">
-            <div class="faq__a-inner">
-              Da. Po potrebi nudimo mesečnu podršku, održavanje i dalje unapređenje sajta, naročito kada je reč o sajtovima koji se aktivno razvijaju.
-            </div>
-          </div>
-        </div>
+            <article class="faq__item">
+              <button class="faq__q" data-cursor="open">
+                <div class="faq__q-copy">
+                  <span class="faq__q-kicker">Struktura i copy</span>
+                  <h3>Da li morate da dođete sa gotovim tekstovima i jasnom mapom sajta?</h3>
+                </div>
+                <span class="faq__ico" aria-hidden="true">+</span>
+              </button>
+              <div class="faq__a">
+                <div class="faq__a-inner">
+                  Ne morate. Po potrebi vodimo strukturu, hijerarhiju poruka i copy smer, kako bi
+                  sajt bio jasniji, ozbiljniji i korisniji za prodaju ili upite. Dovoljno je da
+                  nam jasno objasnite biznis, cilj i kontekst projekta.
+                </div>
+              </div>
+            </article>
 
-        <div class="faq__item">
-          <button class="faq__q" data-cursor="open">
-            <h3>Da li copywriting ulazi u uslugu?</h3>
-            <span class="faq__ico">+</span>
-          </button>
-          <div class="faq__a">
-            <div class="faq__a-inner">
-              Da. Pisanje prodajnog i komunikacijskog teksta je deo procesa kada je to potrebno projektu.
-            </div>
+            <article class="faq__item">
+              <button class="faq__q" data-cursor="open">
+                <div class="faq__q-copy">
+                  <span class="faq__q-kicker">Fit</span>
+                  <h3>Šta se dešava nakon što pošaljete upit?</h3>
+                </div>
+                <span class="faq__ico" aria-hidden="true">+</span>
+              </button>
+              <div class="faq__a">
+                <div class="faq__a-inner">
+                  Najpre gledamo da li postoji dobar fit: cilj, obim, rok i da li možemo stvarno da
+                  pomerimo projekat. Ako postoji, vraćamo se sa jasnim sledećim korakom. Ako ne
+                  postoji, to kažemo direktno, bez razvlačenja i bez generičkog odgovora.
+                </div>
+              </div>
+            </article>
+
+            <article class="faq__item">
+              <button class="faq__q" data-cursor="open">
+                <div class="faq__q-copy">
+                  <span class="faq__q-kicker">Posle lansiranja</span>
+                  <h3>Da li nudite održavanje i dalji razvoj nakon puštanja sajta?</h3>
+                </div>
+                <span class="faq__ico" aria-hidden="true">+</span>
+              </button>
+              <div class="faq__a">
+                <div class="faq__a-inner">
+                  Da. Kada projekat to traži, ostajemo uključeni kroz tehnička ažuriranja, sitna
+                  unapređenja i dalji razvoj. Ovo je posebno važno kada sajt nije jednokratna isporuka,
+                  već alat koji treba da prati rast biznisa.
+                </div>
+              </div>
+            </article>
+
+            <article class="faq__item">
+              <button class="faq__q" data-cursor="open">
+                <div class="faq__q-copy">
+                  <span class="faq__q-kicker">Pravi izbor</span>
+                  <h3>Za kakve firme je Studio One najčešće pravi izbor?</h3>
+                </div>
+                <span class="faq__ico" aria-hidden="true">+</span>
+              </button>
+              <div class="faq__a">
+                <div class="faq__a-inner">
+                  Za firme kojima su bitni prvi utisak, jasan poslovni ton i ozbiljna web struktura.
+                  Ako je jedini kriterijum najniža cena ili treba nešto brzo i bez jasnog cilja,
+                  verovatno nismo pravi fit. Ako želite sajt koji treba da nosi poverenje, tada
+                  razgovor ima smisla.
+                </div>
+              </div>
+            </article>
           </div>
         </div>
       </div>
