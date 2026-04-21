@@ -6,7 +6,7 @@
 
    ── Setup ───────────────────────────────────────────────────
    1. Create two Formspree forms: one for SR and one for EN.
-   2. Add and verify posteriu.in@gmail.com as a linked/target email.
+   2. Add and verify posterium.in@gmail.com as a linked/target email.
    3. Set the form actions to:
         /pages/kontakt.html    → https://formspree.io/f/REPLACE_WITH_SR_FORM_ID
         /en/pages/contact.html → https://formspree.io/f/REPLACE_WITH_EN_FORM_ID
@@ -43,7 +43,7 @@
     emailJoin  : ' na '
   };
 
-  var FALLBACK_EMAIL   = 'posteriu.in@gmail.com';
+  var FALLBACK_EMAIL   = 'posterium.in@gmail.com';
   var MAILTO_SUBJECT   = isEN ? 'Project inquiry — Studio One'
                               : 'Upit za projekat — Studio One';
   var FIELD_LABELS     = isEN ? {

@@ -23,7 +23,7 @@ function initReveal() {
   observe('.reveal', function(el, io) {
     el.classList.add('is-in');
     io.unobserve(el);
-  }, { threshold: 0.10 });
+  }, { threshold: 0.02 });
 
   /* ── 2. Clip-path headline reveals ─────────── */
   observe('.reveal-clip', function(el, io) {
@@ -35,7 +35,7 @@ function initReveal() {
   observe('.reveal-blur', function(el, io) {
     el.classList.add('is-in');
     io.unobserve(el);
-  }, { threshold: 0.10 });
+  }, { threshold: 0.04 });
 
   /* ── 4. Section focus line reveals ─────────── */
   observe('.reveal-line', function(el, io) {

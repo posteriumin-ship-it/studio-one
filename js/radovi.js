@@ -278,7 +278,7 @@ function initRadovi() {
         entry.target.classList.add('is-visible');
         observer.unobserve(entry.target);
       });
-    }, { threshold: 0.2 });
+    }, { threshold: 0.08 });
 
     cards.forEach(function(card) {
       observer.observe(card);

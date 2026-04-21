@@ -162,17 +162,6 @@
   min-width: 0;
 }
 
-/* Featured accent dot beside the name */
-.pkg-sel__item-dot {
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--accent);
-  flex-shrink: 0;
-  box-shadow: 0 0 0 3px rgba(195, 247, 58, .18);
-}
-
 .pkg-sel__item-price {
   font-family: var(--font-mono);
   font-size: 11px;

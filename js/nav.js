@@ -1,4 +1,46 @@
 /* ============================================================
+   ANALYTICS — shared bootstrap
+   ------------------------------------------------------------
+   We keep analytics prep here because nav.js is the one script
+   already loaded on every page of the site.
+
+   Launch setup: Google Analytics 4 via gtag.js
+   - shared loader for all pages
+   - no event tracking yet
+   - inert until the real GA4 Measurement ID is inserted
+   - no user-facing behavior changes
+
+   To enable later, replace REPLACE_WITH_GA4_MEASUREMENT_ID with
+   your real GA4 Measurement ID (example format: G-XXXXXXXXXX).
+   ============================================================ */
+(function initAnalyticsBootstrap() {
+  var config = {
+    provider: 'ga4',
+    measurementId: 'REPLACE_WITH_GA4_MEASUREMENT_ID',
+    scriptSrc: 'https://www.googletagmanager.com/gtag/js'
+  };
+
+  var host = window.location.hostname;
+  var isLocalhost = host === 'localhost' || host === '127.0.0.1' || host === '';
+  var hasPlaceholderId = !config.measurementId || /REPLACE_WITH_/i.test(config.measurementId);
+
+  if (config.provider !== 'ga4') return;
+  if (isLocalhost || hasPlaceholderId || !config.scriptSrc) return;
+  if (document.querySelector('script[data-studio-one-analytics="ga4"]')) return;
+
+  var script = document.createElement('script');
+  script.defer = true;
+  script.src = config.scriptSrc + '?id=' + encodeURIComponent(config.measurementId);
+  script.setAttribute('data-studio-one-analytics', 'ga4');
+  document.head.appendChild(script);
+
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = window.gtag || function gtag(){ window.dataLayer.push(arguments); };
+  window.gtag('js', new Date());
+  window.gtag('config', config.measurementId);
+})();
+
+/* ============================================================
    NAV  —  scroll state + mobile menu + anchor scroll
    ------------------------------------------------------------
    Responsibilities

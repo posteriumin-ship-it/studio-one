@@ -441,15 +441,12 @@ function renderPkgSel(cat, activeIdx, data, ui) {
     if (i === activeIdx)     classes.push('is-active');
 
     var priceClasses = 'pkg-sel__item-price' + (pkg.priceValue ? ' pkg-price' : '');
-    var featuredDot  = pkg.featured
-      ? '<span class="pkg-sel__item-dot" aria-hidden="true"></span>'
-      : '';
 
     html +=
       '<button class="' + classes.join(' ') + '" data-idx="' + i + '" type="button">' +
         '<div class="pkg-sel__item-top">' +
           '<span class="pkg-sel__item-num">' + escHtml(pkg.num) + '</span>' +
-          '<span class="pkg-sel__item-name">' + escHtml(pkg.name) + featuredDot + '</span>' +
+          '<span class="pkg-sel__item-name">' + escHtml(pkg.name) + '</span>' +
           '<span class="' + priceClasses + '">' + formatPkgPriceInner(pkg) + '</span>' +
         '</div>' +
         '<span class="pkg-sel__item-tag">' + escHtml(pkg.bestFor || pkg.tagline || '') + '</span>' +
